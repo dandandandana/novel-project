@@ -1,0 +1,10 @@
+layout_version: '2.0'
+architecture: shared-system-plus-isolated-stories
+shared_identity:
+  story_id: __shared__
+  timeline_id: global
+story_root: stories/<story_id>
+shared_root: shared
+index_layout:
+  shared: index/shared.db
+  story: index/stories/<story_id>.db

@@ -1,0 +1,52 @@
+{
+  "metadata": {
+    "document_id": "canon-ability-li-zhouwei-zhimingchu-v1.0",
+    "story_id": "overturned-world-fujimaru",
+    "timeline_id": "main",
+    "document_type": "canon",
+    "title": "能力设定-李周巍-至命除",
+    "entity": "ability",
+    "character_ids": [
+      "li-zhouwei"
+    ],
+    "event_tags": [
+      "至命除",
+      "EX",
+      "personal_skill"
+    ],
+    "version": "1.0",
+    "status": "canon",
+    "canon_scope": "timeline",
+    "created_at": "2026-07-17",
+    "updated_at": "2026-07-17",
+    "supersedes": null,
+    "source_file": "user-message:2026-07-17/li-zhouwei-servant-profile"
+  },
+  "ability": {
+    "retrieval_key": "li_zhouwei_zhimingchu",
+    "name": "至命除",
+    "owner": "李周巍",
+    "owner_id": "li-zhouwei",
+    "rank": "EX",
+    "category": "personal_skill",
+    "type": "并火命神通",
+    "effect": "吞噬己子后获得的禁忌能力：控制各种火焰，包括从者火焰系宝具；压制所有神兽与幻想种；彻底免疫地、水、火、风、空五大元素的直接伤害；并能以灰色并火燃烧目标神智，直接攻击精神与灵魂。",
+    "activation": "李周巍主动控制火焰、压制神兽幻想种或释放灰色并火；五元素直接伤害免疫常时适用。",
+    "range": "未说明。",
+    "cost": "以吞噬全部子嗣为成道代价；从者状态下的单次使用消耗未说明。",
+    "limitations": [
+      "五元素免疫明确针对直接伤害，间接、复合或概念效果是否免疫未说明。",
+      "控制他人火焰系宝具的距离、争夺规则与上限未说明。",
+      "对神兽与幻想种的压制幅度及抵抗条件未说明。"
+    ],
+    "failure_conditions": [],
+    "known_by": [
+      "李周巍"
+    ],
+    "visual_expression": "未说明。",
+    "narrative_function": [
+      "夺取火焰控制权、压制神兽幻想种、免疫元素直伤并灼烧精神灵魂。"
+    ],
+    "canon_notes": []
+  }
+}

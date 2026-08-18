@@ -1,0 +1,93 @@
+metadata:
+  document_id: state-current-kotomine-shirou-ae-v1.0
+  story_id: overturned-world-fujimaru
+  timeline_id: main
+  document_type: character_state
+  title: 第四卷第14章末状态快照-言峰士郎（AE）
+  character_id: kotomine-shirou-ae
+  variant_id: kotomine-shirou-ae-main
+  snapshot_type: snapshot
+  effective_at: volume-04-chapter-014
+  last_updated: '2026-07-17'
+  version: '1.0'
+  status: archived
+  supersedes: null
+  source_file: D:\Novel\outputs\第四卷_第14章_续写.txt
+character_state:
+  current_position:
+    location: 伊耶那岐金地北侧信标石台
+    companions:
+    - 阿尔托莉雅·潘德拉贡 Alter
+    faction: 迦勒底阶段性协同行动方
+  physical:
+    health: 正文未明确异常
+    injuries: []
+    fatigue: 持续防守
+    temporary_conditions: []
+    permanent_changes: []
+  mental:
+    dominant_emotions:
+    - 不耐烦
+    - 专注
+    current_pressure:
+    - 北侧新增十七尊法相
+    desires:
+    - 守住主炮信标并修复特异点
+    fears: []
+    unresolved_conflicts: []
+    behavior_effects:
+    - 接管信标防守并催促藤丸立香继续任务
+  knowledge:
+    known:
+    - 神琦灰的目标不止于保住当前人理
+    - 迦勒底不是神琦灰的唯一手段
+    - 天照命已败北
+    unknown:
+    - 神琦灰的完整计划
+    mistaken_beliefs: []
+    suspicions: []
+    secrets_held: []
+  goals:
+    immediate:
+    - 与Alterego阿尔托莉雅守住主炮信标
+    short_term:
+    - 完成对弥勒的降格、主炮与创造之禊祓衔接
+    long_term:
+    - 修复特异点
+    priorities:
+    - 完成任务
+    - 同伴生存
+    obstacles:
+    - 北侧十七尊法相
+    - 弥勒
+  relationships:
+  - target_character: artoria-pendragon-alter
+    relationship_type: 协同行动者
+    trust: 能够共同守卫信标
+    dependence: 战斗协作
+    hostility: 无
+    current_attitude: 禁止其在非必要时开启潘多拉
+    unresolved_issues: []
+    recent_change: 共同接管信标防守
+  abilities:
+    available: []
+    unavailable: []
+    newly_acquired: []
+    consumed_resources: []
+    active_costs: []
+  inventory:
+    carried: []
+    lost: []
+    damaged: []
+  narrative:
+    current_arc: 日本下篇：伊耶那岐金地决战
+    completed_changes:
+    - 救援信标组三人并接管防守
+    - 透露神琦灰目标超越当前人理
+    unresolved_flags:
+    - 神琦灰真实目标
+    - 北侧法相防守
+    - 弥勒终战
+    active_promises: []
+    future_pressure:
+    - 主炮发射前必须守住信标

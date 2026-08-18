@@ -1,0 +1,6 @@
+tests: []
+# 后续每条测试建议包含：
+# - id, story_id, timeline_id, query, document_types
+# - expected_document_ids, forbidden_document_ids
+# - checks: [correctness, timeline_isolation, version, temporal, content_type]
+

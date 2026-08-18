@@ -1,0 +1,112 @@
+metadata:
+  document_id: state-current-kotomine-shirou-v1.4
+  story_id: overturned-world-fujimaru
+  timeline_id: main
+  document_type: character_state
+  title: 第四卷第20章末状态快照-言峰士郎
+  character_id: kotomine-shirou
+  variant_id: kotomine-shirou-main
+  snapshot_type: snapshot
+  effective_at: volume-04-chapter-020
+  last_updated: '2026-08-08'
+  version: '1.4'
+  status: archived
+  supersedes: state-current-kotomine-shirou-v1.3
+  source_file: D:\Novel 1\Novel\outputs\第四卷_第18章_续写.txt; D:\Novel 1\Novel\outputs\第四卷_第19章_续写.txt; D:\Novel 1\Novel\outputs\第四卷_第20章_续写.txt
+character_state:
+  current_position:
+    location: 迦勒底灵子转移筐体与医疗区
+    companions:
+    - 藤丸立香
+    - 玛修·基列莱特
+    - 吉尔伽美什
+    faction: 迦勒底协同行动方
+  physical:
+    health: 重伤回归
+    injuries:
+    - 右肩与右臂完全失去知觉
+    - 左腕折断
+    - 耳后深切伤
+    - 左肩、腰侧和大腿中刃
+    fatigue: 双臂近乎失用，拟造躯壳缓慢修复
+    temporary_conditions: []
+    permanent_changes: []
+  mental:
+    dominant_emotions:
+    - 克制
+    - 保护欲
+    - 对未归同伴的警惕
+    current_pressure:
+    - 双臂重伤
+    - 祁荒与村正未归
+    desires:
+    - 留在立香身边并确认失联者
+    fears: []
+    unresolved_conflicts: []
+    behavior_effects: []
+  knowledge:
+    known:
+    - 神琦灰能够恢复并驱使Alterego言峰士郎
+    - 圣杯回收和日本修复完成
+    - 祁荒与千子村正没有返回迦勒底
+    unknown:
+    - 无名大戟原主身份、完整来历与力量原理
+    - 卫宫白与自己相似的原因
+    - Alterego与阿尔托莉雅后续
+    - 未归同伴坐标
+    mistaken_beliefs: []
+    suspicions: []
+    secrets_held: []
+  goals:
+    immediate:
+    - 接受双臂与投影回路治疗
+    - 保护藤丸立香
+    short_term:
+    - 追查未归同伴
+    long_term:
+    - 继续修复人理
+    priorities:
+    - 同伴生存
+    - 恢复行动能力
+    obstacles:
+    - 右肩与右臂完全失去知觉
+    - 左腕折断
+    - 耳后深切伤
+  relationships:
+  - target_character: fujimaru-ritsuka
+    relationship_type: 伴侣与从者
+    trust: 高
+    dependence: 相互支持
+    hostility: 无
+    current_attitude: 按立香指挥承担最危险的钉住任务
+    unresolved_issues:
+    - 两人均处于严重消耗状态
+    recent_change: 在终战中以身体与无名大戟投影为她争取三秒窗口
+  abilities:
+    available:
+    - 拟造躯壳
+    unavailable:
+    - 双臂重伤时的正常投影战斗
+    newly_acquired: []
+    consumed_resources: []
+    active_costs:
+    - 右侧回路爆裂
+    - 左腕折断
+  inventory:
+    carried:
+    - 纸星星复制品
+    lost: []
+    damaged:
+    - 无名大戟投影已崩散
+  narrative:
+    current_arc: 日本篇结束：返回迦勒底
+    completed_changes:
+    - 与Alterego言峰士郎短暂交战
+    - 进入圣杯回收阵
+    unresolved_flags:
+    - 双臂恢复
+    - 卫宫白身份
+    - 祁荒与村正未归
+    active_promises: []
+    future_pressure:
+    - 与另一把刀和卫宫白的关联仍未解明

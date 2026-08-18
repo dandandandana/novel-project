@@ -1,0 +1,95 @@
+metadata:
+  document_id: state-current-kotomine-shirou-ae-v1.2
+  story_id: overturned-world-fujimaru
+  timeline_id: main
+  document_type: character_state
+  title: 当前状态-言峰士郎（AE）
+  character_id: kotomine-shirou-ae
+  variant_id: kotomine-shirou-ae-main
+  snapshot_type: current
+  effective_at: volume-04-chapter-020
+  last_updated: '2026-08-08'
+  version: '1.2'
+  status: active
+  supersedes: state-current-kotomine-shirou-ae-v1.1
+  source_file: D:\Novel 1\Novel\outputs\第四卷_第18章_续写.txt; D:\Novel 1\Novel\outputs\第四卷_第19章_续写.txt; D:\Novel 1\Novel\outputs\第四卷_第20章_续写.txt
+character_state:
+  current_position:
+    location: 神琦灰所在裂隙一侧；未随迦勒底返回
+    companions:
+    - 阿尔托莉雅·潘德拉贡 Alter
+    - 神琦灰
+    faction: 迦勒底阶段性协同行动方
+  physical:
+    health: 被神琦灰恢复后保持行动能力
+    injuries:
+    - 曾被伊耶那美截断后由神琦灰复原
+    fatigue: 状态受神琦灰力量影响
+    temporary_conditions: []
+    permanent_changes: []
+  mental:
+    dominant_emotions:
+    - 复杂
+    - 警惕
+    - 克制
+    current_pressure:
+    - 神琦灰与卫宫白对峙
+    desires:
+    - 与阿尔托莉雅留在裂隙一侧
+    fears: []
+    unresolved_conflicts: []
+    behavior_effects: []
+  knowledge:
+    known:
+    - 神琦灰能恢复自己的致命伤
+    - 迦勒底完成圣杯回收
+    - 言峰士郎有返回捡回自己的意图
+    unknown:
+    - 神琦灰与卫宫白对峙结果
+    - 自身后续选择
+    mistaken_beliefs: []
+    suspicions: []
+    secrets_held: []
+  goals:
+    immediate:
+    - 保护阿尔托莉雅并观察神琦灰
+    short_term: []
+    long_term: []
+    priorities:
+    - 阿尔托莉雅安全
+    obstacles:
+    - 曾被伊耶那美截断后由神琦灰复原
+  relationships:
+  - target_character: artoria-pendragon-alter
+    relationship_type: 父女式协同行动者
+    trust: 高于口头表现
+    dependence: 战斗协作
+    hostility: 口头刻薄，无实质敌意
+    current_attitude: 以互相挖苦确认对方仍然存活
+    unresolved_issues: []
+    recent_change: 共同完成主炮疏散、近战压制与最终宝具对轰
+  abilities:
+    available:
+    - 无限剑制
+    - 黑弓
+    unavailable: []
+    newly_acquired: []
+    consumed_resources: []
+    active_costs:
+    - 受神琦灰指令限制
+  inventory:
+    carried: []
+    lost: []
+    damaged:
+    - 投影黑刃与伪天丛云均已崩散
+  narrative:
+    current_arc: 日本篇结束：留在裂隙另一侧
+    completed_changes:
+    - 被神琦灰恢复并与言峰士郎交战
+    - 目送迦勒底转移
+    unresolved_flags:
+    - 自身与神琦灰关系
+    - 卫宫白对峙结果
+    active_promises: []
+    future_pressure:
+    - 没有进入迦勒底回收序列

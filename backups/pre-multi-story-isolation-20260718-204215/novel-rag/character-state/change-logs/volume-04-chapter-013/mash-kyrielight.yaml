@@ -1,0 +1,33 @@
+metadata:
+  document_id: state-change-mash-kyrielight-v04-c013-v1.0
+  story_id: overturned-world-fujimaru
+  timeline_id: main
+  document_type: character_state
+  title: 第4卷第11至13章状态变化-玛修·基列莱特
+  character_id: mash-kyrielight
+  variant_id: mash-kyrielight-main
+  snapshot_type: change_log
+  effective_at: volume-04-chapter-013
+  last_updated: '2026-07-14'
+  version: '1.0'
+  status: canon
+  supersedes: null
+  source_file: D:\Novel\outputs\第四卷_第11至13章_续写.txt
+changes:
+- category: current_position_and_goal
+  before:
+    location: 伊耶那岐金地地下的未来文明舰桥
+    companions:
+    - 藤丸立香
+    - 言峰士郎
+    - 玛修·基列莱特
+    - 杨浞
+    faction: 迦勒底
+  after:
+    location: 伊耶那岐金地北侧旧祭道
+    companions:
+    - 藤丸立香
+    - 言峰士郎
+    faction: 迦勒底协同行动方
+  cause: 第四卷第11至13章三线作战部署与决战开场
+  evidence: history-v04-c013

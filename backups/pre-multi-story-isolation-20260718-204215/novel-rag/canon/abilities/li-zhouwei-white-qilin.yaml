@@ -1,0 +1,53 @@
+{
+  "metadata": {
+    "document_id": "canon-ability-li-zhouwei-white-qilin-v1.0",
+    "story_id": "overturned-world-fujimaru",
+    "timeline_id": "main",
+    "document_type": "canon",
+    "title": "能力设定-李周巍-白麒麟",
+    "entity": "ability",
+    "character_ids": [
+      "li-zhouwei"
+    ],
+    "event_tags": [
+      "白麒麟",
+      "—",
+      "inherent_trait"
+    ],
+    "version": "1.0",
+    "status": "canon",
+    "canon_scope": "timeline",
+    "created_at": "2026-07-17",
+    "updated_at": "2026-07-17",
+    "supersedes": null,
+    "source_file": "user-message:2026-07-17/li-zhouwei-servant-profile"
+  },
+  "ability": {
+    "retrieval_key": "li_zhouwei_white_qilin",
+    "name": "白麒麟",
+    "owner": "李周巍",
+    "owner_id": "li-zhouwei",
+    "rank": "—",
+    "category": "inherent_trait",
+    "type": "固有体质与对王特防",
+    "effect": "天下第二显、帝王之昭；一切拥有【王】属性的存在对李周巍发动攻击时，威力降低到正常情况的三成。",
+    "activation": "拥有【王】属性的存在攻击李周巍时被动适用。",
+    "range": "针对命中或作用于李周巍的攻击。",
+    "cost": "无已说明消耗。",
+    "limitations": [
+      "【王】属性的完整判定规则未说明；吉尔伽美什、亚瑟王、伊斯坎达尔是已给出的适用例。",
+      "只确认攻击威力降低，不代表王属性敌人的非攻击能力也被削弱。"
+    ],
+    "failure_conditions": [
+      "攻击者不具备【王】属性时不触发已确认的三成减伤。"
+    ],
+    "known_by": [
+      "李周巍"
+    ],
+    "visual_expression": "未说明。",
+    "narrative_function": [
+      "显著压制王者英灵对李周巍的直接攻击。"
+    ],
+    "canon_notes": []
+  }
+}

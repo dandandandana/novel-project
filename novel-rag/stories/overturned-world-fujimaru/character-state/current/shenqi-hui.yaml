@@ -1,0 +1,92 @@
+metadata:
+  document_id: state-current-shenqi-hui-v1.0
+  story_id: overturned-world-fujimaru
+  timeline_id: main
+  document_type: character_state
+  title: 当前状态-神琦灰
+  character_id: shenqi-hui
+  variant_id: shenqi-hui-main
+  snapshot_type: current
+  effective_at: volume-04-chapter-020
+  last_updated: '2026-08-08'
+  version: '1.0'
+  status: active
+  supersedes: null
+  source_file: D:\Novel 1\Novel\outputs\第四卷_第18章_续写.txt; D:\Novel 1\Novel\outputs\第四卷_第19章_续写.txt; D:\Novel 1\Novel\outputs\第四卷_第20章_续写.txt
+character_state:
+  current_position:
+    location: 跨界裂隙另一侧
+    companions:
+    - 言峰士郎（AE）
+    - 阿尔托莉雅·潘德拉贡 Alter
+    faction: 自身阵营
+  physical:
+    health: 未见实质伤势，但被卫宫白逼退一步
+    injuries:
+    - 白裙、发梢与右侧袖口被斩断
+    - 白桦木法杖被压弯
+    fatigue: 首次双手持杖并全力维持炮击
+    temporary_conditions: []
+    permanent_changes: []
+  mental:
+    dominant_emotions:
+    - 自信
+    - 恼怒
+    - 专注
+    current_pressure:
+    - 卫宫白一剑压回最强炮击
+    desires:
+    - 突破斩线并继续追击
+    fears: []
+    unresolved_conflicts: []
+    behavior_effects:
+    - 停止关注迦勒底，转而全力应对卫宫白
+  knowledge:
+    known:
+    - 迦勒底完成圣杯回收
+    - 卫宫白能够跨界并正面压制自身炮击
+    unknown:
+    - 卫宫白斩线极限
+    - 迦勒底后续去向
+    mistaken_beliefs: []
+    suspicions: []
+    secrets_held: []
+  goals:
+    immediate:
+    - 突破卫宫白斩线
+    short_term:
+    - 重新取得跨界主动权
+    long_term:
+    - 彻底成为根源并超越愿主神琦灰
+    priorities:
+    - 自身目标
+    obstacles:
+    - 卫宫白
+  relationships: []
+  abilities:
+    available:
+    - 万能魔术
+    - 根源魔术
+    - 白桦木法杖
+    unavailable: []
+    newly_acquired: []
+    consumed_resources: []
+    active_costs:
+    - 最强炮击被一剑压回
+  inventory:
+    carried:
+    - 白桦木法杖
+    lost: []
+    damaged:
+    - 法杖被压弯
+  narrative:
+    current_arc: 日本篇终局后的跨界对峙
+    completed_changes:
+    - 袭击伊耶那岐金地
+    - 阻击圣杯回收
+    - 被卫宫白逼退一步
+    unresolved_flags:
+    - 与卫宫白对峙结果
+    active_promises: []
+    future_pressure:
+    - 已成为迦勒底后续道路上的明确敌人

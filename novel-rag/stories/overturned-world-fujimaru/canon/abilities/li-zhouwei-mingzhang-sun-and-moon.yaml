@@ -1,0 +1,51 @@
+{
+  "metadata": {
+    "document_id": "canon-ability-li-zhouwei-mingzhang-sun-and-moon-v1.0",
+    "story_id": "overturned-world-fujimaru",
+    "timeline_id": "main",
+    "document_type": "canon",
+    "title": "能力设定-李周巍-明彰日月",
+    "entity": "ability",
+    "character_ids": [
+      "li-zhouwei"
+    ],
+    "event_tags": [
+      "明彰日月",
+      "A",
+      "personal_skill"
+    ],
+    "version": "1.0",
+    "status": "canon",
+    "canon_scope": "timeline",
+    "created_at": "2026-07-17",
+    "updated_at": "2026-07-17",
+    "supersedes": null,
+    "source_file": "user-message:2026-07-17/li-zhouwei-servant-profile"
+  },
+  "ability": {
+    "retrieval_key": "li_zhouwei_mingzhang_sun_and_moon",
+    "name": "明彰日月",
+    "owner": "李周巍",
+    "owner_id": "li-zhouwei",
+    "rank": "A",
+    "category": "personal_skill",
+    "type": "战斗积累型道行与能力适应",
+    "effect": "每次战斗积累道行，在从者框架下转化为数值强化与机制免疫叠加；与同一对手交战一次后，对手的能力与权能在下一次交锋中被削弱，多次交战后可完全无效化特定能力。",
+    "activation": "经历战斗并再次与相同对手交锋时被动积累、结算。",
+    "range": "李周巍自身及其曾交战的特定对手。",
+    "cost": "未说明。",
+    "limitations": [
+      "每次削弱幅度、完全无效所需交战次数、可适应能力数量与持续期限未说明。",
+      "首次交锋不享有针对该对手的既往削弱。"
+    ],
+    "failure_conditions": [],
+    "known_by": [
+      "李周巍"
+    ],
+    "visual_expression": "未说明。",
+    "narrative_function": [
+      "让重复交战逐步转化为对敌方权能的压制与免疫。"
+    ],
+    "canon_notes": []
+  }
+}

@@ -1,0 +1,120 @@
+metadata:
+  document_id: state-current-yang-zhuo-v1.2
+  story_id: overturned-world-fujimaru
+  timeline_id: main
+  document_type: character_state
+  title: 第四卷第14章末状态快照-杨浞
+  character_id: yang-zhuo
+  variant_id: yang-zhuo-main
+  snapshot_type: snapshot
+  effective_at: volume-04-chapter-014
+  last_updated: '2026-07-17'
+  version: '1.2'
+  status: archived
+  supersedes: state-current-yang-zhuo-v1.1
+  source_file: D:\Novel\outputs\第四卷_第14章_续写.txt
+character_state:
+  current_position:
+    location: 伊耶那岐金地东门盆地，正向外围移动
+    companions:
+    - 吉尔伽美什
+    - 藤丸立香
+    - 言峰士郎
+    - 玛修·基列莱特
+    faction: 迦勒底协同行动方
+  physical:
+    health: 重伤但存活，仍能勉强移动
+    injuries:
+    - 左臂缺失，章末尚未恢复
+    - 右肩开放性断裂，锁骨外露
+    - 腹部贯穿且多次裂开，暂由真炁封住
+    - 左腿受至命除影响，行动迟缓
+    - 灵基持续受至命除余火干扰
+    fatigue: 重度战斗消耗
+    temporary_conditions: []
+    permanent_changes: []
+  mental:
+    dominant_emotions:
+    - 倔强
+    - 专注
+    current_pressure:
+    - 重伤且弥勒仍未解决
+    desires:
+    - 接受治疗并继续履行从者契约
+    fears: []
+    unresolved_conflicts: []
+    behavior_effects:
+    - 即使重伤仍试图自行行走并与吉尔伽美什较劲
+  knowledge:
+    known:
+    - 天照命由无名孔雀、天照御名、弥勒佛果与母子线等结构叠加
+    - 乌从欲会沿目标所求之事侵蚀
+    - 至命除曾以法相和失败未来支付代价
+    - 天照命已停止燃烧众生命并败北
+    unknown:
+    - 英杰之帜强化在章末是否继续维持
+    - 能否在弥勒终战前恢复
+    mistaken_beliefs: []
+    suspicions: []
+    secrets_held: []
+  goals:
+    immediate:
+    - 接受治疗
+    - 维持继续作战的可能
+    short_term:
+    - 完成对弥勒的降格、主炮与创造之禊祓衔接
+    long_term:
+    - 修复特异点
+    priorities:
+    - 完成任务
+    - 同伴生存
+    obstacles:
+    - 严重伤势
+    - 问武平清觯与奉真策玄鞭受损
+    - 弥勒
+  relationships:
+  - target_character: fujimaru-ritsuka
+    relationship_type: 从者与御主
+    trust: 已完成关键战斗协同
+    dependence: 契约与支援
+    hostility: 无
+    current_attitude: 认可御主判断并继续履约
+    unresolved_issues: []
+    recent_change: 接受英杰之帜并完成天照命决战
+  abilities:
+    available:
+    - 真炁六水火
+    - 修武星
+    - 霞羽客
+    - 檀真
+    - 天武真炁神煞真君
+    - 问武平清觯
+    - 奉真策玄鞭
+    unavailable: []
+    newly_acquired: []
+    consumed_resources: []
+    active_costs:
+    - 英杰之帜强化是否仍维持未明确
+    - 问武平清觯恢复速度受裂纹与至命除余火影响
+  inventory:
+    carried:
+    - 真武正性剑
+    - 问武平清觯
+    - 奉真策玄鞭
+    lost: []
+    damaged:
+    - 问武平清觯杯壁出现裂纹
+    - 奉真策玄鞭出现接近贯穿的裂口
+    - 檀真左翼重创后化回水火
+  narrative:
+    current_arc: 日本下篇：伊耶那岐金地决战
+    completed_changes:
+    - 与吉尔伽美什共同击败天照命
+    - 救出六十六个法相光影
+    unresolved_flags:
+    - 重伤治疗
+    - 弥勒终战
+    - 英杰之帜是否继续维持
+    active_promises: []
+    future_pressure:
+    - 当前战力与宝具状态不足以无代价继续高强度作战

@@ -1,0 +1,113 @@
+metadata:
+  document_id: state-current-mash-kyrielight-v1.3
+  story_id: overturned-world-fujimaru
+  timeline_id: main
+  document_type: character_state
+  title: 当前状态-玛修·基列莱特
+  character_id: mash-kyrielight
+  variant_id: mash-kyrielight-main
+  snapshot_type: current
+  effective_at: volume-04-chapter-017
+  last_updated: '2026-07-18'
+  version: '1.3'
+  status: active
+  supersedes: state-current-mash-kyrielight-v1.2
+  source_file: D:\Novel\outputs\第四卷_第15章_重写.txt; D:\Novel\outputs\第四卷_第16章_重写.txt; D:\Novel\outputs\第四卷_第17章_重写.txt
+character_state:
+  current_position:
+    location: 伊耶那岐宫废墟
+    companions:
+    - 藤丸立香
+    - 言峰士郎
+    faction: 迦勒底协同行动方
+  physical:
+    health: 重伤但清醒
+    injuries:
+    - 左肩多次脱臼并出现肌肉崩裂
+    - 左臂在最终对轰后完全垂下
+    - 炮击后坐力对脊柱与双腿造成严重负担
+    fatigue: 英杰之帜强化与宝具解放后的重度消耗
+    temporary_conditions:
+    - 左臂暂时无法使用
+    permanent_changes: []
+  mental:
+    dominant_emotions:
+    - 坚定
+    - 担忧
+    - 战后警惕
+    current_pressure:
+    - 自身与士郎的重伤
+    - 特异点坐标偏移
+    desires:
+    - 保护前辈并协助伤员救治
+    fears: []
+    unresolved_conflicts: []
+    behavior_effects:
+    - 即使盾与身体都会裂，仍保持防线不退
+  knowledge:
+    known:
+    - 英杰之帜不会消除伤势，只把自身与伤势一起推至灵基顶峰
+    - 弥勒已经死亡，金地封锁解除
+    - 特异点坐标正在偏移
+    unknown:
+    - 英杰之帜强化还会维持多久
+    - 来者身份
+    - 多功能武装的完整受损程度
+    mistaken_beliefs: []
+    suspicions: []
+    secrets_held: []
+  goals:
+    immediate:
+    - 稳定左肩和左臂伤势
+    - 协助保护前辈与其他伤员
+    short_term:
+    - 确认特异点异常并准备撤离或再战
+    long_term:
+    - 修复特异点并返回正常人理
+    priorities:
+    - 同伴生存
+    - 确认特异点异常
+    obstacles:
+    - 左臂失去功能
+    - 武装受损
+    - 跨界异常
+  relationships:
+  - target_character: fujimaru-ritsuka
+    relationship_type: 后辈与前辈
+    trust: 高
+    dependence: 战斗协作
+    hostility: 无
+    current_attitude: 承接前辈交出的英杰之帜并完成使命
+    unresolved_issues: []
+    recent_change: 接受一道令咒所化的英杰之帜强化
+  abilities:
+    available:
+    - 圆桌之盾
+    - 多功能武装
+    - 追回明日的迦勒底利刃
+    unavailable: []
+    newly_acquired:
+    - 英杰之帜强化（持续时间未明确）
+    consumed_resources: []
+    active_costs:
+    - 左肩与左臂重创
+    - 多功能武装炮形态在对轰后炸开
+  inventory:
+    carried:
+    - 圆桌之盾／多功能武装
+    lost: []
+    damaged:
+    - 炮形态装甲与外骨骼受损
+  narrative:
+    current_arc: 日本下篇：伊耶那岐金地终战后
+    completed_changes:
+    - 接受英杰之帜
+    - 参与四人近战与最终三宝具对轰
+    - 在士郎坠落时接住其衣领
+    unresolved_flags:
+    - 英杰之帜持续时间
+    - 左臂与武装修复
+    - 坐标异常
+    active_promises: []
+    future_pressure:
+    - 胜利后仍需在左臂无法使用的情况下承担保护职责

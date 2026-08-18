@@ -1,0 +1,37 @@
+metadata:
+  document_id: canon-ability-qihuang-hear-cries-and-relieve-suffering-v1.0
+  story_id: overturned-world-fujimaru
+  timeline_id: main
+  document_type: canon
+  title: 能力设定-祁荒-寻声救苦
+  entity: ability
+  character_ids: [qihuang]
+  event_tags: [寻声救苦, A, personal_skill]
+  version: '1.0'
+  status: canon
+  canon_scope: timeline
+  created_at: '2026-07-17'
+  updated_at: '2026-07-17'
+  supersedes: null
+  source_file: user-message:2026-07-17/qihuang-character-card
+ability:
+  retrieval_key: qihuang_hear_cries_and_relieve_suffering
+  name: 寻声救苦
+  owner: 观世音·祁荒
+  owner_id: qihuang
+  rank: A
+  type: 欲望读心与现在限定千里眼
+  effect: 看破一切智慧生物内心的欲望与想法，并附带A++级千里眼，可观测极远距离的现在事象。
+  activation: 感知智慧生物欲望、想法或远距离现在事象时使用。
+  range: 智慧生物内心与极远距离的现在事象；精确距离未说明。
+  cost: 未说明。
+  limitations:
+  - 千里眼只能看到现在，不能据此观看过去或未来。
+  - 保留观世音权能不代表祁荒具有拯救意愿。
+  failure_conditions:
+  - 非智慧目标不属于已确认的欲望与想法读取范围。
+  known_by: [祁荒]
+  visual_expression: 未说明。
+  narrative_function:
+  - 识破智慧目标的欲望、想法并进行超远距离的现在观测。
+  canon_notes: []

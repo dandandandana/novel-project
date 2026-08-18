@@ -1,0 +1,21 @@
+character_variants:
+- story_id: shirouxcile
+  timeline_id: main
+  character_name: 希耶尔
+  character_id: ciel
+  variant_id: ciel-main
+- story_id: shirouxcile
+  timeline_id: main
+  character_name: 卫宫士郎
+  character_id: emiya-shirou
+  variant_id: emiya-shirou-main
+- story_id: shirouxcile
+  timeline_id: main
+  character_name: 安翰斯
+  character_id: enhance
+  variant_id: enhance-main
+- story_id: shirouxcile
+  timeline_id: main
+  character_name: 奥尔菲斯·莫伊拉
+  character_id: orpheus-moira
+  variant_id: orpheus-moira-main

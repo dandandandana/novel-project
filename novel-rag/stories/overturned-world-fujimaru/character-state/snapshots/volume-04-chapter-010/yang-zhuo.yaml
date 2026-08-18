@@ -1,0 +1,91 @@
+metadata:
+  document_id: state-snapshot-yang-zhuo-v1.0
+  story_id: overturned-world-fujimaru
+  timeline_id: main
+  document_type: character_state
+  title: 第4卷第10章后状态快照-杨浞
+  character_id: yang-zhuo
+  variant_id: yang-zhuo-main
+  snapshot_type: snapshot
+  effective_at: volume-04-chapter-010
+  last_updated: '2026-07-12'
+  version: '1.0'
+  status: canon
+  supersedes: null
+  source_file: D:\word2\五脏六腑彻底颠覆的世界由藤丸立香拯救-20260712.txt
+character_state:
+  current_position:
+    location: 伊耶那岐金地地下的未来文明舰桥
+    companions:
+    - 藤丸立香
+    - 言峰士郎
+    - 玛修·基列莱特
+    - 杨浞
+    faction: 迦勒底
+  physical:
+    health: 正文未明确
+    injuries: []
+    fatigue: 正文未明确
+    temporary_conditions: []
+    permanent_changes: []
+  mental:
+    dominant_emotions:
+    - 从容
+    - 好奇
+    current_pressure: []
+    desires:
+    - 作为武器参与当前行动
+    fears: []
+    unresolved_conflicts:
+    - 自称此时并非完全状态
+    behavior_effects:
+    - 主动要求了解战斗计划
+  knowledge:
+    known:
+    - 藤丸立香是自己的御主
+    - 当前自身并非完全状态
+    unknown:
+    - 完整战场计划
+    mistaken_beliefs: []
+    suspicions: []
+    secrets_held: []
+  goals:
+    immediate:
+    - 认识战场并了解作战计划
+    short_term:
+    - 作为藤丸立香的从者参与战斗
+    long_term: []
+    priorities:
+    - 履行契约
+    obstacles:
+    - 当前并非完全状态
+  relationships:
+  - target_character: fujimaru-ritsuka
+    relationship_type: 从者与御主
+    trust: 契约初建
+    dependence: 战斗合作
+    hostility: 无
+    current_attitude: 认可并愿意合作
+    unresolved_issues: []
+    recent_change: 刚被召唤并缔结契约
+  abilities:
+    available: []
+    unavailable: []
+    newly_acquired: []
+    consumed_resources: []
+    active_costs: []
+  inventory:
+    carried: []
+    lost: []
+    damaged: []
+  narrative:
+    current_arc: 日本下篇：讨伐弥勒前的战力部署
+    completed_changes:
+    - 与终末人理圆满装置达成阶段性合作
+    unresolved_flags:
+    - 弥勒尚未被讨伐
+    - 圣杯尚未回收
+    active_promises:
+    - 解决弥勒后由终末人理圆满装置归还圣杯
+    future_pressure:
+    - 即将展开讨伐弥勒的作战

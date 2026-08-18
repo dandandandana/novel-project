@@ -1,0 +1,164 @@
+metadata:
+  document_id: canon-character-qihuang-v1.0
+  story_id: overturned-world-fujimaru
+  timeline_id: main
+  document_type: canon
+  title: 角色设定-观世音·祁荒
+  entity: servant
+  character_ids:
+  - qihuang
+  event_tags:
+  - Pretender
+  - SAVER
+  - Lancer伪装
+  - 魔性菩萨
+  - 观世音
+  version: '1.0'
+  status: canon
+  canon_scope: timeline
+  created_at: '2026-07-17'
+  updated_at: '2026-07-17'
+  supersedes: null
+  source_file: user-message:2026-07-17/qihuang-character-card
+character:
+  retrieval_key: qihuang_profile
+  name: 观世音·祁荒
+  aliases:
+  - 祁荒
+  - 观世音·祁荒
+  - 魔性菩萨
+  - Pretender祁荒
+  - Saver祁荒
+  - Lancer祁荒
+  identity:
+    true_name: 观世音·祁荒
+    classes:
+    - Pretender
+    - SAVER
+    external_class_disguise: Lancer
+    master: null
+    gender: 女
+    attribute: 混沌·中庸
+    height_cm: 166
+    weight_kg: 53
+    recognition: 曾被圣堂教会枢机卿承认为现代的圣人
+  appearance:
+  - 黑发黑眸，面容精美而真实，是典型的东方美人
+  - 即使身穿尼姑服也能显出身体曲线，属于绝世美女级别
+  personality_core:
+  - 博爱表象之下，对爱与恶都没有实感
+  - 不憎恨任何人，也不真正爱任何人
+  - 只有他人的渴求、执念、绝望与希望涌向她时，才能体验到精神饱腹般的愉悦
+  - 微笑因众生带来的满足而真诚，慈悲因不理解苦而虚假
+  - 不受善恶约束，以自身享乐为行动准则；享乐并不必然指向破坏
+  surface_behavior:
+  - 持续微笑，以救苦、普渡和被需要的形象面对众生
+  - 本世界线更倾向保护人类
+  - 在本世界线具有谐星和吐槽役倾向
+  values:
+  - 享受被众生需要以及众生欲望涌向自身
+  - 本世界线倾向保护人类
+  goals:
+  - 以自身享乐为行动基准，并在本世界线保护人类
+  fears: []
+  boundaries: []
+  speech_patterns:
+  - 可以承担吐槽和谐星功能，但不能因此抹去其空洞、危险与享乐本质
+  origin_and_legend:
+  - 生前事迹被编织进观世音信仰，真假难分，并确实拥有与菩萨同等的权能
+  - 救苦救难、普渡众生的底层动机不是慈悲，而是贪婪地追求被需要的快感
+  - 平等博爱使任何人都无法独占她；信徒满足欲望后失去她的关注，最终有人因绝望自杀
+  - 她对此不悲不喜，继续承受下一轮信徒的渴望，最终形成吞噬人心的循环
+  - 最终以魔性菩萨之身成魔，灵基强度彻底覆盖英灵座上真正的观音菩萨
+  parameters:
+    strength: B
+    endurance: EX
+    agility: D
+    mana: EX
+    luck: A
+    noble_phantasm: A++
+  weapons:
+  - name: 金刚杵
+    reference: canon-ability-qihuang-vajra-v1.0
+  abilities:
+  - name: 文明侵蚀
+    rank: EX
+    reference: canon-ability-qihuang-civilization-erosion-v1.0
+  - name: 收藏家
+    rank: EX
+    reference: canon-ability-qihuang-collector-v1.0
+  - name: 伪装从者
+    rank: EX
+    reference: canon-ability-qihuang-servant-disguise-v1.0
+  - name: 阵地建造
+    rank: EX
+    reference: canon-ability-qihuang-territory-creation-v1.0
+  - name: 寻声救苦
+    rank: A
+    reference: canon-ability-qihuang-hear-cries-and-relieve-suffering-v1.0
+  - name: 大慈大悲法门
+    rank: B
+    reference: canon-ability-qihuang-great-compassion-dharma-v1.0
+  - name: 此世全部之欲
+    rank: EX
+    reference: canon-ability-qihuang-all-desires-of-this-world-v1.0
+  - name: 变化自在
+    rank: B
+    reference: canon-ability-qihuang-transformation-at-will-v1.0
+  - name: 金刚杵
+    rank: EX
+    reference: canon-ability-qihuang-vajra-v1.0
+  - name: 杨枝净瓶
+    rank: A++
+    reference: canon-ability-qihuang-willow-branch-purification-vase-v1.0
+  limitations:
+  - 御主未说明，必须保持未知，不能自行指定
+  - 多数能力和宝具的消耗、持续时间、冷却、精确范围与抵抗条件未说明
+  - 对外的Lancer职阶与参数是伪装，真实职阶为Pretender/SAVER
+  relationships: []
+  prohibited_interpretations:
+  - 不得把祁荒的慈悲写成对苦难的真实共情
+  - 不得把她在本世界线保护人类直接解释为善良或无私
+  - 不得因其魔性菩萨本质就写成只追求毁灭的纯反派；本世界线明确倾向保护人类
+  - 不得因吐槽役和谐星倾向抹去其空洞本质、危险权能与享乐动机
+  - 不得把外显Lancer当作真实职阶
+  - 不得为未说明的能力消耗、持续时间、抵抗方式或宝库藏品擅自补设定
+  source_profile: |-
+    职阶: Pretender/SAVER
+    御主:
+    真名: 观世音·祁荒
+    性别: 女
+    身高/体重: 166cm/53kg
+    属性: 混沌·中庸
+    样貌: 黑发黑眸，精美且真实的典型的东方美人的面庞。即使身穿尼姑服，也能展现出身体的曲线，本身是绝世美女级别的
+    性格: 博爱主义的表象下，是一个对“爱”与“恶”均无实感的空洞存在。祁荒不憎恨任何人，也不真正爱任何人。她唯一能够体验到的“情感”，是当他人的欲望——渴求、执念、绝望、希望——涌向她时所产生的愉悦。这种愉悦类似于一种精神层面的饱腹感。她的微笑永远是真诚的，因为她确实因众生的存在而感到满足；她的慈悲永远是虚假的，因为她从未真正理解过“苦”的含义。混沌·中庸的阵营完美诠释了她的本质：不受善恶之分的约束，仅以自身的享乐为行动准则，但这种享乐本身并不指向破坏——除非破坏能带来更高的愉悦。
+    这条世界线里祁荒更倾向于保护人类，某种意义上已经变成谐星吐槽役了。
+    武器: 金刚杵
+
+    【出身/传说】
+    祁荒的生前事迹被完美地编织进了观世音菩萨的信仰之中，真假难分。她确实拥有着与菩萨同等的权能，确实曾救苦救难、普渡众生，确实被圣堂教会的枢机卿承认为“现代的圣人”。但这一切善行的底层驱动力并非慈悲，而是一种纯粹的、对“被需要”之快感的贪婪。她的博爱是真实的——她平等地爱着世人，正因为这份平等，没有任何人能够独占她的爱。那些为她倾倒、为她癫狂的信徒们，在逐渐满足欲望后失去了她的关注，最终因绝望而自杀。祁荒对此不悲不喜。她继续微笑，继续救苦，继续承受下一波信徒的渴望。循环往复，直至她的传说本身成为了一个完美的、吞噬人心的漩涡。最终，祁荒以“魔性菩萨”之身成魔，其灵基强度彻底覆盖了英灵座上真正的观音菩萨。
+    但是在这条世界线祁荒虽然以享乐为主，她倾向于保护人类。
+
+    【能力值】
+    筋力: B | 耐久: EX | 敏捷: D | 魔力: EX | 幸运: A | 宝具: A++
+
+    【职阶/保有技能】
+    - 文明侵蚀 (EX)：对人造物的绝对改造权能。被她握在手中的人造物会被改写为她认知中的理想形态；上限取决于原物品的神秘等级。
+    - 收藏家 (EX)：从跨越时代与文化的无尽供奉宝库中取出品质最高的道具，财宝总量甚至超过吉尔伽美什。
+    - 伪装从者 (EX)：彻底替代观世音，外部观测中的灵基、气息、权能与真正观音菩萨一致；对外以Lancer形式现界。
+    - 阵地建造 (EX)：瞬间构筑庙宇道场，在范围内强化自身并无限放大进入者的欲望。
+    - 寻声救苦 A：看破智慧生物内心欲望与想法，附带只能看到现在、可观测极远事象的A++级千里眼。
+    - 大慈大悲法门 B：当行动服务于自身欲望、处于享受状态时，全属性获得两个“+”的增幅。
+    - 此世全部之欲 EX：使一切智慧存在的人生被极致快乐淹没而精神毁灭；也可局限化为光炮或火焰。成为魔性菩萨后，破坏上限约与Ars Almadel Salomonis相当甚至超越。
+    - 变化自在 B：观音三十三化身权能，可变幻为任何形态，附带A++气息遮蔽；主动隐蔽时没有任何存在能够发现她。
+
+    【宝具】
+    ◆ 金刚杵
+    等级: EX
+    种类: 对人宝具
+    无视物理防御，以概念破坏粉碎“执着”与“障碍”，并通过直接作用于灵魂的梵音施加精神污染与强制升华。拥有类似精神干涉免疫能力的存在对此无效。非解放状态下可作坚不可摧的高等级近战武器。
+
+    ◆ 杨枝净瓶
+    等级: A++
+    种类: 对人宝具
+    玉质双口瓶中的液体是祁荒权能的具象化，可依她意志执行净化、洗脑、心灵控制或物理与概念双重腐蚀。净瓶只是容器，即使本体被毁也不会损失她的权能。

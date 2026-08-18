@@ -1,0 +1,287 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1800" height="1320" viewBox="0 0 1800 1320" role="img" aria-labelledby="title desc">
+  <title id="title">D:\Novel 小说 RAG 文件架构与工程流</title>
+  <desc id="desc">展示当前项目的目录结构、RAG 模块状态，以及大纲检索、裁决、生成、审计、回写和索引流程。</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#07121f"/>
+      <stop offset="1" stop-color="#111a2c"/>
+    </linearGradient>
+    <linearGradient id="titleGlow" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#5eead4"/>
+      <stop offset="1" stop-color="#60a5fa"/>
+    </linearGradient>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="8" stdDeviation="10" flood-color="#020617" flood-opacity="0.45"/>
+    </filter>
+    <marker id="arrow" markerWidth="9" markerHeight="9" refX="8" refY="4.5" orient="auto">
+      <path d="M0,0 L9,4.5 L0,9 Z" fill="#64748b"/>
+    </marker>
+    <marker id="arrowBlue" markerWidth="9" markerHeight="9" refX="8" refY="4.5" orient="auto">
+      <path d="M0,0 L9,4.5 L0,9 Z" fill="#60a5fa"/>
+    </marker>
+    <style>
+      text { font-family: "Microsoft YaHei", "Noto Sans CJK SC", "PingFang SC", sans-serif; }
+      .panel { fill:#0f1b2e; stroke:#26354b; stroke-width:1.5; }
+      .section { font-size:24px; font-weight:700; fill:#e2e8f0; }
+      .sub { font-size:15px; fill:#94a3b8; }
+      .nodeTitle { font-size:18px; font-weight:700; fill:#f8fafc; }
+      .nodeText { font-size:14px; fill:#cbd5e1; }
+      .tiny { font-size:12px; fill:#94a3b8; }
+      .active { fill:#102a29; stroke:#2dd4bf; stroke-width:1.4; }
+      .core { fill:#12233d; stroke:#60a5fa; stroke-width:1.4; }
+      .placeholder { fill:#302716; stroke:#fbbf24; stroke-width:1.4; stroke-dasharray:6 4; }
+      .neutral { fill:#172033; stroke:#475569; stroke-width:1.2; }
+      .flow { fill:none; stroke:#64748b; stroke-width:2; marker-end:url(#arrow); }
+      .flowBlue { fill:none; stroke:#60a5fa; stroke-width:2.5; marker-end:url(#arrowBlue); }
+      .feedback { fill:none; stroke:#a78bfa; stroke-width:2; stroke-dasharray:8 6; marker-end:url(#arrow); }
+    </style>
+  </defs>
+
+  <rect width="1800" height="1320" fill="url(#bg)"/>
+  <circle cx="1600" cy="40" r="330" fill="#1d4ed8" opacity="0.06"/>
+  <circle cx="110" cy="1250" r="250" fill="#0d9488" opacity="0.06"/>
+
+  <text x="70" y="72" font-size="36" font-weight="800" fill="url(#titleGlow)">小说 RAG 文件架构与工程流</text>
+  <text x="70" y="105" class="sub">工作区 D:\Novel · 当前基线：第四卷第十七章 · 2026-07-26</text>
+
+  <g transform="translate(70 140)" filter="url(#shadow)">
+    <rect class="panel" width="730" height="1090" rx="22"/>
+    <text x="34" y="48" class="section">A. 当前文件架构</text>
+    <text x="34" y="76" class="sub">绿色：已投入使用　黄色虚线：存在目录但主要为占位　蓝色：核心工程组件</text>
+
+    <g transform="translate(34 104)">
+      <rect class="core" width="662" height="62" rx="12"/>
+      <text x="20" y="27" class="nodeTitle">D:\Novel</text>
+      <text x="20" y="49" class="nodeText">小说工程根目录</text>
+    </g>
+    <path d="M365 166 V192" class="flow"/>
+
+    <g transform="translate(34 196)">
+      <rect class="active" width="205" height="118" rx="12"/>
+      <text x="18" y="29" class="nodeTitle">skills/</text>
+      <text x="18" y="54" class="nodeText">workflow.md</text>
+      <text x="18" y="76" class="nodeText">add_rag.md</text>
+      <text x="18" y="98" class="nodeText">update.md</text>
+    </g>
+    <g transform="translate(263 196)">
+      <rect class="core" width="205" height="118" rx="12"/>
+      <text x="18" y="29" class="nodeTitle">novel_rag/</text>
+      <text x="18" y="54" class="nodeText">校验 / 切块 / 索引</text>
+      <text x="18" y="76" class="nodeText">隔离检索 / CLI</text>
+      <text x="18" y="98" class="nodeText">工程运行核心</text>
+    </g>
+    <g transform="translate(492 196)">
+      <rect class="active" width="204" height="118" rx="12"/>
+      <text x="18" y="29" class="nodeTitle">scripts/ + tests/</text>
+      <text x="18" y="54" class="nodeText">导入与章节回写</text>
+      <text x="18" y="76" class="nodeText">召回回归测试</text>
+      <text x="18" y="98" class="nodeText">18 项工程测试</text>
+    </g>
+
+    <path d="M365 314 V344" class="flow"/>
+    <g transform="translate(34 348)">
+      <rect class="core" width="662" height="60" rx="12"/>
+      <text x="18" y="27" class="nodeTitle">novel-rag/</text>
+      <text x="18" y="49" class="nodeText">持久化知识库 · shared 全局模块 + stories 作品隔离分区</text>
+    </g>
+
+    <text x="34" y="448" class="section" font-size="20">shared/　全局公共模块</text>
+    <g transform="translate(34 468)">
+      <rect class="active" width="205" height="92" rx="11"/>
+      <text x="16" y="27" class="nodeTitle">rules/　2</text>
+      <text x="16" y="52" class="nodeText">事实与生成硬约束</text>
+      <text x="16" y="74" class="tiny">Ruler 的持久化依据</text>
+    </g>
+    <g transform="translate(263 468)">
+      <rect class="active" width="205" height="92" rx="11"/>
+      <text x="16" y="27" class="nodeTitle">judgment/　2</text>
+      <text x="16" y="52" class="nodeText">赛前判断与节点分级</text>
+      <text x="16" y="74" class="tiny">章节中心 / S-A-B-C</text>
+    </g>
+    <g transform="translate(492 468)">
+      <rect class="placeholder" width="204" height="92" rx="11"/>
+      <text x="16" y="27" class="nodeTitle">generator/　0</text>
+      <text x="16" y="52" class="nodeText">尚无正式生成 Spec</text>
+      <text x="16" y="74" class="tiny">当前主要由 workflow 描述</text>
+    </g>
+    <g transform="translate(34 578)">
+      <rect class="placeholder" width="205" height="92" rx="11"/>
+      <text x="16" y="27" class="nodeTitle">audit/　0</text>
+      <text x="16" y="52" class="nodeText">尚无正式审计 Spec</text>
+      <text x="16" y="74" class="tiny">缺统一严重级别与修订接口</text>
+    </g>
+    <g transform="translate(263 578)">
+      <rect class="active" width="205" height="92" rx="11"/>
+      <text x="16" y="27" class="nodeTitle">style-audit/　26</text>
+      <text x="16" y="52" class="nodeText">总文风与专项文风</text>
+      <text x="16" y="74" class="tiny">active 12 · scene-specific 4</text>
+    </g>
+    <g transform="translate(492 578)">
+      <rect class="active" width="204" height="92" rx="11"/>
+      <text x="16" y="27" class="nodeTitle">templates/　9</text>
+      <text x="16" y="52" class="nodeText">Canon / State / Rule</text>
+      <text x="16" y="74" class="tiny">含大纲、Judgment、文风模板</text>
+    </g>
+
+    <text x="34" y="716" class="section" font-size="20">stories/overturned-world-fujimaru/　作品分区</text>
+    <g transform="translate(34 736)">
+      <rect class="active" width="205" height="92" rx="11"/>
+      <text x="16" y="27" class="nodeTitle">canon/　62</text>
+      <text x="16" y="52" class="nodeText">人物、能力、地点、世界</text>
+      <text x="16" y="74" class="tiny">稳定事实与正式设定</text>
+    </g>
+    <g transform="translate(263 736)">
+      <rect class="active" width="205" height="92" rx="11"/>
+      <text x="16" y="27" class="nodeTitle">history/　489</text>
+      <text x="16" y="52" class="nodeText">卷 / 章 / 场景前文</text>
+      <text x="16" y="74" class="tiny">已发生事件的正式记录</text>
+    </g>
+    <g transform="translate(492 736)">
+      <rect class="placeholder" width="204" height="92" rx="11"/>
+      <text x="16" y="27" class="nodeTitle">outline/　占位</text>
+      <text x="16" y="52" class="nodeText">series / volumes</text>
+      <text x="16" y="74" class="tiny">chapters / scenes 尚未正式导入</text>
+    </g>
+    <g transform="translate(34 846)">
+      <rect class="active" width="205" height="92" rx="11"/>
+      <text x="16" y="27" class="nodeTitle">character-state/　49</text>
+      <text x="16" y="52" class="nodeText">身体 / 心理 / 知情 / 关系</text>
+      <text x="16" y="74" class="tiny">current + snapshots + logs</text>
+    </g>
+    <g transform="translate(263 846)">
+      <rect class="active" width="205" height="92" rx="11"/>
+      <text x="16" y="27" class="nodeTitle">world-state/　8</text>
+      <text x="16" y="52" class="nodeText">地点 / 阵营 / 事件 / 暗线</text>
+      <text x="16" y="74" class="tiny">当前有效点：第四卷第十七章</text>
+    </g>
+    <g transform="translate(492 846)">
+      <rect class="placeholder" width="204" height="92" rx="11"/>
+      <text x="16" y="27" class="nodeTitle">feedback/　占位</text>
+      <text x="16" y="52" class="nodeText">人物 / 剧情 / 文风反馈</text>
+      <text x="16" y="74" class="tiny">尚无正式经验回流记录</text>
+    </g>
+
+    <g transform="translate(34 970)">
+      <rect class="neutral" width="662" height="82" rx="12"/>
+      <text x="18" y="29" class="nodeTitle">当前索引基线</text>
+      <text x="18" y="54" class="nodeText">617 个有效文档 · 1120 个向量/文本分块 · shared / story 两个隔离分区</text>
+      <text x="18" y="73" class="tiny">44 项召回用例全部通过</text>
+    </g>
+  </g>
+
+  <g transform="translate(840 140)" filter="url(#shadow)">
+    <rect class="panel" width="890" height="1090" rx="22"/>
+    <text x="34" y="48" class="section">B. 从大纲到正文的工程流</text>
+    <text x="34" y="76" class="sub">实线：主执行链　紫色虚线：结果回流　黄色节点：当前工程缺口</text>
+
+    <g transform="translate(48 106)">
+      <rect class="core" width="300" height="72" rx="13"/>
+      <text x="18" y="29" class="nodeTitle">01　用户任务 / 大纲 / 补充要求</text>
+      <text x="18" y="54" class="nodeText">确定作品、时间线、章节范围与是否回写</text>
+    </g>
+    <path d="M348 142 H420" class="flowBlue"/>
+    <g transform="translate(424 106)">
+      <rect class="placeholder" width="408" height="72" rx="13"/>
+      <text x="18" y="29" class="nodeTitle">02　Outline 持久化（待补齐）</text>
+      <text x="18" y="54" class="nodeText">卷目标 → 章节变化 → 场景契约 → 信息显露计划</text>
+    </g>
+
+    <path d="M628 178 V218" class="flowBlue"/>
+    <g transform="translate(48 222)">
+      <rect class="active" width="784" height="94" rx="13"/>
+      <text x="18" y="29" class="nodeTitle">03　最小必要检索</text>
+      <text x="18" y="54" class="nodeText">Registry → Outline → Character/World State → 邻近 History → Canon → Rule → Judgment → Style</text>
+      <text x="18" y="76" class="tiny">只注入当前场景需要的事实；作品、世界线和角色变体必须匹配</text>
+    </g>
+
+    <path d="M440 316 V356" class="flowBlue"/>
+    <g transform="translate(48 360)">
+      <rect class="active" width="242" height="92" rx="13"/>
+      <text x="18" y="29" class="nodeTitle">04　Ruler 裁决</text>
+      <text x="18" y="54" class="nodeText">处理事实、规则和冲突</text>
+      <text x="18" y="75" class="tiny">输出 execution-contract</text>
+    </g>
+    <path d="M290 406 H320" class="flow"/>
+    <g transform="translate(324 360)">
+      <rect class="active" width="242" height="92" rx="13"/>
+      <text x="18" y="29" class="nodeTitle">05　Judgment 判断</text>
+      <text x="18" y="54" class="nodeText">章节中心、节点功能与预算</text>
+      <text x="18" y="75" class="tiny">S / A / B / C 分级与合并</text>
+    </g>
+    <path d="M566 406 H596" class="flow"/>
+    <g transform="translate(600 360)">
+      <rect class="placeholder" width="232" height="92" rx="13"/>
+      <text x="18" y="29" class="nodeTitle">06　Generator Spec</text>
+      <text x="18" y="54" class="nodeText">正式模块尚待补齐</text>
+      <text x="18" y="75" class="tiny">当前由 workflow 临时承担</text>
+    </g>
+
+    <path d="M716 452 V492" class="flowBlue"/>
+    <g transform="translate(48 496)">
+      <rect class="core" width="370" height="92" rx="13"/>
+      <text x="18" y="29" class="nodeTitle">07　低修辞骨架稿</text>
+      <text x="18" y="54" class="nodeText">先确保事件、因果、行动与场景出口成立</text>
+      <text x="18" y="75" class="tiny">不急于追求辞藻和完整设定展示</text>
+    </g>
+    <path d="M418 542 H458" class="flow"/>
+    <g transform="translate(462 496)">
+      <rect class="active" width="370" height="92" rx="13"/>
+      <text x="18" y="29" class="nodeTitle">08　受控文风渲染</text>
+      <text x="18" y="54" class="nodeText">总文风 → 场景专项 → 中文对白 → 节奏细化</text>
+      <text x="18" y="75" class="tiny">不覆盖 Canon、Ruler 与 Judgment 的事实裁决</text>
+    </g>
+
+    <path d="M647 588 V628" class="flowBlue"/>
+    <g transform="translate(48 632)">
+      <rect class="placeholder" width="784" height="104" rx="13"/>
+      <text x="18" y="29" class="nodeTitle">09　Audit 总审计（正式 Spec 待补齐）</text>
+      <text x="18" y="55" class="nodeText">Ruler 合规 → Judgment 执行 → Canon/连续性 → 人物知情 → 文风与对白 → 结尾推理保护</text>
+      <text x="18" y="79" class="tiny">建议统一 critical / major / moderate / minor / cosmetic，并产出 audit-report + revision-plan</text>
+    </g>
+
+    <path d="M440 736 V776" class="flowBlue"/>
+    <g transform="translate(48 780)">
+      <rect class="core" width="370" height="86" rx="13"/>
+      <text x="18" y="29" class="nodeTitle">10　定向修订</text>
+      <text x="18" y="54" class="nodeText">先事实结构，再判断执行，最后表达</text>
+      <text x="18" y="74" class="tiny">避免整章无目标重写</text>
+    </g>
+    <path d="M418 823 H458" class="flow"/>
+    <g transform="translate(462 780)">
+      <rect class="active" width="370" height="86" rx="13"/>
+      <text x="18" y="29" class="nodeTitle">11　正文交付 / Canno 回写</text>
+      <text x="18" y="54" class="nodeText">输出可读正文并确认正式版本</text>
+      <text x="18" y="74" class="tiny">只有确认稿进入后续状态更新</text>
+    </g>
+
+    <path d="M647 866 V906" class="flowBlue"/>
+    <g transform="translate(48 910)">
+      <rect class="active" width="784" height="96" rx="13"/>
+      <text x="18" y="29" class="nodeTitle">12　RAG 正式回写</text>
+      <text x="18" y="54" class="nodeText">History 场景记录 → Character State → World State → 变化日志 → 版本归档</text>
+      <text x="18" y="77" class="tiny">当前状态已推进到 volume-04-chapter-017</text>
+    </g>
+
+    <path d="M440 1006 V1032" class="flowBlue"/>
+    <g transform="translate(48 1036)">
+      <rect class="active" width="784" height="54" rx="13"/>
+      <text x="18" y="23" class="nodeTitle">13　validate → index → retrieval tests</text>
+      <text x="18" y="43" class="tiny">校验文档、重建隔离索引、确认新版本可召回且旧版本不混入</text>
+    </g>
+
+    <path d="M48 1063 H20 V270 H44" class="feedback"/>
+    <text x="8" y="670" class="tiny" transform="rotate(-90 8 670)" fill="#c4b5fd">下一章检索闭环</text>
+    <path d="M832 823 H862 V104 H836" class="feedback"/>
+    <text x="878" y="545" class="tiny" transform="rotate(90 878 545)" fill="#c4b5fd">用户反馈与合格样章回流（待建立）</text>
+  </g>
+
+  <g transform="translate(70 1260)">
+    <rect x="0" y="0" width="14" height="14" rx="3" fill="#102a29" stroke="#2dd4bf"/>
+    <text x="22" y="12" class="tiny">已投入使用</text>
+    <rect x="135" y="0" width="14" height="14" rx="3" fill="#302716" stroke="#fbbf24" stroke-dasharray="3 2"/>
+    <text x="157" y="12" class="tiny">目录存在但待补齐</text>
+    <rect x="322" y="0" width="14" height="14" rx="3" fill="#12233d" stroke="#60a5fa"/>
+    <text x="344" y="12" class="tiny">核心工程节点</text>
+    <text x="1730" y="12" class="tiny" text-anchor="end">SVG · 可编辑 · 可无限缩放</text>
+  </g>
+</svg>

@@ -1,0 +1,112 @@
+aliases:
+- canonical_id: fujimaru-ritsuka
+  timeline_id: main
+  names:
+  - 藤丸立香
+- canonical_id: kotomine-shirou
+  timeline_id: main
+  names:
+  - 言峰士郎
+- canonical_id: kotomine-shirou-ae
+  timeline_id: main
+  names:
+  - 言峰士郎（AE）
+  - AE士郎
+- canonical_id: cath-palug
+  timeline_id: main
+  names:
+  - 凯茜帕鲁格
+- canonical_id: jeanne-darc
+  timeline_id: main
+  names:
+  - 贞德
+- canonical_id: artoria-pendragon-alter
+  timeline_id: main
+  names:
+  - 阿尔托莉雅·潘德拉贡 Alter
+  - 黑阿尔托莉雅·潘德拉贡
+- canonical_id: cu-chulainn
+  timeline_id: main
+  names:
+  - 库丘林
+- canonical_id: gilgamesh
+  timeline_id: main
+  names:
+  - 吉尔伽美什
+- canonical_id: mash-kyrielight
+  timeline_id: main
+  names:
+  - 玛修·基列莱特
+- canonical_id: heracles
+  timeline_id: main
+  names:
+  - 赫拉克勒斯
+- canonical_id: sengo-muramasa
+  timeline_id: main
+  names:
+  - 千子村正
+- canonical_id: artoria-pendragon-caster
+  timeline_id: main
+  names:
+  - 阿尔托莉雅·潘德拉贡
+- canonical_id: yang-zhuo
+  timeline_id: main
+  names:
+  - 杨浞
+- canonical_id: epohonsiereht
+  timeline_id: main
+  names:
+  - 终末人理圆满机关
+  - 终末人理圆满装置
+  - E.P.O.H.O.N.S.I.E.R.E.H.T
+  - THERE IS NO HOPE
+- canonical_id: shenqi-hui
+  timeline_id: main
+  names:
+  - 神琦灰
+  - 故尊复现·神琦灰
+- canonical_id: amaterasu-no-mikoto
+  timeline_id: main
+  names:
+  - 天照命
+  - 伊耶那岐金地世尊
+  - 窃命世尊
+  - 至命至性并火大圣
+  - 无名孔雀
+- canonical_id: maitreya
+  timeline_id: main
+  names:
+  - 弥勒
+  - 第一代救世主
+  - Saver弥勒
+- canonical_id: izanami
+  timeline_id: main
+  names:
+  - 伊耶娜美
+  - 月读命金地之主
+  - 第二代救世主
+- canonical_id: izanami-savior-beast
+  timeline_id: main
+  names:
+  - 救世之兽·伊耶娜美
+  - 救世之兽
+  - Beast伊耶娜美
+- canonical_id: qihuang
+  timeline_id: main
+  names:
+  - 祁荒
+  - 观世音·祁荒
+  - 魔性菩萨
+  - Pretender祁荒
+  - Saver祁荒
+  - Lancer祁荒
+- canonical_id: li-zhouwei
+  timeline_id: main
+  names:
+  - 李周巍
+  - 至命天下明阳御世真君
+  - 魏王
+  - 世间第二显
+  - 明阳之子
+  - 妖明阳
+  - 白麒麟

@@ -1,0 +1,106 @@
+metadata:
+  document_id: state-current-fujimaru-ritsuka-v1.3
+  story_id: overturned-world-fujimaru
+  timeline_id: main
+  document_type: character_state
+  title: 第四卷第14章末状态快照-藤丸立香
+  character_id: fujimaru-ritsuka
+  variant_id: fujimaru-ritsuka-main
+  snapshot_type: snapshot
+  effective_at: volume-04-chapter-014
+  last_updated: '2026-07-17'
+  version: '1.3'
+  status: archived
+  supersedes: state-current-fujimaru-ritsuka-v1.2
+  source_file: D:\Novel\outputs\第四卷_第14章_续写.txt
+character_state:
+  current_position:
+    location: 伊耶那岐金地东门盆地外围
+    companions:
+    - 言峰士郎
+    - 玛修·基列莱特
+    faction: 迦勒底协同行动方
+  physical:
+    health: 无明确新增伤势
+    injuries: []
+    fatigue: 持续作战，疲劳程度未明确
+    temporary_conditions: []
+    permanent_changes: []
+  mental:
+    dominant_emotions:
+    - 专注
+    - 警惕
+    current_pressure:
+    - 杨浞与吉尔伽美什重伤
+    - 弥勒仍未解决
+    desires:
+    - 治疗伤员并继续完成弥勒降格与主炮计划
+    fears: []
+    unresolved_conflicts: []
+    behavior_effects:
+    - 天照命败北后仍保持主炮计划不变
+  knowledge:
+    known:
+    - 主炮信标已自锁并由Alterego组防守
+    - 创造之禊祓已由千子村正取得
+    - 天照命已被降格并失去继续战斗能力
+    - 神琦灰的目标不止于维持当前人理
+    - Alterego阿尔托莉雅仍保留潘多拉宝具
+    unknown:
+    - 创造之禊祓的具体代价
+    - 神琦灰超越当前人理的真实目标
+    - 终末人理圆满装置隐瞒的最终目的
+    mistaken_beliefs: []
+    suspicions: []
+    secrets_held: []
+  goals:
+    immediate:
+    - 治疗杨浞与吉尔伽美什
+    - 建立通往地下的伤员撤离路线
+    short_term:
+    - 完成对弥勒的降格、主炮与创造之禊祓衔接
+    long_term:
+    - 修复特异点
+    priorities:
+    - 完成任务
+    - 同伴生存
+    obstacles:
+    - 弥勒
+    - 北侧新增十七尊法相
+    - 伤员战力严重下降
+  relationships:
+  - target_character: yang-zhuo
+    relationship_type: 御主与从者
+    trust: 已完成关键战斗协同
+    dependence: 战斗合作
+    hostility: 无
+    current_attitude: 优先确认其存活并安排治疗
+    unresolved_issues: []
+    recent_change: 消耗一道令咒以英杰之帜将其推至本体顶峰
+  abilities:
+    available:
+    - 降格术
+    - 英杰之帜
+    unavailable: []
+    newly_acquired: []
+    consumed_resources:
+    - 一道令咒（英杰之帜用于杨浞）
+    active_costs:
+    - 剩余令咒两道
+  inventory:
+    carried: []
+    lost: []
+    damaged: []
+  narrative:
+    current_arc: 日本下篇：伊耶那岐金地决战
+    completed_changes:
+    - 完成主炮信标安置与自锁
+    - 对天照命完成降格
+    - 确认创造之禊祓已取得
+    unresolved_flags:
+    - 主炮尚未发射
+    - 弥勒尚未降格
+    - 创造之禊祓代价未知
+    active_promises: []
+    future_pressure:
+    - 必须在伤员严重受损的条件下继续弥勒终局战

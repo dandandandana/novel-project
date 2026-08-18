@@ -1,0 +1,323 @@
+tests:
+- id: shirouxcile-world-no-servants
+  story_id: shirouxcile
+  timeline_id: main
+  query: 无英灵存在
+  document_types:
+  - canon
+  expected_document_ids:
+  - canon-world-core-premise-v1.0
+  forbidden_statuses:
+  - draft
+  - deprecated
+  - archived
+  checks:
+  - correctness
+  - timeline_isolation
+  - content_type
+- id: shirouxcile-ciel-calvaria
+  story_id: shirouxcile
+  timeline_id: main
+  query: Calvaria之星
+  document_types:
+  - canon
+  expected_document_ids:
+  - canon-character-ciel-v1.0
+  forbidden_statuses:
+  - draft
+  - deprecated
+  - archived
+  checks:
+  - correctness
+  - timeline_isolation
+  - version
+  - content_type
+- id: shirouxcile-shirou-limit-synchronization
+  story_id: shirouxcile
+  timeline_id: main
+  query: 极限同调
+  document_types:
+  - canon
+  expected_document_ids:
+  - canon-character-emiya-shirou-v1.0
+  forbidden_statuses:
+  - draft
+  - deprecated
+  - archived
+  checks:
+  - correctness
+  - timeline_isolation
+  - version
+  - content_type
+- id: shirouxcile-background-burial-cannon
+  story_id: shirouxcile
+  timeline_id: main
+  query: 圣葬炮典
+  document_types:
+  - canon
+  expected_document_ids:
+  - canon-history-background-v1.0
+  forbidden_statuses:
+  - draft
+  - deprecated
+  - archived
+  checks:
+  - correctness
+  - timeline_isolation
+  - version
+  - content_type
+- id: shirouxcile-enhance-avenger
+  story_id: shirouxcile
+  timeline_id: main
+  query: Avenger 再生妨碍
+  document_types:
+  - canon
+  expected_document_ids:
+  - canon-character-enhance-v1.0
+  forbidden_statuses:
+  - draft
+  - deprecated
+  - archived
+  checks:
+  - correctness
+  - timeline_isolation
+  - version
+  - content_type
+- id: shirouxcile-enhance-double-recoil
+  story_id: shirouxcile
+  timeline_id: main
+  query: 两件武器都在同时杀他
+  document_types:
+  - canon
+  expected_document_ids:
+  - canon-character-enhance-v1.0
+  forbidden_statuses:
+  - draft
+  - deprecated
+  - archived
+  checks:
+  - correctness
+  - timeline_isolation
+  - version
+  - content_type
+- id: shirouxcile-orpheus-moirai-garden
+  story_id: shirouxcile
+  timeline_id: main
+  query: 莫伊莱庭园
+  document_types:
+  - canon
+  expected_document_ids:
+  - canon-character-orpheus-moira-v1.0
+  forbidden_statuses:
+  - draft
+  - deprecated
+  - archived
+  checks:
+  - correctness
+  - timeline_isolation
+  - version
+  - content_type
+- id: shirouxcile-orpheus-undead-fate
+  story_id: shirouxcile
+  timeline_id: main
+  query: 未死之命
+  document_types:
+  - canon
+  expected_document_ids:
+  - canon-character-orpheus-moira-v1.0
+  forbidden_statuses:
+  - draft
+  - deprecated
+  - archived
+  checks:
+  - correctness
+  - timeline_isolation
+  - version
+  - content_type
+- id: shirouxcile-orpheus-ciel-alesia
+  story_id: shirouxcile
+  timeline_id: main
+  query: 岔命
+  document_types:
+  - canon
+  expected_document_ids:
+  - canon-character-orpheus-moira-v1.0
+  forbidden_statuses:
+  - draft
+  - deprecated
+  - archived
+  checks:
+  - correctness
+  - timeline_isolation
+  - version
+  - content_type
+- id: shirouxcile-history-c001-seventh-scripture-support
+  story_id: shirouxcile
+  timeline_id: main
+  query: 安翰斯
+  document_types:
+  - history
+  expected_document_ids:
+  - history-shirouxcile-v01-c001-s006-v1.0
+  forbidden_statuses:
+  - draft
+  - deprecated
+  - archived
+  checks:
+  - correctness
+  - timeline_isolation
+  - version
+  - content_type
+- id: shirouxcile-history-c001-curry-shop-remains
+  story_id: shirouxcile
+  timeline_id: main
+  query: 工资两成
+  document_types:
+  - history
+  expected_document_ids:
+  - history-shirouxcile-v01-c001-s007-v1.0
+  forbidden_statuses:
+  - draft
+  - deprecated
+  - archived
+  checks:
+  - correctness
+  - timeline_isolation
+  - version
+  - content_type
+- id: shirouxcile-state-ciel-mortal-combat
+  story_id: shirouxcile
+  timeline_id: main
+  query: 六枚撤退用黑键
+  document_types:
+  - character_state
+  expected_document_ids:
+  - state-current-shirouxcile-ciel-v1.1
+  forbidden_statuses:
+  - draft
+  - deprecated
+  - archived
+  checks:
+  - correctness
+  - timeline_isolation
+  - version
+  - content_type
+- id: shirouxcile-world-eastern-france-trail
+  story_id: shirouxcile
+  timeline_id: main
+  query: 奥尔菲斯临时巢穴范围已缩小到岛北旧建筑群
+  document_types:
+  - world_state
+  expected_document_ids:
+  - world-state-shirouxcile-current-v1.1
+  forbidden_statuses:
+  - draft
+  - deprecated
+  - archived
+  checks:
+  - correctness
+  - timeline_isolation
+  - version
+  - content_type
+- id: shirouxcile-history-c003-sacrifice-exposed
+  story_id: shirouxcile
+  timeline_id: main
+  query: 你打算让他砍中左腹
+  document_types:
+  - history
+  expected_document_ids:
+  - history-shirouxcile-v01-c003-s010-v1.0
+  forbidden_statuses:
+  - draft
+  - deprecated
+  - archived
+  checks:
+  - correctness
+  - timeline_isolation
+  - version
+  - content_type
+- id: shirouxcile-history-c003-retreat-resources
+  story_id: shirouxcile
+  timeline_id: main
+  query: 你刚才把撤退用的那份也用了
+  document_types:
+  - history
+  expected_document_ids:
+  - history-shirouxcile-v01-c003-s013-v1.0
+  forbidden_statuses:
+  - draft
+  - deprecated
+  - archived
+  checks:
+  - correctness
+  - timeline_isolation
+  - version
+  - content_type
+- id: shirouxcile-history-c004-blue-boat
+  story_id: shirouxcile
+  timeline_id: main
+  query: 招牌上画着一艘蓝色小船
+  document_types:
+  - history
+  expected_document_ids:
+  - history-shirouxcile-v01-c004-s003-v1.0
+  forbidden_statuses:
+  - draft
+  - deprecated
+  - archived
+  checks:
+  - correctness
+  - timeline_isolation
+  - version
+  - content_type
+- id: shirouxcile-state-shirou-mutual-alert
+  story_id: shirouxcile
+  timeline_id: main
+  query: 临时联络剑印
+  document_types:
+  - character_state
+  expected_document_ids:
+  - state-current-shirouxcile-emiya-shirou-v1.0
+  forbidden_statuses:
+  - draft
+  - deprecated
+  - archived
+  checks:
+  - correctness
+  - timeline_isolation
+  - version
+  - content_type
+- id: shirouxcile-state-enhance-underground
+  story_id: shirouxcile
+  timeline_id: main
+  query: 马耳他港区地下旧渠之外的未知藏身处
+  document_types:
+  - character_state
+  expected_document_ids:
+  - state-current-shirouxcile-enhance-v1.0
+  forbidden_statuses:
+  - draft
+  - deprecated
+  - archived
+  checks:
+  - correctness
+  - timeline_isolation
+  - version
+  - content_type
+- id: shirouxcile-world-malta-fate-priority
+  story_id: shirouxcile
+  timeline_id: main
+  query: 第七圣典与原理血戒分线转运
+  document_types:
+  - world_state
+  expected_document_ids:
+  - world-state-shirouxcile-current-v1.1
+  forbidden_statuses:
+  - draft
+  - deprecated
+  - archived
+  checks:
+  - correctness
+  - timeline_isolation
+  - version
+  - content_type

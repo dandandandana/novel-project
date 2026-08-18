@@ -1,0 +1,50 @@
+{
+  "metadata": {
+    "document_id": "canon-ability-li-zhouwei-perfect-form-v1.0",
+    "story_id": "overturned-world-fujimaru",
+    "timeline_id": "main",
+    "document_type": "canon",
+    "title": "能力设定-李周巍-完全なる形",
+    "entity": "ability",
+    "character_ids": [
+      "li-zhouwei"
+    ],
+    "event_tags": [
+      "完全なる形",
+      "A++",
+      "personal_skill"
+    ],
+    "version": "1.0",
+    "status": "canon",
+    "canon_scope": "timeline",
+    "created_at": "2026-07-17",
+    "updated_at": "2026-07-17",
+    "supersedes": null,
+    "source_file": "user-message:2026-07-17/li-zhouwei-servant-profile"
+  },
+  "ability": {
+    "retrieval_key": "li_zhouwei_perfect_form",
+    "name": "完全なる形",
+    "owner": "李周巍",
+    "owner_id": "li-zhouwei",
+    "rank": "A++",
+    "category": "personal_skill",
+    "type": "肉体巅峰与体术压制",
+    "effect": "白麒麟躯体经甲子魄练与并火改造后突破生物极限，在战斗中表现为杂技般空中变向、不可预测的攻击轨迹和压倒性的体术压制力。",
+    "activation": "以肉体和武术战斗时持续发挥。",
+    "range": "李周巍自身及近身战范围。",
+    "cost": "未说明。",
+    "limitations": [
+      "具体速度、力量增幅与持续时间未说明。"
+    ],
+    "failure_conditions": [],
+    "known_by": [
+      "李周巍"
+    ],
+    "visual_expression": "未说明。",
+    "narrative_function": [
+      "支撑超越常识的机动与近战压制。"
+    ],
+    "canon_notes": []
+  }
+}

@@ -1,0 +1,71 @@
+metadata:
+  document_id: world-state-shirouxcile-current-v1.0
+  story_id: shirouxcile
+  timeline_id: main
+  document_type: world_state
+  title: 第一卷第一章后世界状态
+  version: '1.0'
+  status: archived
+  effective_at: volume-01-chapter-001
+  supersedes: null
+  source_file: D:\Novel 1\Novel\outputs\shirouXcile_第一章_新生回去_强化版.txt
+  updated_at: '2026-08-09'
+world_state:
+  timeline_position: 第一卷第一章末，罗亚终结数月后，希耶尔开始追踪安翰斯
+  locations:
+  - location_id: curry-restaurant
+    current_condition: 法国旧城中的咖喱饭馆正常营业，扩建完成，由萨米尔代理经营
+    controlling_faction: 希耶尔所有／萨米尔代理
+    accessibility: 对公众正常开放
+    known_hazards: []
+    recent_events:
+    - 希耶尔启程执行能力复核任务
+    - 下周限定菜单计划为加辣椰奶咖喱
+  - location_id: burial-agency-armory
+    current_condition: 第七圣典已移除希耶尔个人认证并重新封存
+    controlling_faction: 圣堂教会埋葬机关
+    accessibility: 希耶尔正式申请后可获得约十二小时内的任务支援
+    known_hazards: []
+    recent_events:
+    - 希耶尔解除现役时完成武装交接
+  - location_id: eastern-france-trail
+    current_condition: 安翰斯三天前出现，沿其移动路线已有数人失踪，地点间隔持续缩短
+    controlling_faction: 未确认
+    accessibility: 希耶尔正乘夜车接近
+    known_hazards:
+    - 祖级目标安翰斯
+    - 身份未明的高阶死徒
+    - 持续失踪事件
+    recent_events:
+    - 圣葬炮典近期再次开火
+    - 安翰斯追踪目标的移动速度可能下降
+  factions:
+  - faction_id: burial-agency
+    current_goal: 通过能力复核确认希耶尔能否恢复席位，并回收圣葬炮典
+    leadership: 纳鲁巴列克
+    alliances: []
+    enemies:
+    - 安翰斯
+    - 制造失踪事件的未知高阶死徒
+    known_information:
+    - 罗亚已彻底死亡
+    - 希耶尔失去不死性
+    - 安翰斯最近在法国东部活动
+    resources:
+    - 第七圣典
+    - 欧洲情报与后勤网络
+    recent_changes:
+    - 希耶尔由解除现役转为能力复核中的行动人员
+  global_events:
+  - 罗亚彻底死亡且转生反应消失
+  - 希耶尔失去世界修正式不死性
+  - 希耶尔开始追踪安翰斯
+  public_knowledge:
+  - 法国旧城咖喱饭馆由萨米尔继续营业
+  hidden_world_changes:
+  - 安翰斯正在追踪另一名高阶死徒
+  - 希耶尔尚不知道卫宫士郎已与安翰斯暂时同行
+  unresolved_world_flags:
+  - 法国东部失踪案的直接凶手
+  - 安翰斯与未知高阶死徒的下一处位置
+  - 希耶尔能力复核结果

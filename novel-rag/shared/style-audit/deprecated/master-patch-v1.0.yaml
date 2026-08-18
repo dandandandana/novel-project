@@ -1,0 +1,50 @@
+metadata:
+  document_id: style-master-patch-v1.0
+  story_id: __shared__
+  timeline_id: global
+  document_type: style_audit
+  title: 正常叙事、活人感与角色私有性总纲补丁
+  audit_scope: global_module
+  scene_type: null
+  module_id: master-patch
+  priority: highest
+  version: '1.0'
+  status: deprecated
+  created_at: '2026-07-12'
+  updated_at: '2026-07-26'
+  supersedes: null
+  source_file: D:\project\总纲补丁.txt
+style_rules:
+  activation: active
+  priority: highest
+  scope: global
+  content: '## 总纲补丁：正常叙事、活人感与角色私有性
+
+
+    本协议优先追求正常、清楚、有角色私有性的小说叙事。
+
+
+    活人感不是噪音。
+
+    活人感是角色私有的废话、跑题、口癖、互损、沉默、旧梗、照顾方式和回避方式。
+
+
+    禁止删除活人感。
+
+    只删除不属于任何具体角色的通用填充。
+
+
+    若“信息效率”和“角色活人感”冲突：
+
+    - 功能对话中，以信息清楚为先；
+
+    - 日常/关系对话中，以角色私有性为先；
+
+    - 情绪场景中，以角色真实反应为先。
+
+
+    若“描写规则”和“正常叙事”冲突，以正常叙事为准。
+
+    若“动作描写”和“对话连续性”冲突，以对话连续性为准。
+
+    若“氛围描写”和“角色关系”冲突，以角色关系为准。'

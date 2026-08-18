@@ -1,0 +1,106 @@
+metadata:
+  document_id: state-current-amaterasu-no-mikoto-v1.0
+  story_id: overturned-world-fujimaru
+  timeline_id: main
+  document_type: character_state
+  title: 第四卷第14章末状态快照-天照命
+  character_id: amaterasu-no-mikoto
+  variant_id: amaterasu-no-mikoto-main
+  snapshot_type: snapshot
+  effective_at: volume-04-chapter-014
+  last_updated: '2026-07-17'
+  version: '1.0'
+  status: archived
+  supersedes: null
+  source_file: D:\Novel\outputs\第四卷_第14章_续写.txt
+character_state:
+  current_position:
+    location: 伊耶那岐金地东门残存金砖
+    companions: []
+    faction: 已败北的原敌对方；当前失去战斗能力
+  physical:
+    health: 重伤并失去继续战斗能力，但仍存活且能够说话
+    injuries:
+    - 退化为普通大小黑金孔雀
+    - 仅余三根尾羽
+    - 额骨与全身承受最终对波重创
+    fatigue: 极重度消耗
+    temporary_conditions: []
+    permanent_changes: []
+  mental:
+    dominant_emotions:
+    - 疲惫
+    - 动摇后的平静
+    current_pressure:
+    - 已经失去借来的身份与权能
+    desires:
+    - 观察迦勒底是否真能让众生自己选择未来
+    fears: []
+    unresolved_conflicts: []
+    behavior_effects:
+    - 主动停止继续燃烧众生命
+    - 不再坚持替众人锁死未来
+  knowledge:
+    known:
+    - 迦勒底或许能够拯救众人
+    - 真正决定是否走下去的是众人自己
+    - 自身已能被正常伤害和败北
+    unknown:
+    - 迦勒底能否击败弥勒
+    - 自己接下来是否会协助迦勒底
+    mistaken_beliefs: []
+    suspicions: []
+    secrets_held: []
+  goals:
+    immediate:
+    - 休息并观察后续战局
+    short_term:
+    - 未明确
+    long_term:
+    - 未明确
+    priorities:
+    - 不再燃烧众生命
+    obstacles:
+    - 重伤
+    - 失去战斗能力
+  relationships:
+  - target_character: yang-zhuo
+    relationship_type: 战败对手
+    trust: 有限
+    dependence: 无
+    hostility: 已经停止战斗
+    current_attitude: 接受其关于众生自行选择的回答
+    unresolved_issues: []
+    recent_change: 被击败后承认迦勒底或许能够拯救众人
+  abilities:
+    available: []
+    unavailable:
+    - 伊耶那岐金地世尊佛果
+    - 天照御名与太阳权能
+    - 乌从欲连接
+    - 至命除
+    - 孔雀卵伤势转移
+    - 法相代偿
+    - 历史记录复归
+    newly_acquired: []
+    consumed_resources: []
+    active_costs: []
+  inventory:
+    carried: []
+    lost:
+    - 伊耶那岐金地世尊佛果
+    - 天照御名
+    - 太阳权能
+    damaged: []
+  narrative:
+    current_arc: 日本下篇：伊耶那岐金地决战
+    completed_changes:
+    - 被藤丸立香降格
+    - 在三重宝具对波中败北
+    - 主动停止燃烧众生命
+    unresolved_flags:
+    - 是否会协助迦勒底
+    - 六十六个孩子的后续安置
+    active_promises: []
+    future_pressure:
+    - 弥勒仍然存在，天照命的立场可能影响最终战

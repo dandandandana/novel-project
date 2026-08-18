@@ -1,0 +1,116 @@
+metadata:
+  document_id: state-current-qihuang-v1.5
+  story_id: overturned-world-fujimaru
+  timeline_id: main
+  document_type: character_state
+  title: 当前状态-祁荒
+  character_id: qihuang
+  variant_id: qihuang-main
+  snapshot_type: current
+  effective_at: volume-04-chapter-024
+  last_updated: '2026-08-08'
+  version: '1.5'
+  status: active
+  supersedes: state-current-qihuang-v1.4
+  source_file: D:\Novel 1\Novel\outputs\第四卷_第21-24章_日本卷收尾.txt
+character_state:
+  current_position:
+    location: 跨界坐标残痕另一端；仍未返回迦勒底，路径待重建
+    companions: []
+    faction: 迦勒底协同行动方
+  physical:
+    health: 召唤门闭合前生命反应存在，后续状态未确认
+    injuries:
+    - 双手裂伤
+    - 杨枝净瓶贯穿性裂纹
+    fatigue: 持续以金刚杵和净瓶维持跨界坐标
+    temporary_conditions: []
+    permanent_changes: []
+  mental:
+    dominant_emotions:
+    - 坚持
+    - 从容
+    - 警觉
+    current_pressure:
+    - 独自留在跨界坐标另一端
+    - 石台与路径不稳定
+    desires:
+    - 让村正成功进入迦勒底
+    - 维持自身与迦勒底可重建的路径
+    fears: []
+    unresolved_conflicts: []
+    behavior_effects: []
+  knowledge:
+    known:
+    - 千子村正已沿召唤路径进入迦勒底
+    - 迦勒底记录了万花筒残痕、金刚杵坐标和白火路径锚点
+    - 自己仍未返回迦勒底
+    unknown:
+    - 门闭合后的路径稳定时间
+    - 迦勒底何时能够重新开启跨界门
+    - 卫宫白与神琦灰对峙结果
+    mistaken_beliefs: []
+    suspicions: []
+    secrets_held: []
+  goals:
+    immediate:
+    - 稳定金刚杵与破损净瓶
+    - 避免随石台坠入乱流
+    short_term:
+    - 等待或协助迦勒底重建路径
+    long_term:
+    - 返回迦勒底并处理净瓶内佛果
+    priorities:
+    - 自身生存
+    - 坐标维持
+    - 与迦勒底重联
+    obstacles:
+    - 跨界门闭合
+    - 独自滞留
+    - 净瓶破损
+  relationships:
+  - target_character: sengo-muramasa
+    relationship_type: 跨界同行者
+    trust: 高
+    dependence: 长期同行与战斗协作
+    hostility: 无
+    current_attitude: 将村正送入召唤阵并留在门后维持路径
+    unresolved_issues:
+    - 自身尚未归队
+    recent_change: 确认村正成功返回迦勒底
+  abilities:
+    available:
+    - 文明侵蚀
+    - 阵地建造
+    - 寻声救苦
+    - 此世全部之欲
+    - 金刚杵
+    - 杨枝净瓶
+    unavailable: []
+    newly_acquired: []
+    consumed_resources: []
+    active_costs:
+    - 金刚杵持续承压
+    - 杨枝净瓶破裂
+  inventory:
+    carried:
+    - 金刚杵
+    - 开裂的杨枝净瓶（内有金色佛果）
+    lost: []
+    damaged:
+    - 杨枝净瓶出现贯穿性裂纹
+  narrative:
+    current_arc: 日本卷收尾：独留跨界坐标
+    completed_changes:
+    - 与村正在跨界乱流中存活
+    - 钉住召唤路径并将村正送入迦勒底
+    - 向立香留下下次见的约定
+    unresolved_flags:
+    - 仍未返回迦勒底
+    - 完整世界坐标
+    - 跨界路径重建
+    - 净瓶内佛果
+    active_promises:
+    - 下次见
+    future_pressure:
+    - 召唤门已经闭合，当前只能依赖迦勒底保存的路径锚点

@@ -1,0 +1,21 @@
+metadata:
+  document_id: state-change-shirouxcile-ciel-v01-c001-v1.0
+  story_id: shirouxcile
+  timeline_id: main
+  document_type: character_state
+  title: 第一卷第一章状态变化-希耶尔
+  character_id: ciel
+  variant_id: ciel-main
+  snapshot_type: change_log
+  effective_at: volume-01-chapter-001
+  last_updated: '2026-08-09'
+  version: '1.0'
+  status: canon
+  supersedes: null
+  source_file: D:\Novel 1\Novel\outputs\shirouXcile_第一章_新生回去_强化版.txt
+changes:
+- category: chapter_001_outcome
+  before: null
+  after: state-current-shirouxcile-ciel-v1.0
+  cause: 罗亚彻底死亡、普通生活尝试与安翰斯能力复核任务
+  evidence: history-shirouxcile-v01-c001-s001-v1.0 to history-shirouxcile-v01-c001-s007-v1.0

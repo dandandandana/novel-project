@@ -1,0 +1,82 @@
+metadata:
+  document_id: state-current-izanami-v1.1
+  story_id: overturned-world-fujimaru
+  timeline_id: main
+  document_type: character_state
+  title: 第四卷第14章末状态快照-伊耶娜美
+  character_id: izanami
+  variant_id: izanami-main
+  snapshot_type: snapshot
+  effective_at: volume-04-chapter-014
+  last_updated: '2026-07-17'
+  version: '1.1'
+  status: archived
+  supersedes: state-current-izanami-v1.0
+  source_file: D:\Novel\outputs\第四卷_第14章_续写.txt
+character_state:
+  current_position:
+    location: 月读命金地城主府
+    companions: []
+    faction: 迦勒底协同行动方
+  physical:
+    health: 正文未明确异常
+    injuries: []
+    fatigue: 正文未明确
+    temporary_conditions: []
+    permanent_changes: []
+  mental:
+    dominant_emotions:
+    - 专注
+    current_pressure:
+    - 持续维持四千九百二十六名居民的生命联系
+    desires:
+    - 保护月读命金地居民
+    fears: []
+    unresolved_conflicts: []
+    behavior_effects:
+    - 继续留守城主府维持生命联系
+  knowledge:
+    known:
+    - 自身神话记忆与亲历记忆并不完全重合
+    - 地下存在大量失败人格容器
+    unknown:
+    - 千子村正与祁荒对其故尊复现本质的最新判断
+    - 创造之禊祓是否会解除居民生命联系
+    - 终末人理圆满装置隐瞒的最终目的
+    mistaken_beliefs: []
+    suspicions: []
+    secrets_held: []
+  goals:
+    immediate:
+    - 维持四千九百二十六名居民生命联系
+    short_term:
+    - 完成对弥勒的降格、主炮与创造之禊祓衔接
+    long_term:
+    - 修复特异点
+    priorities:
+    - 完成任务
+    - 同伴生存
+    obstacles:
+    - 弥勒
+    - 居民与自身生命相连
+  relationships: []
+  abilities:
+    available: []
+    unavailable: []
+    newly_acquired: []
+    consumed_resources: []
+    active_costs: []
+  inventory:
+    carried: []
+    lost: []
+    damaged: []
+  narrative:
+    current_arc: 日本下篇：伊耶那岐金地决战
+    completed_changes:
+    - 第十四章期间继续维持居民生命联系
+    unresolved_flags:
+    - 居民生命联系尚未解除
+    - 弥勒终战
+    active_promises: []
+    future_pressure:
+    - 创造之禊祓的白火可能改变金地与居民状态

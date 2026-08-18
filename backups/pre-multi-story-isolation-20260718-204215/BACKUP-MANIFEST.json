@@ -1,0 +1,3640 @@
+﻿{
+    "backup_version":  "1.0",
+    "created_at":  "2026-07-18T20:42:24.7302255+08:00",
+    "source_root":  "D:\\Novel",
+    "purpose":  "pre-multi-story-isolation",
+    "file_count":  726,
+    "total_bytes":  20690963,
+    "files":  [
+                  {
+                      "path":  "novel_rag/__init__.py",
+                      "bytes":  51,
+                      "sha256":  "16639c5c76a4021c28cb68db00a801aea5917d3abee6a27a2986d10d312a0a57"
+                  },
+                  {
+                      "path":  "novel_rag/__pycache__/__init__.cpython-310.pyc",
+                      "bytes":  181,
+                      "sha256":  "19b4bb39cb0d74cb7c7c6571c7c440051ae396c1563c2e304008342220fdb120"
+                  },
+                  {
+                      "path":  "novel_rag/__pycache__/__init__.cpython-312.pyc",
+                      "bytes":  191,
+                      "sha256":  "7d5aea05fbdc03125b3c6fd0c9b2967ed8850fa6b01a5b0b21db8f0e1dc7d398"
+                  },
+                  {
+                      "path":  "novel_rag/__pycache__/chunking.cpython-310.pyc",
+                      "bytes":  1445,
+                      "sha256":  "3682f38ad65b9e69dd7cc3de5a59069f4889cbee556c64bb220e12eae78eb884"
+                  },
+                  {
+                      "path":  "novel_rag/__pycache__/chunking.cpython-312.pyc",
+                      "bytes":  1968,
+                      "sha256":  "288f1c90c777fa64f013e57e638aa8fcecb11d54e0315eb103900c040b6523d4"
+                  },
+                  {
+                      "path":  "novel_rag/__pycache__/cli.cpython-310.pyc",
+                      "bytes":  3662,
+                      "sha256":  "73d4425c746333ab9e15549d042982c7fa669b2f1ea80238416b052a6a12576e"
+                  },
+                  {
+                      "path":  "novel_rag/__pycache__/cli.cpython-312.pyc",
+                      "bytes":  5993,
+                      "sha256":  "e203e7dcf29a5e3bfd9261deb779f003966eacce01de3a44f8a35d4494599cd3"
+                  },
+                  {
+                      "path":  "novel_rag/__pycache__/config.cpython-310.pyc",
+                      "bytes":  1031,
+                      "sha256":  "04b2b5b4b6af71c404c97892633290f80d660a541f9f93a242f8abdab14c4aff"
+                  },
+                  {
+                      "path":  "novel_rag/__pycache__/config.cpython-312.pyc",
+                      "bytes":  1185,
+                      "sha256":  "e200c65d70d0c7f3137158d41b2415c69d0cb7cecd7cf1437af2286d4a4a2a80"
+                  },
+                  {
+                      "path":  "novel_rag/__pycache__/documents.cpython-310.pyc",
+                      "bytes":  5808,
+                      "sha256":  "e305299da53822f84440273770d208db52cfb9c3ecd3d2760c3204864de1498e"
+                  },
+                  {
+                      "path":  "novel_rag/__pycache__/documents.cpython-312.pyc",
+                      "bytes":  8815,
+                      "sha256":  "9666ca7a3f5c00e44d2624f3e14da9e1dea450e8a3d09bb70dd37350a343fb2c"
+                  },
+                  {
+                      "path":  "novel_rag/__pycache__/index.cpython-310.pyc",
+                      "bytes":  4517,
+                      "sha256":  "7f17ade7d446a79be1e978a077904f1c8b52c28c2c4477da4017a615ef97a346"
+                  },
+                  {
+                      "path":  "novel_rag/__pycache__/index.cpython-312.pyc",
+                      "bytes":  6614,
+                      "sha256":  "7a69db6a7b130b8f1cd853782047c3e5f60cdc9b5562c2079858434459a7a6a2"
+                  },
+                  {
+                      "path":  "novel_rag/__pycache__/service.cpython-310.pyc",
+                      "bytes":  4722,
+                      "sha256":  "3d0f8e6c747e5fd37926e3bc2a7488f8b16213471ba3728991b00d13586d65ff"
+                  },
+                  {
+                      "path":  "novel_rag/__pycache__/service.cpython-312.pyc",
+                      "bytes":  7899,
+                      "sha256":  "0dc568d429f70a56cb31903b84829a84562a4002a90141ae95decf9fcda42647"
+                  },
+                  {
+                      "path":  "novel_rag/chunking.py",
+                      "bytes":  1326,
+                      "sha256":  "c5bd4d2df9688df8f84fbe5202ea27e4fea1de833bedf8e4f9ffa815b3279474"
+                  },
+                  {
+                      "path":  "novel_rag/cli.py",
+                      "bytes":  3407,
+                      "sha256":  "ba39b913b87fd6982b94450f29cc906107c1c2ca2d865018eccb55bf82cb1a7c"
+                  },
+                  {
+                      "path":  "novel_rag/config.py",
+                      "bytes":  1112,
+                      "sha256":  "d20c47db996ddef0dc5542115cc2acc86b605305be04080abd519ddff8520570"
+                  },
+                  {
+                      "path":  "novel_rag/documents.py",
+                      "bytes":  4908,
+                      "sha256":  "7ba9ca76efcb8cdc40ae8a77ac6e12d5afe0d44962dd80d7dfbd039e6e8b4b70"
+                  },
+                  {
+                      "path":  "novel_rag/index.py",
+                      "bytes":  3959,
+                      "sha256":  "e8e9c68aa341c7813a5002592c5094eb42fff0094959d4d6d4df14d5f775b50a"
+                  },
+                  {
+                      "path":  "novel_rag/service.py",
+                      "bytes":  5743,
+                      "sha256":  "9d99c521e47df1da30ceb5405fb70373015b1d151fac3ef73063fee101275485"
+                  },
+                  {
+                      "path":  "novel-rag/canon/abilities/.gitkeep",
+                      "bytes":  1,
+                      "sha256":  "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
+                  },
+                  {
+                      "path":  "novel-rag/canon/abilities/fujimaru-ritsuka-banner-of-heroes.yaml",
+                      "bytes":  1593,
+                      "sha256":  "2bb93ebe7ed0b9a1f3254b30debb4cf11ee761e75e366495c0de1502aa6a764d"
+                  },
+                  {
+                      "path":  "novel-rag/canon/abilities/fujimaru-ritsuka-degradation.yaml",
+                      "bytes":  1649,
+                      "sha256":  "c433a9c5150a27df2aa7506a6579c2b65dfcd3a07f2a29d601d78617a7f620da"
+                  },
+                  {
+                      "path":  "novel-rag/canon/abilities/li-zhouwei-audience-at-heavens-gate.yaml",
+                      "bytes":  1775,
+                      "sha256":  "587e3a43d03bd883c0ffaf99a45eae8098477a5a6096a86ebc2eabe121b22afb"
+                  },
+                  {
+                      "path":  "novel-rag/canon/abilities/li-zhouwei-charisma.yaml",
+                      "bytes":  1727,
+                      "sha256":  "960fa35960c9bd14102d1ca7064878b509a22d28b9c73fbf7ddbb5247950a86c"
+                  },
+                  {
+                      "path":  "novel-rag/canon/abilities/li-zhouwei-fire-arts.yaml",
+                      "bytes":  1622,
+                      "sha256":  "58c245c3570727ad4dce5516783c37b5a86c7175087b3c0c9505abab564a8ead"
+                  },
+                  {
+                      "path":  "novel-rag/canon/abilities/li-zhouwei-imperial-view-origin.yaml",
+                      "bytes":  1893,
+                      "sha256":  "734d13cd5e02d7871d0a42b74d8029e236794dc35d8900d6b04ba18b0791d329"
+                  },
+                  {
+                      "path":  "novel-rag/canon/abilities/li-zhouwei-jiazi-soul-tempered-halberd-art.yaml",
+                      "bytes":  1889,
+                      "sha256":  "c7e909265388addd4f034b94bf2d86336d45c73e5b9a8adcf304d45177a1f9fc"
+                  },
+                  {
+                      "path":  "novel-rag/canon/abilities/li-zhouwei-juntaowei.yaml",
+                      "bytes":  1710,
+                      "sha256":  "2bad712e339c4d6c4802fb28c7330c2afde8e9cc65dff6e738cd832bf06be8df"
+                  },
+                  {
+                      "path":  "novel-rag/canon/abilities/li-zhouwei-magic-resistance.yaml",
+                      "bytes":  1685,
+                      "sha256":  "c13aeabc58b09771d100602476795e7a0c7431e3183f866ffe313854e76a954a"
+                  },
+                  {
+                      "path":  "novel-rag/canon/abilities/li-zhouwei-mind-eye-false.yaml",
+                      "bytes":  1645,
+                      "sha256":  "bc0f68636cd10be8f8e0eaa7217b706b09c49a80da3d80f20e1049f500a5c4fd"
+                  },
+                  {
+                      "path":  "novel-rag/canon/abilities/li-zhouwei-mind-eye-true.yaml",
+                      "bytes":  1676,
+                      "sha256":  "e08d207bd5e01880709566beda77326dbd510edac1cd90a07dd9650533c0de80"
+                  },
+                  {
+                      "path":  "novel-rag/canon/abilities/li-zhouwei-mingzhang-sun-and-moon.yaml",
+                      "bytes":  1841,
+                      "sha256":  "c214bb0924bda6a777767b76f793682a84c9cd331d0a2ae94193a6f9295b450c"
+                  },
+                  {
+                      "path":  "novel-rag/canon/abilities/li-zhouwei-perfect-form.yaml",
+                      "bytes":  1598,
+                      "sha256":  "ad553699433754ba0d7c8b38c925a5e51b26713ad1ed1ba2faa71df1602eaefa"
+                  },
+                  {
+                      "path":  "novel-rag/canon/abilities/li-zhouwei-qianyang-bracelet.yaml",
+                      "bytes":  1743,
+                      "sha256":  "919aee0ddae7caa6d460ba4370fda6ad6680696244179613e2bb8aea567c0658"
+                  },
+                  {
+                      "path":  "novel-rag/canon/abilities/li-zhouwei-red-severing-arrowhead.yaml",
+                      "bytes":  1626,
+                      "sha256":  "dc33a9450b04fd481746ec055b74d2c6e821a47bb86c3353ab8b88fb1dec2846"
+                  },
+                  {
+                      "path":  "novel-rag/canon/abilities/li-zhouwei-second-manifest-forged-white-renewed-ming-king-halberd.yaml",
+                      "bytes":  2053,
+                      "sha256":  "a3a721bad49db26e2b345d582977cfb84106d6e1b0dd3774a5885fbda517d0c9"
+                  },
+                  {
+                      "path":  "novel-rag/canon/abilities/li-zhouwei-walking-method.yaml",
+                      "bytes":  1691,
+                      "sha256":  "8073e6d4ae02f55d4afb581b099af5f68865ba9e78e6b0e7118367ea577aa685"
+                  },
+                  {
+                      "path":  "novel-rag/canon/abilities/li-zhouwei-white-qilin.yaml",
+                      "bytes":  1842,
+                      "sha256":  "8e8f96dbfd36d2039ec93fd50c3617b08d1809bbc579e29cd707b6a62f2f8135"
+                  },
+                  {
+                      "path":  "novel-rag/canon/abilities/li-zhouwei-zhimingchu.yaml",
+                      "bytes":  2022,
+                      "sha256":  "74415595b4f1666d0bbb84a037b1576e757192070a6b08f957dd74e9c245cb82"
+                  },
+                  {
+                      "path":  "novel-rag/canon/abilities/qihuang-all-desires-of-this-world.yaml",
+                      "bytes":  1593,
+                      "sha256":  "bbecc24863986eb18aa259b57c540c97a6cd35e5c885a9ea037c815d911122c0"
+                  },
+                  {
+                      "path":  "novel-rag/canon/abilities/qihuang-civilization-erosion.yaml",
+                      "bytes":  1323,
+                      "sha256":  "f7a420bf1f03dd77e4eca889c9b3da5716161b5c79b2d328b254215ff8678c73"
+                  },
+                  {
+                      "path":  "novel-rag/canon/abilities/qihuang-collector.yaml",
+                      "bytes":  1203,
+                      "sha256":  "b634dae25967baeb89d0c1097b7e6e344b8678972e011221cb6737d3c0d39b1c"
+                  },
+                  {
+                      "path":  "novel-rag/canon/abilities/qihuang-great-compassion-dharma.yaml",
+                      "bytes":  1380,
+                      "sha256":  "2e78a48d6a08e7bbaef33dbff80d7222a7b735ddb3af79d8842c80e4b111f308"
+                  },
+                  {
+                      "path":  "novel-rag/canon/abilities/qihuang-hear-cries-and-relieve-suffering.yaml",
+                      "bytes":  1417,
+                      "sha256":  "be3c5ecd46d8673ffb97bdde63ab16cd907d74a9347014009d2c3ab3a602d9e7"
+                  },
+                  {
+                      "path":  "novel-rag/canon/abilities/qihuang-servant-disguise.yaml",
+                      "bytes":  1294,
+                      "sha256":  "75155fbabe351a97084e0b3b3501747d49e712fadd1bdd8ebc8b056f5b1a319e"
+                  },
+                  {
+                      "path":  "novel-rag/canon/abilities/qihuang-territory-creation.yaml",
+                      "bytes":  1260,
+                      "sha256":  "5ed446a1a586551dcd06b6c642332121f7117c83570afdcc81a6dcb479f160ae"
+                  },
+                  {
+                      "path":  "novel-rag/canon/abilities/qihuang-transformation-at-will.yaml",
+                      "bytes":  1236,
+                      "sha256":  "5ce80c701603340f2385ebb511140bdc966b058a036eaaa83df827f5d103c0ec"
+                  },
+                  {
+                      "path":  "novel-rag/canon/abilities/qihuang-vajra.yaml",
+                      "bytes":  1522,
+                      "sha256":  "254bc56d73a0c989a92b44514b49bbafdb5a4d7ccbe849ebb1578940cee4036d"
+                  },
+                  {
+                      "path":  "novel-rag/canon/abilities/qihuang-willow-branch-purification-vase.yaml",
+                      "bytes":  1439,
+                      "sha256":  "6c268e92a0a79552a5016689285e0576b8d6e392e84ac45857c5e982379dd1ce"
+                  },
+                  {
+                      "path":  "novel-rag/canon/characters/.gitkeep",
+                      "bytes":  1,
+                      "sha256":  "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
+                  },
+                  {
+                      "path":  "novel-rag/canon/characters/amaterasu-no-mikoto.yaml",
+                      "bytes":  26362,
+                      "sha256":  "8a48ee97e63d0669784b040e971247287d5626ef70bf4861ef51b291886566f6"
+                  },
+                  {
+                      "path":  "novel-rag/canon/characters/artoria-pendragon-alter.yaml",
+                      "bytes":  14120,
+                      "sha256":  "4acfcc849ecd272dd82adae5827b616c7e3d9caf68a02bdc4427fac30d985600"
+                  },
+                  {
+                      "path":  "novel-rag/canon/characters/artoria-pendragon-caster.yaml",
+                      "bytes":  7904,
+                      "sha256":  "50d0b01c0bdb0df72b93ae833ee83de66ed7274a8c5bd9b548d7e18ffdfc98b3"
+                  },
+                  {
+                      "path":  "novel-rag/canon/characters/cath-palug.yaml",
+                      "bytes":  6345,
+                      "sha256":  "808bc23ec8b509c69f02ce50b8f581d5df6a558dfeaefaccce34a842e5fb8ff8"
+                  },
+                  {
+                      "path":  "novel-rag/canon/characters/cu-chulainn.yaml",
+                      "bytes":  8446,
+                      "sha256":  "734f3d26015d4490d6aec2fa6712a17f35cbfe832b4a97d6eb326945154b9e63"
+                  },
+                  {
+                      "path":  "novel-rag/canon/characters/deprecated/maitreya-v0.9.yaml",
+                      "bytes":  10777,
+                      "sha256":  "451bb1776ccaffa8ec04cbde1b537b07d6656d22980f034ff03a8eb54ccc8d6f"
+                  },
+                  {
+                      "path":  "novel-rag/canon/characters/epohonsiereht.yaml",
+                      "bytes":  23456,
+                      "sha256":  "a98edbeeba0ba5a8efe235fdf5ac371addc626ba638b3c38f04fe235dc401a53"
+                  },
+                  {
+                      "path":  "novel-rag/canon/characters/fujimaru-ritsuka.yaml",
+                      "bytes":  6031,
+                      "sha256":  "4cd7aa94599ef559f135d890a9cfafb965170dcd7d55d088c82f3bdcbf3f40a4"
+                  },
+                  {
+                      "path":  "novel-rag/canon/characters/gilgamesh.yaml",
+                      "bytes":  11076,
+                      "sha256":  "14c677ce7df03bc01b1e50495dd5fb65cee53a055ff23cc742d008f3efc7e8df"
+                  },
+                  {
+                      "path":  "novel-rag/canon/characters/heracles.yaml",
+                      "bytes":  13420,
+                      "sha256":  "00343ae8e489ed53a180dead2fa913eff91d2fbd9499b40f540485271f471d4b"
+                  },
+                  {
+                      "path":  "novel-rag/canon/characters/izanami.yaml",
+                      "bytes":  7982,
+                      "sha256":  "727a28c9cc3a9846d1150d5d562e4227e3f352b476438c44f3494b9070149f9d"
+                  },
+                  {
+                      "path":  "novel-rag/canon/characters/izanami-savior-beast.yaml",
+                      "bytes":  8405,
+                      "sha256":  "b98c0218691caa9e5abb9fceee1d229e2759b5f3386e514ad4013fd2b568d4d4"
+                  },
+                  {
+                      "path":  "novel-rag/canon/characters/jeanne-darc.yaml",
+                      "bytes":  4637,
+                      "sha256":  "2bbddb7f69cee48789cbbb414d11ff7ba022a12fab903dbefac74c2317c092ab"
+                  },
+                  {
+                      "path":  "novel-rag/canon/characters/kotomine-shirou.yaml",
+                      "bytes":  5616,
+                      "sha256":  "a2faf9b1ecda4c087181f64a754f4b2f94eaccf864c6e9741740a5be5460fbc9"
+                  },
+                  {
+                      "path":  "novel-rag/canon/characters/kotomine-shirou-ae.yaml",
+                      "bytes":  7264,
+                      "sha256":  "114d948c8344f6c1b17aa1a39f2fd17183ceeadfd11566b15036e9b4c1d775dd"
+                  },
+                  {
+                      "path":  "novel-rag/canon/characters/li-zhouwei.yaml",
+                      "bytes":  10003,
+                      "sha256":  "6862791a806911bafdf297912953366a29dd9f4c871da3269bd1ccfb38c86858"
+                  },
+                  {
+                      "path":  "novel-rag/canon/characters/maitreya.yaml",
+                      "bytes":  10396,
+                      "sha256":  "33a626efe376ff4a0dfa95b6b5b1108d2150f29ff836afcf9cf180f25c5d216f"
+                  },
+                  {
+                      "path":  "novel-rag/canon/characters/mash-kyrielight.yaml",
+                      "bytes":  7300,
+                      "sha256":  "ae35ed0ef8483a09be46dbe868a4eb57d4d1c794ea1073c7ff2474af9d6658ac"
+                  },
+                  {
+                      "path":  "novel-rag/canon/characters/qihuang.yaml",
+                      "bytes":  8738,
+                      "sha256":  "da7e785e79db48833946495dcabb33f06313bf51a25a739c580ca23e92a3e905"
+                  },
+                  {
+                      "path":  "novel-rag/canon/characters/sengo-muramasa.yaml",
+                      "bytes":  11097,
+                      "sha256":  "3306769ecefc87b1401ad1e0fa7dd646175a029e72100db214ca1e747604a370"
+                  },
+                  {
+                      "path":  "novel-rag/canon/characters/shenqi-hui.yaml",
+                      "bytes":  2688,
+                      "sha256":  "53ee07e41a6a9a19b6dfa4a50689aacec8b3e46b02f0ee5b24e05f708904ade2"
+                  },
+                  {
+                      "path":  "novel-rag/canon/characters/yang-zhuo.yaml",
+                      "bytes":  28720,
+                      "sha256":  "0d89bfbc96b8527bec116b8a71ee1e837a17abcafb22d61eac898b5efbb1cb7c"
+                  },
+                  {
+                      "path":  "novel-rag/canon/factions/.gitkeep",
+                      "bytes":  1,
+                      "sha256":  "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
+                  },
+                  {
+                      "path":  "novel-rag/canon/history/.gitkeep",
+                      "bytes":  1,
+                      "sha256":  "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
+                  },
+                  {
+                      "path":  "novel-rag/canon/locations/.gitkeep",
+                      "bytes":  1,
+                      "sha256":  "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
+                  },
+                  {
+                      "path":  "novel-rag/canon/relationships/.gitkeep",
+                      "bytes":  1,
+                      "sha256":  "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
+                  },
+                  {
+                      "path":  "novel-rag/canon/terminology/.gitkeep",
+                      "bytes":  1,
+                      "sha256":  "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
+                  },
+                  {
+                      "path":  "novel-rag/canon/world/.gitkeep",
+                      "bytes":  1,
+                      "sha256":  "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
+                  },
+                  {
+                      "path":  "novel-rag/canon/world/chaldea-abandoned-by-human-order.yaml",
+                      "bytes":  1305,
+                      "sha256":  "b77357bd5ed55ae2ef774f5d5bb56e049a5e41e4a6f6969c2b6a00cbc06d161c"
+                  },
+                  {
+                      "path":  "novel-rag/canon/world/core-rules.yaml",
+                      "bytes":  4983,
+                      "sha256":  "0da8b043f4cfacc95679b92e8fd5e1205e10e8e20f074bc9435c02476666a1d7"
+                  },
+                  {
+                      "path":  "novel-rag/canon/world/japan-finale-combat-system.yaml",
+                      "bytes":  3340,
+                      "sha256":  "199e5798c5c355a942114ae98e47a09d12fc22b970ccc9a48f34e0107d80ea94"
+                  },
+                  {
+                      "path":  "novel-rag/character-state/change-logs/.gitkeep",
+                      "bytes":  1,
+                      "sha256":  "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
+                  },
+                  {
+                      "path":  "novel-rag/character-state/change-logs/volume-04-chapter-013/fujimaru-ritsuka.yaml",
+                      "bytes":  1016,
+                      "sha256":  "a2884d3c2baf45de516606be2152c062671d4226b18c0c81551fa1e9dd4eb76a"
+                  },
+                  {
+                      "path":  "novel-rag/character-state/change-logs/volume-04-chapter-013/gilgamesh.yaml",
+                      "bytes":  806,
+                      "sha256":  "fe3a7ced7d68b5a5b5d8e7eaa30de0aa583d32421378a31c3da7ad97eea0fdc1"
+                  },
+                  {
+                      "path":  "novel-rag/character-state/change-logs/volume-04-chapter-013/izanami.yaml",
+                      "bytes":  774,
+                      "sha256":  "d81957d40e1f14b5339bfcadab1f7f59aa9357f72f55b88c127d5bd2eabde86a"
+                  },
+                  {
+                      "path":  "novel-rag/character-state/change-logs/volume-04-chapter-013/kotomine-shirou.yaml",
+                      "bytes":  1013,
+                      "sha256":  "6629ff2864a22c74bba48a3b66efdf318f5ed6cfe7299f64bf1abcf995190e9c"
+                  },
+                  {
+                      "path":  "novel-rag/character-state/change-logs/volume-04-chapter-013/mash-kyrielight.yaml",
+                      "bytes":  1013,
+                      "sha256":  "0c4f7e9b47d58c0f32a821da3398cbc381427aa90b2744d40e52cd3a72a29a6a"
+                  },
+                  {
+                      "path":  "novel-rag/character-state/change-logs/volume-04-chapter-013/qihuang.yaml",
+                      "bytes":  803,
+                      "sha256":  "34698187ced7f4ef05f6709a854d43db61ee81d9c138039779cf33c92b77a9ad"
+                  },
+                  {
+                      "path":  "novel-rag/character-state/change-logs/volume-04-chapter-013/sengo-muramasa.yaml",
+                      "bytes":  824,
+                      "sha256":  "574a97322394d19fcadbfd4c3f3675c300a4aca2de34e361bdf9b2fab60b2e18"
+                  },
+                  {
+                      "path":  "novel-rag/character-state/change-logs/volume-04-chapter-013/yang-zhuo.yaml",
+                      "bytes":  967,
+                      "sha256":  "c641eee06ffffdbf6b9a26aa41308695bef6fbd2b63e61a32a2aee8027fa24c9"
+                  },
+                  {
+                      "path":  "novel-rag/character-state/current/.gitkeep",
+                      "bytes":  1,
+                      "sha256":  "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
+                  },
+                  {
+                      "path":  "novel-rag/character-state/current/amaterasu-no-mikoto.yaml",
+                      "bytes":  2811,
+                      "sha256":  "1775c54769df5699546221c96c9c3b29b59b3fa907799cee088fe5b037d7b936"
+                  },
+                  {
+                      "path":  "novel-rag/character-state/current/artoria-pendragon-alter.yaml",
+                      "bytes":  3450,
+                      "sha256":  "d5f3d72db55b53cf288ddcd095e01ec54e11f7863ac64337c5bd717d6447968a"
+                  },
+                  {
+                      "path":  "novel-rag/character-state/current/epohonsiereht.yaml",
+                      "bytes":  3099,
+                      "sha256":  "6a46bcb19b2751f4f60fd07a9533ca16708b5317c11b1d76cbe74bfb9262efb8"
+                  },
+                  {
+                      "path":  "novel-rag/character-state/current/fujimaru-ritsuka.yaml",
+                      "bytes":  3558,
+                      "sha256":  "d51f777e58a2ce297c5045a981e5c00d46ee61f45a5c6f7baa01fcb585ef02a8"
+                  },
+                  {
+                      "path":  "novel-rag/character-state/current/gilgamesh.yaml",
+                      "bytes":  3478,
+                      "sha256":  "55dcae5d01618219cb9d7ca303d366f71314aa43e31ebcd46a19650934746192"
+                  },
+                  {
+                      "path":  "novel-rag/character-state/current/izanami.yaml",
+                      "bytes":  2498,
+                      "sha256":  "136be6a7936ae3603ab5aa2d42e17b37ea2a6da9476d573b7ae9338f17f0368d"
+                  },
+                  {
+                      "path":  "novel-rag/character-state/current/kotomine-shirou.yaml",
+                      "bytes":  3749,
+                      "sha256":  "e56bd5c3b540b652e71b9ecc2d79297d295cd1c42689ba6a450b318e05f33c8f"
+                  },
+                  {
+                      "path":  "novel-rag/character-state/current/kotomine-shirou-ae.yaml",
+                      "bytes":  3275,
+                      "sha256":  "3783525a856311434b203e605c8c2caabb354a55647d6994cce6e4bdf6ce16b5"
+                  },
+                  {
+                      "path":  "novel-rag/character-state/current/maitreya.yaml",
+                      "bytes":  2195,
+                      "sha256":  "10e674faa5b5899cc0570c4530aba9232afd6d6d54bbf7eccbd34e1b5331d301"
+                  },
+                  {
+                      "path":  "novel-rag/character-state/current/mash-kyrielight.yaml",
+                      "bytes":  3490,
+                      "sha256":  "176c9930950eaf2115303a644e5d227c029ed3088a33b6bfa166e038985dfa99"
+                  },
+                  {
+                      "path":  "novel-rag/character-state/current/qihuang.yaml",
+                      "bytes":  3738,
+                      "sha256":  "8cac103bb951f1cce22b993004998cadd7d2680cd6b64d8d5a8c49241704c231"
+                  },
+                  {
+                      "path":  "novel-rag/character-state/current/sengo-muramasa.yaml",
+                      "bytes":  3722,
+                      "sha256":  "b600a996a924afe18ee5c180a0b998d8bf2889e11bf2c0e82fa8b8243f6068f8"
+                  },
+                  {
+                      "path":  "novel-rag/character-state/current/yang-zhuo.yaml",
+                      "bytes":  3617,
+                      "sha256":  "5ac4a7cfc2e3f2e2ba17742d6dcffb36f6063462cc27edb0b494f4db038040ca"
+                  },
+                  {
+                      "path":  "novel-rag/character-state/snapshots/.gitkeep",
+                      "bytes":  1,
+                      "sha256":  "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
+                  },
+                  {
+                      "path":  "novel-rag/character-state/snapshots/volume-04-chapter-010/fujimaru-ritsuka.yaml",
+                      "bytes":  2941,
+                      "sha256":  "e6e4884e4f85d1de4f5c27728023dee9368092bc667095bc006a01c3e490cc16"
+                  },
+                  {
+                      "path":  "novel-rag/character-state/snapshots/volume-04-chapter-010/kotomine-shirou.yaml",
+                      "bytes":  2474,
+                      "sha256":  "bc96350ad79fbcd55dd4fe1f4993d6dc358fd26d1430016bab73f2fe2ab02574"
+                  },
+                  {
+                      "path":  "novel-rag/character-state/snapshots/volume-04-chapter-010/mash-kyrielight.yaml",
+                      "bytes":  2455,
+                      "sha256":  "619cb1c09204a5078c04b6a486238cb214c9563ecb88b885461fd4b1d4268fed"
+                  },
+                  {
+                      "path":  "novel-rag/character-state/snapshots/volume-04-chapter-010/yang-zhuo.yaml",
+                      "bytes":  2463,
+                      "sha256":  "d8b1e7d8720c43b8535f6c3bb459fb24688c4881d6f6fcbf8a151e22558698cc"
+                  },
+                  {
+                      "path":  "novel-rag/character-state/snapshots/volume-04-chapter-013/fujimaru-ritsuka-v1.2.yaml",
+                      "bytes":  2662,
+                      "sha256":  "4db1a111e47746ce141933818d6b6e02c3b2e58065d37bf5698f8b38d5a6a2cb"
+                  },
+                  {
+                      "path":  "novel-rag/character-state/snapshots/volume-04-chapter-013/gilgamesh-v1.0.yaml",
+                      "bytes":  2230,
+                      "sha256":  "a4361a3702784fd41a9c48c515c68b1e432a926c312ee54f8ebb9aa596529853"
+                  },
+                  {
+                      "path":  "novel-rag/character-state/snapshots/volume-04-chapter-013/izanami-v1.0.yaml",
+                      "bytes":  2330,
+                      "sha256":  "7ffa38d9728c7e472428ab1c6d8ecd5995e23ad76e383f8c95bddf76ad79e4af"
+                  },
+                  {
+                      "path":  "novel-rag/character-state/snapshots/volume-04-chapter-013/kotomine-shirou-v1.1.yaml",
+                      "bytes":  2668,
+                      "sha256":  "6dc888d432a6655a389d61848f8c84874c58323b1118f554c094dffc4a063ed2"
+                  },
+                  {
+                      "path":  "novel-rag/character-state/snapshots/volume-04-chapter-013/mash-kyrielight-v1.1.yaml",
+                      "bytes":  2536,
+                      "sha256":  "a77c55abe6565cf5cda441c1112aa53d092628e0e1dd050a59ec013d1db2e61b"
+                  },
+                  {
+                      "path":  "novel-rag/character-state/snapshots/volume-04-chapter-013/qihuang-v1.0.yaml",
+                      "bytes":  2248,
+                      "sha256":  "0563b2d7d3cfe0c500f97aae96476063b4004fd640781e7231ddb96237e1195d"
+                  },
+                  {
+                      "path":  "novel-rag/character-state/snapshots/volume-04-chapter-013/qihuang-v1.1.yaml",
+                      "bytes":  2515,
+                      "sha256":  "c48c11b1ae168c435d8c17efa20e539d8508e0219e2510b6754c1a546e04d9de"
+                  },
+                  {
+                      "path":  "novel-rag/character-state/snapshots/volume-04-chapter-013/sengo-muramasa-v1.0.yaml",
+                      "bytes":  2272,
+                      "sha256":  "59d15be0f6113867c472bff2186b8c38161b4ce87adf9c9ba6128b28f28f9d17"
+                  },
+                  {
+                      "path":  "novel-rag/character-state/snapshots/volume-04-chapter-013/yang-zhuo-v1.1.yaml",
+                      "bytes":  2594,
+                      "sha256":  "f977edb30c03f493c7c75c4cc124bfdf88be9278e79860e1994ee91b729d1a95"
+                  },
+                  {
+                      "path":  "novel-rag/character-state/snapshots/volume-04-chapter-014/amaterasu-no-mikoto-v1.0.yaml",
+                      "bytes":  3103,
+                      "sha256":  "c3972f3dadc92041d8d3b8383cb0dc4575a74a46148112ba4cfdeea13c4eb23d"
+                  },
+                  {
+                      "path":  "novel-rag/character-state/snapshots/volume-04-chapter-014/artoria-pendragon-alter-v1.0.yaml",
+                      "bytes":  2743,
+                      "sha256":  "2c6ad34499a318eabd00a0e3ba213a0d175b393845730243e45679e7d7ea51ea"
+                  },
+                  {
+                      "path":  "novel-rag/character-state/snapshots/volume-04-chapter-014/epohonsiereht-v1.0.yaml",
+                      "bytes":  2784,
+                      "sha256":  "f00d0f6fad7553be8582d1bf124163540fd5f11a0700455560ebacffb788d44c"
+                  },
+                  {
+                      "path":  "novel-rag/character-state/snapshots/volume-04-chapter-014/fujimaru-ritsuka-v1.3.yaml",
+                      "bytes":  3218,
+                      "sha256":  "75aa497a1b5ae1567bfa3869d5bd0bb3f3dc5c3449e8ceea8a0158a60676d7d4"
+                  },
+                  {
+                      "path":  "novel-rag/character-state/snapshots/volume-04-chapter-014/gilgamesh-v1.1.yaml",
+                      "bytes":  3111,
+                      "sha256":  "f993896f9853c7f27886dc46b1988633dcc4c3af033b478da06d5fbdf99313af"
+                  },
+                  {
+                      "path":  "novel-rag/character-state/snapshots/volume-04-chapter-014/izanami-v1.1.yaml",
+                      "bytes":  2357,
+                      "sha256":  "65a67defe2ec12c4f9e3b7c3bca61e5b36b01bc2b2a4428b54ff4d576fd1f93c"
+                  },
+                  {
+                      "path":  "novel-rag/character-state/snapshots/volume-04-chapter-014/kotomine-shirou-ae-v1.0.yaml",
+                      "bytes":  2644,
+                      "sha256":  "f41ed8fcb7bdf486861ee790f4a6dcf6fe06f3581a67cf8df9bb49118cf6d5d3"
+                  },
+                  {
+                      "path":  "novel-rag/character-state/snapshots/volume-04-chapter-014/kotomine-shirou-v1.2.yaml",
+                      "bytes":  2938,
+                      "sha256":  "30745c8d7a2fe018a822214080dca0be82f278a62b482f2bc96cde86df35722d"
+                  },
+                  {
+                      "path":  "novel-rag/character-state/snapshots/volume-04-chapter-014/mash-kyrielight-v1.2.yaml",
+                      "bytes":  2789,
+                      "sha256":  "552e4a01d2f0ede71da86087643a043880cd7f6fad9d6709cc5f1cb5cddb0eb9"
+                  },
+                  {
+                      "path":  "novel-rag/character-state/snapshots/volume-04-chapter-014/qihuang-v1.2.yaml",
+                      "bytes":  3123,
+                      "sha256":  "424221831fcd3088426c7e858cf30cb1243cca23337e8109498739d4a80538a6"
+                  },
+                  {
+                      "path":  "novel-rag/character-state/snapshots/volume-04-chapter-014/sengo-muramasa-v1.1.yaml",
+                      "bytes":  2941,
+                      "sha256":  "21a5895d13fba55a418a0e040163939fe27282542d8f4d22df9f0a4d9151d272"
+                  },
+                  {
+                      "path":  "novel-rag/character-state/snapshots/volume-04-chapter-014/yang-zhuo-v1.2.yaml",
+                      "bytes":  3653,
+                      "sha256":  "11138a00fe77a2ed3465fe22ec288111f498459f529bf5e78385327c397283ca"
+                  },
+                  {
+                      "path":  "novel-rag/feedback/character/.gitkeep",
+                      "bytes":  1,
+                      "sha256":  "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
+                  },
+                  {
+                      "path":  "novel-rag/feedback/global/.gitkeep",
+                      "bytes":  1,
+                      "sha256":  "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
+                  },
+                  {
+                      "path":  "novel-rag/feedback/plot/.gitkeep",
+                      "bytes":  1,
+                      "sha256":  "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
+                  },
+                  {
+                      "path":  "novel-rag/feedback/resolved/.gitkeep",
+                      "bytes":  1,
+                      "sha256":  "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
+                  },
+                  {
+                      "path":  "novel-rag/feedback/style/.gitkeep",
+                      "bytes":  1,
+                      "sha256":  "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
+                  },
+                  {
+                      "path":  "novel-rag/history/.gitkeep",
+                      "bytes":  1,
+                      "sha256":  "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
+                  },
+                  {
+                      "path":  "novel-rag/history/prologue/chapter-001/scene-001.yaml",
+                      "bytes":  1929,
+                      "sha256":  "633b96ef9b42206db6b842d3a0c2adc0ce664349a2677aea59ca63e4d17b6fb7"
+                  },
+                  {
+                      "path":  "novel-rag/history/prologue/chapter-001/scene-002.yaml",
+                      "bytes":  1296,
+                      "sha256":  "67719ffe9181c82d2d0d3bae095eea54d394bdb01495ad33ebdff6f5ca5d98ff"
+                  },
+                  {
+                      "path":  "novel-rag/history/volume-01/chapter-001/scene-001.yaml",
+                      "bytes":  6260,
+                      "sha256":  "3352d1917916d764b950fd8efaad2e4521ab3e3708333a1f61ba13765607d6a9"
+                  },
+                  {
+                      "path":  "novel-rag/history/volume-01/chapter-001/scene-002.yaml",
+                      "bytes":  2164,
+                      "sha256":  "fca53b03f6d1e04e7bb9bb59c8fabf665a9bdf3d1f04160a9e5120a8caa12606"
+                  },
+                  {
+                      "path":  "novel-rag/history/volume-01/chapter-001/scene-003.yaml",
+                      "bytes":  2067,
+                      "sha256":  "8f5447dd1c47d25398935a8fd6c8fbe8b18fb0ef5964ccc45798073f2c48fca1"
+                  },
+                  {
+                      "path":  "novel-rag/history/volume-01/chapter-002/scene-001.yaml",
+                      "bytes":  6203,
+                      "sha256":  "29cfc66f3e37493a830dfd35cef5be47d7f6ccbb9e0ef711010185611903daea"
+                  },
+                  {
+                      "path":  "novel-rag/history/volume-01/chapter-002/scene-002.yaml",
+                      "bytes":  4735,
+                      "sha256":  "8a4b8a0c81086297c878883906dc16b93fd49985831f67858a5f9da3c4b5ee8a"
+                  },
+                  {
+                      "path":  "novel-rag/history/volume-01/chapter-003/scene-001.yaml",
+                      "bytes":  6042,
+                      "sha256":  "46ef0db11378c5f58b9899756793691173f0165b157ef7e046767040450de9eb"
+                  },
+                  {
+                      "path":  "novel-rag/history/volume-01/chapter-003/scene-002.yaml",
+                      "bytes":  6202,
+                      "sha256":  "2b3f0501efbe357b386d14f046399759bedf50eb7e319ac3aaf541d71ff1b6d1"
+                  },
+                  {
+                      "path":  "novel-rag/history/volume-01/chapter-003/scene-003.yaml",
+                      "bytes":  6068,
+                      "sha256":  "68dd3069faaba0c4f984a11b9ac09e800ca1e3cbf2f6b074073f5a51edb73c34"
+                  },
+                  {
+                      "path":  "novel-rag/history/volume-01/chapter-003/scene-004.yaml",
+                      "bytes":  4087,
+                      "sha256":  "cf6427e1d7d0a5ef6fc050e2adca0e01b2ff25151b4dc1894f9856627fc358c1"
+                  },
+                  {
+                      "path":  "novel-rag/history/volume-02/chapter-001/scene-001.yaml",
+                      "bytes":  6006,
+                      "sha256":  "3485f7fac6bf7fcdd1b74d7eb7eb07a9bd729d0fd2cc447aa231d1f6abf4390c"
+                  },
+                  {
+                      "path":  "novel-rag/history/volume-02/chapter-001/scene-002.yaml",
+                      "bytes":  6107,
+                      "sha256":  "1842307b93072504aacf09ca7697cac5e83bf6a2dc2b78996cdba2527a6b951b"
+                  },
+                  {
+                      "path":  "novel-rag/history/volume-02/chapter-001/scene-003.yaml",
+                      "bytes":  1073,
+                      "sha256":  "55390787e92885087f1d9407f96ad770f286dbb7f104bbfa83408d2b855682a9"
+                  },
+                  {
+                      "path":  "novel-rag/history/volume-02/chapter-002/scene-001.yaml",
+                      "bytes":  5985,
+                      "sha256":  "1dd3299f43cf76f7820be88d3ad625a750ae391098229136a0d1ae5558da9233"
+                  },
+                  {
+                      "path":  "novel-rag/history/volume-02/chapter-002/scene-002.yaml",
+                      "bytes":  5940,
+                      "sha256":  "986168bcc9d0482a24d3122805a59eec029d2d8e90a4b4276e410f39b8e1e7dc"
+                  },
+                  {
+                      "path":  "novel-rag/history/volume-02/chapter-002/scene-003.yaml",
+                      "bytes":  4363,
+                      "sha256":  "2016151401874aefebee7683c4b1e75969e7939d783655a10861bbc896e4029c"
+                  },
+                  {
+                      "path":  "novel-rag/history/volume-02/chapter-003/scene-001.yaml",
+                      "bytes":  5789,
+                      "sha256":  "790c3c6303b8149fd974e33c839b2e0e63c158332aad4c1633cad490221d14e5"
+                  },
+                  {
+                      "path":  "novel-rag/history/volume-02/chapter-003/scene-002.yaml",
+                      "bytes":  5888,
+                      "sha256":  "2339fb6d27b0bc10ead6bdc31f333341227411c8a10a29b0d1968068b1c77122"
+                  },
+                  {
+                      "path":  "novel-rag/history/volume-02/chapter-003/scene-003.yaml",
+                      "bytes":  3921,
+                      "sha256":  "ee7af02c832e1bcc50a908c6000ce3468f29b3ce4760b55a0d4cf116ace7cd90"
+                  },
+                  {
+                      "path":  "novel-rag/history/volume-02/chapter-004/scene-001.yaml",
+                      "bytes":  5961,
+                      "sha256":  "baac0d3ac80f7f92d6cae8b9463ee7398310004bf41e22dd0dd8922e0aaaadb5"
+                  },
+                  {
+                      "path":  "novel-rag/history/volume-02/chapter-004/scene-002.yaml",
+                      "bytes":  5945,
+                      "sha256":  "69808e155dd8822da362838d19437eaa71511396653a3974e1abdd66feed1857"
+                  },
+                  {
+                      "path":  "novel-rag/history/volume-02/chapter-004/scene-003.yaml",
+                      "bytes":  3840,
+                      "sha256":  "4da8fe8ea87f112111e5f2038b6519009661e031fbab1aa31fde261f55854cef"
+                  },
+                  {
+                      "path":  "novel-rag/history/volume-02/chapter-005/scene-001.yaml",
+                      "bytes":  6118,
+                      "sha256":  "2e3f04c8a1e9b2659231322bc23f00e0776feed73db46fe001a50bb5a84fd126"
+                  },
+                  {
+                      "path":  "novel-rag/history/volume-02/chapter-005/scene-002.yaml",
+                      "bytes":  6129,
+                      "sha256":  "7ef18265b63c241423ab5eedb754f19374c16aa8441e7e4dc4c7389081623855"
+                  },
+                  {
+                      "path":  "novel-rag/history/volume-02/chapter-005/scene-003.yaml",
+                      "bytes":  3068,
+                      "sha256":  "cc3981412767817d5c9c8a3ec3ed813e61391f5e2de04989ee15f33032f4e282"
+                  },
+                  {
+                      "path":  "novel-rag/history/volume-02/chapter-006/scene-001.yaml",
+                      "bytes":  5788,
+                      "sha256":  "9c0d90d88520054d50b49d4b21306f80b5242cfc80d1e930cebca1a47f1b6e2b"
+                  },
+                  {
+                      "path":  "novel-rag/history/volume-02/chapter-006/scene-002.yaml",
+                      "bytes":  1962,
+                      "sha256":  "ebfd0241834a5765365c29194b633b378e58dc34c00b0820a41199b50fa4fd3c"
+                  },
+                  {
+                      "path":  "novel-rag/history/volume-02/chapter-007/scene-001.yaml",
+                      "bytes":  6155,
+                      "sha256":  "0f23c9ed92a111a0d2a72b573cad563267e0b0a10501f753addde77d4683a999"
+                  },
+                  {
+                      "path":  "novel-rag/history/volume-02/chapter-007/scene-002.yaml",
+                      "bytes":  3053,
+                      "sha256":  "a7f7bea59c4b590a2d8d878b1183bfe3b5d15f2c76558cab3ba6d0ec48f215b5"
+                  },
+                  {
+                      "path":  "novel-rag/history/volume-02/chapter-008/scene-001.yaml",
+                      "bytes":  5951,
+                      "sha256":  "68afaf59ca05bb27605f156f8c2d1fff4862d4c4160606b08395c676bc76daec"
+                  },
+                  {
+                      "path":  "novel-rag/history/volume-02/chapter-008/scene-002.yaml",
+                      "bytes":  1070,
+                      "sha256":  "a47d3849960c4cbc045ff1b6e8bf01d03e1e8bcee45376081de05eb843821a63"
+                  },
+                  {
+                      "path":  "novel-rag/history/volume-02/chapter-009/scene-001.yaml",
+                      "bytes":  5726,
+                      "sha256":  "c7a3a457cea319411a2a6fc38c5be30c5f41604303dde211c150e903306e79fe"
+                  },
+                  {
+                      "path":  "novel-rag/history/volume-02/chapter-009/scene-002.yaml",
+                      "bytes":  5680,
+                      "sha256":  "eb7e458c7e738fb03edc71d9884d727fafbd52b71e944179e2a331019fcb7d1b"
+                  },
+                  {
+                      "path":  "novel-rag/history/volume-02/chapter-009/scene-003.yaml",
+                      "bytes":  4211,
+                      "sha256":  "65ddea1525fffbaadb7152eff16a764a0113af22e94a456a3735da65349b6cb9"
+                  },
+                  {
+                      "path":  "novel-rag/history/volume-02/chapter-010/scene-001.yaml",
+                      "bytes":  6209,
+                      "sha256":  "e1430f8e047db8b3dab7c9251f7c8bf7209df5a0854bdf9e1e9b66fcd174d6b6"
+                  },
+                  {
+                      "path":  "novel-rag/history/volume-02/chapter-010/scene-002.yaml",
+                      "bytes":  6117,
+                      "sha256":  "03f9c60035fcf06c467348bbb13189c40d4a09a94161079f10dc96b7f61d0021"
+                  },
+                  {
+                      "path":  "novel-rag/history/volume-02/chapter-010/scene-003.yaml",
+                      "bytes":  4471,
+                      "sha256":  "4a081f1827bf4a33630f41ff7173772047a13c72b9c9e21e9b6d262e722a9282"
+                  },
+                  {
+                      "path":  "novel-rag/history/volume-02/chapter-011/scene-001.yaml",
+                      "bytes":  6045,
+                      "sha256":  "2bd00f36a9da8a1ee387502d37cec7b183f64c799e56152dc21ef2352f3a8361"
+                  },
+                  {
+                      "path":  "novel-rag/history/volume-02/chapter-011/scene-002.yaml",
+                      "bytes":  6282,
+                      "sha256":  "28f3bf7f0c817c3d564e64728fd8964576afb9bdc1570f6e32dbb59ebe3dcfac"
+                  },
+                  {
+                      "path":  "novel-rag/history/volume-02/chapter-011/scene-003.yaml",
+                      "bytes":  5124,
+                      "sha256":  "ac03f32b0f79a5e0dcd732e51c602ae7b7569d2173a00884aedb21fc0b8f7095"
+                  },
+                  {
+                      "path":  "novel-rag/history/volume-02/chapter-012/scene-001.yaml",
+                      "bytes":  5821,
+                      "sha256":  "3037b0b9fefcad0f33833176a4ae336ae196cbaa9ad600fe0fc2d6898c48c551"
+                  },
+                  {
+                      "path":  "novel-rag/history/volume-02/chapter-012/scene-002.yaml",
+                      "bytes":  6101,
+                      "sha256":  "3967ae35f3d4bdffcdf4cd8a69fddd870c55764e8f582e1497b9fd96555b46f1"
+                  },
+                  {
+                      "path":  "novel-rag/history/volume-02/chapter-012/scene-003.yaml",
+                      "bytes":  3470,
+                      "sha256":  "af0ebfc6b5365a6c911d111470858b431915fcfac1d804be857429ba01e51bc2"
+                  },
+                  {
+                      "path":  "novel-rag/history/volume-02/chapter-013/scene-001.yaml",
+                      "bytes":  5920,
+                      "sha256":  "cc1ae177054a47ec688ae67575fb03c16cd465c11076a15d3c1b0092b31a1787"
+                  },
+                  {
+                      "path":  "novel-rag/history/volume-02/chapter-013/scene-002.yaml",
+                      "bytes":  5819,
+                      "sha256":  "2e60e0479001559e80cbe39a342e088de6a3f221fe23994a92a15cf2042605d6"
+                  },
+                  {
+                      "path":  "novel-rag/history/volume-02/chapter-013/scene-003.yaml",
+                      "bytes":  3830,
+                      "sha256":  "05c4f868430a4819c5226edb1d2c462f213b03f371cea6c6b7b122ab14aa193d"
+                  },
+                  {
+                      "path":  "novel-rag/history/volume-02/chapter-014/scene-001.yaml",
+                      "bytes":  5963,
+                      "sha256":  "80b4ad84c90a1e73caecf419bce4022efae2edccf606b2b0713a7ecb3ca4e606"
+                  },
+                  {
+                      "path":  "novel-rag/history/volume-02/chapter-014/scene-002.yaml",
+                      "bytes":  6022,
+                      "sha256":  "62fd66073a09eb69b3a762ad135a070f1816545e717d629065cf398c06b68402"
+                  },
+                  {
+                      "path":  "novel-rag/history/volume-02/chapter-014/scene-003.yaml",
+                      "bytes":  3730,
+                      "sha256":  "5a88df5106264616b561cfb0d318a3a91dcd1b7fb86df7c578897c9b73e4191f"
+                  },
+                  {
+                      "path":  "novel-rag/history/volume-02/chapter-015/scene-001.yaml",
+                      "bytes":  5976,
+                      "sha256":  "fcd6f5cc7c1253a01ac9a950fe7c7fbba071c493da19c8648d18671c5466fc69"
+                  },
+                  {
+                      "path":  "novel-rag/history/volume-02/chapter-015/scene-002.yaml",
+                      "bytes":  6106,
+                      "sha256":  "15d1a03ef0debd4596a244b68c7f0d10cd8443724ae155b3d981687bed353849"
+                  },
+                  {
+                      "path":  "novel-rag/history/volume-02/chapter-015/scene-003.yaml",
+                      "bytes":  3752,
+                      "sha256":  "501d5816f4a1df8811a9d7beb11a0fd29b80821f089f094d1ae65e1bf6e64143"
+                  },
+                  {
+                      "path":  "novel-rag/history/volume-02/chapter-016/scene-001.yaml",
+                      "bytes":  6347,
+                      "sha256":  "096d6d233ff8e844ab1bceb6166c5345a5469d46cf7be7e19ca6d6ad5639fc45"
+                  },
+                  {
+                      "path":  "novel-rag/history/volume-02/chapter-016/scene-002.yaml",
+                      "bytes":  6186,
+                      "sha256":  "2c9b11ba28cd470e335514610381eb781be8cdc04addb50e6d20ec356f9d8fff"
+                  },
+                  {
+                      "path":  "novel-rag/history/volume-02/chapter-016/scene-003.yaml",
+                      "bytes":  2655,
+                      "sha256":  "3dabda669e89a2f0fb1ec0cd57ce7ce979909c3faecaaf491098942c355f28b6"
+                  },
+                  {
+                      "path":  "novel-rag/history/volume-02/chapter-017/scene-001.yaml",
+                      "bytes":  6121,
+                      "sha256":  "6a932f47e05522dd009229c044931297f4431521360f1313088340690c375909"
+                  },
+                  {
+                      "path":  "novel-rag/history/volume-02/chapter-017/scene-002.yaml",
+                      "bytes":  6016,
+                      "sha256":  "5cf42bf06b0b64844430eacd0d01de504707992f32d4828e4447503dba4fac60"
+                  },
+                  {
+                      "path":  "novel-rag/history/volume-02/chapter-017/scene-003.yaml",
+                      "bytes":  2556,
+                      "sha256":  "3ba7430f056f2d639690f019cc599ab6f14972a5082d3e28ac920967de278e5e"
+                  },
+                  {
+                      "path":  "novel-rag/history/volume-02/chapter-018/scene-001.yaml",
+                      "bytes":  6035,
+                      "sha256":  "5b647560b617e13c0f7a16a2ef20ff32bb580f8ad6b20edaa382b23554f373d9"
+                  },
+                  {
+                      "path":  "novel-rag/history/volume-02/chapter-018/scene-002.yaml",
+                      "bytes":  6004,
+                      "sha256":  "dd5e31e030fe97ccbe2ab85990ddfbf617c8e6ee97c6f042a6b126c178218c82"
+                  },
+                  {
+                      "path":  "novel-rag/history/volume-02/chapter-018/scene-003.yaml",
+                      "bytes":  4431,
+                      "sha256":  "aa9d369f28550316a0d9d8b8bdd57f6f641d37af2ec04cd16596141988c04f40"
+                  },
+                  {
+                      "path":  "novel-rag/history/volume-02/chapter-019/scene-001.yaml",
+                      "bytes":  6024,
+                      "sha256":  "570e26d382caf2147f39466442acacf420e83ce5e30229603de8c225afc1efed"
+                  },
+                  {
+                      "path":  "novel-rag/history/volume-02/chapter-019/scene-002.yaml",
+                      "bytes":  6162,
+                      "sha256":  "ea61bbf8f2f3f933e94ad15426639779fda98b51ee8e5d924534e9c2e6fbed9d"
+                  },
+                  {
+                      "path":  "novel-rag/history/volume-02/chapter-019/scene-003.yaml",
+                      "bytes":  2479,
+                      "sha256":  "c660893eabd596ea0fec3a59aada2abd0b9843606ba8c58245d41a5fdc704a5c"
+                  },
+                  {
+                      "path":  "novel-rag/history/volume-02/chapter-020/scene-001.yaml",
+                      "bytes":  5706,
+                      "sha256":  "29bf370ab5bacfba0c0c5abb521353a044786c1640791d0ca7c6ae4efec157b1"
+                  },
+                  {
+                      "path":  "novel-rag/history/volume-02/chapter-020/scene-002.yaml",
+                      "bytes":  5663,
+                      "sha256":  "dc72e36368cf92deddb483f83781656f66690be1d4d42237d2f8c63ed7eb7e7d"
+                  },
+                  {
+                      "path":  "novel-rag/history/volume-02/chapter-020/scene-003.yaml",
+                      "bytes":  3512,
+                      "sha256":  "dac88a4bcf586e525ba38da495e50719d40f720ac0ec0a11d0cf71394af2bd89"
+                  },
+                  {
+                      "path":  "novel-rag/history/volume-02/chapter-021/scene-001.yaml",
+                      "bytes":  5622,
+                      "sha256":  "d67ccae54ead29e2fa04aef549cf241a7927cbbaf860add370116bc62fb84ab0"
+                  },
+                  {
+                      "path":  "novel-rag/history/volume-02/chapter-021/scene-002.yaml",
+                      "bytes":  5486,
+                      "sha256":  "2ddd7413f201d581b023bab3fa7e16befdc2e106a56be2b6d2753525007481e4"
+                  },
+                  {
+                      "path":  "novel-rag/history/volume-02/chapter-021/scene-003.yaml",
+                      "bytes":  5670,
+                      "sha256":  "0c4ef2a789d9f41a786adc671e0b78b9ef5bad11770def54abb5f0f002074179"
+                  },
+                  {
+                      "path":  "novel-rag/history/volume-02/chapter-021/scene-004.yaml",
+                      "bytes":  5706,
+                      "sha256":  "2e215e3ca19fe0ad938e6ebe8f2724eee39eed17e6bcafec42564aaf49309dce"
+                  },
+                  {
+                      "path":  "novel-rag/history/volume-02/chapter-021/scene-005.yaml",
+                      "bytes":  3355,
+                      "sha256":  "5eecd61331f65a2a8c4c622854f5d02b39fd4412ae1d93e2f88b19c034290ef4"
+                  },
+                  {
+                      "path":  "novel-rag/history/volume-02/chapter-022/scene-001.yaml",
+                      "bytes":  5773,
+                      "sha256":  "6633340e7cc5df32997a1fbe6acc294ae57a6a444ea170c68d8e2276df6724b9"
+                  },
+                  {
+                      "path":  "novel-rag/history/volume-02/chapter-022/scene-002.yaml",
+                      "bytes":  6067,
+                      "sha256":  "98530255366286863cc4487d7f3b70e59e37d96a0d7f9efb5f3b29f94a3ceb67"
+                  },
+                  {
+                      "path":  "novel-rag/history/volume-02/chapter-022/scene-003.yaml",
+                      "bytes":  3181,
+                      "sha256":  "77d792be6feb327fdf098ef4417df397e12566820df88f2c36dd32bd3479dc1d"
+                  },
+                  {
+                      "path":  "novel-rag/history/volume-02/chapter-023/scene-001.yaml",
+                      "bytes":  6190,
+                      "sha256":  "f24f8b24c5cd91cc67c3fbfc8c01e6ffd6550875ea722f6707a93317224c3f59"
+                  },
+                  {
+                      "path":  "novel-rag/history/volume-02/chapter-023/scene-002.yaml",
+                      "bytes":  5924,
+                      "sha256":  "7641c7a90c517cb0994883934df3da1efbd87db1663aef7542126022a9b5782f"
+                  },
+                  {
+                      "path":  "novel-rag/history/volume-02/chapter-023/scene-003.yaml",
+                      "bytes":  4600,
+                      "sha256":  "fa6b77985a6f737c6f4b4ff0ab6bad7216b52b9bbfc12037c30825b283669040"
+                  },
+                  {
+                      "path":  "novel-rag/history/volume-02/chapter-024/scene-001.yaml",
+                      "bytes":  6129,
+                      "sha256":  "9d830a74dbe2cd31b725dfc41a6f2c8b44d8ca2c53988626ea1d8a7600117b9c"
+                  },
+                  {
+                      "path":  "novel-rag/history/volume-02/chapter-024/scene-002.yaml",
+                      "bytes":  6047,
+                      "sha256":  "373525d97f4a0e2b74c0c5f19298d44ef8d2e553b76cb95f52133c309bd10fa3"
+                  },
+                  {
+                      "path":  "novel-rag/history/volume-02/chapter-024/scene-003.yaml",
+                      "bytes":  5964,
+                      "sha256":  "9319e2d5c25362f60c6fa4b2ea6aad5cce8e3b0d8b844585a8c716f649494aed"
+                  },
+                  {
+                      "path":  "novel-rag/history/volume-02/chapter-024/scene-004.yaml",
+                      "bytes":  734,
+                      "sha256":  "ff174a1ee4549f2f3dbbad24ca89b0385f75d1321e89506dd6f658159ce99180"
+                  },
+                  {
+                      "path":  "novel-rag/history/volume-02/chapter-025/scene-001.yaml",
+                      "bytes":  6162,
+                      "sha256":  "0df41feeae2de7e1f52cd551be56c9c1827ba0383cbed197c6e654a946a19cd2"
+                  },
+                  {
+                      "path":  "novel-rag/history/volume-02/chapter-025/scene-002.yaml",
+                      "bytes":  6137,
+                      "sha256":  "023b335819bd4903a946e7017f419dd4845c1f21e519b1add56f0e65e452b126"
+                  },
+                  {
+                      "path":  "novel-rag/history/volume-02/chapter-025/scene-003.yaml",
+                      "bytes":  6100,
+                      "sha256":  "22caf5ff60cba9fed3859b4b5975c6aea91212297abc3f53a81699e8da36310c"
+                  },
+                  {
+                      "path":  "novel-rag/history/volume-02/chapter-025/scene-004.yaml",
+                      "bytes":  6119,
+                      "sha256":  "2a50189a3b78a2c1dcb0e99204f04e8bd1e5e2c95a01038b50781ea5239eb8d0"
+                  },
+                  {
+                      "path":  "novel-rag/history/volume-02/chapter-025/scene-005.yaml",
+                      "bytes":  3497,
+                      "sha256":  "6b6218150fca5b7403f2eeadb90d3de7e99130cc4683f2ae03c839056ee00fdf"
+                  },
+                  {
+                      "path":  "novel-rag/history/volume-02/chapter-026/scene-001.yaml",
+                      "bytes":  6024,
+                      "sha256":  "a5a2bc17164b947a2c574291795fae70e3a6f708f5bb24232e7e1bd14a80dbc1"
+                  },
+                  {
+                      "path":  "novel-rag/history/volume-02/chapter-026/scene-002.yaml",
+                      "bytes":  5934,
+                      "sha256":  "729e1b6971d6a75d591d8d86e6120611d9c106c7a886819b31e06a09e0e6af70"
+                  },
+                  {
+                      "path":  "novel-rag/history/volume-02/chapter-026/scene-003.yaml",
+                      "bytes":  6112,
+                      "sha256":  "c488ff9ad0ed7bac95ecb5cbecdd4a535992f60cacc44fae42da42e1f3806c34"
+                  },
+                  {
+                      "path":  "novel-rag/history/volume-02/chapter-026/scene-004.yaml",
+                      "bytes":  6006,
+                      "sha256":  "a1126e909a5b2655c3e28251ae571611509d6bcaf9354664a460558402f3323e"
+                  },
+                  {
+                      "path":  "novel-rag/history/volume-02/chapter-027/scene-001.yaml",
+                      "bytes":  5958,
+                      "sha256":  "ec11671e68e8280822c01453dea453b7b308bfc0757bc773f7965c79ddda8cae"
+                  },
+                  {
+                      "path":  "novel-rag/history/volume-02/chapter-027/scene-002.yaml",
+                      "bytes":  5870,
+                      "sha256":  "913bdb18a41e13ee87432917cc9fe4a1177ed5a28efb7e02733a0dee76f1c2c9"
+                  },
+                  {
+                      "path":  "novel-rag/history/volume-02/chapter-027/scene-003.yaml",
+                      "bytes":  5924,
+                      "sha256":  "a608ead78559980d75de334170c42f267c514b052eac9cd6f565d5d4cc55de90"
+                  },
+                  {
+                      "path":  "novel-rag/history/volume-02/chapter-027/scene-004.yaml",
+                      "bytes":  5932,
+                      "sha256":  "cdb59e6945c11d8bc0c886ce7954961325bcebf85c72ec281d601def2a4ddad4"
+                  },
+                  {
+                      "path":  "novel-rag/history/volume-02/chapter-027/scene-005.yaml",
+                      "bytes":  5232,
+                      "sha256":  "1e8fa33502fe0cdce957926b3e6f2061043367d04a3b2e470fc399d3926f150d"
+                  },
+                  {
+                      "path":  "novel-rag/history/volume-02/chapter-028/scene-001.yaml",
+                      "bytes":  5714,
+                      "sha256":  "d72cf30d676237958c546210309eb0205f17bb8028f0ba58099a8b400a56bbdc"
+                  },
+                  {
+                      "path":  "novel-rag/history/volume-02/chapter-028/scene-002.yaml",
+                      "bytes":  5846,
+                      "sha256":  "934d87969d3bd28be014eeb869bd6b75b64fa36206bb2a7a90e8e2fd00ecbe4b"
+                  },
+                  {
+                      "path":  "novel-rag/history/volume-02/chapter-028/scene-003.yaml",
+                      "bytes":  5825,
+                      "sha256":  "b202b2726e59a8ce9a9e4567b10b34786fac9f08e834546914aee583863dc83d"
+                  },
+                  {
+                      "path":  "novel-rag/history/volume-02/chapter-028/scene-004.yaml",
+                      "bytes":  5849,
+                      "sha256":  "407a5af62cc3127779a9fa7897344e5322242844ec53281b62050adf91b3d59c"
+                  },
+                  {
+                      "path":  "novel-rag/history/volume-02/chapter-028/scene-005.yaml",
+                      "bytes":  5818,
+                      "sha256":  "f72e0e171bf6d76e700ed995be264781f8998ed12102ebd81ffe2fcb50707c27"
+                  },
+                  {
+                      "path":  "novel-rag/history/volume-02/chapter-028/scene-006.yaml",
+                      "bytes":  5985,
+                      "sha256":  "133bfe3ef9891b10818a3d52734a83adde8f3162ea0c9b9fb1bc5eaf07463bf4"
+                  },
+                  {
+                      "path":  "novel-rag/history/volume-02/chapter-029/scene-001.yaml",
+                      "bytes":  6104,
+                      "sha256":  "ece3013e625c1f3cc57dccb34ed27bea08a4315c482051786263a9a6c1ed172c"
+                  },
+                  {
+                      "path":  "novel-rag/history/volume-02/chapter-029/scene-002.yaml",
+                      "bytes":  5996,
+                      "sha256":  "8b84a9d9d102cb32fcfcce7f81182e3d0006edf928e8dc999ddd0fdb611694e4"
+                  },
+                  {
+                      "path":  "novel-rag/history/volume-02/chapter-029/scene-003.yaml",
+                      "bytes":  5642,
+                      "sha256":  "0bc4e64e6e8d73299a9b48765e72775e0eea82c96cbe0fcd0c0d6bcfed63b507"
+                  },
+                  {
+                      "path":  "novel-rag/history/volume-02/chapter-029/scene-004.yaml",
+                      "bytes":  5843,
+                      "sha256":  "894860f0ebbd1dbbbf079ed4092d4727edb86b34642d63474ce7faea288ca575"
+                  },
+                  {
+                      "path":  "novel-rag/history/volume-02/chapter-029/scene-005.yaml",
+                      "bytes":  6036,
+                      "sha256":  "95db67ed7cb6be55f924a178906132e0342e49663e9459c9d2ed4fd7ade289ca"
+                  },
+                  {
+                      "path":  "novel-rag/history/volume-02/chapter-029/scene-006.yaml",
+                      "bytes":  3511,
+                      "sha256":  "a24dc1c5e748e256e8ba787757a9b315fc1683b6452cba51cf188612dbbbf435"
+                  },
+                  {
+                      "path":  "novel-rag/history/volume-02/chapter-030/scene-001.yaml",
+                      "bytes":  6045,
+                      "sha256":  "28dc4ca18c039910644947f90c95bd29649f7f0f1dce6eefca47542498480b49"
+                  },
+                  {
+                      "path":  "novel-rag/history/volume-02/chapter-030/scene-002.yaml",
+                      "bytes":  6029,
+                      "sha256":  "202f0b5b500e3f3c06c3783f05ee543a8f0af3f8653966435fac47423ae45a4e"
+                  },
+                  {
+                      "path":  "novel-rag/history/volume-02/chapter-030/scene-003.yaml",
+                      "bytes":  5787,
+                      "sha256":  "171e2db4d2b7028a50bfadd085c561ccc1e0d4f716e823118e9fc8c1a0773741"
+                  },
+                  {
+                      "path":  "novel-rag/history/volume-02/chapter-030/scene-004.yaml",
+                      "bytes":  6049,
+                      "sha256":  "c7a3846f883db01fd4b882f9774164739db0cb451b3542b416f052dd72a3c090"
+                  },
+                  {
+                      "path":  "novel-rag/history/volume-02/chapter-030/scene-005.yaml",
+                      "bytes":  6002,
+                      "sha256":  "5dceeb5363c224f5cc28932d145caaf02494b6c7447dcff410b1e131b967565b"
+                  },
+                  {
+                      "path":  "novel-rag/history/volume-02/chapter-030/scene-006.yaml",
+                      "bytes":  3666,
+                      "sha256":  "62b04f281b4de692f88a6423a5ab88b7967382c6b59025d5f8c815e98f1f9d1b"
+                  },
+                  {
+                      "path":  "novel-rag/history/volume-02/chapter-031/scene-001.yaml",
+                      "bytes":  6176,
+                      "sha256":  "1cb25bc439754f27d5cf97428b8b86f4e4e96dbc505cdf6db90801c987582f9c"
+                  },
+                  {
+                      "path":  "novel-rag/history/volume-02/chapter-031/scene-002.yaml",
+                      "bytes":  6191,
+                      "sha256":  "1988f51a03437ee4ab1b6a247dd04f3e27c65ff780f0a6d05e612fc9d50555fa"
+                  },
+                  {
+                      "path":  "novel-rag/history/volume-02/chapter-031/scene-003.yaml",
+                      "bytes":  6049,
+                      "sha256":  "5a1ca135c5a279710d265b27f6c115f8db451a6c8eecd686d95a361dddf24d37"
+                  },
+                  {
+                      "path":  "novel-rag/history/volume-02/chapter-031/scene-004.yaml",
+                      "bytes":  4580,
+                      "sha256":  "1de0e857aed8f4478a0d0bd6299efbaf4c9db3172cee1fe199ea4d12291eb196"
+                  },
+                  {
+                      "path":  "novel-rag/history/volume-02/chapter-032/scene-001.yaml",
+                      "bytes":  5982,
+                      "sha256":  "fad9f6640d45f0d920e8c0ad13f7e6ea83b39d7452b3c186a9caf0096641ff18"
+                  },
+                  {
+                      "path":  "novel-rag/history/volume-02/chapter-032/scene-002.yaml",
+                      "bytes":  6099,
+                      "sha256":  "7e1fc1eb2ae73af908fa45aed2a313403f340b33c0a5d60de41e3faf1f814bdb"
+                  },
+                  {
+                      "path":  "novel-rag/history/volume-02/chapter-032/scene-003.yaml",
+                      "bytes":  5950,
+                      "sha256":  "03a09d134239fa97b228b030f91d4f0c704993492a4b97e1d64af6230c00f77b"
+                  },
+                  {
+                      "path":  "novel-rag/history/volume-02/chapter-032/scene-004.yaml",
+                      "bytes":  810,
+                      "sha256":  "3e34f5964a3c137d557a31e398b8d7aecbbb17677030c9f071808e863adbffd5"
+                  },
+                  {
+                      "path":  "novel-rag/history/volume-02/chapter-033/scene-001.yaml",
+                      "bytes":  5684,
+                      "sha256":  "d5f844ee480b20177be6cca808a2cc27b3762afe4928113ca53a1dfbb0a77070"
+                  },
+                  {
+                      "path":  "novel-rag/history/volume-02/chapter-033/scene-002.yaml",
+                      "bytes":  5880,
+                      "sha256":  "f75d69740952483325788855f60fd0327ecbafec4ae51ba9b4db1a8f5cb1483e"
+                  },
+                  {
+                      "path":  "novel-rag/history/volume-02/chapter-033/scene-003.yaml",
+                      "bytes":  5791,
+                      "sha256":  "926f878d30f03e401074c934c10dceffb877d047259e8fd44dd6d4f667247000"
+                  },
+                  {
+                      "path":  "novel-rag/history/volume-02/chapter-033/scene-004.yaml",
+                      "bytes":  1409,
+                      "sha256":  "29c9caba06cb1979f6a1c8891645d06711ccc11d4323e3def275f30c5618a57a"
+                  },
+                  {
+                      "path":  "novel-rag/history/volume-02/chapter-034/scene-001.yaml",
+                      "bytes":  6056,
+                      "sha256":  "30180a0cf7eb922830a30466807366ea7ab9f8b710b0a42b3453098976c2df8b"
+                  },
+                  {
+                      "path":  "novel-rag/history/volume-02/chapter-034/scene-002.yaml",
+                      "bytes":  6118,
+                      "sha256":  "bb40724e96fa50708e7468d6ab4f4449a6b91fd6ecba8022c9d151a780d80d2d"
+                  },
+                  {
+                      "path":  "novel-rag/history/volume-02/chapter-034/scene-003.yaml",
+                      "bytes":  2996,
+                      "sha256":  "029bb9b058596e474ce79029aff3da531e434448fdae8d72f7e3a4e6b6cf939a"
+                  },
+                  {
+                      "path":  "novel-rag/history/volume-02/chapter-035/scene-001.yaml",
+                      "bytes":  6123,
+                      "sha256":  "15836c82f256198fad0876db43ed81abaeb7dbfde99894886357a52220818efc"
+                  },
+                  {
+                      "path":  "novel-rag/history/volume-02/chapter-035/scene-002.yaml",
+                      "bytes":  5959,
+                      "sha256":  "341203c8312bdd749602c66c3db4eb5f3a63068cb5ca721c8dd52e43cf01b036"
+                  },
+                  {
+                      "path":  "novel-rag/history/volume-02/chapter-035/scene-003.yaml",
+                      "bytes":  4744,
+                      "sha256":  "bcba559032406491e74fbba5369cad049375078e3d32c846644f20f097ef204b"
+                  },
+                  {
+                      "path":  "novel-rag/history/volume-02/chapter-036/scene-001.yaml",
+                      "bytes":  6131,
+                      "sha256":  "dfe93f1f0ee89c42af6ad0d3f0b79e4456b24fc5fdbaa068bc2306ddbd93cd72"
+                  },
+                  {
+                      "path":  "novel-rag/history/volume-02/chapter-036/scene-002.yaml",
+                      "bytes":  6180,
+                      "sha256":  "c4bb38301869b76b1c3bf41e73953d99220a181c4994357fc117615978e4bae6"
+                  },
+                  {
+                      "path":  "novel-rag/history/volume-02/chapter-036/scene-003.yaml",
+                      "bytes":  6153,
+                      "sha256":  "2bacc22dd73b01b7535c6dc4ddcab9153b6bae59bd1fb9493f55362f22d36c5a"
+                  },
+                  {
+                      "path":  "novel-rag/history/volume-02/chapter-036/scene-004.yaml",
+                      "bytes":  4400,
+                      "sha256":  "149b5a09aa4153eea93e7e5f9b5d57bc1ae842d473ca4b30dd9ba410f9f39163"
+                  },
+                  {
+                      "path":  "novel-rag/history/volume-02/chapter-037/scene-001.yaml",
+                      "bytes":  6002,
+                      "sha256":  "ca39321ea5fb3a743f505bbf08b18766bdd3ea9542059577328f4009fdd4bdf7"
+                  },
+                  {
+                      "path":  "novel-rag/history/volume-02/chapter-037/scene-002.yaml",
+                      "bytes":  6093,
+                      "sha256":  "e66612f7870912e103b13efae95d4d3fcced52635f23bb79a27ede9215371229"
+                  },
+                  {
+                      "path":  "novel-rag/history/volume-02/chapter-037/scene-003.yaml",
+                      "bytes":  6225,
+                      "sha256":  "130d1a26ccdb2a68eed385a6ad1d5e4fe2176fe5ac2c3203691994c53f9c93ec"
+                  },
+                  {
+                      "path":  "novel-rag/history/volume-02/chapter-037/scene-004.yaml",
+                      "bytes":  1604,
+                      "sha256":  "084fe4898a9f14e83c669f2c183a2b3da90a1af572284e62e141fa2095e83b7a"
+                  },
+                  {
+                      "path":  "novel-rag/history/volume-02/chapter-038/scene-001.yaml",
+                      "bytes":  6235,
+                      "sha256":  "0e572ba6176bb7d39a7ebefcd70ab5fe5eaff9091c473abac9bf35d92cd23474"
+                  },
+                  {
+                      "path":  "novel-rag/history/volume-02/chapter-038/scene-002.yaml",
+                      "bytes":  6310,
+                      "sha256":  "0b807c43cfce1c006598546cd117d3f417fb954880af8987c9d30f73065df66a"
+                  },
+                  {
+                      "path":  "novel-rag/history/volume-02/chapter-038/scene-003.yaml",
+                      "bytes":  6315,
+                      "sha256":  "b2340ae8e9c9dec9457e1b1c2c80519e38b073d15e8960072649a6e0a998f830"
+                  },
+                  {
+                      "path":  "novel-rag/history/volume-02/chapter-038/scene-004.yaml",
+                      "bytes":  6167,
+                      "sha256":  "4f774d9e62fb33129f2421b1ab148740768c40a9d4bfdca7f2e1e2d4d96cf920"
+                  },
+                  {
+                      "path":  "novel-rag/history/volume-02/chapter-038/scene-005.yaml",
+                      "bytes":  6250,
+                      "sha256":  "dd830f554ca60a63121a82e5df79e389932ebca51c01b4c7e833ac72016f8da2"
+                  },
+                  {
+                      "path":  "novel-rag/history/volume-02/chapter-038/scene-006.yaml",
+                      "bytes":  4774,
+                      "sha256":  "6b69fdc690ab4de1b6f2a286d66d772ae580c99f861f465c9142e346f3582a9a"
+                  },
+                  {
+                      "path":  "novel-rag/history/volume-02/chapter-039/scene-001.yaml",
+                      "bytes":  6183,
+                      "sha256":  "59c8d962a14654d1deefb1eab6be8794432e7f388f9657c2b2557b7d9d917fc0"
+                  },
+                  {
+                      "path":  "novel-rag/history/volume-02/chapter-039/scene-002.yaml",
+                      "bytes":  6130,
+                      "sha256":  "ce0c10726148dc982c95d54f01331b3609a04c6958986044b38be16161e43d87"
+                  },
+                  {
+                      "path":  "novel-rag/history/volume-02/chapter-039/scene-003.yaml",
+                      "bytes":  3979,
+                      "sha256":  "91280053b2c4cc11ca578e6ee6b8fd77b7d2f7c5951e60164af7496205e1134d"
+                  },
+                  {
+                      "path":  "novel-rag/history/volume-02/chapter-040/scene-001.yaml",
+                      "bytes":  6168,
+                      "sha256":  "f10a9aaac005e94b0b33c07641e3b498aee5afa95a7afda83a41e54a9c01b638"
+                  },
+                  {
+                      "path":  "novel-rag/history/volume-02/chapter-040/scene-002.yaml",
+                      "bytes":  6079,
+                      "sha256":  "6d14aa20a002e0b6cd80fbe0258f8069ae273d187d7bff7baeaea0eeba8dcaa4"
+                  },
+                  {
+                      "path":  "novel-rag/history/volume-02/chapter-040/scene-003.yaml",
+                      "bytes":  6192,
+                      "sha256":  "2aad44ec3348ab1dee4d1fe60957c1110b0aa0e93b74981e501384150e32ab4a"
+                  },
+                  {
+                      "path":  "novel-rag/history/volume-02/chapter-040/scene-004.yaml",
+                      "bytes":  6268,
+                      "sha256":  "2df32b63d35d06e6c3975eddb6f2654c1c8d0ea9ea4032da0d697074beb7ccb3"
+                  },
+                  {
+                      "path":  "novel-rag/history/volume-02/chapter-040/scene-005.yaml",
+                      "bytes":  4108,
+                      "sha256":  "129c4624da9d853ccf7088ebed7ce2e9852a0f8996e4c00939e3e1e7448fb3f3"
+                  },
+                  {
+                      "path":  "novel-rag/history/volume-02/chapter-041/scene-001.yaml",
+                      "bytes":  6195,
+                      "sha256":  "570bcd820731b97d074fa5cea7a2e9543056414c7d9bb0fcc93542e4987e1b02"
+                  },
+                  {
+                      "path":  "novel-rag/history/volume-02/chapter-041/scene-002.yaml",
+                      "bytes":  6139,
+                      "sha256":  "a0179ddd7a79957e06a781b4e3e50825797b64e704bb5a86c65ced06db50bfb9"
+                  },
+                  {
+                      "path":  "novel-rag/history/volume-02/chapter-041/scene-003.yaml",
+                      "bytes":  5787,
+                      "sha256":  "15403b99ed9c1cc98b89c142878b8635990bb050eb833ef2c444d47361cee7ff"
+                  },
+                  {
+                      "path":  "novel-rag/history/volume-02/chapter-042/scene-001.yaml",
+                      "bytes":  6262,
+                      "sha256":  "1820dc1a6a849bec9a422c884f8f3de4d43de0e831e082c53e06973b518a5f28"
+                  },
+                  {
+                      "path":  "novel-rag/history/volume-02/chapter-042/scene-002.yaml",
+                      "bytes":  6323,
+                      "sha256":  "a06e1550fda6445c8799d66a0bc387927dfd73d0f2aecc255111fb69ad149288"
+                  },
+                  {
+                      "path":  "novel-rag/history/volume-02/chapter-042/scene-003.yaml",
+                      "bytes":  6186,
+                      "sha256":  "af5bc73102aad47a50d5bf555a598d4c7e91634410ae2e3b2e04a0dc80a6cdd0"
+                  },
+                  {
+                      "path":  "novel-rag/history/volume-02/chapter-042/scene-004.yaml",
+                      "bytes":  1801,
+                      "sha256":  "7ca475c4a7b845f3f35f896225d6931ecf83af006b01069952717641a87d3788"
+                  },
+                  {
+                      "path":  "novel-rag/history/volume-02/chapter-043/scene-001.yaml",
+                      "bytes":  6288,
+                      "sha256":  "f76ff531be762247da11617cf3e3a0615d2dadf56f0754cfe44069caece10b23"
+                  },
+                  {
+                      "path":  "novel-rag/history/volume-02/chapter-043/scene-002.yaml",
+                      "bytes":  6205,
+                      "sha256":  "4432486481028baa162f4a1e69c2ad46dddbccb16fc2c5a23c484834759dfe67"
+                  },
+                  {
+                      "path":  "novel-rag/history/volume-02/chapter-043/scene-003.yaml",
+                      "bytes":  3064,
+                      "sha256":  "43a4b6eb10e692c3a92b732cd7823b6ab842b9e82b535d5ed0146723a83e2a0b"
+                  },
+                  {
+                      "path":  "novel-rag/history/volume-02/chapter-044/scene-001.yaml",
+                      "bytes":  6012,
+                      "sha256":  "7a8f87cf1b206f14c7019893c23fc6faa313b66280026fc5fd6442e6dab64033"
+                  },
+                  {
+                      "path":  "novel-rag/history/volume-02/chapter-044/scene-002.yaml",
+                      "bytes":  5998,
+                      "sha256":  "2880a44ebe9919a17a18335fb233b303d217ee1ef413aba875ed2908ef21c14a"
+                  },
+                  {
+                      "path":  "novel-rag/history/volume-02/chapter-044/scene-003.yaml",
+                      "bytes":  879,
+                      "sha256":  "a0beb033cc837e8de0ecd16d5250f0c5c35591d45db51e72b3484a328becef61"
+                  },
+                  {
+                      "path":  "novel-rag/history/volume-02/chapter-045/scene-001.yaml",
+                      "bytes":  6248,
+                      "sha256":  "416eaf1252d39c9cf464468c8afe6f31355480b2c0c8126e6b49c55c37d97fe6"
+                  },
+                  {
+                      "path":  "novel-rag/history/volume-02/chapter-045/scene-002.yaml",
+                      "bytes":  6142,
+                      "sha256":  "bbe9ba581d047e1760f916d9fe559a30bf946929231d0247df429b1353589c66"
+                  },
+                  {
+                      "path":  "novel-rag/history/volume-02/chapter-045/scene-003.yaml",
+                      "bytes":  1792,
+                      "sha256":  "ee3aa11620e787f0ab9bc469b8b3d2eef6d113229b09e8615d144535a9646813"
+                  },
+                  {
+                      "path":  "novel-rag/history/volume-02/chapter-046/scene-001.yaml",
+                      "bytes":  6259,
+                      "sha256":  "1750d51c7c9cb55c9019e0377a53e7007af39368f2768e98d521b3e1e5a5f93c"
+                  },
+                  {
+                      "path":  "novel-rag/history/volume-02/chapter-046/scene-002.yaml",
+                      "bytes":  4843,
+                      "sha256":  "08b82a5f901bc9e326906a5ce45f14ef8b0fe1e9f47e9aa0b3bb1ee67a03149b"
+                  },
+                  {
+                      "path":  "novel-rag/history/volume-02/chapter-047/scene-001.yaml",
+                      "bytes":  6142,
+                      "sha256":  "7052710d9be4665a5a9d89e34c9b11d25ecb4cb3c19521076a6cc3bc4f1a0e8d"
+                  },
+                  {
+                      "path":  "novel-rag/history/volume-02/chapter-047/scene-002.yaml",
+                      "bytes":  4774,
+                      "sha256":  "6182a9aed162c140febb4c8c1b83420c46c7e5b291c4e8a44a4b86883d53b493"
+                  },
+                  {
+                      "path":  "novel-rag/history/volume-02/chapter-048/scene-001.yaml",
+                      "bytes":  6171,
+                      "sha256":  "e7b4997d5fecea37e788757e6c5f712dc176ff870ac2d115c32ff15211815278"
+                  },
+                  {
+                      "path":  "novel-rag/history/volume-02/chapter-048/scene-002.yaml",
+                      "bytes":  6057,
+                      "sha256":  "2681b408e14daff5b257168ffd45c979a542204ea5e1b32307b74b755629d9d2"
+                  },
+                  {
+                      "path":  "novel-rag/history/volume-02/chapter-048/scene-003.yaml",
+                      "bytes":  4444,
+                      "sha256":  "cdb2100e9fc881845b97f272b882c88706b893c754426759ac1f72d80bbf1f54"
+                  },
+                  {
+                      "path":  "novel-rag/history/volume-02/chapter-049/scene-001.yaml",
+                      "bytes":  6116,
+                      "sha256":  "705094c8f493275c8e34e5dba4b6eec532cb37c0403d1d2fc773be35543bc52c"
+                  },
+                  {
+                      "path":  "novel-rag/history/volume-02/chapter-049/scene-002.yaml",
+                      "bytes":  6110,
+                      "sha256":  "09269c6615fbf99c95e080cf07e5e3a78c02559c7908d57113ef4269de3313f5"
+                  },
+                  {
+                      "path":  "novel-rag/history/volume-02/chapter-049/scene-003.yaml",
+                      "bytes":  3465,
+                      "sha256":  "5bb1e4d84a5f5e7b9c175fc3b0b1cd83e8a159e3f52593bfc6f1a0ecdf667dc4"
+                  },
+                  {
+                      "path":  "novel-rag/history/volume-02/chapter-050/scene-001.yaml",
+                      "bytes":  6100,
+                      "sha256":  "ce4ea9c73beef6466950e147540f2efba78f8e98dfc9e54fb43fc1bc443e865c"
+                  },
+                  {
+                      "path":  "novel-rag/history/volume-02/chapter-050/scene-002.yaml",
+                      "bytes":  5964,
+                      "sha256":  "88448b6cc2ba2ec689e9f1da50ca452037682f278a95a470536b9125d88890ba"
+                  },
+                  {
+                      "path":  "novel-rag/history/volume-02/chapter-050/scene-003.yaml",
+                      "bytes":  5968,
+                      "sha256":  "e162f3b386b8f7fc7f9669391c47e954589a6de17b4e7187d0337e72e621e61a"
+                  },
+                  {
+                      "path":  "novel-rag/history/volume-02/chapter-050/scene-004.yaml",
+                      "bytes":  4095,
+                      "sha256":  "f9f905f72f8f90c11ea1b45fdecd1d84b2e38c6557bbc434fc8137518c76af58"
+                  },
+                  {
+                      "path":  "novel-rag/history/volume-02/chapter-051/scene-001.yaml",
+                      "bytes":  5966,
+                      "sha256":  "0c861975ed787f3fe2dd1a1c9b9fc53599887170bae9599f96b4f9837035b9fa"
+                  },
+                  {
+                      "path":  "novel-rag/history/volume-02/chapter-051/scene-002.yaml",
+                      "bytes":  6149,
+                      "sha256":  "77e6c53e91e43a7fd2277f0d7541eeca62434d2b4a156685208866719160a6a5"
+                  },
+                  {
+                      "path":  "novel-rag/history/volume-02/chapter-051/scene-003.yaml",
+                      "bytes":  6158,
+                      "sha256":  "688de54eabc656671ba4872d8e1442306964ddcc93da46ad9fd3004cb569ebad"
+                  },
+                  {
+                      "path":  "novel-rag/history/volume-02/chapter-051/scene-004.yaml",
+                      "bytes":  1925,
+                      "sha256":  "8350ed939701b919c9aacb2317fbaeb417a24a11389f514d193ad0cc70ba0302"
+                  },
+                  {
+                      "path":  "novel-rag/history/volume-02/chapter-052/scene-001.yaml",
+                      "bytes":  5899,
+                      "sha256":  "bf5f1792e7c5747ddccca7668b977b7a9b72d9f91bf92f56b04cb76159bde7f3"
+                  },
+                  {
+                      "path":  "novel-rag/history/volume-02/chapter-052/scene-002.yaml",
+                      "bytes":  6085,
+                      "sha256":  "279191c0ab142ca020c5920ad61172c4814122d6e9ecbb7d5ab04af93f924848"
+                  },
+                  {
+                      "path":  "novel-rag/history/volume-02/chapter-052/scene-003.yaml",
+                      "bytes":  6110,
+                      "sha256":  "3e16061cce0752eba4a53591d48da972e353fc59db4c2d3abfad3da158a3fca8"
+                  },
+                  {
+                      "path":  "novel-rag/history/volume-02/chapter-052/scene-004.yaml",
+                      "bytes":  6013,
+                      "sha256":  "c1acad4ccb58d0960b76597689154cbc0e66e454beec1fcb4c6419f91fa05ec1"
+                  },
+                  {
+                      "path":  "novel-rag/history/volume-02/chapter-052/scene-005.yaml",
+                      "bytes":  1568,
+                      "sha256":  "94377bfeec37209cf4e5c232ea119b5737f3467bcc95559c29be1b93a2849cd6"
+                  },
+                  {
+                      "path":  "novel-rag/history/volume-02/chapter-053/scene-001.yaml",
+                      "bytes":  5909,
+                      "sha256":  "8cc11a83b3acb179d76af19c40f0cb74e7dc94b145479ea695fd86a216771e06"
+                  },
+                  {
+                      "path":  "novel-rag/history/volume-02/chapter-053/scene-002.yaml",
+                      "bytes":  5964,
+                      "sha256":  "fa420208cefb0a632c659e5b22aa220b91907732d3ce5ac73ad9ca6dbb1d03ec"
+                  },
+                  {
+                      "path":  "novel-rag/history/volume-02/chapter-053/scene-003.yaml",
+                      "bytes":  3694,
+                      "sha256":  "4c7d1aaf0e2d2fc884b6809787d58ead2e1588ca3e44e27ba79ce7d07d8b4c68"
+                  },
+                  {
+                      "path":  "novel-rag/history/volume-02/chapter-054/scene-001.yaml",
+                      "bytes":  6082,
+                      "sha256":  "9b4397a2c62c797376606321d42044f20372c217f4a47265e95551a97b4d7bca"
+                  },
+                  {
+                      "path":  "novel-rag/history/volume-02/chapter-054/scene-002.yaml",
+                      "bytes":  6178,
+                      "sha256":  "f6ba5cd486067f1c4c327a818126e6dbf410bbc23f275f2040b1c0148aa7438d"
+                  },
+                  {
+                      "path":  "novel-rag/history/volume-02/chapter-054/scene-003.yaml",
+                      "bytes":  3338,
+                      "sha256":  "1fc12eb4c4eaec5a216f64269e4669641dfba4f280a653e77118568b10d17194"
+                  },
+                  {
+                      "path":  "novel-rag/history/volume-02/chapter-055/scene-001.yaml",
+                      "bytes":  5640,
+                      "sha256":  "fd5b9119dfb8401b08867eb2d7eed2722fd9af77eee6707326cf0c1ce115929a"
+                  },
+                  {
+                      "path":  "novel-rag/history/volume-02/chapter-055/scene-002.yaml",
+                      "bytes":  5930,
+                      "sha256":  "8eaa203426e4a6f80a2037612d4167706e3727feb9d0a6131e161e566bee63fa"
+                  },
+                  {
+                      "path":  "novel-rag/history/volume-02/chapter-055/scene-003.yaml",
+                      "bytes":  5965,
+                      "sha256":  "087030c8bb146bce9cee9221ebc7547c6ba6afa41785d6ef2ebf44887025a967"
+                  },
+                  {
+                      "path":  "novel-rag/history/volume-02/chapter-055/scene-004.yaml",
+                      "bytes":  1315,
+                      "sha256":  "ae0e2efc69f66cfc2f5ef4e26d0189873bb6716891192b05fd6de38d2b4baa80"
+                  },
+                  {
+                      "path":  "novel-rag/history/volume-02/chapter-056/scene-001.yaml",
+                      "bytes":  6142,
+                      "sha256":  "9653c5876621230431d73affe976fb4a0898ea5a0fcf26a738a1d8e66f15c5fd"
+                  },
+                  {
+                      "path":  "novel-rag/history/volume-02/chapter-056/scene-002.yaml",
+                      "bytes":  6172,
+                      "sha256":  "d8ba11a9a7c658a34a2f1da4c1c4cf7eaf72d644861e1748fe714c1b224c89a5"
+                  },
+                  {
+                      "path":  "novel-rag/history/volume-02/chapter-056/scene-003.yaml",
+                      "bytes":  2903,
+                      "sha256":  "81e2f44f0e5000abadcaf7ee7d7ed52b3623a1f960bbf82ca128f33c984a1c36"
+                  },
+                  {
+                      "path":  "novel-rag/history/volume-02/chapter-057/scene-001.yaml",
+                      "bytes":  6000,
+                      "sha256":  "cafb20c18b31f8ec48e319855694de214bf457883da7771e3d66799481f588fc"
+                  },
+                  {
+                      "path":  "novel-rag/history/volume-02/chapter-057/scene-002.yaml",
+                      "bytes":  5901,
+                      "sha256":  "7501e1af22d1178442036ebecc0f41fc17903b3c2184d56b001fbc1cdbf46851"
+                  },
+                  {
+                      "path":  "novel-rag/history/volume-02/chapter-057/scene-003.yaml",
+                      "bytes":  3098,
+                      "sha256":  "25b1d7f446d350e44b21c0b9da899d43435a34aeb26c2bf938f7a0107bbc47d8"
+                  },
+                  {
+                      "path":  "novel-rag/history/volume-02/chapter-058/scene-001.yaml",
+                      "bytes":  5824,
+                      "sha256":  "090d63d5dadba6a698a8f629840c80153bf6aa7ee9ad676e5bf534b0496bbdcb"
+                  },
+                  {
+                      "path":  "novel-rag/history/volume-02/chapter-058/scene-002.yaml",
+                      "bytes":  5981,
+                      "sha256":  "59c3e4e348988bf720ea64c3c772007f8c25479ddafb3b572bfbef93977b2de7"
+                  },
+                  {
+                      "path":  "novel-rag/history/volume-02/chapter-058/scene-003.yaml",
+                      "bytes":  6013,
+                      "sha256":  "e497cfe489e6b55b9a3e1a0d7606813aa77c5be058c591e180c6431f26c37c6d"
+                  },
+                  {
+                      "path":  "novel-rag/history/volume-02/chapter-058/scene-004.yaml",
+                      "bytes":  2238,
+                      "sha256":  "c9ce415d35151f4c12639cc6c28f91ccbfe25b12c9bd2a01194ec32af4872202"
+                  },
+                  {
+                      "path":  "novel-rag/history/volume-02/chapter-059/scene-001.yaml",
+                      "bytes":  6185,
+                      "sha256":  "127cc62d58698787ed0e012c06d5e55fa32cdc7b7d1e9f3b526540872653c1a9"
+                  },
+                  {
+                      "path":  "novel-rag/history/volume-02/chapter-059/scene-002.yaml",
+                      "bytes":  6209,
+                      "sha256":  "3732c75a4a58bc125ea83132bbe9ac18b00414c11369e6949b902fe4df4c3d83"
+                  },
+                  {
+                      "path":  "novel-rag/history/volume-02/chapter-059/scene-003.yaml",
+                      "bytes":  2266,
+                      "sha256":  "e5f811b337e8e11b1473411ad5205b8dc5469c8901d11b5bd0bf4fa9258f7f82"
+                  },
+                  {
+                      "path":  "novel-rag/history/volume-02/chapter-060/scene-001.yaml",
+                      "bytes":  6025,
+                      "sha256":  "386bbec2971aec66c769ddb4cac1bab796c56451edc880e996ae227a83af4b80"
+                  },
+                  {
+                      "path":  "novel-rag/history/volume-02/chapter-060/scene-002.yaml",
+                      "bytes":  5809,
+                      "sha256":  "d56766f9424207132751b3e02939cfee95b15416a1347f9e85b91511ad59bb8e"
+                  },
+                  {
+                      "path":  "novel-rag/history/volume-02/chapter-060/scene-003.yaml",
+                      "bytes":  6049,
+                      "sha256":  "a631a2564afcd052889c2a662ebb716644e1915f141e11db75ec498434a99954"
+                  },
+                  {
+                      "path":  "novel-rag/history/volume-02/chapter-060/scene-004.yaml",
+                      "bytes":  4463,
+                      "sha256":  "37975c382d9a6448727c5251ef202e6172c4c50d8d83bc9f10ce6d8fa1a0ab05"
+                  },
+                  {
+                      "path":  "novel-rag/history/volume-02/chapter-061/scene-001.yaml",
+                      "bytes":  6168,
+                      "sha256":  "40f42d7be3d3a13637a77e246190068bc3bbb9f9e5ac05c35fc2fb2db326e859"
+                  },
+                  {
+                      "path":  "novel-rag/history/volume-02/chapter-061/scene-002.yaml",
+                      "bytes":  5972,
+                      "sha256":  "83a23f97c8d4067c30e06acea18984744bc5928f1cf4cf082af608705dd85d58"
+                  },
+                  {
+                      "path":  "novel-rag/history/volume-02/chapter-061/scene-003.yaml",
+                      "bytes":  6109,
+                      "sha256":  "eb39a3aa889abc8dad383369ecb921cac583f8da7ddc6270db0c2db7c4755bae"
+                  },
+                  {
+                      "path":  "novel-rag/history/volume-02/chapter-061/scene-004.yaml",
+                      "bytes":  1522,
+                      "sha256":  "c398d8ce412438a82b19af8abdda7feefd84dd0f31dd7e2b4ad08e9962143bd8"
+                  },
+                  {
+                      "path":  "novel-rag/history/volume-02/chapter-062/scene-001.yaml",
+                      "bytes":  5632,
+                      "sha256":  "4beb2916991735a18bf0ced0520450552b8ea0a0df716a02e2cc1bc225012e0b"
+                  },
+                  {
+                      "path":  "novel-rag/history/volume-02/chapter-062/scene-002.yaml",
+                      "bytes":  4188,
+                      "sha256":  "4fb28135ea96f13208ae398575f33da633879d699daf97a56f4599f1e875dbb7"
+                  },
+                  {
+                      "path":  "novel-rag/history/volume-02/chapter-063/scene-001.yaml",
+                      "bytes":  6112,
+                      "sha256":  "90ab29e3812b29769634b710bfb9f42b9e95ad7c89ce28f680f88c6cde4fa336"
+                  },
+                  {
+                      "path":  "novel-rag/history/volume-02/chapter-063/scene-002.yaml",
+                      "bytes":  6098,
+                      "sha256":  "224fd8c93d28fc125cd6ac67d98075a53030ae9b44bff04c016b1d5bba8caa7c"
+                  },
+                  {
+                      "path":  "novel-rag/history/volume-02/chapter-063/scene-003.yaml",
+                      "bytes":  4316,
+                      "sha256":  "fd7b3c54c803b01964eadb372da16fe15a55c77824a233b2d9dc8dcd60305c32"
+                  },
+                  {
+                      "path":  "novel-rag/history/volume-02/chapter-064/scene-001.yaml",
+                      "bytes":  5987,
+                      "sha256":  "e99f625a841c36004256cb0d175ef027bcebab82ede25969e78394ebece83baa"
+                  },
+                  {
+                      "path":  "novel-rag/history/volume-02/chapter-064/scene-002.yaml",
+                      "bytes":  6035,
+                      "sha256":  "e687b74fe0c5d9cac08b6bf59447d10c4f0a2e35038b3106ce700cbbc50be705"
+                  },
+                  {
+                      "path":  "novel-rag/history/volume-02/chapter-064/scene-003.yaml",
+                      "bytes":  5990,
+                      "sha256":  "a20ac46ad54e245c1a39b6dc35a6b26192c4db811e7a703a57f9eaba7021eeb3"
+                  },
+                  {
+                      "path":  "novel-rag/history/volume-02/chapter-064/scene-004.yaml",
+                      "bytes":  1288,
+                      "sha256":  "cb334f90e79a56cdb32adf2103983970f892e030486f09060cf775c5cc01d898"
+                  },
+                  {
+                      "path":  "novel-rag/history/volume-02/chapter-065/scene-001.yaml",
+                      "bytes":  6120,
+                      "sha256":  "dfa6d7cc9a2840b96e41ff4a6aa48accd284fb276620598e10629898875e317e"
+                  },
+                  {
+                      "path":  "novel-rag/history/volume-02/chapter-065/scene-002.yaml",
+                      "bytes":  6131,
+                      "sha256":  "f730f74d82ea42b5d59526e77b5659c4a21aea37ff4577e62b5512a5d84cc013"
+                  },
+                  {
+                      "path":  "novel-rag/history/volume-02/chapter-065/scene-003.yaml",
+                      "bytes":  5297,
+                      "sha256":  "75588b752d5eba8a325268b635e9f19665b10bc6e84cd78e99a7b0cb0329482e"
+                  },
+                  {
+                      "path":  "novel-rag/history/volume-02/chapter-066/scene-001.yaml",
+                      "bytes":  6110,
+                      "sha256":  "dffde7ff56349795662a24e5b805dc295c4ff3b95356f1558d5857f645b73ca1"
+                  },
+                  {
+                      "path":  "novel-rag/history/volume-02/chapter-066/scene-002.yaml",
+                      "bytes":  6170,
+                      "sha256":  "12c15554325b352d1b1699cfbcf7bbd45433fefe9109d73c6a75f77a23db6b3d"
+                  },
+                  {
+                      "path":  "novel-rag/history/volume-02/chapter-066/scene-003.yaml",
+                      "bytes":  5980,
+                      "sha256":  "20f99497399bb866eb8abe224281762bbcb8e85ff128c32f5b3d2a3f31e07a55"
+                  },
+                  {
+                      "path":  "novel-rag/history/volume-02/chapter-066/scene-004.yaml",
+                      "bytes":  6113,
+                      "sha256":  "1b8616fcd11f3b4b5f9b623df54b1bd98f9e48c2494b6f76b822053b3764a686"
+                  },
+                  {
+                      "path":  "novel-rag/history/volume-02/chapter-067/scene-001.yaml",
+                      "bytes":  6110,
+                      "sha256":  "acbd2151ba182a0f8d7e21c07552e581e8f2f708a697ed0b9ca5f8efe47ccca9"
+                  },
+                  {
+                      "path":  "novel-rag/history/volume-02/chapter-067/scene-002.yaml",
+                      "bytes":  2365,
+                      "sha256":  "13ef511f8118f4ed0c8f01f4de82598521da32753afbd9e32b39d32d82793e58"
+                  },
+                  {
+                      "path":  "novel-rag/history/volume-02/chapter-068/scene-001.yaml",
+                      "bytes":  6208,
+                      "sha256":  "121a91705146e5b9c68747f078b11c88a88d91a78636c106a24bf8045e01fd90"
+                  },
+                  {
+                      "path":  "novel-rag/history/volume-02/chapter-068/scene-002.yaml",
+                      "bytes":  2473,
+                      "sha256":  "6560d470b639d3a6d38db7dccafd166f453ccfc6f7f77c70c24d65bd9578c4b0"
+                  },
+                  {
+                      "path":  "novel-rag/history/volume-02/chapter-069/scene-001.yaml",
+                      "bytes":  5757,
+                      "sha256":  "2b304c7ced365d8113524a804b0fd5f2c4a14d0eea2e246ef3588e26a6992770"
+                  },
+                  {
+                      "path":  "novel-rag/history/volume-02/chapter-069/scene-002.yaml",
+                      "bytes":  5831,
+                      "sha256":  "cf88fd0f355ce7b78131087b712a2b46b53d8adf37fe7e83bc8ebcc4cf59021d"
+                  },
+                  {
+                      "path":  "novel-rag/history/volume-02/chapter-069/scene-003.yaml",
+                      "bytes":  5864,
+                      "sha256":  "73d34dabc95b4893e9765d022e82cd51917a5f555ef6d1d416ada335c41dc0a7"
+                  },
+                  {
+                      "path":  "novel-rag/history/volume-02/chapter-069/scene-004.yaml",
+                      "bytes":  2137,
+                      "sha256":  "102e9c833a92ca9b9b5b4349daef6aef43d77ee974565831a998407fd17a2057"
+                  },
+                  {
+                      "path":  "novel-rag/history/volume-02/chapter-070/scene-001.yaml",
+                      "bytes":  6156,
+                      "sha256":  "71b311ee18504683fe28c3b1b6a02c86a2777093471cd98a1ffad28479062c94"
+                  },
+                  {
+                      "path":  "novel-rag/history/volume-02/chapter-070/scene-002.yaml",
+                      "bytes":  6142,
+                      "sha256":  "3b0c69042d616938f14c9bd75f9d1471ba762422582dec0243fb1ab78dc68f9d"
+                  },
+                  {
+                      "path":  "novel-rag/history/volume-02/chapter-070/scene-003.yaml",
+                      "bytes":  5763,
+                      "sha256":  "5d1f752772e961ffb8ef1a96b4bf990dca8eb4b8ffb73585a239964493142a18"
+                  },
+                  {
+                      "path":  "novel-rag/history/volume-03/chapter-001/scene-001.yaml",
+                      "bytes":  6020,
+                      "sha256":  "65f762aa6b2408306f0eb2dadb624ff0f3814af243fc218087d802fa796d4637"
+                  },
+                  {
+                      "path":  "novel-rag/history/volume-03/chapter-001/scene-002.yaml",
+                      "bytes":  6042,
+                      "sha256":  "1836f4d11f517cdbfd4f7d33689722bd9fab70e74fee1967f66d25576b6c1316"
+                  },
+                  {
+                      "path":  "novel-rag/history/volume-03/chapter-001/scene-003.yaml",
+                      "bytes":  5901,
+                      "sha256":  "f87c32d3fab123d0d86902a17c27598be7f59ce20c928a9c43fceb1fe1787f4a"
+                  },
+                  {
+                      "path":  "novel-rag/history/volume-03/chapter-001/scene-004.yaml",
+                      "bytes":  2253,
+                      "sha256":  "20069d5c8d68c3deab5ffd95afd60c9d240e882be676cbdb818e77e5db43ec16"
+                  },
+                  {
+                      "path":  "novel-rag/history/volume-03/chapter-002/scene-001.yaml",
+                      "bytes":  6156,
+                      "sha256":  "4825034b851d928dabdd866302d388848cd04bc542b57929e0312a57d004a9f4"
+                  },
+                  {
+                      "path":  "novel-rag/history/volume-03/chapter-002/scene-002.yaml",
+                      "bytes":  6005,
+                      "sha256":  "2f431ac5a0392b32635185741aaba670e6eea4a7a70550043cff49cea9a0e0d8"
+                  },
+                  {
+                      "path":  "novel-rag/history/volume-03/chapter-002/scene-003.yaml",
+                      "bytes":  6099,
+                      "sha256":  "b68df1cbb30065ccb48ae4d185c651593d1ecfa8bed93ef36bad9126cf174634"
+                  },
+                  {
+                      "path":  "novel-rag/history/volume-03/chapter-002/scene-004.yaml",
+                      "bytes":  3656,
+                      "sha256":  "716561a0b2fa4b3f16274ef6b719af871343b045f255899b1401ecf87586525c"
+                  },
+                  {
+                      "path":  "novel-rag/history/volume-03/chapter-003/scene-001.yaml",
+                      "bytes":  6103,
+                      "sha256":  "b74cee2d7df3e1a1002f9e94abbe2c210dd1dcfc40aa1f83123054a6c98b6ae3"
+                  },
+                  {
+                      "path":  "novel-rag/history/volume-03/chapter-003/scene-002.yaml",
+                      "bytes":  6201,
+                      "sha256":  "ecb23fce7010a9582c49a89f5062062073de2e0fde133f4a367ec73dd71ed764"
+                  },
+                  {
+                      "path":  "novel-rag/history/volume-03/chapter-003/scene-003.yaml",
+                      "bytes":  6189,
+                      "sha256":  "4e9489e8c2a5a83d03ea3de2299c8bbe05ae8c1ab48421214369b4e2d0e7af5b"
+                  },
+                  {
+                      "path":  "novel-rag/history/volume-03/chapter-003/scene-004.yaml",
+                      "bytes":  5010,
+                      "sha256":  "1868407f9a03305a13679c41b267fd746cfc20beb4b79ede5a1a944515674478"
+                  },
+                  {
+                      "path":  "novel-rag/history/volume-03/chapter-004/scene-001.yaml",
+                      "bytes":  6029,
+                      "sha256":  "76283fd9bc822a9f6a59b653e8942a549e4e808948bdca48bb831760131be400"
+                  },
+                  {
+                      "path":  "novel-rag/history/volume-03/chapter-004/scene-002.yaml",
+                      "bytes":  6080,
+                      "sha256":  "6d190fe42356e87126227b81b052886c5abf8dc0f1b8ffd7f219775310543b6c"
+                  },
+                  {
+                      "path":  "novel-rag/history/volume-03/chapter-004/scene-003.yaml",
+                      "bytes":  6040,
+                      "sha256":  "1317738c6d459d4993538f586790cfa5b2d352f938509705f66db5e3e9132b67"
+                  },
+                  {
+                      "path":  "novel-rag/history/volume-03/chapter-004/scene-004.yaml",
+                      "bytes":  1105,
+                      "sha256":  "6069e016937bbd133810c891455352f3381321c031227c11b96ec82df305566b"
+                  },
+                  {
+                      "path":  "novel-rag/history/volume-03/chapter-005/scene-001.yaml",
+                      "bytes":  6126,
+                      "sha256":  "b7099c53e7d57392f045a99275e38224c170e5b80d9d5eb8d31b3193cc6cba61"
+                  },
+                  {
+                      "path":  "novel-rag/history/volume-03/chapter-005/scene-002.yaml",
+                      "bytes":  6045,
+                      "sha256":  "39e4ef85b5a51d71d5dea4d2e0d9beb6850cda17f803f54e37be213c2e9b42d1"
+                  },
+                  {
+                      "path":  "novel-rag/history/volume-03/chapter-005/scene-003.yaml",
+                      "bytes":  6132,
+                      "sha256":  "a0b6d5cb690275b5d790eedf146e74c7cedc727e6db937c0728d80f2bf9c6572"
+                  },
+                  {
+                      "path":  "novel-rag/history/volume-03/chapter-005/scene-004.yaml",
+                      "bytes":  5955,
+                      "sha256":  "07cd3a3e5343423441a573f2b0998648f8dfe280a5f33253373e1b01b1b2fe29"
+                  },
+                  {
+                      "path":  "novel-rag/history/volume-03/chapter-005/scene-005.yaml",
+                      "bytes":  1095,
+                      "sha256":  "beed843e183370bce488c34c27ab0b34c8b6f89d6af1daacc38a12d6531f2673"
+                  },
+                  {
+                      "path":  "novel-rag/history/volume-03/chapter-006/scene-001.yaml",
+                      "bytes":  6153,
+                      "sha256":  "4123172297dd0b3c82fd352a09a3ecd391c2b51c0ed867822fae0123af9dd5da"
+                  },
+                  {
+                      "path":  "novel-rag/history/volume-03/chapter-006/scene-002.yaml",
+                      "bytes":  6190,
+                      "sha256":  "92d9c0b6b50caf1bfb66259e79f8174bd42377c48b4bc1aa4d15cf38c04ada30"
+                  },
+                  {
+                      "path":  "novel-rag/history/volume-03/chapter-006/scene-003.yaml",
+                      "bytes":  3281,
+                      "sha256":  "44d9a5dd1ca5c4a5813ec024c6d256cfe43c62efe42e7e1d80dabfacc349320e"
+                  },
+                  {
+                      "path":  "novel-rag/history/volume-03/chapter-007/scene-001.yaml",
+                      "bytes":  6083,
+                      "sha256":  "98b6e2816ea33a53e0300e5edee1561e9848075683f6f65ef1a81430b073de06"
+                  },
+                  {
+                      "path":  "novel-rag/history/volume-03/chapter-007/scene-002.yaml",
+                      "bytes":  6022,
+                      "sha256":  "671faad34e8a36835afb3c8c77bb35261266259fc4097aa21b92843a23b94b92"
+                  },
+                  {
+                      "path":  "novel-rag/history/volume-03/chapter-007/scene-003.yaml",
+                      "bytes":  6179,
+                      "sha256":  "6b1a145a8bdaec43ed7519147b701a546db5b70c0220a8b0fc843fcb717825c7"
+                  },
+                  {
+                      "path":  "novel-rag/history/volume-03/chapter-008/scene-001.yaml",
+                      "bytes":  6137,
+                      "sha256":  "e34d239bdb68b5f1b0eaf6bccf3ff234c1b8b81fd32551b84d9aa786a3d70677"
+                  },
+                  {
+                      "path":  "novel-rag/history/volume-03/chapter-008/scene-002.yaml",
+                      "bytes":  5989,
+                      "sha256":  "0ffcc41e1f6507b283c847173eae7050a7cc4c5395bdedb842e1b6767273e869"
+                  },
+                  {
+                      "path":  "novel-rag/history/volume-03/chapter-008/scene-003.yaml",
+                      "bytes":  6138,
+                      "sha256":  "17b23c84337aae20eba28c8e9573bfb04e3c6011486764842caa8adaf8d3fbe0"
+                  },
+                  {
+                      "path":  "novel-rag/history/volume-03/chapter-008/scene-004.yaml",
+                      "bytes":  6138,
+                      "sha256":  "3c93bc88ddec39d0e846a3b611a74905e27d1d4355df33ea3f7e4d397ce7960b"
+                  },
+                  {
+                      "path":  "novel-rag/history/volume-03/chapter-008/scene-005.yaml",
+                      "bytes":  2743,
+                      "sha256":  "7407338b139bd4febf61935d0587ae5a66194ba21921370e0845ad7b184115df"
+                  },
+                  {
+                      "path":  "novel-rag/history/volume-03/chapter-009/scene-001.yaml",
+                      "bytes":  6000,
+                      "sha256":  "d28b38823d92f40219063c9794f127d66391969620202f2fd253701b74c62933"
+                  },
+                  {
+                      "path":  "novel-rag/history/volume-03/chapter-009/scene-002.yaml",
+                      "bytes":  6004,
+                      "sha256":  "8153c451efcd38add98e8935a0d79a2112c75e69f2bb43f574d558e579bfad90"
+                  },
+                  {
+                      "path":  "novel-rag/history/volume-03/chapter-009/scene-003.yaml",
+                      "bytes":  6233,
+                      "sha256":  "59916b723c76a532f5b3e3b0ee05d6842a77b3ecf25b0fe070f423c4be86496e"
+                  },
+                  {
+                      "path":  "novel-rag/history/volume-03/chapter-009/scene-004.yaml",
+                      "bytes":  687,
+                      "sha256":  "40ca277df3694653ad47683301a3da50742939f172645beb5908dac8691761f7"
+                  },
+                  {
+                      "path":  "novel-rag/history/volume-03/chapter-010/scene-001.yaml",
+                      "bytes":  6167,
+                      "sha256":  "e94ac0b3496e431cbccd658f156349ffece8564a265288c6177811657248adf6"
+                  },
+                  {
+                      "path":  "novel-rag/history/volume-03/chapter-010/scene-002.yaml",
+                      "bytes":  6116,
+                      "sha256":  "3b91f14ab6de08359b2a7bddd8e605e1f5343ea6c07030018e5b865739646f2c"
+                  },
+                  {
+                      "path":  "novel-rag/history/volume-03/chapter-010/scene-003.yaml",
+                      "bytes":  5548,
+                      "sha256":  "a42322552f97a3326f505a2c1c4fe4c9625c05fd9917cf961637ab6bc41b693a"
+                  },
+                  {
+                      "path":  "novel-rag/history/volume-03/chapter-011/scene-001.yaml",
+                      "bytes":  6200,
+                      "sha256":  "aabb759a481cd10f8be264d665087cf8ab75a4064a737db4ed21f6949f2ece53"
+                  },
+                  {
+                      "path":  "novel-rag/history/volume-03/chapter-011/scene-002.yaml",
+                      "bytes":  6080,
+                      "sha256":  "277d158f489ff42ea5b2ec249cd493833dafe06718dab07898f65935229f2b28"
+                  },
+                  {
+                      "path":  "novel-rag/history/volume-03/chapter-011/scene-003.yaml",
+                      "bytes":  6140,
+                      "sha256":  "c2f6ef645fc3cbe042e7c8e97f4f7f6bc1d12f2ca94a927d580b867bf602a676"
+                  },
+                  {
+                      "path":  "novel-rag/history/volume-03/chapter-011/scene-004.yaml",
+                      "bytes":  1891,
+                      "sha256":  "490db6004d471cad2c49912fdf096aa3a49821b59598a2c197f932e032e612b8"
+                  },
+                  {
+                      "path":  "novel-rag/history/volume-03/chapter-012/scene-001.yaml",
+                      "bytes":  6060,
+                      "sha256":  "1b32e6175b2856d10cca8d45d91449b132f6fcfcfcb03060b4d8284946d760fe"
+                  },
+                  {
+                      "path":  "novel-rag/history/volume-03/chapter-012/scene-002.yaml",
+                      "bytes":  6003,
+                      "sha256":  "1d82c886f93b8ee0d0310cedd8b2ef758f2389b3739aa10527542b183a3b82bf"
+                  },
+                  {
+                      "path":  "novel-rag/history/volume-03/chapter-012/scene-003.yaml",
+                      "bytes":  6198,
+                      "sha256":  "c3a8630ef182b76f47e838c3d6928d805d64311dfd0a38bcbba8a82495952f97"
+                  },
+                  {
+                      "path":  "novel-rag/history/volume-03/chapter-012/scene-004.yaml",
+                      "bytes":  746,
+                      "sha256":  "9f6bf5cb18b815e395b850a74ee465770ff98cf9059ad54894227c65bb19b47e"
+                  },
+                  {
+                      "path":  "novel-rag/history/volume-03/chapter-013/scene-001.yaml",
+                      "bytes":  6169,
+                      "sha256":  "47ee3295ea4d8a6edd4b46be120825e18066a3dd91c488e67619d7cdadd5e12a"
+                  },
+                  {
+                      "path":  "novel-rag/history/volume-03/chapter-013/scene-002.yaml",
+                      "bytes":  6008,
+                      "sha256":  "4637995541b96f6e743f289cdeaa141c96aecc980b5df6ff4512f87d0832d9d3"
+                  },
+                  {
+                      "path":  "novel-rag/history/volume-03/chapter-013/scene-003.yaml",
+                      "bytes":  6024,
+                      "sha256":  "6c06563d628ba404c73ff53edd5f64ec2e123ee790acc95b26beed5638d4bff4"
+                  },
+                  {
+                      "path":  "novel-rag/history/volume-03/chapter-013/scene-004.yaml",
+                      "bytes":  1366,
+                      "sha256":  "fc1231e7f1d572657646efb2bd575937e5e8102adb0907b87f5c2980bbba771a"
+                  },
+                  {
+                      "path":  "novel-rag/history/volume-03/chapter-014/scene-001.yaml",
+                      "bytes":  6157,
+                      "sha256":  "12c23c9b173ebfad444309c217dbce59c807a45318adbc68c9509708218404a6"
+                  },
+                  {
+                      "path":  "novel-rag/history/volume-03/chapter-014/scene-002.yaml",
+                      "bytes":  6148,
+                      "sha256":  "429f8e7e7ffe208813b70e439abeda3942ba2385ecf6392837ee723c20d3d3f7"
+                  },
+                  {
+                      "path":  "novel-rag/history/volume-03/chapter-014/scene-003.yaml",
+                      "bytes":  3658,
+                      "sha256":  "0988f173534d86c435c55bbc20ea2557d20355fc747a8e14e2999c157b931551"
+                  },
+                  {
+                      "path":  "novel-rag/history/volume-03/chapter-015/scene-001.yaml",
+                      "bytes":  6085,
+                      "sha256":  "4c30ef9b722d0260449172ccb8cc7ee4494acbb5f1d9fbf411499a2726747cbd"
+                  },
+                  {
+                      "path":  "novel-rag/history/volume-03/chapter-015/scene-002.yaml",
+                      "bytes":  6173,
+                      "sha256":  "bf42e934b421e297844f77c6d9f2563b1758f43771a806714a60e5077c2cc064"
+                  },
+                  {
+                      "path":  "novel-rag/history/volume-03/chapter-015/scene-003.yaml",
+                      "bytes":  3400,
+                      "sha256":  "4808902b66d73e751bdf9262859e503565dbacdc8a7b1178e867ac1ab046d7fc"
+                  },
+                  {
+                      "path":  "novel-rag/history/volume-03/chapter-016/scene-001.yaml",
+                      "bytes":  6150,
+                      "sha256":  "10e0d48d643779884b6a9309099a90ac31ccad3bb13e51bc118cbe66f3498733"
+                  },
+                  {
+                      "path":  "novel-rag/history/volume-03/chapter-016/scene-002.yaml",
+                      "bytes":  5967,
+                      "sha256":  "1c986a49197941b32f689d17d9d45234d711b698808787be4f2c539221c49e9a"
+                  },
+                  {
+                      "path":  "novel-rag/history/volume-03/chapter-016/scene-003.yaml",
+                      "bytes":  4377,
+                      "sha256":  "e12d92f2f2f76360b0e666db3a09f7aa235192776037f5b8537fc3a6e116f6fb"
+                  },
+                  {
+                      "path":  "novel-rag/history/volume-03/chapter-017/scene-001.yaml",
+                      "bytes":  6189,
+                      "sha256":  "d7edefdb7164c86ed73ca6eb872b1f1ee29745f220f015bab7efa1b76050e14f"
+                  },
+                  {
+                      "path":  "novel-rag/history/volume-03/chapter-017/scene-002.yaml",
+                      "bytes":  6223,
+                      "sha256":  "41871892916589c656e179e0de26a76ba75704461fbe5de7e5a71e83de53f09e"
+                  },
+                  {
+                      "path":  "novel-rag/history/volume-03/chapter-017/scene-003.yaml",
+                      "bytes":  6128,
+                      "sha256":  "e4dd267fe18f7a48f479204afbab2586421968f49ac2f6b9f4ff85ce3713809b"
+                  },
+                  {
+                      "path":  "novel-rag/history/volume-03/chapter-017/scene-004.yaml",
+                      "bytes":  6251,
+                      "sha256":  "2c206c02feb4affbe36ab64dc4473093cf6dc1a1373db484540dcad3d1d3a326"
+                  },
+                  {
+                      "path":  "novel-rag/history/volume-03/chapter-017/scene-005.yaml",
+                      "bytes":  6260,
+                      "sha256":  "ea2d4e71cd07e64fa22f868baf09569475e61f395ccdd5d4372db855557992f9"
+                  },
+                  {
+                      "path":  "novel-rag/history/volume-03/chapter-017/scene-006.yaml",
+                      "bytes":  2634,
+                      "sha256":  "49ee1fdbb965dcc9b0b272e83def097f3a86156a0ec3e9dbf80c5da2d11f8845"
+                  },
+                  {
+                      "path":  "novel-rag/history/volume-03/chapter-018/scene-001.yaml",
+                      "bytes":  6227,
+                      "sha256":  "6332fc2239a0e6e8f50c75cc0026ec7124ef23838efe6a14951fc046e8188c45"
+                  },
+                  {
+                      "path":  "novel-rag/history/volume-03/chapter-018/scene-002.yaml",
+                      "bytes":  6225,
+                      "sha256":  "b9bb65083219f512d8b3b3729150d5a6a3b145ba6418af9a95f9837274d88b60"
+                  },
+                  {
+                      "path":  "novel-rag/history/volume-03/chapter-018/scene-003.yaml",
+                      "bytes":  2354,
+                      "sha256":  "b028ef7ebcb59e10288ebbff9ec0e8651b928513b3b02c65129996323ead00de"
+                  },
+                  {
+                      "path":  "novel-rag/history/volume-03/chapter-019/scene-001.yaml",
+                      "bytes":  6207,
+                      "sha256":  "0390c668f72a82caacdd0c2724357f9b0fe5cfc1921b45ba6dc2499daf82a68d"
+                  },
+                  {
+                      "path":  "novel-rag/history/volume-03/chapter-019/scene-002.yaml",
+                      "bytes":  6077,
+                      "sha256":  "aaf3556f3f5fa84763e480488478528cd3b75715f105b49b1a3900288a7d9874"
+                  },
+                  {
+                      "path":  "novel-rag/history/volume-03/chapter-019/scene-003.yaml",
+                      "bytes":  3638,
+                      "sha256":  "3825b553f10ba3df69d11c491059484344afa62f2b9fde89d5c82109b79f077c"
+                  },
+                  {
+                      "path":  "novel-rag/history/volume-03/chapter-020/scene-001.yaml",
+                      "bytes":  6221,
+                      "sha256":  "7f95e7c9735e16de6b21587d4cf4150fa1bec32001389899023d888a98819211"
+                  },
+                  {
+                      "path":  "novel-rag/history/volume-03/chapter-020/scene-002.yaml",
+                      "bytes":  6031,
+                      "sha256":  "ee373e392a9b77a1cba7774d1a5eb49554d1089f366c51701fff839a310718a8"
+                  },
+                  {
+                      "path":  "novel-rag/history/volume-03/chapter-020/scene-003.yaml",
+                      "bytes":  4991,
+                      "sha256":  "078b9ede926addfba589332b683a192b32ca369a559158495bb211ea6c8c2510"
+                  },
+                  {
+                      "path":  "novel-rag/history/volume-03/chapter-021/scene-001.yaml",
+                      "bytes":  6168,
+                      "sha256":  "f8ca73c7b65d2a3c40221b52181c74a7499d5431fd8594f74ac870d503115451"
+                  },
+                  {
+                      "path":  "novel-rag/history/volume-03/chapter-021/scene-002.yaml",
+                      "bytes":  6125,
+                      "sha256":  "b6d3452935e9b2ca97939e28fc61e17416cc33a0f584ec55808bfbd4afbc85e0"
+                  },
+                  {
+                      "path":  "novel-rag/history/volume-03/chapter-021/scene-003.yaml",
+                      "bytes":  6152,
+                      "sha256":  "f54fed53a7605df7bd63fdc981cb3c2a1c596af4f780c85c6fc2b96e66b8bf27"
+                  },
+                  {
+                      "path":  "novel-rag/history/volume-03/chapter-021/scene-004.yaml",
+                      "bytes":  6064,
+                      "sha256":  "05936ebfae9a6a11c0a3d79d49ce7fe07b3068509309fbf0ff1ed5f9f2285670"
+                  },
+                  {
+                      "path":  "novel-rag/history/volume-03/chapter-021/scene-005.yaml",
+                      "bytes":  1762,
+                      "sha256":  "183325463374bb11d4eb31cf5f3223e60437e8bb67d1e44956cc6bc06918faca"
+                  },
+                  {
+                      "path":  "novel-rag/history/volume-03/chapter-022/scene-001.yaml",
+                      "bytes":  6230,
+                      "sha256":  "e4328d1ae6f98e0f86eab821a8b3da97350748a51676fb749b6bac1f67581ec1"
+                  },
+                  {
+                      "path":  "novel-rag/history/volume-03/chapter-022/scene-002.yaml",
+                      "bytes":  6046,
+                      "sha256":  "12c918fad266514a4b2553096cab37f1e66df2103a2975a9242ab846925f79d5"
+                  },
+                  {
+                      "path":  "novel-rag/history/volume-03/chapter-022/scene-003.yaml",
+                      "bytes":  6092,
+                      "sha256":  "c3ac35cfe1930e694f4cbef3ad73d6a5577ab4f3a2e8d5ac27dab8c19c1b315b"
+                  },
+                  {
+                      "path":  "novel-rag/history/volume-03/chapter-022/scene-004.yaml",
+                      "bytes":  3448,
+                      "sha256":  "5cf8697a5dd146eca093764402218b2ff8942046edc12348ae11c01d2aed1dfa"
+                  },
+                  {
+                      "path":  "novel-rag/history/volume-03/chapter-023/scene-001.yaml",
+                      "bytes":  6195,
+                      "sha256":  "e7efe6e5bc8f7869dbb85b9ff887f8f91cd50c0ece479d11d9d6ebcfc14955a7"
+                  },
+                  {
+                      "path":  "novel-rag/history/volume-03/chapter-023/scene-002.yaml",
+                      "bytes":  6199,
+                      "sha256":  "08214f41d7fa273cffa0ec75ace99eac4d20e25997c90d095212506107fc490e"
+                  },
+                  {
+                      "path":  "novel-rag/history/volume-03/chapter-023/scene-003.yaml",
+                      "bytes":  4127,
+                      "sha256":  "b33b78b78540ed8789beb97face754d91f29a498fd008c1e159648714ca33bb2"
+                  },
+                  {
+                      "path":  "novel-rag/history/volume-03/chapter-024/scene-001.yaml",
+                      "bytes":  6026,
+                      "sha256":  "d8208d6ab5a4fb9d8d51a4b0ad8745b63966463a6436b60ce87e9d06ca858fcb"
+                  },
+                  {
+                      "path":  "novel-rag/history/volume-03/chapter-024/scene-002.yaml",
+                      "bytes":  6167,
+                      "sha256":  "1377aaa9a730afc428e4a102c6dbdf508be7c16c65fff5db633275846b2dcee9"
+                  },
+                  {
+                      "path":  "novel-rag/history/volume-03/chapter-024/scene-003.yaml",
+                      "bytes":  5597,
+                      "sha256":  "09e3e0be628f5bbd9f257adfce4a238681191d7b24070a83594dcd283cb9bc17"
+                  },
+                  {
+                      "path":  "novel-rag/history/volume-03/chapter-025/scene-001.yaml",
+                      "bytes":  6015,
+                      "sha256":  "196f19da61344acbed3c16a50d90f8198eda5aa7f91039ad41ea4938d899dd77"
+                  },
+                  {
+                      "path":  "novel-rag/history/volume-03/chapter-025/scene-002.yaml",
+                      "bytes":  6079,
+                      "sha256":  "97c19f2a4bedca91ab6f29602a4ffce39ade1e50f4bfcd3ffeb137629b948b40"
+                  },
+                  {
+                      "path":  "novel-rag/history/volume-03/chapter-025/scene-003.yaml",
+                      "bytes":  5696,
+                      "sha256":  "cafe089315e706ef9ab97ad720f7738290ae01c9d4cd8edb78182d0420caa56d"
+                  },
+                  {
+                      "path":  "novel-rag/history/volume-03/chapter-026/scene-001.yaml",
+                      "bytes":  5994,
+                      "sha256":  "a97f51de17997c6aae75bd31d081f9f1aa274d701fe83357fde90c36914d61d0"
+                  },
+                  {
+                      "path":  "novel-rag/history/volume-03/chapter-026/scene-002.yaml",
+                      "bytes":  6140,
+                      "sha256":  "20e8edda45f0a1dbcf265a3dde718bfb268c57629f0437d07b01562ee5bb8088"
+                  },
+                  {
+                      "path":  "novel-rag/history/volume-03/chapter-026/scene-003.yaml",
+                      "bytes":  2666,
+                      "sha256":  "08cfd72a1726a1ad3f7244afc8bbb1f3ffb07044a3698ae369d13f60d135f99a"
+                  },
+                  {
+                      "path":  "novel-rag/history/volume-03/chapter-027/scene-001.yaml",
+                      "bytes":  5980,
+                      "sha256":  "a5a9a497a4e74da1fd5717c40531c98a8dfa2205666ad91e0b214d40abb938e0"
+                  },
+                  {
+                      "path":  "novel-rag/history/volume-03/chapter-027/scene-002.yaml",
+                      "bytes":  6008,
+                      "sha256":  "2ed8c1c48430a9437878cc2e47d7274bd34d80ebfd84e64f40a5cfb25d2a69e6"
+                  },
+                  {
+                      "path":  "novel-rag/history/volume-03/chapter-027/scene-003.yaml",
+                      "bytes":  4006,
+                      "sha256":  "1c17af37423f96202a51fb339337a85adcbe2dcc133b6f2fb5ec43dc2009ad79"
+                  },
+                  {
+                      "path":  "novel-rag/history/volume-03/chapter-028/scene-001.yaml",
+                      "bytes":  6136,
+                      "sha256":  "487fa7748b9337d0b21aa8688729918212401da9561e928f901106b5b703fc4d"
+                  },
+                  {
+                      "path":  "novel-rag/history/volume-03/chapter-028/scene-002.yaml",
+                      "bytes":  6144,
+                      "sha256":  "4196777a6eaedfa8ff39b256ec1f76eedca97c554aa487c229a2831851986e02"
+                  },
+                  {
+                      "path":  "novel-rag/history/volume-03/chapter-028/scene-003.yaml",
+                      "bytes":  2367,
+                      "sha256":  "d2ff0a3f7a345851d609e1b3942e5288551ca3115fa5f2f37ca9fd49c35ba50f"
+                  },
+                  {
+                      "path":  "novel-rag/history/volume-03/chapter-029/scene-001.yaml",
+                      "bytes":  6092,
+                      "sha256":  "fd5a61ebaf3653c65032c61ae883f3f5f9b4f0477ffadaa98bff53685f5d024c"
+                  },
+                  {
+                      "path":  "novel-rag/history/volume-03/chapter-029/scene-002.yaml",
+                      "bytes":  6087,
+                      "sha256":  "092999e976f304e7b62a4055ccd7e5897d38c7e7370a683acdfb3d6ea1714c4c"
+                  },
+                  {
+                      "path":  "novel-rag/history/volume-03/chapter-029/scene-003.yaml",
+                      "bytes":  3676,
+                      "sha256":  "d03bb08bfdb57ff11da2cd6ec1ad7f949c0957f31e4aa164eda03d600cce5494"
+                  },
+                  {
+                      "path":  "novel-rag/history/volume-03/chapter-030/scene-001.yaml",
+                      "bytes":  6134,
+                      "sha256":  "71dabee69215c63c7e24953e975b45383f08c32a9dd13459b3570623bbcce8c7"
+                  },
+                  {
+                      "path":  "novel-rag/history/volume-03/chapter-030/scene-002.yaml",
+                      "bytes":  6228,
+                      "sha256":  "34c7a7ca9425e5ac7430b6c675bfafd0cad77d5a9a55f176f6a3c1e7cf9592c9"
+                  },
+                  {
+                      "path":  "novel-rag/history/volume-03/chapter-030/scene-003.yaml",
+                      "bytes":  3953,
+                      "sha256":  "88871186c53ab0c1b71f17f287879886238f625d1bf78a89826bb3a2f6ba5ad9"
+                  },
+                  {
+                      "path":  "novel-rag/history/volume-03/chapter-031/scene-001.yaml",
+                      "bytes":  6123,
+                      "sha256":  "28d9129450d2d5fca25cd955c6b295d08f2c619d69f7af97db06e4da88753a1b"
+                  },
+                  {
+                      "path":  "novel-rag/history/volume-03/chapter-031/scene-002.yaml",
+                      "bytes":  5946,
+                      "sha256":  "3ae4d08b2ad528a43e6cb9e48982032538904cd2c0438f1e45d7cbe58f1cef8e"
+                  },
+                  {
+                      "path":  "novel-rag/history/volume-03/chapter-031/scene-003.yaml",
+                      "bytes":  5984,
+                      "sha256":  "46134f70644c55ad6880a221e717fbac60d2892930bc0852571df010a0ccbb7f"
+                  },
+                  {
+                      "path":  "novel-rag/history/volume-03/chapter-031/scene-004.yaml",
+                      "bytes":  5971,
+                      "sha256":  "b8a0cd3ea65be33c1690fc23c0dfa01333d712a18a951848d9ff92c23bdb1d5a"
+                  },
+                  {
+                      "path":  "novel-rag/history/volume-03/chapter-031/scene-005.yaml",
+                      "bytes":  4950,
+                      "sha256":  "e5430e92ed2f206a36c04d16e0a44f5bafe8add1f1b29fdc1ba586cf6cf9197c"
+                  },
+                  {
+                      "path":  "novel-rag/history/volume-03/chapter-032/scene-001.yaml",
+                      "bytes":  5973,
+                      "sha256":  "a5242edd96e9ed6f2d0659092d1f1e2a574a86286cc1ec6ae759fa66968e3e8d"
+                  },
+                  {
+                      "path":  "novel-rag/history/volume-03/chapter-032/scene-002.yaml",
+                      "bytes":  6079,
+                      "sha256":  "41807620de2802499589535a4b94eed5753bf4ed0521206ea79dc8d5d8b57140"
+                  },
+                  {
+                      "path":  "novel-rag/history/volume-03/chapter-032/scene-003.yaml",
+                      "bytes":  6129,
+                      "sha256":  "946b2f51b5ecd853d5c262740b3b49d5edaed0d127dff603651c661321f1273b"
+                  },
+                  {
+                      "path":  "novel-rag/history/volume-03/chapter-032/scene-004.yaml",
+                      "bytes":  6125,
+                      "sha256":  "127ef70711be6b15eed4779ff4570154a1930247e0c35d02150e5f23d0de6424"
+                  },
+                  {
+                      "path":  "novel-rag/history/volume-03/chapter-032/scene-005.yaml",
+                      "bytes":  6204,
+                      "sha256":  "e48a6ff27e1334c18dba476821fa6119fa99513154f1efb7362289c65f310184"
+                  },
+                  {
+                      "path":  "novel-rag/history/volume-03/chapter-032/scene-006.yaml",
+                      "bytes":  6177,
+                      "sha256":  "05fe06e07ae3037c52748c86b5ebb8b88cddfecb97ebe80759c7a2742ccdc5f8"
+                  },
+                  {
+                      "path":  "novel-rag/history/volume-03/chapter-032/scene-007.yaml",
+                      "bytes":  6199,
+                      "sha256":  "e9b3b685778547abb51e61a562c74822b31d12e7272658fe7fdce32120f3b0e9"
+                  },
+                  {
+                      "path":  "novel-rag/history/volume-03/chapter-032/scene-008.yaml",
+                      "bytes":  6222,
+                      "sha256":  "e21a08f2b02c62140b62fe6769bf83e70668202de7941980b9990b2e3fc203fb"
+                  },
+                  {
+                      "path":  "novel-rag/history/volume-03/chapter-032/scene-009.yaml",
+                      "bytes":  6033,
+                      "sha256":  "2b639873b1f4f805ac2c38b9df8f528d239362ed44a012648554a0ac5171435a"
+                  },
+                  {
+                      "path":  "novel-rag/history/volume-03/chapter-032/scene-010.yaml",
+                      "bytes":  6175,
+                      "sha256":  "ed06172383b69ab923ec7a48c0c162866db90c72a05886be8b1ea1382adcdcce"
+                  },
+                  {
+                      "path":  "novel-rag/history/volume-03/chapter-032/scene-011.yaml",
+                      "bytes":  1999,
+                      "sha256":  "35ecf8300b8a59376926df247ef3e9bffef8d5eeaf3ec8cc679f7e7310876af8"
+                  },
+                  {
+                      "path":  "novel-rag/history/volume-03/chapter-033/scene-001.yaml",
+                      "bytes":  6138,
+                      "sha256":  "d6ec0ed7f9b534e0dc146ed43c5ecae293c59441a25f99d07dc0d06c98aaaee3"
+                  },
+                  {
+                      "path":  "novel-rag/history/volume-03/chapter-033/scene-002.yaml",
+                      "bytes":  6213,
+                      "sha256":  "ddf8cacd8cedaa5b82c5ef0c670589a55a71df87830818b22fd8084e192f5cee"
+                  },
+                  {
+                      "path":  "novel-rag/history/volume-03/chapter-033/scene-003.yaml",
+                      "bytes":  6100,
+                      "sha256":  "66dd40dcae71cf9f1b0c0e80e655e237d94b9d8b3bb384b2fa1f53b85d115306"
+                  },
+                  {
+                      "path":  "novel-rag/history/volume-03/chapter-033/scene-004.yaml",
+                      "bytes":  6126,
+                      "sha256":  "ae4bdee404aa2507fbd5ab231dcfa676f158af78467cf18eea63fb30e4c4547f"
+                  },
+                  {
+                      "path":  "novel-rag/history/volume-03/chapter-033/scene-005.yaml",
+                      "bytes":  1937,
+                      "sha256":  "1064f33a02e922a3bebc5fb6378b5f50c066f6362cd240e52bafbd97f191e130"
+                  },
+                  {
+                      "path":  "novel-rag/history/volume-03/chapter-034/scene-001.yaml",
+                      "bytes":  6030,
+                      "sha256":  "75afbf67625635a7edf234e62f618521ee85ddfbbd34591e78a92adfaebb4b65"
+                  },
+                  {
+                      "path":  "novel-rag/history/volume-03/chapter-034/scene-002.yaml",
+                      "bytes":  6141,
+                      "sha256":  "2f300e9a1404c3456de001b00c02ab093ca3e90758501fbc972b8ecbf52a2e07"
+                  },
+                  {
+                      "path":  "novel-rag/history/volume-03/chapter-034/scene-003.yaml",
+                      "bytes":  6195,
+                      "sha256":  "a9cf0a8124d8a01e6cc7755ac32894cda04e75b9969b6ed7a101d4154b482fe8"
+                  },
+                  {
+                      "path":  "novel-rag/history/volume-03/chapter-034/scene-004.yaml",
+                      "bytes":  3206,
+                      "sha256":  "b907ba6bab6fa1ec3ccd2e8711d3a72e370f05f30bd13be8b28f939f086d01b2"
+                  },
+                  {
+                      "path":  "novel-rag/history/volume-03/chapter-035/scene-001.yaml",
+                      "bytes":  6105,
+                      "sha256":  "9220100688504bc135e8ebdadcc46766214c2cd6d3d374de94f7f9c1cad14a4d"
+                  },
+                  {
+                      "path":  "novel-rag/history/volume-03/chapter-035/scene-002.yaml",
+                      "bytes":  6163,
+                      "sha256":  "3d747373dbfe55108c2eaa94fc742086fe4ee08c0510606099701365dadb34d5"
+                  },
+                  {
+                      "path":  "novel-rag/history/volume-03/chapter-035/scene-003.yaml",
+                      "bytes":  2347,
+                      "sha256":  "f66e8ec80f4a8ec09149f2007d390fcf23bc4d8f859816373ca075cdd3710610"
+                  },
+                  {
+                      "path":  "novel-rag/history/volume-03/chapter-036/scene-001.yaml",
+                      "bytes":  6204,
+                      "sha256":  "27095004356728fe55839473c5a98ff58eef21d8a22318730937f9eac4e103bd"
+                  },
+                  {
+                      "path":  "novel-rag/history/volume-03/chapter-036/scene-002.yaml",
+                      "bytes":  6057,
+                      "sha256":  "e4ec42101e6c05a92f3b020db9d3b57f2a36658d7ae2cdc83cfb2af3e867f8c4"
+                  },
+                  {
+                      "path":  "novel-rag/history/volume-03/chapter-036/scene-003.yaml",
+                      "bytes":  4027,
+                      "sha256":  "6a1c4133a80efd3f58f22af02534601b0dea69f30e3428a957f98193c86d11bd"
+                  },
+                  {
+                      "path":  "novel-rag/history/volume-03/chapter-037/scene-001.yaml",
+                      "bytes":  6215,
+                      "sha256":  "7c3dd62faaa7e698d6914ab675ca114785e406e774f70fb79617e64284686a23"
+                  },
+                  {
+                      "path":  "novel-rag/history/volume-03/chapter-037/scene-002.yaml",
+                      "bytes":  6072,
+                      "sha256":  "a884847cc24b5f9a1b901bdd2e2bcb9e100b27c8e181cea6fb2a261203faffec"
+                  },
+                  {
+                      "path":  "novel-rag/history/volume-03/chapter-037/scene-003.yaml",
+                      "bytes":  5950,
+                      "sha256":  "14f903edeeea825131692b70187cf2dc7769eea636befd8918aea9f4b5079088"
+                  },
+                  {
+                      "path":  "novel-rag/history/volume-03/chapter-038/scene-001.yaml",
+                      "bytes":  6180,
+                      "sha256":  "06ab047c0fbef3b6bd213261fefbca9db54fc39720c2b575b107f8df2397a3fe"
+                  },
+                  {
+                      "path":  "novel-rag/history/volume-03/chapter-038/scene-002.yaml",
+                      "bytes":  6068,
+                      "sha256":  "8b98c1e8cd83c8a9b7b9892bd4a3190c2b0c1013a0015778e49d73bb22c3506c"
+                  },
+                  {
+                      "path":  "novel-rag/history/volume-03/chapter-038/scene-003.yaml",
+                      "bytes":  6005,
+                      "sha256":  "506ecf16af2076aa7813d138d07f74e28d60609161e8c3a029d329b90d0a4933"
+                  },
+                  {
+                      "path":  "novel-rag/history/volume-03/chapter-038/scene-004.yaml",
+                      "bytes":  3976,
+                      "sha256":  "3bbf791212cbcf13ac5d932b2ec06b1f47ba0c4455c6753927ac751ad2190eb9"
+                  },
+                  {
+                      "path":  "novel-rag/history/volume-03/chapter-039/scene-001.yaml",
+                      "bytes":  6037,
+                      "sha256":  "d09a8412975cf886f544416cb6ccfc08fd31075f7f6a9d0ef2655f36fd050eb2"
+                  },
+                  {
+                      "path":  "novel-rag/history/volume-03/chapter-039/scene-002.yaml",
+                      "bytes":  6193,
+                      "sha256":  "d5df37906aeb699c8221e03d7e681e94dafae1b03c4e9a2b82d1850654bf4958"
+                  },
+                  {
+                      "path":  "novel-rag/history/volume-03/chapter-039/scene-003.yaml",
+                      "bytes":  5841,
+                      "sha256":  "eb73961ec661a6aa574c6dc48856a7c69f480d17fda67f79fb8c6c85bbe64a92"
+                  },
+                  {
+                      "path":  "novel-rag/history/volume-03/chapter-039/scene-004.yaml",
+                      "bytes":  5285,
+                      "sha256":  "fb3c402362c36e299f82500bee1a980f316faa6f0e854bc1209c8680c5da8413"
+                  },
+                  {
+                      "path":  "novel-rag/history/volume-03/chapter-040/scene-001.yaml",
+                      "bytes":  6185,
+                      "sha256":  "2795830aaa3be4b5edaff09e7576fc3b8b8f062aae61368dd05d3dc9e6ce9716"
+                  },
+                  {
+                      "path":  "novel-rag/history/volume-03/chapter-040/scene-002.yaml",
+                      "bytes":  6081,
+                      "sha256":  "a7018038950ae30c09ff1bef035c434ad2e9e76b776b5feaa399a8f250bc2045"
+                  },
+                  {
+                      "path":  "novel-rag/history/volume-03/chapter-040/scene-003.yaml",
+                      "bytes":  6056,
+                      "sha256":  "fa4f8cf20e08c69bbbb6dd9a6c1ff2460c74af1811142518467ad08072b1c786"
+                  },
+                  {
+                      "path":  "novel-rag/history/volume-03/chapter-040/scene-004.yaml",
+                      "bytes":  6314,
+                      "sha256":  "639fc7fb16a6d395b5e8b48aa4d22ce9c9771d91232353f3fd201062e4cdeca7"
+                  },
+                  {
+                      "path":  "novel-rag/history/volume-03/chapter-040/scene-005.yaml",
+                      "bytes":  4305,
+                      "sha256":  "2c6f208d2afeb83348c0c72cdea4b7b6f7a28b099fd64f45d0f8d4bdd6a18b26"
+                  },
+                  {
+                      "path":  "novel-rag/history/volume-04/chapter-001/scene-001.yaml",
+                      "bytes":  5823,
+                      "sha256":  "83d961c1b19db4751e2f94070d2dd8d15d954fc21655aa1269fd35c8c8393e66"
+                  },
+                  {
+                      "path":  "novel-rag/history/volume-04/chapter-001/scene-002.yaml",
+                      "bytes":  5835,
+                      "sha256":  "e10a1f6564a1e26a7d4c7892b036f473e975eaea3de78d867cf3bb544b9a8c6c"
+                  },
+                  {
+                      "path":  "novel-rag/history/volume-04/chapter-002/scene-001.yaml",
+                      "bytes":  6152,
+                      "sha256":  "31031f8d72eef29bf9e4309d1dfb42d0aca47b69d06eb4ebf35e4500f523a535"
+                  },
+                  {
+                      "path":  "novel-rag/history/volume-04/chapter-002/scene-002.yaml",
+                      "bytes":  5853,
+                      "sha256":  "8b4434c3bba9ad5c6760f4e04e7ce06ee09daf351547d769cea2414f5786cd82"
+                  },
+                  {
+                      "path":  "novel-rag/history/volume-04/chapter-002/scene-003.yaml",
+                      "bytes":  5316,
+                      "sha256":  "832dc53587fd2121ef387396d7f6b74e21402b86197a94ab628f7b19198b6816"
+                  },
+                  {
+                      "path":  "novel-rag/history/volume-04/chapter-003/scene-001.yaml",
+                      "bytes":  6146,
+                      "sha256":  "7a8ca6458ad5c0c277ad4b4b4b68bac8c0e3d3fed663cb7f6e5d79ff3f05e439"
+                  },
+                  {
+                      "path":  "novel-rag/history/volume-04/chapter-003/scene-002.yaml",
+                      "bytes":  6181,
+                      "sha256":  "3b0d7e816d6da293d080f3180bf144881b727b624a069d06ca42176f4420ede6"
+                  },
+                  {
+                      "path":  "novel-rag/history/volume-04/chapter-003/scene-003.yaml",
+                      "bytes":  6111,
+                      "sha256":  "d3c751b487fefd38ae4602c0dfc57055ce594f07751ff207543d15a7973619d5"
+                  },
+                  {
+                      "path":  "novel-rag/history/volume-04/chapter-003/scene-004.yaml",
+                      "bytes":  1561,
+                      "sha256":  "505e5515277fed2baf02117c1d0351404dc9ed83a3784072083292fc0f716aa3"
+                  },
+                  {
+                      "path":  "novel-rag/history/volume-04/chapter-004/scene-001.yaml",
+                      "bytes":  6216,
+                      "sha256":  "147d80b5ff481f595bc6fd48aa8fe5e5482969c72bca512227cbb38b6153f690"
+                  },
+                  {
+                      "path":  "novel-rag/history/volume-04/chapter-004/scene-002.yaml",
+                      "bytes":  6111,
+                      "sha256":  "2239308402a8e45444697f25c5ae41f78a0f6b87f6049656a0613e5fcdf4d6aa"
+                  },
+                  {
+                      "path":  "novel-rag/history/volume-04/chapter-004/scene-003.yaml",
+                      "bytes":  6136,
+                      "sha256":  "638640e4965a4b310b92508f856129de2d9c9cd610c086c8be1512ce4c23976e"
+                  },
+                  {
+                      "path":  "novel-rag/history/volume-04/chapter-004/scene-004.yaml",
+                      "bytes":  780,
+                      "sha256":  "b4313e3e59b600dc6a54a649ce7b222873ea540bb20e2fc98f3550804a4449e7"
+                  },
+                  {
+                      "path":  "novel-rag/history/volume-04/chapter-005/scene-001.yaml",
+                      "bytes":  6068,
+                      "sha256":  "13017c4d87590400ea861eb4b869d491afaed5676dad2f1939eca59b4efa6093"
+                  },
+                  {
+                      "path":  "novel-rag/history/volume-04/chapter-005/scene-002.yaml",
+                      "bytes":  6204,
+                      "sha256":  "2ab31465471bfe7b9ddbd1f4269a8d8f3f8d9496d50074dc8e7f9b8bb0e42cc0"
+                  },
+                  {
+                      "path":  "novel-rag/history/volume-04/chapter-005/scene-003.yaml",
+                      "bytes":  5755,
+                      "sha256":  "318171f9a338fdd5fa3c7429c7d452af6151e352d8ba912ed14d725fdf8c743a"
+                  },
+                  {
+                      "path":  "novel-rag/history/volume-04/chapter-006/scene-001.yaml",
+                      "bytes":  6315,
+                      "sha256":  "6d9c2d097026367f4a25ec8d3bd1600b176695e701f13176d2ac4089e3f0e401"
+                  },
+                  {
+                      "path":  "novel-rag/history/volume-04/chapter-006/scene-002.yaml",
+                      "bytes":  6176,
+                      "sha256":  "def93876a512767d7e04efbd4ea2caa4b3896a2fef9bb33f58db06066f5bb902"
+                  },
+                  {
+                      "path":  "novel-rag/history/volume-04/chapter-006/scene-003.yaml",
+                      "bytes":  4659,
+                      "sha256":  "d6274b613b186747b24e3b6b7a1373f147e0d4705c949805300bdbd75962ca0e"
+                  },
+                  {
+                      "path":  "novel-rag/history/volume-04/chapter-007/scene-001.yaml",
+                      "bytes":  6229,
+                      "sha256":  "c437819cec98ba27bc0ca8333b42a8dd9bd41c6e72a79120470f8296c1405376"
+                  },
+                  {
+                      "path":  "novel-rag/history/volume-04/chapter-007/scene-002.yaml",
+                      "bytes":  6220,
+                      "sha256":  "2e176e86f926f919f5048b66e5301e7d645cef89847417e82f85eaab035e0fee"
+                  },
+                  {
+                      "path":  "novel-rag/history/volume-04/chapter-007/scene-003.yaml",
+                      "bytes":  2435,
+                      "sha256":  "87374542382a9f679051eff5fa1e53e1c2e98b72c3d1d8fe1b2d9e36efb546ec"
+                  },
+                  {
+                      "path":  "novel-rag/history/volume-04/chapter-008/scene-001.yaml",
+                      "bytes":  6158,
+                      "sha256":  "9bba93e578988f4e3544166ac0f679e5a029a1c8d48cdad7d6812863b2906d7b"
+                  },
+                  {
+                      "path":  "novel-rag/history/volume-04/chapter-008/scene-002.yaml",
+                      "bytes":  5918,
+                      "sha256":  "8a03c6862978a35be14ccc239ed8e33480a678cd3bb8fd8260dd457185f2ff90"
+                  },
+                  {
+                      "path":  "novel-rag/history/volume-04/chapter-008/scene-003.yaml",
+                      "bytes":  5433,
+                      "sha256":  "bbe291495cb970fdb814801b4a77aa8e40fb4ceae5edc5576bf8614f10b926f1"
+                  },
+                  {
+                      "path":  "novel-rag/history/volume-04/chapter-009/scene-001.yaml",
+                      "bytes":  6353,
+                      "sha256":  "66bc7d7fdd67a128d540c589d37213273518d9063e4b6dde2c9b91a159ea621c"
+                  },
+                  {
+                      "path":  "novel-rag/history/volume-04/chapter-009/scene-002.yaml",
+                      "bytes":  6369,
+                      "sha256":  "7893bf4a6eaaeea947218ca091a0026c74c0c260f1fd624e11894cfa4e4ea0e5"
+                  },
+                  {
+                      "path":  "novel-rag/history/volume-04/chapter-009/scene-003.yaml",
+                      "bytes":  6505,
+                      "sha256":  "a72cb7169be16a8b611ed0d2ec35928cf4b5caf08944e0bc8d9197590162f09d"
+                  },
+                  {
+                      "path":  "novel-rag/history/volume-04/chapter-009/scene-004.yaml",
+                      "bytes":  6488,
+                      "sha256":  "a07fdaa09ff93ce15f8651abfb650b14d82f5ca170173a4d522c316dfcf7424b"
+                  },
+                  {
+                      "path":  "novel-rag/history/volume-04/chapter-009/scene-005.yaml",
+                      "bytes":  1472,
+                      "sha256":  "1f12453742201ccd7fc899bb0fc154165598ab21b2434dbb03702ccb74c20d49"
+                  },
+                  {
+                      "path":  "novel-rag/history/volume-04/chapter-010/scene-001.yaml",
+                      "bytes":  6144,
+                      "sha256":  "514371be61bc7d14aef63de4ecb25ec4969b365ba6875974f4b6732c107f3b71"
+                  },
+                  {
+                      "path":  "novel-rag/history/volume-04/chapter-010/scene-002.yaml",
+                      "bytes":  6108,
+                      "sha256":  "19d017e59f3ee89fcf1a4c5d0c7e9a39f595bfee80360a219c9a3645d7665ce4"
+                  },
+                  {
+                      "path":  "novel-rag/history/volume-04/chapter-010/scene-003.yaml",
+                      "bytes":  6015,
+                      "sha256":  "04bb0b80741a9610e95200a21f0250fcf8f6ec462a8710a13d12815491764bc9"
+                  },
+                  {
+                      "path":  "novel-rag/history/volume-04/chapter-010/scene-004.yaml",
+                      "bytes":  943,
+                      "sha256":  "8dd057267820f9500ae87e89b415bd68832d3dbe7e5a95aa8fbe353b23f632fd"
+                  },
+                  {
+                      "path":  "novel-rag/history/volume-04/chapter-011/scene-001.yaml",
+                      "bytes":  6208,
+                      "sha256":  "7780e62e3e9bb64ebdb0eff96e964a67cc5ed6b863a5aa8b2f40ec9bb2722652"
+                  },
+                  {
+                      "path":  "novel-rag/history/volume-04/chapter-011/scene-002.yaml",
+                      "bytes":  6219,
+                      "sha256":  "a532170b41d323a4e8feff4577d0acaf70142e036bd0fe545032ad5ca05e3bb7"
+                  },
+                  {
+                      "path":  "novel-rag/history/volume-04/chapter-011/scene-003.yaml",
+                      "bytes":  3814,
+                      "sha256":  "27413d1781fae0ab9778dccc3ed7af03b3cda90218ce01ae6a1ef00d4993f765"
+                  },
+                  {
+                      "path":  "novel-rag/history/volume-04/chapter-012/scene-001.yaml",
+                      "bytes":  6220,
+                      "sha256":  "afe128210c7306b8ace43f9352125f27c997e00e6a9938aa5c6c759aeb562555"
+                  },
+                  {
+                      "path":  "novel-rag/history/volume-04/chapter-012/scene-002.yaml",
+                      "bytes":  6190,
+                      "sha256":  "44420e7def5ef8402519f6ba51bd0c6ab9904982aabe569f7ccfb0ce68b11fe2"
+                  },
+                  {
+                      "path":  "novel-rag/history/volume-04/chapter-012/scene-003.yaml",
+                      "bytes":  6227,
+                      "sha256":  "fd8cbdc33a1dacd90c0431a496b66147bb8af78ba2fa92e67dc512a4e3a8c56c"
+                  },
+                  {
+                      "path":  "novel-rag/history/volume-04/chapter-012/scene-004.yaml",
+                      "bytes":  1359,
+                      "sha256":  "2fba0268afc4824c251070a64ebb5296e4c737ac50e8970012547a0d694bce47"
+                  },
+                  {
+                      "path":  "novel-rag/history/volume-04/chapter-013/scene-001.yaml",
+                      "bytes":  6204,
+                      "sha256":  "fa09c445d7893f76edc855ec616245fa7cba130494c75e2d998d0cd0dc0e5085"
+                  },
+                  {
+                      "path":  "novel-rag/history/volume-04/chapter-013/scene-002.yaml",
+                      "bytes":  6139,
+                      "sha256":  "0c79162f2271dc17fcd67b0747d94602682361c24344f346364f5904f58c818b"
+                  },
+                  {
+                      "path":  "novel-rag/history/volume-04/chapter-013/scene-003.yaml",
+                      "bytes":  6147,
+                      "sha256":  "547a8621f6473db261cae5470be88f5d6ba0ec9f402785c49720f499a849181b"
+                  },
+                  {
+                      "path":  "novel-rag/history/volume-04/chapter-013/scene-004.yaml",
+                      "bytes":  6224,
+                      "sha256":  "48564bec9b900fe5198e574a691b12f2c77237d557a2e7230fe63bbe7ef798ab"
+                  },
+                  {
+                      "path":  "novel-rag/history/volume-04/chapter-013/scene-005.yaml",
+                      "bytes":  6222,
+                      "sha256":  "178a4254cefea6f853c7eb9fe079d757612d4e773c1ab91560b0c7978bbc7eec"
+                  },
+                  {
+                      "path":  "novel-rag/history/volume-04/chapter-013/scene-006.yaml",
+                      "bytes":  6263,
+                      "sha256":  "fbfc9991a5b9afbbac8918f83c570beba58f402953956af80c21a1394f7b5c0a"
+                  },
+                  {
+                      "path":  "novel-rag/history/volume-04/chapter-013/scene-007.yaml",
+                      "bytes":  2935,
+                      "sha256":  "13cb212c0bf8d13c05aa6f3939fb832937428a21ab4c618aeaf990a0f2a4fc18"
+                  },
+                  {
+                      "path":  "novel-rag/history/volume-04/chapter-014/scene-001.yaml",
+                      "bytes":  8079,
+                      "sha256":  "08bb562fe9ac22e71abab30fc9656100172486557c84d88f5c30b80878118b74"
+                  },
+                  {
+                      "path":  "novel-rag/history/volume-04/chapter-014/scene-002.yaml",
+                      "bytes":  9200,
+                      "sha256":  "616885fb1f22fb71daa62e8574b7c595bdcb7e61ad318267924eff1867da9dc8"
+                  },
+                  {
+                      "path":  "novel-rag/history/volume-04/chapter-014/scene-003.yaml",
+                      "bytes":  5706,
+                      "sha256":  "c5bc6c4a533866b26eb59904dfcd9a3f3a46d526951469ccbeedd4d24e3cf2f7"
+                  },
+                  {
+                      "path":  "novel-rag/history/volume-04/chapter-014/scene-004.yaml",
+                      "bytes":  7668,
+                      "sha256":  "218bca53a9188b02bb01ffebede637e70f46b031b1d8c2451784952ce2346a8f"
+                  },
+                  {
+                      "path":  "novel-rag/history/volume-04/chapter-014/scene-005.yaml",
+                      "bytes":  3944,
+                      "sha256":  "a39af68608848f36ad2c042b97f1a6c6bfa370acd17a41d52147b1754dfc0217"
+                  },
+                  {
+                      "path":  "novel-rag/history/volume-04/chapter-014/scene-006.yaml",
+                      "bytes":  6577,
+                      "sha256":  "2943416856c67d1745579bf057f88a003511236a835f51b3a43980516f9cbe56"
+                  },
+                  {
+                      "path":  "novel-rag/history/volume-04/chapter-014/scene-007.yaml",
+                      "bytes":  5172,
+                      "sha256":  "f2fd4d32f7d8a25e8b661275b8128010713d0d3966f32043c34fb508d532bdf6"
+                  },
+                  {
+                      "path":  "novel-rag/history/volume-04/chapter-014/scene-008.yaml",
+                      "bytes":  9044,
+                      "sha256":  "c7587bd4d1e2c6e86eba6b549c9a308a0bc12d296bdecd767e4ac6e14565ef59"
+                  },
+                  {
+                      "path":  "novel-rag/history/volume-04/chapter-014/scene-009.yaml",
+                      "bytes":  3515,
+                      "sha256":  "3ae4ad5c45e82b6a541a0fccad1946f0fc0f168c432d92de440df77568e6a0c8"
+                  },
+                  {
+                      "path":  "novel-rag/history/volume-04/chapter-014/scene-010.yaml",
+                      "bytes":  7878,
+                      "sha256":  "44ad6f84c1487894efd4abad7991b4e0f5bae6040afdc5c05000e0e41ceb11f0"
+                  },
+                  {
+                      "path":  "novel-rag/history/volume-04/chapter-014/scene-011.yaml",
+                      "bytes":  7043,
+                      "sha256":  "56b064e36b3aae078fab51f2b7f22b191065b68bc5594f3c77b910cc9bb2a094"
+                  },
+                  {
+                      "path":  "novel-rag/history/volume-04/chapter-014/scene-012.yaml",
+                      "bytes":  4843,
+                      "sha256":  "34de43adb146ce5e180fa73ed7cdf3749dbd6535caa0cdd65c9dab577556386d"
+                  },
+                  {
+                      "path":  "novel-rag/history/volume-04/chapter-014/scene-013.yaml",
+                      "bytes":  7849,
+                      "sha256":  "52175a3254923bf9d6accf46199c15f079e9900df2cc8924af5d78b8a9707ce2"
+                  },
+                  {
+                      "path":  "novel-rag/history/volume-04/chapter-014/scene-014.yaml",
+                      "bytes":  8062,
+                      "sha256":  "b755fe7a0ba89893895aaa38622e12c4e287ae12b8c566b4a994a3aa44fd17d0"
+                  },
+                  {
+                      "path":  "novel-rag/history/volume-04/chapter-014/scene-015.yaml",
+                      "bytes":  3959,
+                      "sha256":  "e766af9da2542e3f7b430405543f9925b5e529125a1ad6669f16994ea4520bc1"
+                  },
+                  {
+                      "path":  "novel-rag/history/volume-04/chapter-014/scene-016.yaml",
+                      "bytes":  3059,
+                      "sha256":  "606d0aa835d34d469894b672b69d9de61ee2e6a2a7be35624de1e5dc7ead17ec"
+                  },
+                  {
+                      "path":  "novel-rag/history/volume-04/chapter-014/scene-017.yaml",
+                      "bytes":  6213,
+                      "sha256":  "fc23f32d128f82b7193143c16de58d55467a1348776d69225c88bf7819a437fc"
+                  },
+                  {
+                      "path":  "novel-rag/history/volume-04/chapter-015/scene-001.yaml",
+                      "bytes":  7009,
+                      "sha256":  "99eaa2ae6903e352b255b08daf3e9b31db2d43c9a4d9b7c196c676ce1563a6e5"
+                  },
+                  {
+                      "path":  "novel-rag/history/volume-04/chapter-015/scene-002.yaml",
+                      "bytes":  6262,
+                      "sha256":  "645fb81455cb97d7d0eea0b18cddd073855ab83d8522a0325e6d77cdf69bb136"
+                  },
+                  {
+                      "path":  "novel-rag/history/volume-04/chapter-015/scene-003.yaml",
+                      "bytes":  5899,
+                      "sha256":  "606705d53eb298d9dc3aeb4aea05a8f00e6b964ebf2e2c78396ff1ba8ed07f21"
+                  },
+                  {
+                      "path":  "novel-rag/history/volume-04/chapter-015/scene-004.yaml",
+                      "bytes":  5589,
+                      "sha256":  "c7e2c51bf5d26b2941e768421e979a2495c6a50f5a97b743ff43ebb347a2d110"
+                  },
+                  {
+                      "path":  "novel-rag/history/volume-04/chapter-015/scene-005.yaml",
+                      "bytes":  3917,
+                      "sha256":  "c1a0dec43814b3ce803ad813bbfcfc4112c01b6ad9e62990514d35dd187048a9"
+                  },
+                  {
+                      "path":  "novel-rag/history/volume-04/chapter-016/scene-001.yaml",
+                      "bytes":  6432,
+                      "sha256":  "c1f2919895c8c458846a9a0d8e9f7a10ea383d8153ddeea19e9a622321328e23"
+                  },
+                  {
+                      "path":  "novel-rag/history/volume-04/chapter-016/scene-002.yaml",
+                      "bytes":  5436,
+                      "sha256":  "31b628cef105753c81f561fe345d4772b1dd80dec94b60103e46d80627a96d74"
+                  },
+                  {
+                      "path":  "novel-rag/history/volume-04/chapter-016/scene-003.yaml",
+                      "bytes":  5039,
+                      "sha256":  "cb83dafdab695ff224724b0d3653394a3bc98f11ff67ac35d0eabe0625714b52"
+                  },
+                  {
+                      "path":  "novel-rag/history/volume-04/chapter-016/scene-004.yaml",
+                      "bytes":  4131,
+                      "sha256":  "a549eed75617f6865e00c3e2d6ee670a5c0f3e4532564a1d3fa91baad479b882"
+                  },
+                  {
+                      "path":  "novel-rag/history/volume-04/chapter-016/scene-005.yaml",
+                      "bytes":  4596,
+                      "sha256":  "edd370e36e01a6bfee42122c728b8036657bb8a5772fecf848d64b5db1b78d63"
+                  },
+                  {
+                      "path":  "novel-rag/history/volume-04/chapter-016/scene-006.yaml",
+                      "bytes":  4575,
+                      "sha256":  "8f21b1a86a95940cd44a99be8c121cca856cbead8ddd57329b869d1b79b90fb2"
+                  },
+                  {
+                      "path":  "novel-rag/history/volume-04/chapter-017/scene-001.yaml",
+                      "bytes":  7795,
+                      "sha256":  "611d63b1799a89f66b18bf31c2c816b7663f0eab516b086b980b3e749b969753"
+                  },
+                  {
+                      "path":  "novel-rag/history/volume-04/chapter-017/scene-002.yaml",
+                      "bytes":  6456,
+                      "sha256":  "2bb14e03f6685d08e91262434dbd56a31d3dce2e7e27e690600374bc42aa3912"
+                  },
+                  {
+                      "path":  "novel-rag/history/volume-04/chapter-017/scene-003.yaml",
+                      "bytes":  4745,
+                      "sha256":  "a9597bfe1bfacdb942fbcead3d12d2911c8c1d9f91609826734cbfad599a798e"
+                  },
+                  {
+                      "path":  "novel-rag/history/volume-04/chapter-017/scene-004.yaml",
+                      "bytes":  5676,
+                      "sha256":  "f105c15bf5f4d3b3bab68d28cb841158620153af17139fd3d607aee3e17dca15"
+                  },
+                  {
+                      "path":  "novel-rag/history/volume-04/chapter-017/scene-005.yaml",
+                      "bytes":  5551,
+                      "sha256":  "786516c6d9c10b3f7c642718afc4cddac2e632ea32ee2e8afa86b013f299ca56"
+                  },
+                  {
+                      "path":  "novel-rag/index/.gitkeep",
+                      "bytes":  1,
+                      "sha256":  "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
+                  },
+                  {
+                      "path":  "novel-rag/index/rag.db",
+                      "bytes":  16809984,
+                      "sha256":  "ef5887a3c6a8f77ebc672f464c389dc887068493ffd01bbfc1b3f697f2b08690"
+                  },
+                  {
+                      "path":  "novel-rag/judgment/active/global/judgment-global-v1.1.yaml",
+                      "bytes":  32040,
+                      "sha256":  "42beb51b8c283f8d70f35e862a72b2f275872bae1b76f29c10a9cdb809e3434a"
+                  },
+                  {
+                      "path":  "novel-rag/judgment/deprecated/judgment-global-v1.0.yaml",
+                      "bytes":  14617,
+                      "sha256":  "2fe3b95edabbdea5df3303c4ac3a8c455dc9912280a1bcace811d21a123c40d8"
+                  },
+                  {
+                      "path":  "novel-rag/outline/chapters/.gitkeep",
+                      "bytes":  1,
+                      "sha256":  "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
+                  },
+                  {
+                      "path":  "novel-rag/outline/scenes/.gitkeep",
+                      "bytes":  1,
+                      "sha256":  "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
+                  },
+                  {
+                      "path":  "novel-rag/outline/series/.gitkeep",
+                      "bytes":  1,
+                      "sha256":  "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
+                  },
+                  {
+                      "path":  "novel-rag/outline/volumes/.gitkeep",
+                      "bytes":  1,
+                      "sha256":  "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
+                  },
+                  {
+                      "path":  "novel-rag/registry/aliases.yaml",
+                      "bytes":  2301,
+                      "sha256":  "e3cf307a0c87248256a9854c5f879ff68fe5a2c102dd835e5dc8b8b533954cfa"
+                  },
+                  {
+                      "path":  "novel-rag/registry/character-variants.yaml",
+                      "bytes":  3341,
+                      "sha256":  "7dabe1f1baa3619fdaef19e8e5d06bb6048b98b3e906c0c5939e1e0ad97606c3"
+                  },
+                  {
+                      "path":  "novel-rag/registry/module-map.yaml",
+                      "bytes":  249,
+                      "sha256":  "f8e6ffe1f05b3973f24bb1472ea9f8d3dfe02b77626be1ebc6de78b98c9b1df0"
+                  },
+                  {
+                      "path":  "novel-rag/registry/stories.yaml",
+                      "bytes":  220,
+                      "sha256":  "6042cba7442e25b1b067a151660eacdf40eab245683f77825a18b77d382cb55f"
+                  },
+                  {
+                      "path":  "novel-rag/registry/timelines.yaml",
+                      "bytes":  112,
+                      "sha256":  "17043a3ba02b7d88c3df4a43019db9013728b89efcbfa6e4aa66249fc0bb7647"
+                  },
+                  {
+                      "path":  "novel-rag/registry/version-map.yaml",
+                      "bytes":  11535,
+                      "sha256":  "d71af6682311c3708e70fd3d910a49d2885cd7293b75c529e525d08c30d647ee"
+                  },
+                  {
+                      "path":  "novel-rag/retrieval-tests.yaml",
+                      "bytes":  15794,
+                      "sha256":  "137321b5f78e24fef24552a7d8809ba74b9e3b92dcb826b908d44f3bb61f15f2"
+                  },
+                  {
+                      "path":  "novel-rag/rules/active/global/ruler-global-v1.0.yaml",
+                      "bytes":  11670,
+                      "sha256":  "f371153cc2667a6b4e6f3cf9729bea515f7ee5672e1d9d8a1e3da4a5fade30d0"
+                  },
+                  {
+                      "path":  "novel-rag/rules/active/global/ruler-narrative-information-disclosure-v1.0.yaml",
+                      "bytes":  16588,
+                      "sha256":  "1ae1ab7b1d1789002d2c2cc76ead0e0248a7348f028f023f7849c1c47c5c888b"
+                  },
+                  {
+                      "path":  "novel-rag/style-audit/active/.gitkeep",
+                      "bytes":  1,
+                      "sha256":  "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
+                  },
+                  {
+                      "path":  "novel-rag/style-audit/active/action.yaml",
+                      "bytes":  6595,
+                      "sha256":  "6aee55b8fea2729c53f8ea408c960b94391743b4fbfac572007754a66e12f92d"
+                  },
+                  {
+                      "path":  "novel-rag/style-audit/active/action-continuity.yaml",
+                      "bytes":  21037,
+                      "sha256":  "5d3349cf83dd3badd1936dca9558853a267d19f1f8b1369a995e7164bb0facbe"
+                  },
+                  {
+                      "path":  "novel-rag/style-audit/active/dialogue.yaml",
+                      "bytes":  7202,
+                      "sha256":  "cf51fe66c92c6aca57ba2c85a6a62b07aeae4d70953d704977d365d02117ce62"
+                  },
+                  {
+                      "path":  "novel-rag/style-audit/active/information-filter.yaml",
+                      "bytes":  4190,
+                      "sha256":  "4928bc267fa22843d3d91e9cea67634f218acb219e7de0cf1e42a665e19d77d0"
+                  },
+                  {
+                      "path":  "novel-rag/style-audit/active/long-description.yaml",
+                      "bytes":  3926,
+                      "sha256":  "ab42d749d03b1ddb07973914c9f03dfad52e667a2c715e166d30e2eeba37729a"
+                  },
+                  {
+                      "path":  "novel-rag/style-audit/active/manifest.yaml",
+                      "bytes":  2597,
+                      "sha256":  "311f64c06756a6932c000888fe2e91dc080734bc5bfaf0bb3dbdad1ff98c2e04"
+                  },
+                  {
+                      "path":  "novel-rag/style-audit/active/master-patch.yaml",
+                      "bytes":  1436,
+                      "sha256":  "531b83c1c82f8905b8cdb7228226bce0045a62de8b320c52c4ed93eda1a8771a"
+                  },
+                  {
+                      "path":  "novel-rag/style-audit/active/metaphor.yaml",
+                      "bytes":  8664,
+                      "sha256":  "c1427c43e74a8f148e9c96833a27a3f62992e50707803d073c4a38f42d2d9e9c"
+                  },
+                  {
+                      "path":  "novel-rag/style-audit/active/narration-voice.yaml",
+                      "bytes":  4588,
+                      "sha256":  "7beadffc54e54c1d5509bf323cd227af1c0d3f6b0a9b9c231df31ecf33d953e8"
+                  },
+                  {
+                      "path":  "novel-rag/style-audit/active/narrative-organization.yaml",
+                      "bytes":  4154,
+                      "sha256":  "2e17081a2f52392f46b4f4ce2d46b706a61cd975399c22f09121fc4efdc71edd"
+                  },
+                  {
+                      "path":  "novel-rag/style-audit/active/native-chinese-dialogue.yaml",
+                      "bytes":  14517,
+                      "sha256":  "faecf3fb3c6c0ded35501f34fa42bd21e819ecfa79375ca3c91e30e7b6277c7e"
+                  },
+                  {
+                      "path":  "novel-rag/style-audit/active/punctuation.yaml",
+                      "bytes":  8957,
+                      "sha256":  "67445661664196384d1711561250d166359636e7a09675f50b8006f962e3b28a"
+                  },
+                  {
+                      "path":  "novel-rag/style-audit/approved-samples/.gitkeep",
+                      "bytes":  1,
+                      "sha256":  "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
+                  },
+                  {
+                      "path":  "novel-rag/style-audit/audit-history/.gitkeep",
+                      "bytes":  1,
+                      "sha256":  "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
+                  },
+                  {
+                      "path":  "novel-rag/style-audit/deprecated/.gitkeep",
+                      "bytes":  1,
+                      "sha256":  "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
+                  },
+                  {
+                      "path":  "novel-rag/style-audit/deprecated/manifest-v1.0.yaml",
+                      "bytes":  1877,
+                      "sha256":  "1ccbde2a761c8c09204341256eb671cbc6e27b0027886cfa13a35dc6f6327ef8"
+                  },
+                  {
+                      "path":  "novel-rag/style-audit/deprecated/manifest-v1.1.yaml",
+                      "bytes":  1994,
+                      "sha256":  "be74f4bc10ace4351b2dc814271212149adacc4d05ffaa6090fdf7e0ba78aa0e"
+                  },
+                  {
+                      "path":  "novel-rag/style-audit/deprecated/manifest-v1.2.yaml",
+                      "bytes":  2420,
+                      "sha256":  "922f507c0b7f5dec23e3f5da83dbb3551f9e6eee8bf5a60e60a4e9bdb89297ca"
+                  },
+                  {
+                      "path":  "novel-rag/style-audit/scene-specific/.gitkeep",
+                      "bytes":  1,
+                      "sha256":  "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
+                  },
+                  {
+                      "path":  "novel-rag/style-audit/scene-specific/battle.yaml",
+                      "bytes":  19975,
+                      "sha256":  "87efee87ff2ce4ace58559912173777872a1fc0956b626721259735a0162b2d3"
+                  },
+                  {
+                      "path":  "novel-rag/style-audit/scene-specific/battle-syntax-sound.yaml",
+                      "bytes":  21341,
+                      "sha256":  "5ceb8e6a79e75d1ab8b4c36520ea0ae9dd4c2e797c53106cac49bfbde5400abc"
+                  },
+                  {
+                      "path":  "novel-rag/style-audit/scene-specific/character-scene.yaml",
+                      "bytes":  5144,
+                      "sha256":  "6fc050d2403f8671ad67a6a401b1db1d4ec36cd1cc86c35d1b3485872b919161"
+                  },
+                  {
+                      "path":  "novel-rag/style-audit/scene-specific/scene-classifier.yaml",
+                      "bytes":  5141,
+                      "sha256":  "e1eaeb84d03c5adb653d13fcb31ac59233fdfcbe964946d90b85aa23229a6d24"
+                  },
+                  {
+                      "path":  "novel-rag/templates/chapter-outline.yaml",
+                      "bytes":  410,
+                      "sha256":  "c30fed21b116a934b0fb7c1b9b6736237b756265e785b1b89a2f3ded424fedf9"
+                  },
+                  {
+                      "path":  "novel-rag/templates/character-canon.yaml",
+                      "bytes":  554,
+                      "sha256":  "8ebb393300ab108317b20cc05ac88b6103f2eaf2a0aa720f6e18a0d785655d31"
+                  },
+                  {
+                      "path":  "novel-rag/templates/character-current.yaml",
+                      "bytes":  1046,
+                      "sha256":  "9caa074ce423eaf4ee1cb577f34d8b52f996b7547c0dc01373e0861579642045"
+                  },
+                  {
+                      "path":  "novel-rag/templates/feedback.yaml",
+                      "bytes":  287,
+                      "sha256":  "c78cdd70789eaa308cae19caf8d01969b41a2e2753b88db92911571e3762962b"
+                  },
+                  {
+                      "path":  "novel-rag/templates/history-scene.yaml",
+                      "bytes":  431,
+                      "sha256":  "4539975d80424a2a344fd1115241b881b473b3217492408232d04f114f5ec32f"
+                  },
+                  {
+                      "path":  "novel-rag/templates/judgment-spec.yaml",
+                      "bytes":  660,
+                      "sha256":  "d38e6246fed23509748f9f706ad25975c60198b7779ca105490367894a13f9ef"
+                  },
+                  {
+                      "path":  "novel-rag/templates/rule.yaml",
+                      "bytes":  557,
+                      "sha256":  "c3787a0571d4525e9f961ac742d4903e14956ef3a249cfffe38cfca9d66ae701"
+                  },
+                  {
+                      "path":  "novel-rag/templates/style-audit.yaml",
+                      "bytes":  262,
+                      "sha256":  "0c3aad6bdc9498fd6de63b167c45b600c34cb7316fc5845f33c3b5a8ee9df597"
+                  },
+                  {
+                      "path":  "novel-rag/templates/world-current.yaml",
+                      "bytes":  342,
+                      "sha256":  "147e4e330eeffa83485abc300a30cbdeb21335ea881f09d959ccecd1f2ec4982"
+                  },
+                  {
+                      "path":  "novel-rag/WORKFLOW.md",
+                      "bytes":  1653,
+                      "sha256":  "7649dbba1b8bb895d3016a14290c847dcf3d0e3c592f8698bf52c9335cf92521"
+                  },
+                  {
+                      "path":  "novel-rag/world-state/change-logs/.gitkeep",
+                      "bytes":  1,
+                      "sha256":  "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
+                  },
+                  {
+                      "path":  "novel-rag/world-state/change-logs/volume-04-chapter-010-snapshot.yaml",
+                      "bytes":  1767,
+                      "sha256":  "a5bf6077b825778c0e420be6ca814e22def819c5f086a765da33289688c0cc02"
+                  },
+                  {
+                      "path":  "novel-rag/world-state/change-logs/volume-04-chapter-013-pre-chapter-014.yaml",
+                      "bytes":  2313,
+                      "sha256":  "3b4e08513f09ecaa4fd185bf0a7207941b3674ca7b819a1213fd3f03aee046cb"
+                  },
+                  {
+                      "path":  "novel-rag/world-state/change-logs/volume-04-chapter-014-pre-chapters-015-017.yaml",
+                      "bytes":  4097,
+                      "sha256":  "c3affbc8860da8161c2d7e451e5daee079638dda207fb180e7272d31ffbb4481"
+                  },
+                  {
+                      "path":  "novel-rag/world-state/current/.gitkeep",
+                      "bytes":  1,
+                      "sha256":  "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
+                  },
+                  {
+                      "path":  "novel-rag/world-state/current/current.yaml",
+                      "bytes":  4068,
+                      "sha256":  "56c5e9956866079d44b7c942938862bc2479cb878955242851dd8207fa6720c9"
+                  },
+                  {
+                      "path":  "novel-rag/world-state/factions/.gitkeep",
+                      "bytes":  1,
+                      "sha256":  "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
+                  },
+                  {
+                      "path":  "novel-rag/world-state/locations/.gitkeep",
+                      "bytes":  1,
+                      "sha256":  "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
+                  },
+                  {
+                      "path":  "pyproject.toml",
+                      "bytes":  481,
+                      "sha256":  "9025efc345cbc34e3075f12da508a4acba82573a7a1bd42bfd4e6555a9b8b508"
+                  },
+                  {
+                      "path":  "README.md",
+                      "bytes":  3188,
+                      "sha256":  "c91e45b7e488d6c09a1624113dcbece38fce297e5be1fed0844ca94af740e919"
+                  },
+                  {
+                      "path":  "scripts/__pycache__/audit_chapters_15_17.cpython-312.pyc",
+                      "bytes":  10109,
+                      "sha256":  "ca1bcd083bd5a909903fe071e6f20276b2ea56f5c0b9e86b7cfb1d61a34a9833"
+                  },
+                  {
+                      "path":  "scripts/__pycache__/check_chapter14_li_zhouwei_import.cpython-312.pyc",
+                      "bytes":  11119,
+                      "sha256":  "6663775235b38360beb91c10d2f961b5df9effa191a0a77d8897ef72242da28e"
+                  },
+                  {
+                      "path":  "scripts/__pycache__/check_qihuang_rag_import.cpython-312.pyc",
+                      "bytes":  7245,
+                      "sha256":  "0248ee89aa8f6000132ea1e512eaf831c242822d092eb0aa21c15d719a639611"
+                  },
+                  {
+                      "path":  "scripts/__pycache__/import_chapter14_history.cpython-312.pyc",
+                      "bytes":  15050,
+                      "sha256":  "236efbf693e83d97f056b1bae01e0a49ae751c6a3de5747f3f0aaaa356e0b4c1"
+                  },
+                  {
+                      "path":  "scripts/__pycache__/import_li_zhouwei_character.cpython-312.pyc",
+                      "bytes":  22932,
+                      "sha256":  "899f1e81c642a21510f48d4ab25fdf85601b5d37ece05f7972898f679e5e0152"
+                  },
+                  {
+                      "path":  "scripts/__pycache__/import_native_chinese_dialogue.cpython-312.pyc",
+                      "bytes":  27816,
+                      "sha256":  "770c7d95beb7bde5b89748bbfdb7010db97bfd88796d16e9407bb106e84c97c3"
+                  },
+                  {
+                      "path":  "scripts/__pycache__/promote_rewritten_chapters_15_17.cpython-312.pyc",
+                      "bytes":  62639,
+                      "sha256":  "8f9275714aa61f6f54e34c61bb7e25d7d614042557a0e9a721629a92ad41fcf3"
+                  },
+                  {
+                      "path":  "scripts/__pycache__/write_chapter14_current_state.cpython-312.pyc",
+                      "bytes":  26742,
+                      "sha256":  "296ff00523aabc2376d7307257dd371efe22cb0063fd000ef803f54956e7e2f3"
+                  },
+                  {
+                      "path":  "scripts/audit_chapter_14.py",
+                      "bytes":  4537,
+                      "sha256":  "ef3e223db2bf65ebe48f29bba6f929dc10084e6c35d557455c69de9654372916"
+                  },
+                  {
+                      "path":  "scripts/audit_chapter_14_style.py",
+                      "bytes":  4046,
+                      "sha256":  "a010a006a61fb35dacf2dea71624cb9fbf7d2cd42158d78c69bab647235c219c"
+                  },
+                  {
+                      "path":  "scripts/audit_chapters_15_17.py",
+                      "bytes":  6752,
+                      "sha256":  "154c549178de3cd8861376107f7f281f4dc00ac14e084d0dad7df95e334c9ea8"
+                  },
+                  {
+                      "path":  "scripts/audit_chapters_15_17_rewrite.py",
+                      "bytes":  3525,
+                      "sha256":  "c30b6bf4c255c8e0b9156f1ed691d8fcc8dfb54536dac256fca87ca75961ce99"
+                  },
+                  {
+                      "path":  "scripts/check_chapter14_li_zhouwei_import.py",
+                      "bytes":  8178,
+                      "sha256":  "44b17540dce3fffac8a69aaee187d9ed8b5a2e5db7631085c258e41793f4c0d5"
+                  },
+                  {
+                      "path":  "scripts/check_qihuang_rag_import.py",
+                      "bytes":  5518,
+                      "sha256":  "3190b837b6bb88c5c5090ceb83d1bc1126dc12e98d760ce1ffbd6944751782ed"
+                  },
+                  {
+                      "path":  "scripts/consolidate_chapter_14_paragraphs.py",
+                      "bytes":  1870,
+                      "sha256":  "689ce24c473169bcae89ade75bc861c38b439e461436bbe1932558508045ed8b"
+                  },
+                  {
+                      "path":  "scripts/consolidate_chapters_15_17_paragraphs.py",
+                      "bytes":  2024,
+                      "sha256":  "d678ac23be43ee12c5f88b6f1665fbd3abea03728c9b21888b2f22a840f7a7d9"
+                  },
+                  {
+                      "path":  "scripts/import_chapter14_history.py",
+                      "bytes":  14080,
+                      "sha256":  "df00e901a02e1511505e138b00a0edbd679bdf1f56d13f4f9b223f92882d967c"
+                  },
+                  {
+                      "path":  "scripts/import_character_expansion.py",
+                      "bytes":  13429,
+                      "sha256":  "aeb7224cea467b139e6979eaef60643a73ff7b74dd1e924b493beafdf6213bdd"
+                  },
+                  {
+                      "path":  "scripts/import_fate_sources.py",
+                      "bytes":  24108,
+                      "sha256":  "6d80548522395b303d3c75978e9d9877564c23a4bf5deeadb372710353285609"
+                  },
+                  {
+                      "path":  "scripts/import_li_zhouwei_character.py",
+                      "bytes":  26249,
+                      "sha256":  "979b2fee502e1b40eb3e29cc025e55f2a73e8be9524e294da3aeb2590edd72cb"
+                  },
+                  {
+                      "path":  "scripts/import_native_chinese_dialogue.py",
+                      "bytes":  28577,
+                      "sha256":  "5dfd056e5b76edf7e6670cb227cad8c6d463158e4be4a8d7f37e9e09d80dc0b7"
+                  },
+                  {
+                      "path":  "scripts/import_style_constraints.py",
+                      "bytes":  5018,
+                      "sha256":  "2a7a13a5b83eafd50ad0b16e784061df7d98207660bc8a790806b83257c8fb9b"
+                  },
+                  {
+                      "path":  "scripts/import_style_continuity_modules.py",
+                      "bytes":  6074,
+                      "sha256":  "3fa966ec45bc6edb385815e544a623390d6a9741db686fa89a1249a5ec206793"
+                  },
+                  {
+                      "path":  "scripts/promote_chapters_11_13.py",
+                      "bytes":  14976,
+                      "sha256":  "45504ba44e1fe06bca72145ecafaf841dfd98c9168307ae800eac55c9e8d44c4"
+                  },
+                  {
+                      "path":  "scripts/promote_rewritten_chapters_15_17.py",
+                      "bytes":  79212,
+                      "sha256":  "9c8a6ee6ab3bfadf827f8b54f92668e80552fc01b46bb17de82be3ce0a38677a"
+                  },
+                  {
+                      "path":  "scripts/run_retrieval_tests.py",
+                      "bytes":  1485,
+                      "sha256":  "09f2a2a40b65f3c8e7dda817c118b82ec6948628b876e1c77b5f88e4cec20392"
+                  },
+                  {
+                      "path":  "scripts/write_chapter14_current_state.py",
+                      "bytes":  29629,
+                      "sha256":  "6aad470d0c49ee730cf971782174f364c7ef143e99691fb1c0c96e2f0288076f"
+                  },
+                  {
+                      "path":  "tests/__pycache__/test_chunking.cpython-310-pytest-8.4.2.pyc",
+                      "bytes":  1587,
+                      "sha256":  "7de70e0c3396f95c1becd2bfc57e88ca5dcdd037ef67e6b842274b3c9d06165b"
+                  },
+                  {
+                      "path":  "tests/__pycache__/test_chunking.cpython-312.pyc",
+                      "bytes":  805,
+                      "sha256":  "75c9f129f967af47902881925c63cca3987105b7516c895fa05873e507f097b7"
+                  },
+                  {
+                      "path":  "tests/__pycache__/test_chunking.cpython-312-pytest-9.1.1.pyc",
+                      "bytes":  2212,
+                      "sha256":  "8c19f96dd6eaef2d876dc3517bd3a926f960c1c49472fc434e14867f1792fc5f"
+                  },
+                  {
+                      "path":  "tests/__pycache__/test_index.cpython-310-pytest-8.4.2.pyc",
+                      "bytes":  2903,
+                      "sha256":  "4ed241d8761fc366be9003c62328846531802348769ac17a99281cb3916645bc"
+                  },
+                  {
+                      "path":  "tests/__pycache__/test_index.cpython-312.pyc",
+                      "bytes":  2267,
+                      "sha256":  "376ab71bdd28142d2dcef9827397a19623dbea407ac97826c960206150a818ea"
+                  },
+                  {
+                      "path":  "tests/__pycache__/test_index.cpython-312-pytest-9.1.1.pyc",
+                      "bytes":  4342,
+                      "sha256":  "d8dd6b0ad370ae6e2d5bfcf305b4e5ebbb9b1eab82018ceb4e860948c3ee546c"
+                  },
+                  {
+                      "path":  "tests/__pycache__/test_validation.cpython-310-pytest-8.4.2.pyc",
+                      "bytes":  6618,
+                      "sha256":  "b6156540e60f197c822523a0e271447284ed8f1aa82e86310cc202666bdd20cb"
+                  },
+                  {
+                      "path":  "tests/__pycache__/test_validation.cpython-312.pyc",
+                      "bytes":  5564,
+                      "sha256":  "07ecc4850a22ed53f52b0a466a853b0002bf9f71dc6b20cfe74ba54ab5d2ccd6"
+                  },
+                  {
+                      "path":  "tests/__pycache__/test_validation.cpython-312-pytest-9.1.1.pyc",
+                      "bytes":  11926,
+                      "sha256":  "09a401dba25dfe672acf0212cb37feba597e1a079f655cbf49bde410c825fa0f"
+                  },
+                  {
+                      "path":  "tests/test_chunking.py",
+                      "bytes":  371,
+                      "sha256":  "8e7e5af8fce6d01d26de7632393a9fc9e778f7a8ed7c2b0aa0763d775058af81"
+                  },
+                  {
+                      "path":  "tests/test_index.py",
+                      "bytes":  1409,
+                      "sha256":  "39f6853b9f81548b69f46316bf6c5d48a3eddb3765f550a60d5ede1555e79492"
+                  },
+                  {
+                      "path":  "tests/test_validation.py",
+                      "bytes":  3739,
+                      "sha256":  "e6969ec42ff048886c690b3f32e1f07200023fd913d06d37afd435ae48e0c439"
+                  }
+              ]
+}

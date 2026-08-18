@@ -1,0 +1,60 @@
+metadata:
+  document_id: canon-character-shenqi-hui-v1.0
+  story_id: overturned-world-fujimaru
+  timeline_id: main
+  document_type: canon
+  title: 角色设定-神琦灰
+  entity: character
+  character_ids:
+  - shenqi-hui
+  version: '1.0'
+  status: canon
+  canon_scope: timeline
+  created_at: '2026-07-13'
+  updated_at: '2026-07-13'
+  supersedes: null
+  source_file: D:\word2\第一卷 特异点F\人设.txt
+character:
+  name: 神琦灰
+  aliases:
+  - 神琦灰
+  - 故尊复现·神琦灰
+  identity: 魔术师 / 根源主人神琦灰的故尊复现
+  age: '5'
+  appearance:
+  - 金发碧眼，可爱又精致的面庞
+  - 体型匀称
+  personality_core:
+  - 自信
+  - 偏执
+  - 为了目的不择手段
+  - 被根源认定为极度自信且无法无天
+  surface_behavior: []
+  values:
+  - 证明自身优于愿主神琦灰
+  goals:
+  - 彻底成为根源
+  - 超越愿主神琦灰
+  fears: []
+  boundaries: []
+  speech_patterns: []
+  abilities:
+  - 万能魔术
+  - 剑术精通
+  - 根源魔术
+  limitations:
+  - 根源魔术距离极致仍差一步
+  - 需要盖提亚维持特异点，因此暂不杀死迦勒底一行
+  relationships:
+  - 愿主神琦灰
+  - 迦勒底
+  - 盖提亚
+  prohibited_interpretations:
+  - 不得将她写成愿主神琦灰本人
+  - 不得忽略其自信、偏执与目的优先
+  source_profile: "================= MAGUS PROFILE =================\n姓名: 神琦灰\n性别: 女\n年龄: 5\n外貌: 金发碧眼，可爱又精致的面庞\n体型: 匀称\n起源:\
+    \ 根源【故尊复现】\n魔术回路·量: EX级 (100条以上)\n魔术回路·质: EX级 (规格外/特殊 - Special)\n性格: 自信 偏执 为了目的不择手段\n魔术师准则: 无\n梦想: 超越愿主神琦灰\n出身: 故尊复现\n\
+    -------------------------------------------------\n-------------------------------------------------\n天赋/礼装/刻印：\n- 【自定义】\n\
+    \  万能魔术：全能\n剑术精通：神琦灰原本是圣剑使，其故尊复现自然也是。\n根源魔术：同根源魔术。\n-------------------------------------------------\n补充说明：\n根源主人神琦灰的故尊复现\n\
+    被根源认为应该是极度自信且无法无天的。\n全能，战斗方式偏爱光炮。\n拥有只差一步就能够达到极致的根源魔术\n其目的是彻底成为根源，超越愿主神琦灰，证明自己比她强得多。\n实力至强，是无法被正常方式攻略的究极机制怪+数值怪，愿意陪迦勒底和盖提亚玩是因为她需要盖提亚维持特异点懒得杀人\n\
+    ================================================="

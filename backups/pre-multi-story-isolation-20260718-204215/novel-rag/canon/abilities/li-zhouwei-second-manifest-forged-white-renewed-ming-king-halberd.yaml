@@ -1,0 +1,56 @@
+{
+  "metadata": {
+    "document_id": "canon-ability-li-zhouwei-second-manifest-forged-white-renewed-ming-king-halberd-v1.0",
+    "story_id": "overturned-world-fujimaru",
+    "timeline_id": "main",
+    "document_type": "canon",
+    "title": "宝具设定-李周巍-次显锻白再明王戟",
+    "entity": "noble_phantasm",
+    "character_ids": [
+      "li-zhouwei"
+    ],
+    "event_tags": [
+      "次显锻白再明王戟",
+      "EX",
+      "noble_phantasm"
+    ],
+    "version": "1.0",
+    "status": "canon",
+    "canon_scope": "timeline",
+    "created_at": "2026-07-17",
+    "updated_at": "2026-07-17",
+    "supersedes": null,
+    "source_file": "user-message:2026-07-17/li-zhouwei-servant-profile"
+  },
+  "ability": {
+    "retrieval_key": "li_zhouwei_second_manifest_forged_white_renewed_ming_king_halberd",
+    "name": "次显锻白再明王戟",
+    "owner": "李周巍",
+    "owner_id": "li-zhouwei",
+    "rank": "EX",
+    "category": "noble_phantasm",
+    "type": "对界宝具 / 斩裂天空的王戟",
+    "effect": "陪伴李周巍从凡人战至真人的主武装与灵基核心；真名解放后挥出足以斩裂天空的一戟，在从者容器限制下，全力一击威力约等同魔神王盖提亚的第三宝具。",
+    "activation": "解放完整真名并以王戟发动全力斩击。",
+    "range": "对界；具体范围未说明。",
+    "cost": "未说明。",
+    "limitations": [
+      "从者容器对其力量存在限制。",
+      "蓄力时间、使用次数、反作用与对比所指盖提亚第三宝具的具体工况未说明。"
+    ],
+    "failure_conditions": [],
+    "known_by": [
+      "李周巍"
+    ],
+    "visual_expression": "未说明。",
+    "narrative_function": [
+      "作为世间第二显的最终手段，发动斩裂天空的对界一击。"
+    ],
+    "canon_notes": [],
+    "release_chant": [
+      "甲子魄练，百战不休——",
+      "白麒麟啸，明阳再显——",
+      "次显锻白再明——王戟！"
+    ]
+  }
+}

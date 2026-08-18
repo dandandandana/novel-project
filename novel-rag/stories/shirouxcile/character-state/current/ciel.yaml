@@ -1,0 +1,152 @@
+metadata:
+  document_id: state-current-shirouxcile-ciel-v1.1
+  story_id: shirouxcile
+  timeline_id: main
+  document_type: character_state
+  title: 当前状态-希耶尔
+  character_id: ciel
+  variant_id: ciel-main
+  snapshot_type: current
+  effective_at: volume-01-chapter-004
+  last_updated: '2026-08-09'
+  version: '1.1'
+  status: active
+  supersedes: state-current-shirouxcile-ciel-v1.0
+  source_file: D:\Novel 1\Novel\outputs\shirouXcile_part2_马耳他_情绪强化版.txt
+character_state:
+  current_position:
+    location: 马耳他蓝色小船餐厅，随后将与卫宫士郎前往阁楼取资料
+    companions:
+    - emiya-shirou
+    faction: 埋葬机关能力复核中的行动人员／咖喱饭馆店主
+  physical:
+    health: 可行动，但伤势按普通人速度恢复
+    injuries:
+    - 右肩七针缝合并再次渗血
+    - 右手指关节砸裂后包扎
+    - 腰侧青紫
+    - 额角浅伤
+    fatigue: 追踪、战斗与通宵调查后睡眠不足
+    temporary_conditions:
+    - 右手缠有绷带
+    - 右肩大幅动作受限
+    permanent_changes:
+    - 罗亚彻底死亡后不死性永久消失
+  mental:
+    dominant_emotions:
+    - 舍身惯性暴露后的愤怒与羞恼
+    - 对卫宫士郎的警惕、好奇与同类感
+    - 面对Fate事件的紧迫感
+    current_pressure:
+    - 身体仍会先于判断选择以命换伤
+    - 八小时内完成Fate行动准备
+    desires:
+    - 活着解决Fate事件
+    - 保住饭馆与普通生活
+    - 弄清卫宫士郎为何熟悉舍身打法
+    fears:
+    - 几个月的活着练习在战斗中失效
+    - Fate展示故乡未毁、艾蕾西亚继续生活的可能
+    unresolved_conflicts:
+    - 承认遗憾而不否定如今的希耶尔
+    - 职责、日常与生存本能尚未真正统一
+    behavior_effects:
+    - 会精确分配撤退资源，却可能在刺激下耗尽
+    - 拒绝被士郎用过来人口气提醒生死
+    - 愿意复核处决依据并交换联络术式
+  knowledge:
+    known:
+    - 安翰斯与卫宫士郎在马耳他共同追踪奥尔菲斯·莫伊拉
+    - Fate会让目标主观经历完整岔命并询问是否想要
+    - 马耳他十七人失踪、七人返回且一名医院骑士死亡
+    - 安翰斯近期救人且暂无平民死亡可直接归责
+    - 卫宫士郎未受支配、曾杀死一名祖且反复以自身伤亡救人
+    - Fate疑似能从接受另一人生的渴望中获得力量
+    - 临时巢穴范围在马耳他岛北侧
+    - 第七圣典与原理血戒将在八小时后送达
+    unknown:
+    - 奥尔菲斯临时巢穴的精确位置
+    - Fate完整捕食机制与同一目标可触发次数
+    - 安翰斯当前地下藏身点
+    - 卫宫士郎封闭的童年记忆细节
+    mistaken_beliefs: []
+    suspicions:
+    - 骑士可能在死亡前已被奥尔菲斯多次接触
+    - 陪伴幸存者复述经历的人也可能成为后续目标
+    secrets_held:
+    - 故乡未毁、艾蕾西亚继续生活是自己无法轻易拒绝的岔命
+  goals:
+    immediate:
+    - 看完阁楼中的全部Fate资料
+    - 等待第七圣典和原理血戒运抵马耳他
+    - 重新处理右肩伤口
+    - 与卫宫士郎核查岛北侧巢穴
+    short_term:
+    - 优先处理奥尔菲斯·莫伊拉
+    - 复核安翰斯处决依据并回收圣葬炮典
+    - 检查Fate相关接触名单
+    long_term:
+    - 找到不否定艾蕾西亚也不否定希耶尔的未来
+    - 保留职责之外的日常生活
+    priorities:
+    - Fate事件优先
+    - 保护平民与幸存者
+    - 装备到达前避免单独进入巢穴
+    obstacles:
+    - 撤退用黑键与最后一份魔力已在白石巷耗尽
+    - 当前伤势与疲劳
+    - 士郎也有擅自救人的倾向
+  relationships:
+  - 卫宫士郎：由战斗敌对转为高度戒备的临时合作；彼此交换八小时联络术式，也彼此监督不得单独入巢
+  - 安翰斯：处决暂缓、圣葬炮典仍须回收；承认其近期救人和追踪Fate的事实
+  - 纳鲁巴列克：批准Fate优先和八小时武装转运，并继续以挖苦提醒希耶尔先吃饭
+  - 卢卡：连夜调查士郎与安翰斯并提供档案
+  - 艾琳娜：Fate返回者，其四十九年岔命让希耶尔理解诱惑的真实性
+  abilities:
+    available:
+    - 剩余黑键
+    - 土火水冰四个式典的使用能力
+    - 铁甲
+    - 对死徒专业猎杀技术
+    - 埋葬机关战斗经验
+    unavailable:
+    - 第七圣典尚在运输途中
+    - 原理血戒尚在运输途中
+    newly_acquired:
+    - 与卫宫士郎互换的八小时临时联络术式
+    consumed_resources:
+    - 六枚撤退用黑键
+    - 战前预留的最后一份魔力
+    - 部分式典组件
+    active_costs:
+    - 任何致命伤均会永久致死
+    - 右肩和右手伤势限制动作
+    - 大魔术完整展开当前仅能可靠承担一次
+  inventory:
+    carried:
+    - 加密电话
+    - 空白笔记
+    - 咖喱饭馆钥匙
+    - 剩余黑键
+    - 临时联络圣句
+    lost: []
+    damaged:
+    - 白石巷战斗中消耗和遗失的多枚黑键
+    - 右肩外套与固定带受损
+  narrative:
+    current_arc: 马耳他Fate事件与学习不以生命换伤
+    completed_changes:
+    - 亲口承认身体在战场上仍先选择旧的舍身路线
+    - 不再仅凭祖的身份当场处决安翰斯，转而要求证据复核
+    - 与卫宫士郎建立有限且相互监督的临时合作
+    unresolved_flags:
+    - 奥尔菲斯的具体巢穴与完整能力
+    - 安翰斯去向及圣葬炮典回收
+    - 希耶尔和士郎各自会在Fate中看见什么
+    active_promises:
+    - 装备到达前能避免时不单独进入巢穴
+    - 每周查看法国饭馆账目
+    - 与士郎互通目标警报
+    future_pressure:
+    - Fate会直接触及艾蕾西亚未被罗亚选中的人生
+    - 士郎的舍身习惯会继续刺激她对自身旧习的认识

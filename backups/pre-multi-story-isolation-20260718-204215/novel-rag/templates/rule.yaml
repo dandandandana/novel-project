@@ -1,0 +1,30 @@
+metadata:
+  document_id: ''
+  story_id: ''
+  timeline_id: ''
+  document_type: rule
+  module_type: ruler
+  rule_id: ''
+  title: ''
+  rule_type: decision_rule
+  rule_scope: global
+  task_type: null
+  scene_type: null
+  priority: global
+  enforcement: mandatory
+  version: '1.0'
+  status: active
+  created_at: ''
+  updated_at: ''
+  supersedes: null
+  source_file: ''
+rule:
+  purpose: ''
+  applies_when: []
+  required_inputs: []
+  decision_criteria: []
+  required_actions: []
+  prohibited_actions: []
+  exceptions: []
+  conflict_resolution: ''
+  validation: []

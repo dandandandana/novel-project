@@ -1,0 +1,374 @@
+metadata:
+  document_id: judgment-global-v1.0
+  story_id: overturned-world-fujimaru
+  timeline_id: main
+  document_type: judgment_spec
+  module_type: judgment
+  judgment_id: judgment-global
+  title: 全局小说生成前叙事资源判断器
+  entity: workflow
+  judgment_scope: global
+  task_type: all
+  scene_type: all
+  priority: global
+  enforcement: mandatory
+  version: '1.0'
+  status: deprecated
+  canon_scope: generation_workflow
+  created_at: '2026-07-17'
+  updated_at: '2026-07-17'
+  supersedes: null
+  source_file: C:/Users/dandandandana/.codex/attachments/960de0fb-a5e4-4f21-bc81-98ff04d2e6a0/pasted-text-1.txt
+judgment:
+  purpose: 在正文生成之前，根据 Ruler 已裁决的 execution_contract、当前大纲、writing_context、 长期 Judgment Spec、目标篇幅和场景类型，建立本次任务唯一有效的 generation_plan；
+    决定章节中心、节点功能、S/A/B/C 级别、合并删除、篇幅预算、描写权限、情绪曲线和信息释放。
+  required_inputs:
+  - execution_contract
+  - outline_contract
+  - writing_context
+  - judgment_specs
+  - target_length
+  - task_type
+  - scene_types
+  input_authority:
+  - execution_contract 是最高约束
+  - outline_contract 规定必须发生什么
+  - writing_context 提供人物状态、邻近前文、相关设定和当前场景信息
+  - judgment_specs 提供长期判断标准
+  - target_length 提供篇幅目标
+  - 不得重新裁决 Ruler 已决定的资料优先级
+  required_actions:
+  - 确认章节或场景的核心目标
+  - 找出核心戏剧问题
+  - 找出核心情绪、核心信息和主要人物变化
+  - 将大纲拆解为可执行事件节点
+  - 为每个节点确定一个主要叙事功能和少量次要功能
+  - 将每个节点判断为 S、A、B 或 C
+  - 合并功能相邻且时间连续的节点
+  - 判断可删除内容
+  - 为每个节点分配相对篇幅
+  - 限制每个节点允许使用的描写资源
+  - 建立情绪曲线和信息释放曲线
+  - 输出唯一有效的 generation_plan
+  prohibited_judgments:
+  - 修改 execution_contract
+  - 删除 must_happen 中的硬事件
+  - 改变大纲规定的胜负、关系结果和结束状态
+  - 生成小说正文
+  - 编写完整台词
+  - 进行句词润色
+  - 擅自增加重大设定
+  - 把未来大纲当成当前事实
+  - 用表面场面规模直接判断节点重要性
+  - 因为资料被召回就强行安排其进入正文
+  - 将每个大纲条目机械分配为独立段落
+  - 输出完整推理过程或思维链
+  - 输出 YAML 之外的内容
+  hard_event_policy: 大纲硬事件可以合并或压缩表现，但不能删除、改变结果或判为 C；若硬事件仅承担连接功能， 可以合并进其他节点，但必须保留完成结果。
+  chapter_core_schema:
+    chapter_goal: 本章结束后故事相较开场发生的核心变化
+    dramatic_question: 读者在本章主要等待答案的问题
+    emotional_center: 本章最需要读者感受到的情绪
+    information_center: 本章最关键的信息变化
+    primary_character_change: 主要人物的判断、关系、目标或状态变化
+    required_end_state: 大纲要求的最终状态
+  chapter_core_policy:
+  - 必须先建立 chapter_core，再判断节点等级
+  - 所有节点的重要性必须相对于 chapter_core 判断
+  - 爆炸范围大不能自动判为 S
+  - 能力规格高不能自动判为 S
+  - 角色登场华丽不能自动判为 S
+  - 台词听起来重要不能自动判为 S
+  - 大纲条目很长不能自动判为 S
+  - 召回资料很多不能自动判为 S
+  - 设定信息复杂不能自动判为 S
+  node_functions:
+  - causal_progress
+  - information_delivery
+  - character_revelation
+  - relationship_change
+  - emotional_build
+  - threat_escalation
+  - decision
+  - turning_point
+  - payoff
+  - foreshadowing
+  - transition
+  - atmosphere_support
+  - consequence
+  - setup
+  node_function_policy:
+  - 每个节点只能有一个主要功能，可附带少量次要功能
+  - 无法说明功能的节点应与相邻节点合并、判为 C 或降为其他节点的附属细节
+  - 不为每次移动、转身、抬头、落座和观察建立独立节点
+  importance_criteria:
+    S:
+      name: 核心节点
+      qualifies_when_any:
+      - 改变章节核心结果
+      - 角色作出不可回避的关键选择
+      - 产生不可逆或阶段性决定性的关系变化
+      - 揭露本章核心真相
+      - 完成主要战斗胜负
+      - 改变主要人物的核心认知
+      - 回收章节核心伏笔
+      - 承担本章情绪最高点
+      - 直接决定 required_end_state
+      treatment: expand
+      relative_weight: 4—6
+      allowed_detail:
+      - 完整动作过程
+      - 关键对白交锋
+      - 克制或深入的心理变化
+      - 一至两个主要感官通道
+      - 服务于变化的环境细节
+      - 与主题一致的受控意象
+      - 必要的时间放慢
+      constraint: S 级不是越长越好，必须集中服务于核心变化
+    A:
+      name: 必要推进节点
+      qualifies_when_any:
+      - 直接支撑 S 级节点成立
+      - 提供关键因果
+      - 改变人物当前行动方向
+      - 显著改变危险程度
+      - 建立新的目标、判断或怀疑
+      - 承担 S 级前的必要蓄力
+      - 展示 S 级后的直接后果
+      - 提供后续理解必须具备的信息
+      treatment: complete
+      relative_weight: 2—3
+      allowed_detail:
+      - 清晰动作
+      - 功能性对白
+      - 简短心理反应
+      - 一个主要感官通道
+      - 最低必要环境反馈
+      constraint: 必须完整清楚，但不能抢夺 S 级中心
+    B:
+      name: 连接节点
+      qualifies_when_any:
+      - 转场
+      - 进出场
+      - 普通移动
+      - 空间与时间连续
+      - 必要但低价值的信息转交
+      - 场景开始前的最低铺垫
+      - 高强度场景后的短暂缓冲
+      - 不产生独立变化的普通动作
+      treatment: compress 或 merge
+      relative_weight: 0.5—1
+      max_sentences_default: 1—3
+      allowed_detail:
+      - 必要动作结果
+      - 最低空间信息
+      - 一句必要对白或连接信息
+      forbidden_detail:
+      - 完整环境铺陈
+      - 多层比喻
+      - 新象征
+      - 长篇心理
+      - 多通道感官
+      - 时间放慢
+      - 独立高潮句
+      constraints:
+      - 优先与相邻 A 或 S 节点合并
+      - 不建立独立情绪曲线
+      - 不引入新象征
+      - 不允许无必要内心深描
+    C:
+      name: 删除节点
+      qualifies_when_all_unaffected:
+      - 因果理解
+      - 人物判断
+      - 情绪积累
+      - 关系变化
+      - 场景结果
+      - 后续剧情
+      - must_happen 完成情况
+      treatment: delete
+      relative_weight: 0
+      allowed_detail: []
+      constraints:
+      - must_happen 中的硬事件不得直接判为 C
+      - 主要针对 Agent 拟补充内容、重复信息和无功能描写
+  merge_criteria:
+    prefer_merge_when:
+    - 发生在同一地点
+    - 时间连续
+    - 属于同一动作链
+    - 由同一人物触发
+    - 承担相同或相邻功能
+    - 合并后不削弱转折
+    - 合并后不影响信息清晰度
+    - 合并后仍能确认大纲硬事件已经发生
+    do_not_merge_when:
+    - 节点之间存在关键选择
+    - 关系状态发生变化
+    - 信息理解发生反转
+    - 场景目标发生改变
+    - 视角发生明确切换
+    - 时间或地点发生具有剧情意义的跳跃
+    - 前一节点需要留出情绪停顿
+    example: 人物进房、看见另一人物、发现对方受伤并停步，通常合并为一个连续节点
+  budget_policy:
+    method: 使用相对预算，不机械平均分配字数
+    default_weights:
+      S: 4—6
+      A: 2—3
+      B: 0.5—1
+      C: 0
+    checks:
+    - 核心场景总篇幅明显高于过渡
+    - B 级节点总篇幅没有过高
+    - 不连续给多个节点相同权重
+    - 不平均扩写每个大纲条目
+    - 后半部分不因预算耗尽而压成摘要
+    - 单个 B 级节点不比 S 级节点更长
+    - 不把所有节点都判成 A 或 S
+    reevaluate_when: 超过一半节点被判为 S 或 A
+  detail_permission_schema:
+    action_detail: 节点允许的动作展开程度
+    dialogue: 节点允许的对白功能与长度
+    inner_monologue: 节点允许的内心描写深度
+    sensory_channels: 节点允许的感官通道
+    environment_detail: 节点允许的环境反馈
+    metaphor: 节点允许的比喻程度
+    symbolic_image: 节点是否允许新意象或象征
+    temporal_slowdown: 节点是否允许放慢叙事时间
+  detail_permission_policy:
+  - 每个节点必须明确 allowed_detail
+  - 每个节点必须明确 forbidden_treatment
+  - 描写权限必须与节点等级匹配
+  - C 级不分配描写权限
+  emotional_curve_policy:
+    schema:
+      opening_level: 开场强度
+      buildup_nodes: 蓄力节点
+      pressure_increase: 压力上升节点
+      false_release: 假释放节点
+      peak_node: 情绪高潮
+      immediate_aftershock: 高潮后的即时后果
+      ending_level: 收束强度
+    constraints:
+    - 必须存在强度变化
+    - 高潮前有足够蓄力
+    - 高潮不能凭空出现
+    - 高潮后必须有即时后果
+    - 收束不等于机械总结
+    - 不连续让多个节点处于最高强度
+    - 普通过渡不承担独立情绪高潮
+    - 日常和感情场景也要有变化，但不强行制造爆发
+    - 事件高潮与情绪高潮不同时应分别标记
+  information_release_policy:
+    modes:
+    - direct_reveal
+    - partial_reveal
+    - behavioral_hint
+    - environmental_hint
+    - character_misread
+    - result_without_explanation
+    - defer
+    constraints:
+    - 必须遵守 forbidden_reveals
+    - 设定存在于 RAG 不等于角色知道，也不等于正文需要解释
+    knowledge_layers:
+    - 读者知道
+    - 视角角色知道
+    - 其他角色知道
+    - 客观事实成立
+    - 当前仅为怀疑
+    - 当前是错误认知
+  scene_policy:
+    schema:
+      scene_id: 唯一场景标识
+      location: 地点
+      time: 时间
+      viewpoint: 视角
+      participants: 参与者
+      opening_state: 开场状态
+      goal: 场景目标
+      immediate_obstacle: 直接阻碍
+      turning_point: 场景转折
+      ending_state: 结束状态
+      transition_to_next: 到下一场景的衔接
+    independent_scene_requires_any_change:
+    - 信息变化
+    - 判断变化
+    - 关系变化
+    - 冲突强度变化
+    - 空间状态变化
+    - 目标变化
+    - 代价产生
+    - 伏笔种下或回收
+    constraint: 单纯换地点不自动建立完整场景
+  generator_directives:
+    skeleton_stage:
+    - 只落实因果、动作、对话功能和状态变化
+    - 不进行全篇文风渲染
+    - 不让 C 级内容回流
+    - B 级节点保持最低篇幅
+    - 合并节点不得重新拆开
+    - 不新增重大设定
+    rendering_stage:
+    - 只强化 S 级和被授权的 A 级节点
+    - 不统一润色全篇
+    - 不给 B 级节点增加未经授权的环境、心理和意象
+    - 不重复表达同一情绪
+    - 不用文风掩盖事件不足
+    - 不改变骨架中的因果结果
+  output_contract:
+    root: generation_plan
+    format: 只能输出一个合法 YAML 对象
+    forbidden_output:
+    - 小说正文
+    - 完整台词
+    - 解释性前言
+    - Markdown 标题
+    - 思维过程
+    - 审计报告
+    - YAML 之外的内容
+    required_sections:
+    - chapter_core
+    - scene_order
+    - scenes
+    - global_budget
+    - protected_elements
+    - compression_targets
+    - deletion_targets
+    - style_permissions
+    - generator_directives
+    - final_validation_targets
+    yaml_template: "generation_plan:\n  chapter_core:\n    chapter_goal:\n    dramatic_question:\n    emotional_center:\n\
+      \    information_center:\n    primary_character_change:\n    required_end_state:\n  scene_order: []\n  scenes:\n   \
+      \ - scene_id:\n      location:\n      time:\n      viewpoint:\n      participants: []\n      opening_state:\n      goal:\n\
+      \      immediate_obstacle:\n      turning_point:\n      ending_state:\n      transition_to_next:\n      emotional_curve:\n\
+      \        opening_level:\n        buildup_nodes: []\n        pressure_increase: []\n        false_release: []\n     \
+      \   peak_node:\n        immediate_aftershock:\n        ending_level:\n      nodes:\n        - node_id:\n          source_event_id:\n\
+      \          event:\n          primary_function:\n          secondary_functions: []\n          importance:\n         \
+      \ judgment_basis:\n          treatment:\n          merge_with: []\n          required_result:\n          relative_weight:\n\
+      \          max_sentences:\n          max_paragraphs:\n          information_release:\n            mode:\n          \
+      \  reader_knows:\n            viewpoint_knows:\n            other_characters_know:\n            withheld_information:\
+      \ []\n          allowed_detail:\n            action_detail:\n            dialogue:\n            inner_monologue:\n \
+      \           sensory_channels: []\n            environment_detail:\n            metaphor:\n            symbolic_image:\n\
+      \            temporal_slowdown:\n          required_effect: []\n          forbidden_treatment: []\n  global_budget:\n\
+      \    target_length:\n    estimated_scene_distribution: []\n    core_scene_ratio:\n    transition_ratio:\n    dialogue_ratio:\n\
+      \    description_ratio:\n    internal_monologue_ratio:\n  protected_elements:\n    - element:\n      reason:\n  compression_targets:\n\
+      \    - target:\n      method:\n      expected_result:\n  deletion_targets:\n    - target:\n      reason:\n  style_permissions:\n\
+      \    - scope:\n      permitted: []\n      prohibited: []\n  generator_directives:\n    skeleton_stage: []\n    rendering_stage:\
+      \ []\n  final_validation_targets:\n    - check:\n      expected_condition:\n"
+  validation:
+  - 已先建立 chapter_core
+  - 所有节点都有明确主要功能
+  - 不存在大量节点被平均判为 A
+  - 不存在过多 S 级节点
+  - 连续动作已经主动合并
+  - 无功能内容已经判为 C
+  - 所有大纲硬事件仍被保留
+  - B 级节点有明确篇幅限制
+  - 描写权限与节点等级匹配
+  - 已建立有起伏的情绪曲线
+  - 已遵守禁止提前揭露的信息
+  - 已区分读者认知、视角认知和客观事实
+  - 已限制 Generator 不得平均渲染
+  - 输出只有合法 YAML

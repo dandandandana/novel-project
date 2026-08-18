@@ -1,0 +1,106 @@
+metadata:
+  document_id: world-state-current-v1.3
+  story_id: overturned-world-fujimaru
+  timeline_id: main
+  document_type: world_state
+  title: 第四卷第14章末世界状态快照
+  version: '1.3'
+  status: archived
+  effective_at: volume-04-chapter-014
+  supersedes: world-state-current-v1.2
+  source_file: D:\Novel\outputs\第四卷_第14章_续写.txt
+  updated_at: '2026-07-17'
+world_state:
+  timeline_position: 第四卷第14章末，天照命败北，弥勒终战尚未完成
+  locations:
+  - location_id: izanagi-golden-land-east-gate
+    current_condition: 九层太阳阵地完全消失，形成数百米深圆形盆地，边缘留下白、灰、赤三圈结晶
+    controlling_faction: 迦勒底取得阶段性战场控制
+    accessibility: 主角组正在进入盆地接应伤员
+    known_hazards:
+    - 东西山系持续下沉
+    - 战斗余波与不稳定金砖
+    recent_events:
+    - 天照命败北并退化为普通大小黑金孔雀
+    - 杨浞与吉尔伽美什重伤
+  - location_id: izanagi-golden-land-underground
+    current_condition: 创造空间已开启，白火沿地脉洗去弥勒佛印与封锁
+    controlling_faction: 千子村正与祁荒所在的迦勒底协同行动方
+    accessibility: 第三层出口正在打开，计划作为伤员撤离通道
+    known_hazards:
+    - 创造之禊祓代价未知
+    - 人格容器与地下实验尚未完全查明
+    recent_events:
+    - 千子村正取得创造之禊祓
+    - 确认伊耶娜美属于故尊复现
+  - location_id: izanagi-golden-land-north-ritual-road
+    current_condition: 主炮信标已自锁并持续运作
+    controlling_faction: Alterego言峰士郎与阿尔托莉雅防守
+    accessibility: 受十七尊新法相威胁
+    known_hazards:
+    - 十七尊法相
+    - 弥勒佛光
+    recent_events:
+    - 藤丸立香组完成信标安置
+    - Alterego组接管防守
+  - location_id: tsukuyomi-golden-land
+    current_condition: 居民继续由伊耶娜美维持生命联系
+    controlling_faction: 伊耶娜美
+    accessibility: 受限
+    known_hazards:
+    - 四千九百二十六名居民与伊耶娜美生命相连
+    recent_events:
+    - 地下组确认伊耶娜美是从冲突记忆中自主活下来的故尊复现个体
+  - location_id: izanagi-palace
+    current_condition: 弥勒仍在宫中，古老刀痕处首次流出金血
+    controlling_faction: 弥勒
+    accessibility: 终局目标，尚未攻破
+    known_hazards:
+    - 弥勒佛掌
+    - 未降格的救世主体制
+    recent_events:
+    - 创造白火沿古老刀痕持续洗除佛印
+  factions:
+  - faction_id: chaldea
+    current_goal: 治疗伤员，并完成弥勒降格、主炮十二秒窗口与创造之禊祓衔接
+    leadership: 藤丸立香
+    alliances:
+    - 伊耶娜美
+    - 终末人理圆满装置（阶段性）
+    - Alterego言峰士郎与阿尔托莉雅（阶段性）
+    enemies:
+    - 弥勒
+    - 法相
+    known_information:
+    - 天照命已败北
+    - 主炮信标已自锁
+    - 创造之禊祓已取得
+    - 主炮尚未发射
+    resources:
+    - 主炮一发
+    - 降格术
+    - 剩余两道令咒
+    - 创造之禊祓
+    - 潘多拉宝具（未开启）
+    recent_changes:
+    - 天照命从主要敌人中移除
+    - 杨浞与吉尔伽美什重伤
+  global_events:
+  - 黑色穹顶破碎
+  - 天照命的太阳权能分散为普通日光
+  - 乌从欲连接断开
+  - 六十六个法相光影与伤害回路分离
+  - 伊耶那岐金地决战进入对弥勒阶段
+  public_knowledge: []
+  hidden_world_changes:
+  - 神琦灰的目标不止于保住当前人理
+  - 终末人理圆满装置仍隐瞒最终目的
+  unresolved_world_flags:
+  - 弥勒的正式降格与主炮十二秒窗口
+  - 杨浞与吉尔伽美什能否及时恢复
+  - 天照命是否会协助迦勒底
+  - 六十六个孩子的安置
+  - 创造之禊祓具体代价
+  - 潘多拉宝具开启时机
+  - 神琦灰的真实目标
+  - 伊耶娜美与居民生命联系能否解除

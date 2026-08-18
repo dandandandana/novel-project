@@ -1,0 +1,94 @@
+metadata:
+  document_id: state-current-yang-zhuo-v1.4
+  story_id: overturned-world-fujimaru
+  timeline_id: main
+  document_type: character_state
+  title: 当前状态-杨浞
+  character_id: yang-zhuo
+  variant_id: yang-zhuo-main
+  snapshot_type: current
+  effective_at: volume-04-chapter-020
+  last_updated: '2026-08-08'
+  version: '1.4'
+  status: active
+  supersedes: state-current-yang-zhuo-v1.3
+  source_file: D:\Novel 1\Novel\outputs\第四卷_第18章_续写.txt; D:\Novel 1\Novel\outputs\第四卷_第19章_续写.txt; D:\Novel 1\Novel\outputs\第四卷_第20章_续写.txt
+character_state:
+  current_position:
+    location: 伊耶那岐金地最终战场；灵基与生命信号丢失
+    companions: []
+    faction: 迦勒底协同行动方
+  physical:
+    health: 死亡／信号丢失
+    injuries:
+    - 断鞭贯胸
+    - 胸口透光贯穿伤
+    - 全身在神琦灰炮击与重压中崩坏
+    fatigue: 生命活动终止
+    temporary_conditions: []
+    permanent_changes: []
+  mental:
+    dominant_emotions:
+    - 决绝
+    - 释然
+    current_pressure:
+    - 无一条生路能让所有人跨过最终之门
+    desires:
+    - 让藤丸立香等人继续向前
+    fears: []
+    unresolved_conflicts: []
+    behavior_effects: []
+  knowledge:
+    known:
+    - 遍历大量自身存活但同伴最终失去的未来
+    - 选择不进入任何个人生路
+    - 圣杯回收需要自己拖延神琦灰
+    unknown: []
+    mistaken_beliefs: []
+    suspicions: []
+    secrets_held: []
+  goals:
+    immediate: []
+    short_term: []
+    long_term: []
+    priorities: []
+    obstacles:
+    - 断鞭贯胸
+    - 胸口透光贯穿伤
+    - 全身在神琦灰炮击与重压中崩坏
+  relationships:
+  - target_character: gilgamesh
+    relationship_type: 并肩作战的王者
+    trust: 可以在关键时刻交换战术情报
+    dependence: 宝库与情报互补
+    hostility: 竞争性口角
+    current_attitude: 负伤期间仍直接指挥其从宝库取物
+    unresolved_issues:
+    - 大戟来历没有在场上说明
+    recent_change: 共同通过通讯把无名大戟交到士郎视野中
+  abilities:
+    available: []
+    unavailable:
+    - 全部战斗能力
+    newly_acquired: []
+    consumed_resources: []
+    active_costs:
+    - 问武平清觯断裂
+    - 灵基与生命信号丢失
+  inventory:
+    carried: []
+    lost:
+    - 问武平清觯（由吉尔伽美什带回）
+    damaged:
+    - 青铜铁鞭崩碎
+  narrative:
+    current_arc: 日本篇终局：牺牲
+    completed_changes:
+    - 以最后令咒强化挡下光炮
+    - 遍历未来后选择断后
+    - 为圣杯回收争取最后时间
+    unresolved_flags:
+    - 是否存在可恢复残留
+    active_promises: []
+    future_pressure:
+    - 留下‘等你们跨越未来，我们还会再见’的承诺

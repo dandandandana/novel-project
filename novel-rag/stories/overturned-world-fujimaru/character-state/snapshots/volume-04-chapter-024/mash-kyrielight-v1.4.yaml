@@ -1,0 +1,106 @@
+metadata:
+  document_id: state-current-mash-kyrielight-v1.4
+  story_id: overturned-world-fujimaru
+  timeline_id: main
+  document_type: character_state
+  title: 第四卷第20章末状态快照-玛修·基列莱特
+  character_id: mash-kyrielight
+  variant_id: mash-kyrielight-main
+  snapshot_type: snapshot
+  effective_at: volume-04-chapter-020
+  last_updated: '2026-08-08'
+  version: '1.4'
+  status: archived
+  supersedes: state-current-mash-kyrielight-v1.3
+  source_file: D:\Novel 1\Novel\outputs\第四卷_第18章_续写.txt; D:\Novel 1\Novel\outputs\第四卷_第19章_续写.txt; D:\Novel 1\Novel\outputs\第四卷_第20章_续写.txt
+character_state:
+  current_position:
+    location: 迦勒底灵子转移筐体与医疗区
+    companions:
+    - 藤丸立香
+    - 言峰士郎
+    - 吉尔伽美什
+    faction: 迦勒底协同行动方
+  physical:
+    health: 重伤回归，保持清醒
+    injuries:
+    - 左肩与左臂严重损伤
+    - 多功能武装盾面内凹
+    - 脊柱与双腿承受多次冲击
+    fatigue: 英杰之帜、宝具解放与连续防御后的极重度消耗
+    temporary_conditions: []
+    permanent_changes: []
+  mental:
+    dominant_emotions:
+    - 担忧
+    - 悲痛
+    - 保护意志
+    current_pressure:
+    - 前辈失去全部令咒
+    - 杨浞、祁荒与村正未归
+    desires:
+    - 保护立香并协助救治
+    fears: []
+    unresolved_conflicts: []
+    behavior_effects: []
+  knowledge:
+    known:
+    - 圣杯回收与日本人理修复完成
+    - 杨浞以牺牲换取转移时间
+    - 祁荒与千子村正没有返回迦勒底
+    unknown:
+    - 未归三人的后续状态
+    - 神琦灰与卫宫白战斗结果
+    mistaken_beliefs: []
+    suspicions: []
+    secrets_held: []
+  goals:
+    immediate:
+    - 接受治疗并守护立香
+    - 协助确认未归同伴
+    short_term:
+    - 恢复盾与左臂功能
+    long_term:
+    - 继续修复人理
+    priorities:
+    - 前辈安全
+    - 同伴去向
+    obstacles:
+    - 左肩与左臂严重损伤
+    - 多功能武装盾面内凹
+    - 脊柱与双腿承受多次冲击
+  relationships:
+  - target_character: fujimaru-ritsuka
+    relationship_type: 后辈与前辈
+    trust: 高
+    dependence: 战斗协作
+    hostility: 无
+    current_attitude: 承接前辈交出的英杰之帜并完成使命
+    unresolved_issues: []
+    recent_change: 接受一道令咒所化的英杰之帜强化
+  abilities:
+    available:
+    - 圆桌之盾
+    - 多功能武装
+    unavailable: []
+    newly_acquired: []
+    consumed_resources: []
+    active_costs:
+    - 左臂与盾甲重创
+  inventory:
+    carried:
+    - 圆桌之盾／多功能武装
+    lost: []
+    damaged:
+    - 炮形态装甲与外骨骼受损
+  narrative:
+    current_arc: 日本篇结束：返回迦勒底
+    completed_changes:
+    - 参与圣杯回收防御
+    - 抱住立香进入灵子转移
+    unresolved_flags:
+    - 左臂与武装修复
+    - 三名同伴未归
+    active_promises: []
+    future_pressure:
+    - 回归后立即进入救治与失联确认阶段

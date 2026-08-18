@@ -1,0 +1,47 @@
+metadata:
+  document_id: world-state-snapshot-v1.1
+  story_id: overturned-world-fujimaru
+  timeline_id: main
+  document_type: world_state
+  title: 第4卷第10章后世界状态快照
+  version: '1.1'
+  status: canon
+  effective_at: volume-04-chapter-010
+  supersedes: world-state-current-v1.0
+  source_file: D:\word2\五脏六腑彻底颠覆的世界由藤丸立香拯救-20260712.txt
+  additional_sources:
+  - 用户于2026-07-13直接确认的世界观补充
+world_state:
+  timeline_position: 第四卷第10章末
+  locations:
+  - location_id: izanagi-golden-land-underground-bridge
+    current_condition: 未来文明地下舰桥可用
+    controlling_faction: 终末人理圆满装置
+    accessibility: 藤丸立香一行已进入
+    known_hazards: []
+    recent_events:
+    - 开放主炮和英灵召唤阵支援
+  factions:
+  - faction_id: chaldea
+    current_goal: 讨伐弥勒并回收圣杯
+    leadership: 藤丸立香
+    alliances:
+    - 终末人理圆满装置（阶段性）
+    enemies:
+    - 弥勒
+    known_information:
+    - 终末人理圆满装置承诺弥勒被解决后归还圣杯
+    - 当前世界线的迦勒底已被人理抛弃，不能正常召唤从者，也不能正常进行英灵召唤
+    resources:
+    - 地下主炮一次火力
+    - 终末人理圆满装置提供的异常英灵召唤阵（不代表迦勒底恢复正常召唤）
+    - 通过外部异常召唤阵召唤的Rider杨浞
+    recent_changes:
+    - 与终末人理圆满装置达成阶段性合作
+  global_events:
+  - Rider杨浞被藤丸立香召唤并缔结契约
+  public_knowledge: []
+  hidden_world_changes: []
+  unresolved_world_flags:
+  - 弥勒尚未被讨伐
+  - 圣杯仍由终末人理圆满装置持有

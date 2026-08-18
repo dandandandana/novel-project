@@ -1,0 +1,15 @@
+story_id: fate-immortality
+timeline_id: main
+
+create:
+  - 藤丸立香
+
+complete:
+  NONE
+
+import_only:
+  NONE
+
+do_not_create:
+  - 本章路人
+  - 未命名罗汉

@@ -1,0 +1,42 @@
+metadata:
+  document_id: canon-ability-fujimaru-ritsuka-banner-of-heroes-v1.0
+  story_id: overturned-world-fujimaru
+  timeline_id: main
+  document_type: canon
+  title: 能力设定-藤丸立香-英杰之帜
+  entity: ability
+  character_ids:
+  - fujimaru-ritsuka
+  event_tags:
+  - 令咒
+  - 从者强化
+  version: '1.0'
+  status: canon
+  canon_scope: timeline
+  created_at: '2026-07-13'
+  updated_at: '2026-07-13'
+  supersedes: null
+  source_file: 用户于2026-07-13直接确认
+ability:
+  name: 英杰之帜
+  owner: 藤丸立香
+  owner_id: fujimaru-ritsuka
+  type: 令咒消耗型从者强化
+  effect: 消耗一道令咒，将自己的从者的战斗力提升到该从者本体顶峰的战斗力。
+  activation: 由藤丸立香主动消耗一道令咒，对自己的从者发动。
+  range: 自己的从者；具体物理距离未说明。
+  cost: 每次发动消耗一道令咒。
+  limitations:
+  - 目标必须是藤丸立香自己的从者。
+  - 强化上限是该从者本体顶峰的战斗力。
+  - 持续时间、能否同时作用于多名从者与重复强化规则未说明。
+  failure_conditions:
+  - 没有可消耗的令咒时无法按已知方式发动。
+  - 目标不是藤丸立香自己的从者时不符合已确认的发动条件。
+  known_by:
+  - 藤丸立香
+  visual_expression: 未说明。
+  narrative_function:
+  - 在关键战斗中把受从者容器或当前状态限制的己方从者提升至本体顶峰战力。
+  canon_notes:
+  - 本定义是英杰之帜的当前正式定义；旧人物资料中的其他描述不作为该能力的当前效果。

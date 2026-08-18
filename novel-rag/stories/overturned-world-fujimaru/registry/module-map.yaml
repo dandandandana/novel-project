@@ -1,0 +1,17 @@
+modules:
+- story_id: overturned-world-fujimaru
+  timeline_id: main
+  module_type: rule
+  active_versions:
+  - ruler-global-v1.0
+  - ruler-narrative-information-disclosure-v1.0
+- story_id: overturned-world-fujimaru
+  timeline_id: main
+  module_type: judgment_spec
+  active_versions:
+  - judgment-global-v1.1
+- story_id: overturned-world-fujimaru
+  timeline_id: main
+  module_type: style_audit
+  active_versions:
+  - style-global-manifest-v1.4

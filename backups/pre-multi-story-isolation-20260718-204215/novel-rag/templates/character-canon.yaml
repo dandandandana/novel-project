@@ -1,0 +1,33 @@
+metadata:
+  document_id: ""
+  story_id: ""
+  timeline_id: ""
+  document_type: canon
+  title: ""
+  entity: character
+  character_ids: []
+  version: "1.0"
+  status: canon
+  canon_scope: timeline
+  created_at: ""
+  updated_at: ""
+  supersedes: null
+  source_file: ""
+character:
+  name: ""
+  aliases: []
+  identity: ""
+  age: null
+  appearance: []
+  personality_core: []
+  surface_behavior: []
+  values: []
+  goals: []
+  fears: []
+  boundaries: []
+  speech_patterns: []
+  abilities: []
+  limitations: []
+  relationships: []
+  prohibited_interpretations: []
+

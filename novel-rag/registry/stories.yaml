@@ -1,0 +1,17 @@
+stories:
+- story_id: overturned-world-fujimaru
+  title: 五脏六腑彻底颠覆的世界由藤丸立香拯救
+  status: active
+  primary_timeline: main
+  current_volume: 4
+  current_chapter: 24
+  language: zh-CN
+  storage_path: stories/overturned-world-fujimaru
+- story_id: shirouxcile
+  title: shirouXcile
+  status: active
+  primary_timeline: main
+  current_volume: 1
+  current_chapter: 4
+  language: zh-CN
+  storage_path: stories/shirouxcile

@@ -1,0 +1,111 @@
+metadata:
+  document_id: state-current-fujimaru-ritsuka-v1.5
+  story_id: overturned-world-fujimaru
+  timeline_id: main
+  document_type: character_state
+  title: 第四卷第20章末状态快照-藤丸立香
+  character_id: fujimaru-ritsuka
+  variant_id: fujimaru-ritsuka-main
+  snapshot_type: snapshot
+  effective_at: volume-04-chapter-020
+  last_updated: '2026-08-08'
+  version: '1.5'
+  status: archived
+  supersedes: state-current-fujimaru-ritsuka-v1.4
+  source_file: D:\Novel 1\Novel\outputs\第四卷_第18章_续写.txt; D:\Novel 1\Novel\outputs\第四卷_第19章_续写.txt; D:\Novel 1\Novel\outputs\第四卷_第20章_续写.txt
+character_state:
+  current_position:
+    location: 迦勒底灵子转移筐体与医疗区
+    companions:
+    - 玛修·基列莱特
+    - 言峰士郎
+    - 吉尔伽美什
+    faction: 迦勒底协同行动方
+  physical:
+    health: 重度疲劳但清醒
+    injuries:
+    - 脸侧旧伤再次裂开
+    - 圣杯杯沿割伤掌心
+    - 三道令咒全部消耗
+    fatigue: 终战、圣杯回收与灵子转移后的重度消耗
+    temporary_conditions: []
+    permanent_changes: []
+  mental:
+    dominant_emotions:
+    - 悲痛
+    - 克制
+    - 继续前进的决意
+    current_pressure:
+    - 杨浞信号丢失
+    - 祁荒与千子村正未返回迦勒底
+    desires:
+    - 先救治回归伤员，再确认未归同伴去向
+    fears: []
+    unresolved_conflicts: []
+    behavior_effects: []
+  knowledge:
+    known:
+    - 神琦灰以白桦木法杖袭击金地
+    - 终末人理圆满机关显露BEAST反应并牺牲自身
+    - 圣杯已回收，日本特异点与人理基盘完成修复
+    - 杨浞信号丢失
+    - 祁荒与千子村正没有返回迦勒底
+    unknown:
+    - 祁荒与千子村正当前所在世界坐标
+    - 杨浞是否存在可恢复残留
+    - 卫宫白与神琦灰对峙结果
+    mistaken_beliefs: []
+    suspicions: []
+    secrets_held: []
+  goals:
+    immediate:
+    - 组织伤员救治
+    - 确认祁荒与千子村正去向
+    short_term:
+    - 整理日本特异点报告并准备后续行动
+    long_term:
+    - 继续修复人理
+    priorities:
+    - 同伴生存
+    - 寻找未归同伴
+    obstacles:
+    - 脸侧旧伤再次裂开
+    - 圣杯杯沿割伤掌心
+    - 三道令咒全部消耗
+  relationships:
+  - target_character: mash-kyrielight
+    relationship_type: 前辈与后辈／御主与从者
+    trust: 高
+    dependence: 战斗与精神支援
+    hostility: 无
+    current_attitude: 将最后两道令咒中的一道作为英杰之帜交给玛修
+    unresolved_issues:
+    - 玛修左臂与武装伤势
+    recent_change: 英杰之帜改由玛修承载并完成终战正面对轰
+  abilities:
+    available:
+    - 降格术
+    unavailable:
+    - 英杰之帜（令咒耗尽，当前不可发动）
+    newly_acquired: []
+    consumed_resources:
+    - 最后一道令咒用于强化杨浞
+    active_costs:
+    - 令咒归零
+  inventory:
+    carried: []
+    lost: []
+    damaged: []
+  narrative:
+    current_arc: 日本篇结束：返回迦勒底
+    completed_changes:
+    - 回收圣杯并完成日本人理修复
+    - 以最后令咒强化杨浞
+    - 接受杨浞留下断后
+    unresolved_flags:
+    - 杨浞失联
+    - 祁荒与千子村正未归
+    - 卫宫白与神琦灰对峙结果
+    active_promises: []
+    future_pressure:
+    - 日本篇结束但队伍出现三名未归者

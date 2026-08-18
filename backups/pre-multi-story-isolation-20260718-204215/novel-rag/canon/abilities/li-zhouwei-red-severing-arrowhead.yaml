@@ -1,0 +1,50 @@
+{
+  "metadata": {
+    "document_id": "canon-ability-li-zhouwei-red-severing-arrowhead-v1.0",
+    "story_id": "overturned-world-fujimaru",
+    "timeline_id": "main",
+    "document_type": "canon",
+    "title": "能力设定-李周巍-赤断镞",
+    "entity": "ability",
+    "character_ids": [
+      "li-zhouwei"
+    ],
+    "event_tags": [
+      "赤断镞",
+      "EX",
+      "personal_skill"
+    ],
+    "version": "1.0",
+    "status": "canon",
+    "canon_scope": "timeline",
+    "created_at": "2026-07-17",
+    "updated_at": "2026-07-17",
+    "supersedes": null,
+    "source_file": "user-message:2026-07-17/li-zhouwei-servant-profile"
+  },
+  "ability": {
+    "retrieval_key": "li_zhouwei_red_severing_arrowhead",
+    "name": "赤断镞",
+    "owner": "李周巍",
+    "owner_id": "li-zhouwei",
+    "rank": "EX",
+    "category": "personal_skill",
+    "type": "赤色夕阳凝刃与阴光歼灭",
+    "effect": "将赤色夕阳凝聚为利刃，可用于高速逃脱与追逐，也可化作极致阴光射向敌人；阴光最低威力已超过乖离剑EA的基础出力。",
+    "activation": "凝聚赤色夕阳并选择移动利刃或远程阴光形态。",
+    "range": "未说明。",
+    "cost": "未说明。",
+    "limitations": [
+      "最大威力、射程、使用频率与对比所指EA具体解放状态未进一步说明。"
+    ],
+    "failure_conditions": [],
+    "known_by": [
+      "李周巍"
+    ],
+    "visual_expression": "未说明。",
+    "narrative_function": [
+      "执行高速追逃或高出力远程歼灭。"
+    ],
+    "canon_notes": []
+  }
+}

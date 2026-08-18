@@ -1,0 +1,19 @@
+metadata:
+  document_id: ""
+  story_id: ""
+  timeline_id: ""
+  document_type: world_state
+  title: ""
+  version: "1.0"
+  status: active
+  effective_at: ""
+  supersedes: null
+world_state:
+  timeline_position: ""
+  locations: []
+  factions: []
+  global_events: []
+  public_knowledge: []
+  hidden_world_changes: []
+  unresolved_world_flags: []
+

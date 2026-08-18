@@ -1,0 +1,51 @@
+{
+  "metadata": {
+    "document_id": "canon-ability-li-zhouwei-fire-arts-v1.0",
+    "story_id": "overturned-world-fujimaru",
+    "timeline_id": "main",
+    "document_type": "canon",
+    "title": "能力设定-李周巍-火术",
+    "entity": "ability",
+    "character_ids": [
+      "li-zhouwei"
+    ],
+    "event_tags": [
+      "火术",
+      "EX",
+      "personal_skill"
+    ],
+    "version": "1.0",
+    "status": "canon",
+    "canon_scope": "timeline",
+    "created_at": "2026-07-17",
+    "updated_at": "2026-07-17",
+    "supersedes": null,
+    "source_file": "user-message:2026-07-17/li-zhouwei-servant-profile"
+  },
+  "ability": {
+    "retrieval_key": "li_zhouwei_fire_arts",
+    "name": "火术",
+    "owner": "李周巍",
+    "owner_id": "li-zhouwei",
+    "rank": "EX",
+    "category": "personal_skill",
+    "type": "明阳亲切离火道术体系",
+    "effect": "掌握多种高品质火系道术，包括大范围火焰制压《六府帝赦术》、集束光炮《帝歧光》与吞噬型火焰控制《饮日有功术》等。",
+    "activation": "按战术需要施展对应火系道术。",
+    "range": "随具体术式变化；未说明。",
+    "cost": "未说明。",
+    "limitations": [
+      "从者容器限制火术威力。",
+      "各子术式的独立消耗、范围与冷却未说明。"
+    ],
+    "failure_conditions": [],
+    "known_by": [
+      "李周巍"
+    ],
+    "visual_expression": "未说明。",
+    "narrative_function": [
+      "提供大范围制压、光炮与吞噬控制等多样火力。"
+    ],
+    "canon_notes": []
+  }
+}

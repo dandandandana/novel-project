@@ -1,0 +1,113 @@
+metadata:
+  document_id: state-current-kotomine-shirou-v1.5
+  story_id: overturned-world-fujimaru
+  timeline_id: main
+  document_type: character_state
+  title: 当前状态-言峰士郎
+  character_id: kotomine-shirou
+  variant_id: kotomine-shirou-main
+  snapshot_type: current
+  effective_at: volume-04-chapter-024
+  last_updated: '2026-08-08'
+  version: '1.5'
+  status: active
+  supersedes: state-current-kotomine-shirou-v1.4
+  source_file: D:\Novel 1\Novel\outputs\第四卷_第21-24章_日本卷收尾.txt
+character_state:
+  current_position:
+    location: 迦勒底休整区与检查室
+    companions:
+    - 藤丸立香
+    - 玛修·基列莱特
+    - 千子村正
+    faction: 迦勒底
+  physical:
+    health: 拟造躯壳已快速修复主要伤势，能够正常行动
+    injuries:
+    - 耳后留有闭合的新痕
+    - 右侧投影回路用力时偶有刺痛
+    fatigue: 终战疲劳已明显缓解
+    temporary_conditions: []
+    permanent_changes: []
+  mental:
+    dominant_emotions:
+    - 安心
+    - 坚定
+    - 亲近
+    current_pressure:
+    - 人理直接召唤无响应
+    - 祁荒仍未归队
+    desires:
+    - 留在立香身边并继续同行
+    - 协助恢复未归同伴路径
+    fears: []
+    unresolved_conflicts: []
+    behavior_effects: []
+  knowledge:
+    known:
+    - 过去是自身人格不可分割的一部分，全部改写等于杀死现在的自己
+    - 第一特异点修复完成
+    - 千子村正以同一人格与日本记忆返回
+    - 立香倾慕自己并与自己确认恋人关系
+    unknown:
+    - 无名大戟原主身份、完整来历与力量原理
+    - 人理支援异常原因
+    - 卫宫白与自己相似的原因
+    - 祁荒当前坐标
+    - Alterego与阿尔托莉雅后续
+    mistaken_beliefs: []
+    suspicions: []
+    secrets_held: []
+  goals:
+    immediate:
+    - 陪伴立香休整
+    - 完成回路复查
+    short_term:
+    - 准备下一处特异点
+    - 协助寻找祁荒
+    long_term:
+    - 在立香身边继续修复人理
+    priorities:
+    - 立香安全
+    - 同伴归队
+    obstacles:
+    - 人理支援异常
+    - 跨界路径不稳定
+  relationships:
+  - target_character: fujimaru-ritsuka
+    relationship_type: 恋人／从者与御主
+    trust: 高
+    dependence: 长期同行与战斗协作
+    hostility: 无
+    current_attitude: 明确喜欢立香并承诺一直留在她身边
+    unresolved_issues: []
+    recent_change: 第二次谈心后相互告白、接吻并确认关系
+  abilities:
+    available:
+    - 拟造躯壳
+    - 投影魔术
+    unavailable: []
+    newly_acquired: []
+    consumed_resources: []
+    active_costs:
+    - 右侧投影回路仍需恢复
+  inventory:
+    carried:
+    - 纸星星复制品
+    lost: []
+    damaged: []
+  narrative:
+    current_arc: 日本卷收尾：确认自我与恋人关系
+    completed_changes:
+    - 拒绝以改写过去替换现在的自我
+    - 与藤丸立香相互告白并确认恋人关系
+    - 见证千子村正归队
+    unresolved_flags:
+    - 人理支援异常
+    - 祁荒仍未归队
+    - 卫宫白身份
+    active_promises:
+    - 只要立香继续前进便留在她身边
+    - 立香做错时会阻止她
+    future_pressure:
+    - 必须在下一次行动前恢复投影回路稳定性

@@ -1,0 +1,101 @@
+metadata:
+  document_id: state-current-epohonsiereht-v1.1
+  story_id: overturned-world-fujimaru
+  timeline_id: main
+  document_type: character_state
+  title: 第四卷第17章末状态快照-终末人理圆满机关
+  character_id: epohonsiereht
+  variant_id: epohonsiereht-main
+  snapshot_type: snapshot
+  effective_at: volume-04-chapter-017
+  last_updated: '2026-07-18'
+  version: '1.1'
+  status: archived
+  supersedes: state-current-epohonsiereht-v1.0
+  source_file: D:\Novel\outputs\第四卷_第15章_重写.txt; D:\Novel\outputs\第四卷_第16章_重写.txt; D:\Novel\outputs\第四卷_第17章_重写.txt
+character_state:
+  current_position:
+    location: 伊耶那岐金地地下的未来文明舰桥
+    companions: []
+    faction: 迦勒底阶段性盟友
+  physical:
+    health: 机关本体状态未明确
+    injuries: []
+    fatigue: 主炮发射后的系统负荷极高
+    temporary_conditions: []
+    permanent_changes: []
+  mental:
+    dominant_emotions:
+    - 冷静
+    - 克制
+    current_pressure:
+    - 主炮过热
+    - 特异点坐标偏移
+    desires:
+    - 报告终战结果并继续观测坐标
+    fears: []
+    unresolved_conflicts: []
+    behavior_effects:
+    - 在主炮结束后恢复礼貌、平静的助手语气
+  knowledge:
+    known:
+    - 第二宝具主炮已经命中弥勒
+    - 弥勒生命与思潮信号归零
+    - 伊耶那岐金地封锁解除
+    - 特异点坐标正在偏移
+    unknown:
+    - 跨界来者完整身份与目的
+    mistaken_beliefs: []
+    suspicions: []
+    secrets_held: []
+  goals:
+    immediate:
+    - 监测主炮过热与特异点坐标偏移
+    short_term:
+    - 履行弥勒解决后的阶段性约定
+    long_term:
+    - 修复特异点并返回正常人理
+    priorities:
+    - 同伴生存
+    - 确认特异点异常
+    obstacles:
+    - 主炮下一次发射时间无法计算
+    - 坐标异常
+  relationships:
+  - target_character: fujimaru-ritsuka
+    relationship_type: 阶段性盟友
+    trust: 有限
+    dependence: 共同完成弥勒终战
+    hostility: 无
+    current_attitude: 报告炮击、死亡信号、封锁解除与坐标偏移
+    unresolved_issues:
+    - 圣杯归还条件
+    - 双方隐瞒事项
+    recent_change: 完成约定的一次主炮支援
+  abilities:
+    available:
+    - 未来文明主炮与全局观测
+    unavailable:
+    - 第二宝具主炮暂时无法再次发射
+    newly_acquired: []
+    consumed_resources:
+    - 一次主炮解放
+    active_costs:
+    - 炮身过热，下一次发射时间无法计算
+  inventory:
+    carried: []
+    lost: []
+    damaged: []
+  narrative:
+    current_arc: 日本下篇：伊耶那岐金地终战后
+    completed_changes:
+    - 解放第二宝具贯穿弥勒
+    - 确认弥勒信号归零
+    - 报告金地解封与坐标偏移
+    unresolved_flags:
+    - 圣杯归还
+    - 机关隐瞒的最终目的
+    - 坐标偏移终点
+    active_promises: []
+    future_pressure:
+    - 弥勒威胁解除后，双方阶段性盟约进入兑现阶段

@@ -1,0 +1,97 @@
+metadata:
+  document_id: state-current-artoria-pendragon-alter-v1.2
+  story_id: overturned-world-fujimaru
+  timeline_id: main
+  document_type: character_state
+  title: 当前状态-阿尔托莉雅·潘德拉贡 Alter
+  character_id: artoria-pendragon-alter
+  variant_id: artoria-pendragon-alter-main
+  snapshot_type: current
+  effective_at: volume-04-chapter-020
+  last_updated: '2026-08-08'
+  version: '1.2'
+  status: active
+  supersedes: state-current-artoria-pendragon-alter-v1.1
+  source_file: D:\Novel 1\Novel\outputs\第四卷_第18章_续写.txt; D:\Novel 1\Novel\outputs\第四卷_第19章_续写.txt; D:\Novel 1\Novel\outputs\第四卷_第20章_续写.txt
+character_state:
+  current_position:
+    location: 神琦灰所在裂隙一侧；未随迦勒底返回
+    companions:
+    - 言峰士郎（AE）
+    - 神琦灰
+    faction: 迦勒底阶段性协同行动方
+  physical:
+    health: 保持行动能力
+    injuries:
+    - 黑剑与承伤刻纹持续受损
+    fatigue: 受神琦灰战场力量影响
+    temporary_conditions: []
+    permanent_changes: []
+  mental:
+    dominant_emotions:
+    - 关切
+    - 敌意
+    - 克制
+    current_pressure:
+    - Alterego言峰士郎受神琦灰控制
+    - 卫宫白与神琦灰对峙
+    desires:
+    - 抓住Alterego并留在其身边
+    fears: []
+    unresolved_conflicts: []
+    behavior_effects: []
+  knowledge:
+    known:
+    - 神琦灰能复原Alterego致命伤
+    - 迦勒底完成圣杯回收
+    - 立香承诺会记得他们
+    unknown:
+    - 对峙结果
+    - 自身后续去向
+    mistaken_beliefs: []
+    suspicions: []
+    secrets_held: []
+  goals:
+    immediate:
+    - 留在Alterego身边
+    short_term: []
+    long_term: []
+    priorities:
+    - 同伴存续
+    obstacles:
+    - 黑剑与承伤刻纹持续受损
+  relationships:
+  - target_character: kotomine-shirou-ae
+    relationship_type: 父女式协同行动者
+    trust: 高于口头表现
+    dependence: 战斗协作
+    hostility: 口头挖苦，无实质敌意
+    current_attitude: 站在其身边确认存活后才继续观察战场
+    unresolved_issues: []
+    recent_change: 共同完成主炮疏散、近战压制与最终宝具对轰
+  abilities:
+    available:
+    - 潘多拉臂铠
+    - 誓约胜利之剑
+    unavailable: []
+    newly_acquired: []
+    consumed_resources: []
+    active_costs:
+    - 承伤刻纹继续消耗
+  inventory:
+    carried:
+    - 潘多拉臂铠
+    - 断裂的黑金长剑
+    lost: []
+    damaged:
+    - 黑金长剑断去前半
+  narrative:
+    current_arc: 日本篇结束：留在裂隙另一侧
+    completed_changes:
+    - 对神琦灰显露杀意
+    - 在转移前请求立香记住
+    unresolved_flags:
+    - 卫宫白与神琦灰对峙结果
+    active_promises: []
+    future_pressure:
+    - 没有进入迦勒底回收序列

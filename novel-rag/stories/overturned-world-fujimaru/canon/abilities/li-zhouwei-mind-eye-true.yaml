@@ -1,0 +1,50 @@
+{
+  "metadata": {
+    "document_id": "canon-ability-li-zhouwei-mind-eye-true-v1.0",
+    "story_id": "overturned-world-fujimaru",
+    "timeline_id": "main",
+    "document_type": "canon",
+    "title": "能力设定-李周巍-心眼（真）",
+    "entity": "ability",
+    "character_ids": [
+      "li-zhouwei"
+    ],
+    "event_tags": [
+      "心眼（真）",
+      "A+",
+      "personal_skill"
+    ],
+    "version": "1.0",
+    "status": "canon",
+    "canon_scope": "timeline",
+    "created_at": "2026-07-17",
+    "updated_at": "2026-07-17",
+    "supersedes": null,
+    "source_file": "user-message:2026-07-17/li-zhouwei-servant-profile"
+  },
+  "ability": {
+    "retrieval_key": "li_zhouwei_mind_eye_true",
+    "name": "心眼（真）",
+    "owner": "李周巍",
+    "owner_id": "li-zhouwei",
+    "rank": "A+",
+    "category": "personal_skill",
+    "type": "后天战斗经验与绝境分析",
+    "effect": "来自征战世间、打遍天下紫府真人的实战积累，可在绝境中冷静分析局势并寻找反败为胜的活路；与心眼（伪）叠加后几乎不存在战斗认知盲区。",
+    "activation": "战斗观察与绝境分析时发挥。",
+    "range": "李周巍自身认知与战场观察范围。",
+    "cost": "无已说明的主动消耗。",
+    "limitations": [
+      "“几乎不存在认知盲区”不等于全知，也不保证一定找到胜机。"
+    ],
+    "failure_conditions": [],
+    "known_by": [
+      "李周巍"
+    ],
+    "visual_expression": "未说明。",
+    "narrative_function": [
+      "在不利局面中建立正确战术判断。"
+    ],
+    "canon_notes": []
+  }
+}

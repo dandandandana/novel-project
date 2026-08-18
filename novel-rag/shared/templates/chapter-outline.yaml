@@ -1,0 +1,23 @@
+metadata:
+  document_id: ""
+  story_id: ""
+  timeline_id: ""
+  document_type: outline
+  title: ""
+  outline_level: chapter
+  volume: null
+  chapter: null
+  version: "1.0"
+  status: active
+  supersedes: null
+outline:
+  opening_state: ""
+  required_events: []
+  required_order: []
+  required_dialogue: []
+  required_images: []
+  forbidden_reveals: []
+  required_result: ""
+  ending_state: ""
+  future_hooks: []
+

@@ -1,0 +1,111 @@
+metadata:
+  document_id: state-current-artoria-pendragon-alter-v1.1
+  story_id: overturned-world-fujimaru
+  timeline_id: main
+  document_type: character_state
+  title: 第四卷第17章末状态快照-阿尔托莉雅·潘德拉贡 Alter
+  character_id: artoria-pendragon-alter
+  variant_id: artoria-pendragon-alter-main
+  snapshot_type: snapshot
+  effective_at: volume-04-chapter-017
+  last_updated: '2026-07-18'
+  version: '1.1'
+  status: archived
+  supersedes: state-current-artoria-pendragon-alter-v1.0
+  source_file: D:\Novel\outputs\第四卷_第15章_重写.txt; D:\Novel\outputs\第四卷_第16章_重写.txt; D:\Novel\outputs\第四卷_第17章_重写.txt
+character_state:
+  current_position:
+    location: 伊耶那岐宫废墟
+    companions:
+    - 言峰士郎（AE）
+    faction: 迦勒底阶段性协同行动方
+  physical:
+    health: 重伤但仍能站立
+    injuries:
+    - 胸甲与腕部多处受创
+    - 黑金长剑断去前半
+    - 七道承伤刻纹已消耗四道
+    fatigue: 居民疏散、持续近战与圣剑解放后的重度消耗
+    temporary_conditions: []
+    permanent_changes: []
+  mental:
+    dominant_emotions:
+    - 冷静
+    - 关切
+    - 警惕
+    current_pressure:
+    - Alterego言峰士郎重伤
+    - 特异点坐标偏移
+    desires:
+    - 确认同伴状态并保留潘多拉应对后续异常
+    fears: []
+    unresolved_conflicts: []
+    behavior_effects:
+    - 终战后首先确认言峰士郎（AE）是否存活
+  knowledge:
+    known:
+    - 十二秒窗口内的主炮轴线已经清空
+    - 弥勒已经死亡，金地封锁解除
+    - 潘多拉臂铠在终战中始终没有开启
+    unknown:
+    - 跨界来者身份
+    - 特异点偏移原因
+    mistaken_beliefs: []
+    suspicions: []
+    secrets_held: []
+  goals:
+    immediate:
+    - 确认Alterego言峰士郎伤势
+    - 保留潘多拉应对新异常
+    short_term:
+    - 协助终战后的伤员与居民
+    long_term:
+    - 修复特异点并返回正常人理
+    priorities:
+    - 同伴生存
+    - 确认特异点异常
+    obstacles:
+    - 长剑断裂
+    - 已消耗四道承伤刻纹
+    - 特异点异常
+  relationships:
+  - target_character: kotomine-shirou-ae
+    relationship_type: 父女式协同行动者
+    trust: 高于口头表现
+    dependence: 战斗协作
+    hostility: 口头挖苦，无实质敌意
+    current_attitude: 站在其身边确认存活后才继续观察战场
+    unresolved_issues: []
+    recent_change: 共同完成主炮疏散、近战压制与最终宝具对轰
+  abilities:
+    available:
+    - 潘多拉臂铠
+    - 开启吧，灾厄与希望
+    - 誓约胜利之剑
+    unavailable: []
+    newly_acquired: []
+    consumed_resources:
+    - 七道承伤刻纹中的四道
+    active_costs:
+    - 黑金长剑断去前半
+    - 潘多拉仍保持闭合
+  inventory:
+    carried:
+    - 潘多拉臂铠
+    - 断裂的黑金长剑
+    lost: []
+    damaged:
+    - 黑金长剑断去前半
+  narrative:
+    current_arc: 日本下篇：伊耶那岐金地终战后
+    completed_changes:
+    - 完成炮线居民疏散
+    - 参与人形弥勒近战
+    - 解放誓约胜利之剑
+    unresolved_flags:
+    - 潘多拉开启时机
+    - 伤势恢复
+    - 坐标异常
+    active_promises: []
+    future_pressure:
+    - 仍保留潘多拉底牌，但常规长剑与承伤刻纹已经受损

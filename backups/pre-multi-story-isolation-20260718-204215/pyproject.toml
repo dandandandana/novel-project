@@ -1,0 +1,23 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "novel-rag"
+version = "0.1.0"
+description = "Metadata-first RAG foundation for long-form fiction agents"
+requires-python = ">=3.10"
+dependencies = ["PyYAML>=6.0"]
+
+[project.optional-dependencies]
+dev = ["pytest>=7.0"]
+
+[project.scripts]
+novel-rag = "novel_rag.cli:main"
+
+[tool.setuptools.packages.find]
+include = ["novel_rag*"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+

@@ -1,0 +1,35 @@
+metadata:
+  document_id: ''
+  story_id: ''
+  timeline_id: ''
+  document_type: judgment_spec
+  module_type: judgment
+  judgment_id: ''
+  title: ''
+  judgment_scope: global
+  task_type: null
+  scene_type: null
+  priority: global
+  enforcement: mandatory
+  version: '1.0'
+  status: active
+  created_at: ''
+  updated_at: ''
+  supersedes: null
+  source_file: ''
+judgment:
+  purpose: ''
+  required_inputs: []
+  chapter_core_schema: {}
+  node_functions: []
+  importance_criteria:
+    S: []
+    A: []
+    B: []
+    C: []
+  merge_criteria: []
+  budget_policy: {}
+  emotional_curve_policy: {}
+  information_release_policy: {}
+  prohibited_judgments: []
+  validation: []

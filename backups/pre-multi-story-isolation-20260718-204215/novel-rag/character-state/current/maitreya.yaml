@@ -1,0 +1,76 @@
+metadata:
+  document_id: state-current-maitreya-v1.0
+  story_id: overturned-world-fujimaru
+  timeline_id: main
+  document_type: character_state
+  title: 当前状态-弥勒
+  character_id: maitreya
+  variant_id: maitreya-main
+  snapshot_type: current
+  effective_at: volume-04-chapter-017
+  last_updated: '2026-07-18'
+  version: '1.0'
+  status: active
+  supersedes: null
+  source_file: D:\Novel\outputs\第四卷_第15章_重写.txt; D:\Novel\outputs\第四卷_第16章_重写.txt; D:\Novel\outputs\第四卷_第17章_重写.txt
+character_state:
+  current_position:
+    location: 伊耶那岐宫废墟
+    companions: []
+    faction: 已死亡
+  physical:
+    health: 死亡，生命与思潮信号归零
+    injuries:
+    - 降格后遭主炮贯穿
+    - 最终斩线切断身体与祈愿核心维持
+    fatigue: 不适用
+    temporary_conditions:
+    - 无法复生；正文确认思潮信号归零
+    permanent_changes: []
+  mental:
+    dominant_emotions:
+    - 临终平静
+    current_pressure: []
+    desires:
+    - 接受人类自行承担未来
+    fears: []
+    unresolved_conflicts: []
+    behavior_effects:
+    - 拒绝请求原谅或赎罪，并主动停止维持祈愿核心
+  knowledge:
+    known:
+    - 人类已经获得自行选择未来的自由
+    - 自己的拯救不能抵消对人类道路的阻拦
+    unknown: []
+    mistaken_beliefs: []
+    suspicions: []
+    secrets_held: []
+  goals:
+    immediate: []
+    short_term: []
+    long_term: []
+    priorities: []
+    obstacles: []
+  relationships: []
+  abilities:
+    available: []
+    unavailable:
+    - 全部能力因死亡与思潮信号归零而不可用
+    newly_acquired: []
+    consumed_resources: []
+    active_costs: []
+  inventory:
+    carried: []
+    lost: []
+    damaged: []
+  narrative:
+    current_arc: 日本下篇：伊耶那岐金地终战后
+    completed_changes:
+    - 被藤丸立香降格
+    - 被终末主炮贯穿
+    - 被最终斩击切断
+    - 主动停止维持祈愿核心并死亡
+    unresolved_flags: []
+    active_promises: []
+    future_pressure:
+    - 其死亡造成金地解封与特异点坐标偏移

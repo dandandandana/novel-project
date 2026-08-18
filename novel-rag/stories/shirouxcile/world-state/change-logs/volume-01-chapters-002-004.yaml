@@ -1,0 +1,17 @@
+metadata:
+  document_id: world-state-shirouxcile-change-v01-c002-c004-v1.0
+  story_id: shirouxcile
+  timeline_id: main
+  document_type: world_state
+  title: 第一卷第二至四章世界状态变化
+  version: '1.0'
+  status: canon
+  effective_at: volume-01-chapter-004
+  supersedes: null
+  source_file: D:\Novel 1\Novel\outputs\shirouXcile_part2_马耳他_情绪强化版.txt
+changes:
+- category: chapters_002_004_outcome
+  before: world-state-shirouxcile-current-v1.0
+  after: world-state-shirouxcile-current-v1.1
+  cause: 马耳他失踪事件、白石巷交战与Fate联合应对
+  evidence: history-shirouxcile-v01-c002-s001-v1.0 to history-shirouxcile-v01-c004-s008-v1.0

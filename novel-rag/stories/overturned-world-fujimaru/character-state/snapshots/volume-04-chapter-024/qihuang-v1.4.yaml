@@ -1,0 +1,115 @@
+metadata:
+  document_id: state-current-qihuang-v1.4
+  story_id: overturned-world-fujimaru
+  timeline_id: main
+  document_type: character_state
+  title: 第四卷第20章末状态快照-祁荒
+  character_id: qihuang
+  variant_id: qihuang-main
+  snapshot_type: snapshot
+  effective_at: volume-04-chapter-020
+  last_updated: '2026-08-08'
+  version: '1.4'
+  status: archived
+  supersedes: state-current-qihuang-v1.3
+  source_file: D:\Novel 1\Novel\outputs\第四卷_第18章_续写.txt; D:\Novel 1\Novel\outputs\第四卷_第19章_续写.txt; D:\Novel 1\Novel\outputs\第四卷_第20章_续写.txt
+character_state:
+  current_position:
+    location: 跨界窄门一侧；未返回迦勒底，具体世界坐标未确认
+    companions:
+    - 千子村正
+    - 卫宫白（隔门协同）
+    faction: 迦勒底协同行动方
+  physical:
+    health: 负伤且持续维持坐标
+    injuries:
+    - 双手多处裂伤
+    - 右臂被金刚杵重压砸落
+    - 杨枝净瓶出现长裂纹
+    fatigue: 连续维持窄门、净瓶与欲望干涉后的重度消耗
+    temporary_conditions: []
+    permanent_changes: []
+  mental:
+    dominant_emotions:
+    - 警觉
+    - 坚持
+    - 以笑掩饰压力
+    current_pressure:
+    - 未进入迦勒底回收序列
+    - 神琦灰压迫跨界坐标
+    desires:
+    - 守住窄门并确认自身与村正的落点
+    fears: []
+    unresolved_conflicts: []
+    behavior_effects: []
+  knowledge:
+    known:
+    - 神琦灰是挤压坐标的来者
+    - 卫宫白已跨过窄门并压制神琦灰炮击
+    - 自己与千子村正没有返回迦勒底
+    unknown:
+    - 当前具体世界坐标
+    - 迦勒底是否能重新锁定两人
+    - 卫宫白与神琦灰对峙结果
+    mistaken_beliefs: []
+    suspicions: []
+    secrets_held: []
+  goals:
+    immediate:
+    - 守住跨界坐标
+    - 保护破损净瓶
+    - 确认千子村正状态
+    short_term:
+    - 与迦勒底重新建立联系
+    long_term:
+    - 处理净瓶内金色佛果
+    priorities:
+    - 维持坐标
+    - 同伴生存
+    obstacles:
+    - 双手多处裂伤
+    - 右臂被金刚杵重压砸落
+    - 杨枝净瓶出现长裂纹
+  relationships:
+  - target_character: fujimaru-ritsuka
+    relationship_type: 同行协作者
+    trust: 能够共同维持降格坐标
+    dependence: 坐标、防护与战场指挥协作
+    hostility: 无
+    current_attitude: 一边保护她，一边坦白自己对众生欲望的享受
+    unresolved_issues:
+    - 来者身份尚未向立香说明
+    recent_change: 维持降格坐标并在主炮余波中托住立香
+  abilities:
+    available:
+    - 文明侵蚀
+    - 阵地建造
+    - 寻声救苦
+    - 此世全部之欲
+    - 金刚杵
+    - 杨枝净瓶
+    unavailable: []
+    newly_acquired: []
+    consumed_resources: []
+    active_costs:
+    - 金刚杵与窄门持续承压
+    - 杨枝净瓶破裂
+  inventory:
+    carried:
+    - 金刚杵
+    - 开裂的杨枝净瓶（内有金色佛果）
+    lost: []
+    damaged:
+    - 杨枝净瓶出现长裂纹
+  narrative:
+    current_arc: 日本篇结束后的跨界失联
+    completed_changes:
+    - 以众生欲望偏转神琦灰法杖
+    - 重钉窄门补足转移阵
+    unresolved_flags:
+    - 未返回迦勒底
+    - 具体落点未知
+    - 净瓶内佛果
+    active_promises: []
+    future_pressure:
+    - 与千子村正共同滞留在迦勒底回收序列之外

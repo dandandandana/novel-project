@@ -1,0 +1,16 @@
+metadata:
+  document_id: ""
+  story_id: ""
+  timeline_id: ""
+  document_type: style_audit
+  title: ""
+  audit_scope: global
+  version: "1.0"
+  status: active
+  supersedes: null
+rules:
+  narrative_perspective: ""
+  required: []
+  forbidden: []
+  scene_rules: []
+

@@ -1,0 +1,48 @@
+metadata:
+  document_id: history-shirouxcile-v01-c003-s007-v1.0
+  story_id: shirouxcile
+  timeline_id: main
+  document_type: history
+  title: 第一卷 第3章 白石巷 场景7：会死身体的战前预算
+  volume: 1
+  chapter: 3
+  scene: 7
+  pov_character: 希耶尔
+  character_ids:
+  - ciel
+  - enhance
+  location_ids:
+  - malta-garret-district
+  event_tags:
+  - 会死身体的战前预算
+  start_state:
+  - 进入事件：会死身体的战前预算
+  end_state:
+  - 已发生事件：会死身体的战前预算
+  previous_scene: history-shirouxcile-v01-c003-s006-v1.0
+  next_scene: history-shirouxcile-v01-c003-s008-v1.0
+  version: '1.0'
+  status: canon
+  supersedes: null
+  source_file: D:\Novel 1\Novel\outputs\shirouXcile_part2_马耳他_情绪强化版.txt
+  canon_scope: timeline
+  created_at: '2026-08-09'
+  updated_at: '2026-08-09'
+content: |-
+  第二天清晨，希耶尔检查了渠口。那根头发断了，青苔边缘向外翘起。安翰斯在夜里确认过退路。
+
+  她将这个出口列为最危险的逃生线，要求巡逻队只在远处监视。若直接封锁，安翰斯会提前换路。抓捕开始后，她需要在两分钟内切断炮典、压制Avenger，再将他从地下入口和居民区之间带开。
+
+  只有两分钟。
+
+  希耶尔在公寓里重新整理装备。黑键一共二十四枚，六枚留作远程封锁，十二枚用于近战，剩下六枚作为术式载体。土、火、水、冰四个式典都被压缩进薄片，缝在外套内侧不同位置，避免一处受创便全部失效。
+
+  她拿起最后一枚铁甲用的圣钉时，手指在桌面停了一下。
+
+  过去的自己不会专门计算撤退需要留下多少魔力。现在她把总量分成三份，第一份用于压制安翰斯，第二份应付可能出现的血族，最后一份只留给离开现场。
+
+  这份分法让她觉得陌生，也更可靠。
+
+  当天下午，坡道下方的煤气管线忽然被查出泄漏风险。医院骑士团派人上门，将两侧住户引到附近礼堂做检查。养猫的摊主带着三名骑士抓了一个小时，总算把六只猫全装进笼子。夜间市场提前换到南边广场，巡逻队封住南侧路口，又故意把北边留出一条看似无人看守的窄巷。
+
+  傍晚，红发男人按平日路线离开阁楼，朝八角星教会方向走。希耶尔确认他越过两个街区，才向医院骑士团发出最后的确认信号。

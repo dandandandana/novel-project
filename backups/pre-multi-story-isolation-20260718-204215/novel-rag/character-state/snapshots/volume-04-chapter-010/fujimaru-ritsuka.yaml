@@ -1,0 +1,101 @@
+metadata:
+  document_id: state-snapshot-fujimaru-ritsuka-v1.1
+  story_id: overturned-world-fujimaru
+  timeline_id: main
+  document_type: character_state
+  title: 第4卷第10章后状态快照-藤丸立香
+  character_id: fujimaru-ritsuka
+  variant_id: fujimaru-ritsuka-main
+  snapshot_type: snapshot
+  effective_at: volume-04-chapter-010
+  last_updated: '2026-07-13'
+  version: '1.1'
+  status: canon
+  supersedes: state-current-fujimaru-ritsuka-v1.0
+  source_file: D:\word2\五脏六腑彻底颠覆的世界由藤丸立香拯救-20260712.txt
+  additional_sources:
+  - 用户于2026-07-13直接确认的能力补充
+character_state:
+  current_position:
+    location: 伊耶那岐金地地下的未来文明舰桥
+    companions:
+    - 藤丸立香
+    - 言峰士郎
+    - 玛修·基列莱特
+    - 杨浞
+    faction: 迦勒底
+  physical:
+    health: 正文未明确
+    injuries: []
+    fatigue: 正文未明确
+    temporary_conditions: []
+    permanent_changes: []
+  mental:
+    dominant_emotions:
+    - 冷静
+    - 坚定
+    current_pressure:
+    - 讨伐弥勒
+    - 安排地下主炮与英灵召唤支援
+    desires:
+    - 保留人类选择未来的权利
+    fears: []
+    unresolved_conflicts:
+    - 终末人理圆满装置仍对迦勒底有所隐瞒
+    behavior_effects:
+    - 恢复指挥官状态并开始部署战场
+  knowledge:
+    known:
+    - 终末人理圆满装置会在解决弥勒后归还圣杯
+    - 地下舰桥可提供一次主炮火力和英灵召唤阵
+    unknown:
+    - 终末人理圆满装置隐瞒的全部事项
+    mistaken_beliefs: []
+    suspicions: []
+    secrets_held: []
+  goals:
+    immediate:
+    - 熟悉战场并制定讨伐弥勒的具体方案
+    short_term:
+    - 利用地下主炮及召唤战力解决弥勒
+    long_term:
+    - 回收圣杯并修复特异点
+    priorities:
+    - 人类自主选择
+    - 同伴生存
+    obstacles:
+    - 弥勒
+    - 资源有限
+  relationships:
+  - target_character: yang-zhuo
+    relationship_type: 御主与从者
+    trust: 契约初建
+    dependence: 战斗合作
+    hostility: 无
+    current_attitude: 接纳并准备共同作战
+    unresolved_issues: []
+    recent_change: 完成首次真正意义上的英灵召唤
+  abilities:
+    available:
+    - 降格术
+    - 英杰之帜
+    unavailable: []
+    newly_acquired:
+    - Rider 杨浞的从者契约
+    consumed_resources: []
+    active_costs: []
+  inventory:
+    carried: []
+    lost: []
+    damaged: []
+  narrative:
+    current_arc: 日本下篇：讨伐弥勒前的战力部署
+    completed_changes:
+    - 与终末人理圆满装置达成阶段性合作
+    unresolved_flags:
+    - 弥勒尚未被讨伐
+    - 圣杯尚未回收
+    active_promises:
+    - 解决弥勒后由终末人理圆满装置归还圣杯
+    future_pressure:
+    - 即将展开讨伐弥勒的作战

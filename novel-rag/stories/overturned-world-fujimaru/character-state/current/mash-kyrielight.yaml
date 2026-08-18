@@ -1,0 +1,103 @@
+metadata:
+  document_id: state-current-mash-kyrielight-v1.5
+  story_id: overturned-world-fujimaru
+  timeline_id: main
+  document_type: character_state
+  title: 当前状态-玛修·基列莱特
+  character_id: mash-kyrielight
+  variant_id: mash-kyrielight-main
+  snapshot_type: current
+  effective_at: volume-04-chapter-024
+  last_updated: '2026-08-08'
+  version: '1.5'
+  status: active
+  supersedes: state-current-mash-kyrielight-v1.4
+  source_file: D:\Novel 1\Novel\outputs\第四卷_第21-24章_日本卷收尾.txt
+character_state:
+  current_position:
+    location: 迦勒底休整区与检查室
+    companions:
+    - 藤丸立香
+    - 言峰士郎
+    - 千子村正
+    faction: 迦勒底
+  physical:
+    health: 从者灵基伤势已快速恢复，能够正常行动
+    injuries: []
+    fatigue: 终战疲劳已明显缓解
+    temporary_conditions: []
+    permanent_changes: []
+  mental:
+    dominant_emotions:
+    - 安心
+    - 关切
+    - 期待
+    current_pressure:
+    - 圆桌之盾与外骨骼仍在维修
+    - 祁荒仍未归队
+    desires:
+    - 陪伴立香休整并准备下一次行动
+    fears: []
+    unresolved_conflicts: []
+    behavior_effects: []
+  knowledge:
+    known:
+    - 第一特异点修复完成
+    - 人理没有直接响应标准英灵召唤
+    - 千子村正以日本特异点同一人格返回
+    - 祁荒仍在跨界坐标另一端
+    - 立香与士郎已经确认关系
+    unknown:
+    - 祁荒回收路径
+    - 人理支援异常原因
+    - 杨浞是否存在残留
+    mistaken_beliefs: []
+    suspicions: []
+    secrets_held: []
+  goals:
+    immediate:
+    - 完成盾与外骨骼维修
+    short_term:
+    - 协助恢复祁荒路径
+    - 准备下一特异点
+    long_term:
+    - 继续保护藤丸立香并修复人理
+    priorities:
+    - 前辈安全
+    - 队伍恢复
+    obstacles:
+    - 圆桌之盾尚在维修
+  relationships:
+  - target_character: fujimaru-ritsuka
+    relationship_type: 后辈与前辈／从者与御主
+    trust: 高
+    dependence: 长期同行与战斗协作
+    hostility: 无
+    current_attitude: 继续照顾前辈并尊重其关系选择
+    unresolved_issues: []
+    recent_change: 陪同完成召唤测试与村正归队
+  abilities:
+    available:
+    - 圆桌之盾（待完成维修）
+    - 多功能武装（待完成维修）
+    unavailable: []
+    newly_acquired: []
+    consumed_resources: []
+    active_costs: []
+  inventory:
+    carried: []
+    lost: []
+    damaged:
+    - 圆桌之盾与外骨骼仍在维修
+  narrative:
+    current_arc: 日本卷收尾：休整与队伍重组
+    completed_changes:
+    - 灵基伤势快速恢复
+    - 陪同纯人理召唤测试
+    - 迎接千子村正归队
+    unresolved_flags:
+    - 盾与外骨骼维修
+    - 祁荒回收路径
+    active_promises: []
+    future_pressure:
+    - 下一处特异点可能随时被观测

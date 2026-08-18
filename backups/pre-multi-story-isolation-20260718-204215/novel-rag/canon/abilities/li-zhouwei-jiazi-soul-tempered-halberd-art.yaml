@@ -1,0 +1,53 @@
+{
+  "metadata": {
+    "document_id": "canon-ability-li-zhouwei-jiazi-soul-tempered-halberd-art-v1.0",
+    "story_id": "overturned-world-fujimaru",
+    "timeline_id": "main",
+    "document_type": "canon",
+    "title": "能力设定-李周巍-甲子魄练戟兵术",
+    "entity": "ability",
+    "character_ids": [
+      "li-zhouwei"
+    ],
+    "event_tags": [
+      "甲子魄练戟兵术",
+      "EX",
+      "personal_skill"
+    ],
+    "version": "1.0",
+    "status": "canon",
+    "canon_scope": "timeline",
+    "created_at": "2026-07-17",
+    "updated_at": "2026-07-17",
+    "supersedes": null,
+    "source_file": "user-message:2026-07-17/li-zhouwei-servant-profile"
+  },
+  "ability": {
+    "retrieval_key": "li_zhouwei_jiazi_soul_tempered_halberd_art",
+    "name": "甲子魄练戟兵术",
+    "owner": "李周巍",
+    "owner_id": "li-zhouwei",
+    "rank": "EX",
+    "category": "personal_skill",
+    "type": "大戟道术与乌炎法身",
+    "effect": "李周巍独创的邃气戟术；在征战与喂食资粮中可诞生乌炎法身，当前法身能形成完整乌色麒麟，战斗力对标天之公牛。",
+    "activation": "以大戟战斗，或消耗魔力展开乌炎法身。",
+    "range": "近战及乌色麒麟法身的活动范围；精确距离未说明。",
+    "cost": "完全展开法身需要极大量魔力。",
+    "limitations": [
+      "从者状态下受魔力供给约束。",
+      "法身持续时间、受损恢复与极大量魔力的数值未说明。"
+    ],
+    "failure_conditions": [
+      "魔力供给不足时不能确认能够完全展开乌色麒麟法身。"
+    ],
+    "known_by": [
+      "李周巍"
+    ],
+    "visual_expression": "未说明。",
+    "narrative_function": [
+      "以大戟体系近战，并召出天之公牛级乌色麒麟法身。"
+    ],
+    "canon_notes": []
+  }
+}

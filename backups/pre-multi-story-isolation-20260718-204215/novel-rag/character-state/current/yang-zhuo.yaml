@@ -1,0 +1,118 @@
+metadata:
+  document_id: state-current-yang-zhuo-v1.3
+  story_id: overturned-world-fujimaru
+  timeline_id: main
+  document_type: character_state
+  title: 当前状态-杨浞
+  character_id: yang-zhuo
+  variant_id: yang-zhuo-main
+  snapshot_type: current
+  effective_at: volume-04-chapter-017
+  last_updated: '2026-07-18'
+  version: '1.3'
+  status: active
+  supersedes: state-current-yang-zhuo-v1.2
+  source_file: D:\Novel\outputs\第四卷_第15章_重写.txt; D:\Novel\outputs\第四卷_第16章_重写.txt; D:\Novel\outputs\第四卷_第17章_重写.txt
+character_state:
+  current_position:
+    location: 伊耶那岐金地地下第三层创造室外侧
+    companions:
+    - 吉尔伽美什
+    faction: 迦勒底协同行动方
+  physical:
+    health: 延续第十四章重伤，正在接受稳定治疗
+    injuries:
+    - 左臂缺失
+    - 右肩开放性断裂
+    - 腹部贯穿伤
+    - 左腿行动迟缓
+    - 灵基仍受灰色余火干扰
+    fatigue: 重度战斗消耗，未返回正面战场
+    temporary_conditions: []
+    permanent_changes: []
+  mental:
+    dominant_emotions:
+    - 专注
+    - 倔强
+    current_pressure:
+    - 无法亲自返回弥勒战场
+    desires:
+    - 通过通讯提供自己能够确认的战术提示
+    fears: []
+    unresolved_conflicts: []
+    behavior_effects:
+    - 提示吉尔伽美什寻找宝库深处无法看清的大戟，但没有说明来历
+  knowledge:
+    known:
+    - 吉尔伽美什宝库深处存在一柄连持有者也难以看清的大戟
+    - 该兵器的残缺动作轨迹能被士郎投影读取
+    - 弥勒已经死亡，金地封锁解除
+    unknown:
+    - 士郎投影承受的完整代价
+    - 特异点坐标偏移原因
+    mistaken_beliefs: []
+    suspicions: []
+    secrets_held: []
+  goals:
+    immediate:
+    - 稳定重伤
+    - 保留进一步提供情报的能力
+    short_term:
+    - 确认终战后金地与特异点状态
+    long_term:
+    - 修复特异点并返回正常人理
+    priorities:
+    - 同伴生存
+    - 确认特异点异常
+    obstacles:
+    - 严重伤势
+    - 宝具损伤
+    - 行动能力不足
+  relationships:
+  - target_character: gilgamesh
+    relationship_type: 并肩作战的王者
+    trust: 可以在关键时刻交换战术情报
+    dependence: 宝库与情报互补
+    hostility: 竞争性口角
+    current_attitude: 负伤期间仍直接指挥其从宝库取物
+    unresolved_issues:
+    - 大戟来历没有在场上说明
+    recent_change: 共同通过通讯把无名大戟交到士郎视野中
+  abilities:
+    available:
+    - 真炁六水火
+    - 修武星
+    - 霞羽客
+    - 檀真
+    - 天武真炁神煞真君
+    - 问武平清觯
+    - 奉真策玄鞭
+    unavailable: []
+    newly_acquired: []
+    consumed_resources: []
+    active_costs:
+    - 问武平清觯恢复缓慢
+    - 奉真策玄鞭重损
+    - 重伤限制行动
+  inventory:
+    carried:
+    - 真武正性剑
+    - 问武平清觯
+    - 奉真策玄鞭
+    lost: []
+    damaged:
+    - 问武平清觯杯壁裂纹
+    - 奉真策玄鞭接近贯穿的裂口
+  narrative:
+    current_arc: 日本下篇：伊耶那岐金地终战后
+    completed_changes:
+    - 撤入地下接受治疗
+    - 提示王之财宝中的无名大戟
+    - 通过通讯见证弥勒终战
+    unresolved_flags:
+    - 重伤恢复
+    - 宝具修复
+    - 大戟相关情报仍未向主角组说明
+    active_promises: []
+    future_pressure:
+    - 终战结束后仍缺乏重返战场的身体条件

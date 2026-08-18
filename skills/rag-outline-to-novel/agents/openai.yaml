@@ -1,0 +1,4 @@
+interface:
+  display_name: "RAG Outline to Novel"
+  short_description: "RAG-guided writing, continuation, and rewriting"
+  default_prompt: "Use $rag-outline-to-novel to retrieve novel context and write, continue, or rewrite from an outline."

@@ -1,0 +1,112 @@
+metadata:
+  document_id: state-current-gilgamesh-v1.2
+  story_id: overturned-world-fujimaru
+  timeline_id: main
+  document_type: character_state
+  title: 第四卷第17章末状态快照-吉尔伽美什
+  character_id: gilgamesh
+  variant_id: gilgamesh-main
+  snapshot_type: snapshot
+  effective_at: volume-04-chapter-017
+  last_updated: '2026-07-18'
+  version: '1.2'
+  status: archived
+  supersedes: state-current-gilgamesh-v1.1
+  source_file: D:\Novel\outputs\第四卷_第15章_重写.txt; D:\Novel\outputs\第四卷_第16章_重写.txt; D:\Novel\outputs\第四卷_第17章_重写.txt
+character_state:
+  current_position:
+    location: 伊耶那岐金地地下第三层创造室外侧
+    companions:
+    - 杨浞
+    faction: 迦勒底协同行动方
+  physical:
+    health: 延续第十四章重伤，正在接受稳定治疗
+    injuries:
+    - 左肩、锁骨和部分胸腔缺损
+    - 左腿从膝盖向上失去知觉
+    - 右手虎口裂至腕部
+    fatigue: 重度战斗消耗，未返回正面战场
+    temporary_conditions: []
+    permanent_changes: []
+  mental:
+    dominant_emotions:
+    - 高傲
+    - 专注
+    current_pressure:
+    - 重伤限制行动
+    - 弥勒终战仍需支援
+    desires:
+    - 以王之财宝提供战场需要的兵器原件
+    fears: []
+    unresolved_conflicts: []
+    behavior_effects:
+    - 按杨浞提示打开宝库最深处门扉，但只允许士郎观看原件
+  knowledge:
+    known:
+    - 自己的宝库深处存在一柄连千里眼也难以看清的大戟
+    - 士郎能够投影其外形与残缺动作轨迹
+    - 大戟原件始终留在王之财宝中
+    - 弥勒已经死亡，金地封锁解除
+    unknown:
+    - 无名大戟为何存在于宝库
+    - 杨浞为何知道这件藏品
+    - 特异点偏移原因
+    mistaken_beliefs: []
+    suspicions: []
+    secrets_held: []
+  goals:
+    immediate:
+    - 稳定重伤
+    - 维持王之财宝可用
+    short_term:
+    - 确认终战后特异点状态
+    long_term:
+    - 修复特异点并返回正常人理
+    priorities:
+    - 同伴生存
+    - 确认特异点异常
+    obstacles:
+    - 严重伤势
+    - 连续解放EA后的消耗
+    - 行动受限
+  relationships:
+  - target_character: yang-zhuo
+    relationship_type: 并肩作战的王者
+    trust: 接受关键战术提示
+    dependence: 情报与宝库资源互补
+    hostility: 竞争性口角
+    current_attitude: 不满其卖关子，但仍立即按提示取出大戟
+    unresolved_issues:
+    - 杨浞如何知道宝库藏品
+    recent_change: 共同通过通讯支援士郎完成投影
+  abilities:
+    available:
+    - 王之财宝
+    - EA／开天辟地乖离之星
+    - 千里眼
+    unavailable: []
+    newly_acquired: []
+    consumed_resources: []
+    active_costs:
+    - EA连续解放后的重度消耗
+    - 重伤限制移动
+  inventory:
+    carried:
+    - EA
+    - 九枚时间卵
+    - 无名大戟原件（仍在王之财宝）
+    lost: []
+    damaged: []
+  narrative:
+    current_arc: 日本下篇：伊耶那岐金地终战后
+    completed_changes:
+    - 撤入地下接受治疗
+    - 从王之财宝展示无名大戟原件
+    - 通过通讯见证弥勒终战
+    unresolved_flags:
+    - 无名大戟来历
+    - 重伤恢复
+    - 特异点偏移
+    active_promises: []
+    future_pressure:
+    - 仍保有宝库资源，但本人暂时无法返回正面战场

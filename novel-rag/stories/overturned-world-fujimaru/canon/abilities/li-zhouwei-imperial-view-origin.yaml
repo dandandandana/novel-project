@@ -1,0 +1,54 @@
+{
+  "metadata": {
+    "document_id": "canon-ability-li-zhouwei-imperial-view-origin-v1.0",
+    "story_id": "overturned-world-fujimaru",
+    "timeline_id": "main",
+    "document_type": "canon",
+    "title": "宝具设定-李周巍-帝观元",
+    "entity": "noble_phantasm",
+    "character_ids": [
+      "li-zhouwei"
+    ],
+    "event_tags": [
+      "帝观元",
+      "A++",
+      "noble_phantasm"
+    ],
+    "version": "1.0",
+    "status": "canon",
+    "canon_scope": "timeline",
+    "created_at": "2026-07-17",
+    "updated_at": "2026-07-17",
+    "supersedes": null,
+    "source_file": "user-message:2026-07-17/li-zhouwei-servant-profile"
+  },
+  "ability": {
+    "retrieval_key": "li_zhouwei_imperial_view_origin",
+    "name": "帝观元",
+    "owner": "李周巍",
+    "owner_id": "li-zhouwei",
+    "rank": "A++",
+    "category": "noble_phantasm",
+    "type": "对界宝具 / 内现增幅与外展固有结界",
+    "effect": "面对强敌时以内现模式化作包裹自身的顶级防护增幅结界，使全属性上升一个大等级；面对弱者时以外展模式展开辉煌明阳宫殿固有结界，其中一切存在都受到李周巍的概念特攻。",
+    "activation": "解放真名并依敌我强弱选择内现或外展模式。",
+    "range": "对界；固有结界具体范围未说明。",
+    "cost": "未说明。",
+    "limitations": [
+      "强敌与弱者的判定标准、两模式能否切换或共存、持续时间未说明。"
+    ],
+    "failure_conditions": [],
+    "known_by": [
+      "李周巍"
+    ],
+    "visual_expression": "未说明。",
+    "narrative_function": [
+      "对强敌强化自身防护与全属性，对弱者展开帝国领域实施概念特攻。"
+    ],
+    "canon_notes": [],
+    "release_chant": [
+      "孤之帝业，万里山河——",
+      "帝观元！"
+    ]
+  }
+}

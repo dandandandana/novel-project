@@ -1,0 +1,24 @@
+metadata:
+  document_id: canon-world-core-premise-v1.0
+  story_id: shirouxcile
+  timeline_id: main
+  document_type: canon
+  title: 世界观：月姬世界线基准
+  version: '1.0'
+  status: canon
+  canon_scope: timeline
+  created_at: '2026-08-09'
+  updated_at: '2026-08-09'
+  supersedes: null
+  source_file: D:\士学姐\世界观.txt
+world:
+  baseline: 型月体系下的月姬世界观。
+  rules:
+  - 本作品采用月姬世界观作为基准。
+  - 本世界不存在英灵。
+  - 死徒活动频繁，死徒与相关怪异事件构成主要超自然威胁。
+  prohibited_interpretations:
+  - 不得引入英灵、从者或英灵座作为本世界既有事实。
+  - 不得默认发生第四次或第五次圣杯战争。
+  - 不得把本作与其他小说的型月时间线混用。
+  source_content: 型月下的月姬世界观，无英灵存在，死徒频发

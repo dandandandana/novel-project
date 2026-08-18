@@ -1,0 +1,53 @@
+{
+  "metadata": {
+    "document_id": "canon-ability-li-zhouwei-walking-method-v1.0",
+    "story_id": "overturned-world-fujimaru",
+    "timeline_id": "main",
+    "document_type": "canon",
+    "title": "能力设定-李周巍-行走法",
+    "entity": "ability",
+    "character_ids": [
+      "li-zhouwei"
+    ],
+    "event_tags": [
+      "行走法",
+      "B",
+      "personal_skill"
+    ],
+    "version": "1.0",
+    "status": "canon",
+    "canon_scope": "timeline",
+    "created_at": "2026-07-17",
+    "updated_at": "2026-07-17",
+    "supersedes": null,
+    "source_file": "user-message:2026-07-17/li-zhouwei-servant-profile"
+  },
+  "ability": {
+    "retrieval_key": "li_zhouwei_walking_method",
+    "name": "行走法",
+    "owner": "李周巍",
+    "owner_id": "li-zhouwei",
+    "rank": "B",
+    "category": "personal_skill",
+    "type": "太虚行走与类虚数空间瞬移",
+    "effect": "以太虚行走法进行类似穿过虚数空间的瞬间移动，为战术提供高机动优势。",
+    "activation": "李周巍主动施展太虚行走法。",
+    "range": "移动距离未说明。",
+    "cost": "受魔力供给限制。",
+    "limitations": [
+      "从者状态下移动距离与使用频率受魔力供给限制。",
+      "不能据此推定为无条件跨世界或无限距离传送。"
+    ],
+    "failure_conditions": [
+      "魔力供给不足时移动距离或频率下降；具体阈值未说明。"
+    ],
+    "known_by": [
+      "李周巍"
+    ],
+    "visual_expression": "未说明。",
+    "narrative_function": [
+      "执行瞬时突进、转移、追击与脱离。"
+    ],
+    "canon_notes": []
+  }
+}

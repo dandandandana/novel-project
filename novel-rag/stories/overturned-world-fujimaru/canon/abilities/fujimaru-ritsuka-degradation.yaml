@@ -1,0 +1,44 @@
+metadata:
+  document_id: canon-ability-fujimaru-ritsuka-degradation-v1.0
+  story_id: overturned-world-fujimaru
+  timeline_id: main
+  document_type: canon
+  title: 能力设定-藤丸立香-降格术
+  entity: ability
+  character_ids:
+  - fujimaru-ritsuka
+  event_tags:
+  - 逆向根源
+  - 降格
+  - 存在形式
+  version: '1.0'
+  status: canon
+  canon_scope: timeline
+  created_at: '2026-07-13'
+  updated_at: '2026-07-13'
+  supersedes: null
+  source_file: 用户于2026-07-13直接确认
+ability:
+  name: 降格术
+  owner: 藤丸立香
+  owner_id: fujimaru-ritsuka
+  type: 逆向根源术式
+  effect: 逆向根源的极致运用，能够让一定范围内的生物必须以使用者可以理解、认可的存在形式存在。
+  activation: 藤丸立香能够主动使用；具体发动步骤未说明。
+  range: 一定范围；一国之打。
+  cost: 无。
+  limitations:
+  - 只确认对一定范围内的生物生效。
+  - 使用者必须能够理解并认可目标被强制采用的存在形式。
+  - 具体持续时间、可同时影响的目标数量与重复发动条件未说明。
+  failure_conditions:
+  - 未说明。
+  known_by:
+  - 藤丸立香
+  visual_expression: 未说明。
+  narrative_function:
+  - 将原本无法以使用者认知方式处理的生物，强制纳入其能够理解并认可的存在形式。
+  - 在日本篇终局中用于使弥勒进入能够被正常战斗手段伤害和杀死的层级，但不会自动削弱其筋力、速度、魔力、武技或宝具威力。
+  canon_notes:
+  - 通用定义以本文件为准。
+  - 日本篇终局的具体应用细则见日本篇终局战斗体系文档。

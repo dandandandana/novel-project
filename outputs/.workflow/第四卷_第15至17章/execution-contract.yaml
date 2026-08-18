@@ -1,0 +1,76 @@
+execution_contract:
+  identity:
+    story_id: overturned-world-fujimaru
+    timeline_id: main
+    volume: 4
+    chapters: [15, 16, 17]
+  task:
+    task_type: outline_to_novel
+    scene_types: [battle, evacuation, confrontation, resolution, foreshadowing]
+    start_point: 第十四章末，天照命败北，弥勒仍在伊耶那岐宫
+    end_point: 弥勒死亡，人类获得自由，卫宫白感知神琦灰故尊复现异动并准备借祁荒坐标前来
+    target_length: 三章合计约二万二千至二万八千非空白字符；以自然阶段完整为准，不为凑长扩写低价值转场
+    output_mode: 三个独立UTF-8纯文本章节
+  source_resolution:
+    accepted_sources:
+      - 用户提供的接下来的大纲.txt
+      - 第四卷第14章正式History与current state
+      - 当前active Canon、Ruler、Judgment与Style Audit
+    authority_notes:
+      - 本次大纲明确把弥勒终战顺序改为先降格、疏散、主炮，再进入正面硬战，覆盖旧角色卡中的终战流程顺序
+      - 降格仍只移除高维、遍在、思潮复活等不可交战性质，不削弱弥勒基础战力
+  must_happen:
+    - 降格术成功，居民首次看见未来佛本相
+    - AE言峰士郎与AE阿尔托莉雅完成疏散
+    - 终末人理圆满装置第二宝具从地底发射并命中弥勒
+    - 创造之禊祓由村正维持压制，计划成功后转入硬战
+    - 祁荒守坐标、阵型并保护立香
+    - 立香承认战场主要属于本世界的人，士郎与玛修迎战并以一道英杰之帜强化玛修
+    - 人形弥勒先压制AE组，随后士郎与玛修加入
+    - 弥勒识破士郎的拟造躯壳与投影装填用途
+    - 杨浞提示王之财宝中的次显锻白再明王戟，吉尔伽美什取出，士郎完成投影并装填李周巍数值
+    - 士郎以趋近李周巍的霸道战法击碎剩余法相头颅
+    - 村正参战，并回答弥勒关于无未来仍前进的问题
+    - AE言峰士郎、AE阿尔托莉雅与玛修解放宝具，同弥勒宝具对轰
+    - 村正以怨仇之禊祓吸收其余三种禊祓，获得伊耶那岐神尸回应与斩裂星球意向，挥出天羽羽斩
+    - 弥勒临死确认人类自由，拒绝求取赎罪，自愿下十八层地狱任人唾弃
+    - 卫宫白感到特异点异动，并准备沿祁荒坐标前来
+  must_preserve:
+    - 弥勒确实爱人类，不得写成单纯憎恨人类的恶人
+    - 降格、主炮和创造之禊祓都不是自动胜利，最终必须负伤硬打
+    - 杨浞、吉尔伽美什沿用第十四章重伤与宝具损耗，不得无解释痊愈参战
+    - 潘多拉宝具不在本次大纲中开启
+    - 李周巍本人不现界，只通过原戟、投影装填、参数与武艺痕迹介入
+    - 不提前解释神琦灰完整计划
+  must_not_happen:
+    - 机械回合制对轰或连续报菜名
+    - 通过新能力、临时规则或角色降智制造波折
+    - 把祁荒写成真正慈悲或无私
+    - 把弥勒的死写成迦勒底替本世界人类作出的单方面判决
+    - 忘记伤势、位置、武器与令咒消耗
+    - 将卫宫白结尾伏笔写成正式抵达和介入本战
+  continuity_limits:
+    - 立香开场位于东门盆地外围，剩余两道令咒；本次再消耗一道给玛修
+    - 士郎右腕至肘有投影回路裂伤
+    - 玛修左臂负伤，仍可持盾
+    - 村正与祁荒开场位于地下第三层，出口尚在打开
+    - AE组开场守北侧主炮信标，潘多拉臂铠闭合
+    - 杨浞和吉尔伽美什重伤，只承担情报与武装交接
+  active_generation_rules:
+    - ruler-global-v1.0
+    - judgment-global-v1.1
+  active_style_rules:
+    - style-master-patch-v1.0
+    - style-narrative-organization-v0.6
+    - style-action-continuity-v1.0
+    - style-battle-v1.0
+    - style-battle-syntax-sound-v1.0
+    - style-native-chinese-dialogue-v1.0
+  allowed_inventions:
+    - 不改变硬事件的转场、战术铰链、普通伤势、局部环境反馈与非关键台词
+  blocking_unknowns: []
+  downstream_requirements:
+    - 分章边界必须落在自然阶段结算处
+    - 战斗动作必须形成判断、行动、反应、结果、新判断的因果链
+    - 对白必须承接前句并保留角色私有语气
+    - 正式RAG current state在用户确认正文前不得覆盖

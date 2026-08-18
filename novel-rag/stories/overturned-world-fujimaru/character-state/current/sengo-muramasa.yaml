@@ -1,0 +1,132 @@
+metadata:
+  document_id: state-current-sengo-muramasa-v1.4
+  story_id: overturned-world-fujimaru
+  timeline_id: main
+  document_type: character_state
+  title: 当前状态-千子村正
+  character_id: sengo-muramasa
+  variant_id: sengo-muramasa-main
+  snapshot_type: current
+  effective_at: volume-04-chapter-024
+  last_updated: '2026-08-08'
+  version: '1.4'
+  status: active
+  supersedes: state-current-sengo-muramasa-v1.3
+  source_file: D:\Novel 1\Novel\outputs\第四卷_第21-24章_日本卷收尾.txt
+character_state:
+  current_position:
+    location: 迦勒底检查室；已完成跨界召唤归队
+    companions:
+    - 藤丸立香
+    - 玛修·基列莱特
+    - 言峰士郎
+    faction: 迦勒底／藤丸立香契约从者
+  physical:
+    health: 得到迦勒底供魔后灵基伤势迅速修复，能够正常行动
+    injuries:
+    - 右掌与胸前保留淡色旧痕
+    fatigue: 跨界移动与召唤后的疲劳正在恢复
+    temporary_conditions: []
+    permanent_changes: []
+  mental:
+    dominant_emotions:
+    - 务实
+    - 安心
+    - 担忧祁荒
+    current_pressure:
+    - 祁荒仍留在跨界坐标另一端
+    - 工房尚未安排
+    desires:
+    - 完成检查并取得工房
+    - 与迦勒底重建祁荒路径
+    fears: []
+    unresolved_conflicts: []
+    behavior_effects: []
+  knowledge:
+    known:
+    - 自己就是日本特异点中行动至终局的千子村正本人
+    - 日本特异点记忆与人格连续性完整保留
+    - 祁荒用金刚杵与净瓶维持召唤路径并将自己送入迦勒底
+    - 人理标准召唤没有直接响应立香
+    unknown:
+    - 门闭合后祁荒的完整状态
+    - 跨界路径重新开启方法
+    - 卫宫白与神琦灰对峙结果
+    mistaken_beliefs: []
+    suspicions: []
+    secrets_held: []
+  goals:
+    immediate:
+    - 完成灵基检查
+    - 取得锻造工房
+    short_term:
+    - 协助解析白火切口与祁荒路径锚点
+    long_term:
+    - 作为立香的Saber继续锻刀与开路
+    priorities:
+    - 祁荒回收
+    - 工房
+    - 下一次行动
+    obstacles:
+    - 跨界路径已经闭合
+    - 断刀与衣甲未随灵基复原
+  relationships:
+  - target_character: fujimaru-ritsuka
+    relationship_type: 从者与御主
+    trust: 高
+    dependence: 长期同行与战斗协作
+    hostility: 无
+    current_attitude: 认可立香为御主并愿继续替她锻刀开路
+    unresolved_issues: []
+    recent_change: 主动响应呼唤并完成Saber契约
+  - target_character: qihuang
+    relationship_type: 跨界同行者
+    trust: 高
+    dependence: 长期同行与战斗协作
+    hostility: 无
+    current_attitude: 确认祁荒仍在门后并要求迦勒底保存坐标
+    unresolved_issues:
+    - 祁荒尚未归队
+    recent_change: 由祁荒钉住路径送入迦勒底
+  - target_character: kotomine-shirou
+    relationship_type: 并肩作战者
+    trust: 高
+    dependence: 长期同行与战斗协作
+    hostility: 无
+    current_attitude: 恢复嘴硬互损的协作关系
+    unresolved_issues: []
+    recent_change: 归队后确认士郎伤势已快速恢复
+  abilities:
+    available:
+    - 锻刀
+    - 创造之禊祓残余回路
+    unavailable: []
+    newly_acquired:
+    - 藤丸立香的Saber契约
+    consumed_resources: []
+    active_costs:
+    - 跨界召唤消耗
+    - 白火路径暂时闭合
+  inventory:
+    carried:
+    - 断刀
+    - 受损刀鞘
+    lost: []
+    damaged:
+    - 断刀与衣甲未随灵基复原
+  narrative:
+    current_arc: 日本卷收尾：同一人格跨界归队
+    completed_changes:
+    - 未随第20章灵子转移返回
+    - 沿立香召唤请求跨界进入迦勒底
+    - 通过灵基、记忆与人格连续性验证
+    - 与立香缔结Saber契约
+    - 灵基伤势快速修复
+    unresolved_flags:
+    - 祁荒仍未归队
+    - 跨界路径重建
+    - 工房安排
+    active_promises:
+    - 作为Saber继续为立香锻刀与开路
+    future_pressure:
+    - 需要利用白火切口协助迦勒底找回祁荒

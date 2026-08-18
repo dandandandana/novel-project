@@ -1,0 +1,35 @@
+metadata:
+  document_id: canon-world-chaldea-abandoned-by-human-order-v1.0
+  story_id: overturned-world-fujimaru
+  timeline_id: main
+  document_type: canon
+  title: 世界观设定-被人理抛弃的迦勒底
+  entity: world_rule
+  character_ids:
+  - fujimaru-ritsuka
+  location_ids:
+  - chaldea
+  event_tags:
+  - 迦勒底
+  - 人理
+  - 英灵召唤
+  - 从者召唤
+  version: '1.0'
+  status: canon
+  canon_scope: timeline
+  created_at: '2026-07-13'
+  updated_at: '2026-07-13'
+  supersedes: null
+  source_file: 用户于2026-07-13直接确认
+world:
+  rule: 该世界线的迦勒底已经被人理抛弃。
+  consequences:
+  - 当前迦勒底没有任何从者是通过正常召唤获得的。
+  - 当前迦勒底无法正常召唤从者。
+  - 当前迦勒底无法正常进行英灵召唤。
+  exceptions_and_boundaries:
+  - 由外部存在、异常设施、特殊契约或其他非正常机制完成的召唤，不代表迦勒底恢复了正常召唤能力。
+  - 伊耶那岐金地地下由终末人理圆满装置提供的召唤阵属于外部异常支援，不属于迦勒底的正常英灵召唤。
+  prohibited_interpretations:
+  - 不得默认迦勒底可以依靠人理或常规灵基召唤系统补充从者。
+  - 不得把当前已存在的从者误写成经迦勒底正常召唤而来。

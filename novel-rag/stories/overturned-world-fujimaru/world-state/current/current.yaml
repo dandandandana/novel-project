@@ -1,0 +1,83 @@
+metadata:
+  document_id: world-state-current-v1.6
+  story_id: overturned-world-fujimaru
+  timeline_id: main
+  document_type: world_state
+  title: 第四卷第24章后世界状态
+  version: '1.6'
+  status: active
+  effective_at: volume-04-chapter-024
+  supersedes: world-state-current-v1.5
+  source_file: D:\Novel 1\Novel\outputs\第四卷_第21-24章_日本卷收尾.txt
+  updated_at: '2026-08-08'
+world_state:
+  timeline_position: 第四卷第24章末，日本卷收尾，迦勒底进入下一特异点出现前的休整期
+  locations:
+  - location_id: chaldea
+    current_condition: 第一特异点修复完成；从者主要伤势已快速恢复；千子村正经跨界响应归队
+    controlling_faction: 迦勒底
+    accessibility: 正常
+    known_hazards:
+    - 人理直接召唤支援仍未确认
+    recent_events:
+    - 发布休整令
+    - 标准召唤无直接响应
+    - 千子村正缔结Saber契约
+  - location_id: cross-world-coordinate
+    current_condition: 祁荒独自留在召唤门另一端，召唤闭合前生命反应存在
+    controlling_faction: 未确认
+    accessibility: 路径已闭合，迦勒底保存万花筒残痕、金刚杵坐标与白火锚点
+    known_hazards:
+    - 世界乱流
+    - 石台不稳定
+    - 路径闭合
+    recent_events:
+    - 祁荒将千子村正送入迦勒底召唤阵
+    - 搜索状态改为路径待重建
+  - location_id: restored-japan
+    current_condition: 第一特异点已完成修复并归还原有时代
+    controlling_faction: 原有人理
+    accessibility: 迦勒底当前无异常坐标入口
+    known_hazards: []
+    recent_events:
+    - 日本特异点正式归档
+  factions:
+  - faction_id: chaldea
+    current_goal: 休整、调查人理支援异常、重建祁荒路径并等待下一特异点
+    leadership: 奥尔加玛丽负责迦勒底运行；藤丸立香为核心御主
+    alliances:
+    - 千子村正（新缔结Saber契约）
+    enemies:
+    - 神琦灰
+    known_information:
+    - 第一特异点修复完成
+    - 人理没有直接响应标准英灵召唤
+    - 千子村正本人保留日本记忆与人格归队
+    - 祁荒仍未返回迦勒底且路径待重建
+    resources:
+    - 已回收圣杯（封存）
+    - 千子村正的Saber契约
+    - 祁荒跨界路径锚点
+    recent_changes:
+    - 进入休整期
+    - 队伍新增归队的千子村正
+    - 祁荒搜索由无法定位改为路径待重建
+  global_events:
+  - 弥勒生命与思潮信号归零
+  - 第一特异点修复完成
+  - 迦勒底进入休整期
+  - 标准英灵召唤未得到人理直接响应
+  - 千子村正以日本特异点同一人格跨界归队并缔结契约
+  public_knowledge:
+  - 迦勒底第一特异点修复完成
+  - 千子村正作为Saber加入迦勒底
+  hidden_world_changes:
+  - 人理不直接支援迦勒底的原因仍未知
+  - 祁荒仍独自留在跨界坐标另一端
+  - 卫宫白与神琦灰对峙结果仍未知
+  unresolved_world_flags:
+  - 人理直接召唤支援异常
+  - 祁荒路径重建
+  - 杨浞是否存在可恢复残留
+  - 卫宫白与神琦灰对峙结果
+  - Alterego言峰士郎与阿尔托莉雅后续

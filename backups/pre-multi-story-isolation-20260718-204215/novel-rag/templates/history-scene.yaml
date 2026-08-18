@@ -1,0 +1,24 @@
+metadata:
+  document_id: ""
+  story_id: ""
+  timeline_id: ""
+  document_type: history
+  title: ""
+  volume: null
+  chapter: null
+  scene: null
+  pov_character: ""
+  character_ids: []
+  location_ids: []
+  event_tags: []
+  start_state: []
+  end_state: []
+  previous_scene: null
+  next_scene: null
+  version: "1.0"
+  status: canon
+  supersedes: null
+  source_file: ""
+content: |
+  在此填写经用户确认的正式场景正文。
+

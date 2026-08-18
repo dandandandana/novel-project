@@ -1,0 +1,53 @@
+{
+  "metadata": {
+    "document_id": "canon-ability-li-zhouwei-juntaowei-v1.0",
+    "story_id": "overturned-world-fujimaru",
+    "timeline_id": "main",
+    "document_type": "canon",
+    "title": "能力设定-李周巍-君韬危",
+    "entity": "ability",
+    "character_ids": [
+      "li-zhouwei"
+    ],
+    "event_tags": [
+      "君韬危",
+      "EX",
+      "personal_skill"
+    ],
+    "version": "1.0",
+    "status": "canon",
+    "canon_scope": "timeline",
+    "created_at": "2026-07-17",
+    "updated_at": "2026-07-17",
+    "supersedes": null,
+    "source_file": "user-message:2026-07-17/li-zhouwei-servant-profile"
+  },
+  "ability": {
+    "retrieval_key": "li_zhouwei_juntaowei",
+    "name": "君韬危",
+    "owner": "李周巍",
+    "owner_id": "li-zhouwei",
+    "rank": "EX",
+    "category": "personal_skill",
+    "type": "逆境持续成长神通",
+    "effect": "当李周巍被围攻、陷入劣势或灵核受损等逆境时，全属性随时间持续增长，增长速度极快且没有上限。",
+    "activation": "处于已确认的逆境时被动发动。",
+    "range": "李周巍自身。",
+    "cost": "未说明。",
+    "limitations": [
+      "何时构成逆境、增长曲线与逆境结束后的保留时间未说明。",
+      "无上限是能力设定，不代表已发生的伤势会自动恢复。"
+    ],
+    "failure_conditions": [
+      "未处于逆境时不满足已确认发动条件。"
+    ],
+    "known_by": [
+      "李周巍"
+    ],
+    "visual_expression": "未说明。",
+    "narrative_function": [
+      "把正面围剿和劣势持续转化为不断扩大的属性优势。"
+    ],
+    "canon_notes": []
+  }
+}

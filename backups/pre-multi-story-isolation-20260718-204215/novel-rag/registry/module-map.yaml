@@ -1,0 +1,9 @@
+modules:
+- story_id: overturned-world-fujimaru
+  timeline_id: main
+  module_type: rule
+  active_version: ruler-global-v1.0
+- story_id: overturned-world-fujimaru
+  timeline_id: main
+  module_type: judgment_spec
+  active_version: judgment-global-v1.1

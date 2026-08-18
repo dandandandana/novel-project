@@ -1,0 +1,25 @@
+metadata:
+  document_id: state-change-qihuang-v04-c013-v1.0
+  story_id: overturned-world-fujimaru
+  timeline_id: main
+  document_type: character_state
+  title: 第4卷第11至13章状态变化-祁荒
+  character_id: qihuang
+  variant_id: qihuang-main
+  snapshot_type: change_log
+  effective_at: volume-04-chapter-013
+  last_updated: '2026-07-14'
+  version: '1.0'
+  status: canon
+  supersedes: null
+  source_file: D:\Novel\outputs\第四卷_第11至13章_续写.txt
+changes:
+- category: current_position_and_goal
+  before: 无既有current记录
+  after:
+    location: 伊耶那岐金地地下第三层封锁区
+    companions:
+    - 千子村正
+    faction: 迦勒底协同行动方
+  cause: 第四卷第11至13章三线作战部署与决战开场
+  evidence: history-v04-c013

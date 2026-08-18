@@ -1,0 +1,39 @@
+audit_report:
+  status: PASS
+  ruler_audit:
+    must_happen_complete: true
+    must_preserve_intact: true
+    prohibited_events_absent: true
+    forbidden_reveals_absent: true
+    canon_limits_respected: true
+    character_limits_respected: true
+  judgment_audit:
+    chapter_core_visible: true
+    node_order_respected: true
+    core_nodes_received_priority: true
+    low_value_transitions_compressed: true
+    emotional_curve_respected: true
+    final_length_rejudgment: 三章自然完成于约2.26万非空白字符；未以低价值转场扩写到初始软预算
+  continuity_audit:
+    command_spells: 第十四章末2道；第十六章对玛修使用1道；第十七章末1道
+    qihuang_position: 始终守坐标阵并保护立香
+    injured_reserves: 杨浞与吉尔伽美什未无解释返回正面战场
+    pandora: 保持闭合
+    li_zhouwei: 本人未现界；仅王戟原件、投影、参数与武艺痕迹介入
+    maitreya: 保持真诚爱人类的动机，降格不削基础战力
+  style_audit:
+    chars_no_whitespace: 22602
+    cjk: 19573
+    paragraphs: 405
+    narrative_median: 106
+    negative_opening_paragraphs: 0
+    causal_linkers: 173
+    sound_markers: 106
+    weak_linkers:
+      与此同时: 1
+      下一瞬: 0
+      紧接着: 4
+      随之: 4
+    duplicate_paragraphs: 0
+    translationese_in_dialogue: 0
+    encoding: UTF-8 without BOM, LF

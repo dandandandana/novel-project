@@ -1,0 +1,39 @@
+versions:
+- document_family: style-action-continuity
+  current: style-action-continuity-v1.0
+  supersedes: []
+  reason: 导入用户确认的全局动作连贯性与文字血肉化规范
+- document_family: style-battle-syntax-sound
+  current: style-battle-syntax-sound-v1.0
+  supersedes: []
+  reason: 导入用户确认的战斗句法黏合、连接词与声场补强规范
+- document_family: ruler-global
+  current: ruler-global-v1.0
+  supersedes: []
+  reason: 导入用户确认的全局小说生成任务约束裁决器
+- document_family: judgment-global
+  current: judgment-global-v1.1
+  supersedes:
+  - judgment-global-v1.0
+  reason: 加入中文母语感对白的关系、意图、潜台词、接话触发和节奏权限规划协议
+- document_family: style-global-manifest
+  current: style-global-manifest-v1.4
+  supersedes:
+  - style-global-manifest-v1.3
+  - style-global-manifest-v1.2
+  - style-global-manifest-v1.1
+  - style-global-manifest-v1.0
+  reason: 启用总文风 V2 并登记其与对白、场景、动作、信息过滤和结尾审计模块的适配关系
+- document_family: style-native-chinese-dialogue
+  current: style-native-chinese-dialogue-v1.0
+  supersedes: []
+  reason: 导入用户确认的中文母语感对白生成与翻译腔修正规则
+- document_family: ruler-narrative-information-disclosure
+  current: ruler-narrative-information-disclosure-v1.0
+  supersedes: []
+  reason: 导入用户确认的叙事信息显露约束与禁止旁白全知泄底规则
+- document_family: style-master-patch
+  current: style-master-patch-v2.0
+  supersedes:
+  - style-master-patch-v1.0
+  reason: 导入并适配用户确认的对话、旁白、场景结构、信息准入与读者推理保护总文风补丁

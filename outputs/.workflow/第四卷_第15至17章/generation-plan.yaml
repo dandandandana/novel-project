@@ -1,0 +1,49 @@
+generation_plan:
+  chapter_split:
+    - chapter: 15
+      title: 十二秒
+      target_chars_no_whitespace: 7000-8500
+      chapter_core: 让降格、疏散、主炮与创造之禊祓构成的计划真正成立
+      nodes:
+        - {event: 伤员撤离与三线重新接合, importance: A, treatment: complete}
+        - {event: 立香在祁荒保护下完成弥勒降格, importance: S, treatment: expand}
+        - {event: 居民看见未来佛本相并由AE组疏散, importance: A, treatment: complete}
+        - {event: 第二宝具从地底命中弥勒，创造白火压住复归, importance: S, treatment: expand}
+        - {event: 计划成功，弥勒压回人形，进入硬战, importance: S, treatment: short_decisive_end}
+    - chapter: 16
+      title: 次显明王
+      target_chars_no_whitespace: 7000-8500
+      chapter_core: 本世界的人以自己的选择接过决战，并找到能够真正压近弥勒的战法
+      nodes:
+        - {event: AE组先战并被压制, importance: A, treatment: complete}
+        - {event: 立香退至阵心，士郎玛修入场，英杰之帜强化玛修, importance: S, treatment: expand}
+        - {event: 弥勒识破拟造躯壳与投影装填, importance: A, treatment: dialogue_battle}
+        - {event: 王戟原型出现，士郎投影装填李周巍参数, importance: S, treatment: expand}
+        - {event: 两拳碎法相头，霸道战法扭转近战, importance: S, treatment: expand}
+        - {event: 村正入场并回答为何为无未来前进, importance: S, treatment: emotional_end}
+    - chapter: 17
+      title: 天羽羽斩
+      target_chars_no_whitespace: 7500-9000
+      chapter_core: 人类与被人类创造或记住的存在共同结束救世主替人类决定未来的时代
+      nodes:
+        - {event: 三件宝具同众生止步极乐一掌对轰, importance: S, treatment: expand}
+        - {event: 全员负伤争取最后一线, importance: A, treatment: complete}
+        - {event: 怨仇之禊祓吸收三禊祓，伊耶那岐神尸回应, importance: S, treatment: expand}
+        - {event: 天羽羽斩斩裂所有阻隔空间并决着, importance: S, treatment: short_decisive}
+        - {event: 弥勒临死确认自由并自愿受罚, importance: S, treatment: emotional_aftershock}
+        - {event: 卫宫白感到神琦灰故尊复现异动, importance: A, treatment: restrained_foreshadowing}
+  compression_targets:
+    - 普通移动与集结并入治疗、疏散和战术动作
+    - 宝具吟唱只保留有身份和结果功能的部分
+    - 不逐件介绍文明兵装与法相
+  deletion_targets:
+    - 与结果无关的增援
+    - 潘多拉开启支线
+    - 杨浞吉尔伽美什无解释重返正面战场
+    - 神琦灰计划说明
+  final_validation_targets:
+    - 十五个大纲硬事件按顺序完整出现
+    - 三章各有独立中心与自然结尾
+    - 无伤势复位、位置瞬移或角色知识越界
+    - 对白具有承接、关系、情绪和潜台词
+    - 非空白字符总数处于目标区间或因自然节奏作小幅调整

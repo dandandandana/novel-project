@@ -1,0 +1,107 @@
+metadata:
+  document_id: state-current-qihuang-v1.2
+  story_id: overturned-world-fujimaru
+  timeline_id: main
+  document_type: character_state
+  title: 第四卷第14章末状态快照-祁荒
+  character_id: qihuang
+  variant_id: qihuang-main
+  snapshot_type: snapshot
+  effective_at: volume-04-chapter-014
+  last_updated: '2026-07-17'
+  version: '1.2'
+  status: archived
+  supersedes: state-current-qihuang-v1.1
+  source_file: D:\Novel\outputs\第四卷_第14章_续写.txt
+character_state:
+  current_position:
+    location: 伊耶那岐金地地下第三层创造空间
+    companions:
+    - 千子村正
+    faction: 迦勒底协同行动方
+  physical:
+    health: 无明确新增伤势
+    injuries: []
+    fatigue: 正文未明确
+    temporary_conditions: []
+    permanent_changes: []
+  mental:
+    dominant_emotions:
+    - 观察
+    - 专注
+    current_pressure:
+    - 需要协助打开地下出口
+    desires:
+    - 继续调查人格汇聚实验与众生欲望
+    fears: []
+    unresolved_conflicts: []
+    behavior_effects:
+    - 尊重千子村正要求，没有直接插手创造之禊祓的选择
+  knowledge:
+    known:
+    - 伊耶娜美是从冲突故尊记忆中自主活下来的个体
+    - 创造之禊祓已选择千子村正
+    - 天照命已败北
+    - 东门伤员需要地下撤离路线
+    unknown:
+    - 创造之禊祓具体代价
+    - 终末人理圆满装置隐瞒的最终目的
+    mistaken_beliefs: []
+    suspicions: []
+    secrets_held: []
+  goals:
+    immediate:
+    - 协助千子村正打开第三层出口
+    - 继续调查人格汇聚实验
+    short_term:
+    - 完成对弥勒的降格、主炮与创造之禊祓衔接
+    long_term:
+    - 修复特异点
+    priorities:
+    - 完成任务
+    - 同伴生存
+    obstacles:
+    - 弥勒封锁
+    - 地下结构仍未完全查明
+  relationships:
+  - target_character: sengo-muramasa
+    relationship_type: 同行协作者
+    trust: 已完成创造之禊祓协同
+    dependence: 情报与行动配合
+    hostility: 无
+    current_attitude: 尊重其选择并提供故尊记忆
+    unresolved_issues: []
+    recent_change: 共同唤醒创造之禊祓
+  abilities:
+    available:
+    - 文明侵蚀
+    - 收藏家
+    - 伪装从者
+    - 阵地建造
+    - 寻声救苦
+    - 大慈大悲法门
+    - 此世全部之欲
+    - 变化自在
+    - 金刚杵
+    - 杨枝净瓶
+    unavailable: []
+    newly_acquired: []
+    consumed_resources:
+    - 第三枚黑钉已用于导入故尊复现记忆
+    active_costs: []
+  inventory:
+    carried: []
+    lost:
+    - 第三枚黑钉（已使用）
+    damaged: []
+  narrative:
+    current_arc: 日本下篇：伊耶那岐金地决战
+    completed_changes:
+    - 协助确认故尊复现真相
+    - 以第三枚黑钉向创造空间导入伊耶娜美记忆
+    unresolved_flags:
+    - 人格汇聚实验仍未完全查明
+    - 地下出口尚未完全打开
+    active_promises: []
+    future_pressure:
+    - 先建立伤员撤离通道，再继续深入调查

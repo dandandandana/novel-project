@@ -1,0 +1,121 @@
+metadata:
+  document_id: state-current-qihuang-v1.3
+  story_id: overturned-world-fujimaru
+  timeline_id: main
+  document_type: character_state
+  title: 当前状态-祁荒
+  character_id: qihuang
+  variant_id: qihuang-main
+  snapshot_type: current
+  effective_at: volume-04-chapter-017
+  last_updated: '2026-07-18'
+  version: '1.3'
+  status: active
+  supersedes: state-current-qihuang-v1.2
+  source_file: D:\Novel\outputs\第四卷_第15章_重写.txt; D:\Novel\outputs\第四卷_第16章_重写.txt; D:\Novel\outputs\第四卷_第17章_重写.txt
+character_state:
+  current_position:
+    location: 伊耶那岐宫废墟外围的破碎坐标阵
+    companions:
+    - 藤丸立香
+    - 千子村正
+    - 玛修·基列莱特
+    - 言峰士郎
+    faction: 迦勒底协同行动方
+  physical:
+    health: 轻中度负伤，仍可行动
+    injuries:
+    - 主炮余波令双手虎口裂开
+    - 维持道场与净瓶承压造成持续出血
+    fatigue: 长时间维持坐标阵、道场与净瓶过滤
+    temporary_conditions: []
+    permanent_changes: []
+  mental:
+    dominant_emotions:
+    - 满足
+    - 警觉
+    - 短暂意外
+    current_pressure:
+    - 远端坐标遭到反向挤压
+    - 来者尚未完成跨界
+    desires:
+    - 守住坐标并观察新的欲望来源
+    fears: []
+    unresolved_conflicts: []
+    behavior_effects:
+    - 弥勒死亡后仍因居民互相矛盾的愿望而真诚愉悦
+  knowledge:
+    known:
+    - 杨枝净瓶已经收纳从创造白火中分离的金色佛果
+    - 弥勒死亡后金地居民的愿望重新分化
+    - 自己留在远方的坐标正在被来者反向挤压
+    - 来者已经回应她的询问并要求守住坐标
+    unknown:
+    - 无脸人影的完整状态与目的
+    - 跨界完成时间
+    - 特异点偏移最终结果
+    mistaken_beliefs: []
+    suspicions: []
+    secrets_held: []
+  goals:
+    immediate:
+    - 守住跨界坐标
+    - 压制净瓶中停止冲撞的金色佛果
+    short_term:
+    - 观察来者与特异点迁移的关系
+    long_term:
+    - 修复特异点并返回正常人理
+    priorities:
+    - 同伴生存
+    - 确认特异点异常
+    obstacles:
+    - 坐标空间错位
+    - 身份不稳定的无脸人影
+    - 自身双手伤口
+  relationships:
+  - target_character: fujimaru-ritsuka
+    relationship_type: 同行协作者
+    trust: 能够共同维持降格坐标
+    dependence: 坐标、防护与战场指挥协作
+    hostility: 无
+    current_attitude: 一边保护她，一边坦白自己对众生欲望的享受
+    unresolved_issues:
+    - 来者身份尚未向立香说明
+    recent_change: 维持降格坐标并在主炮余波中托住立香
+  abilities:
+    available:
+    - 文明侵蚀
+    - 收藏家
+    - 伪装从者
+    - 阵地建造
+    - 寻声救苦
+    - 大慈大悲法门
+    - 此世全部之欲
+    - 变化自在
+    - 金刚杵
+    - 杨枝净瓶
+    unavailable: []
+    newly_acquired: []
+    consumed_resources: []
+    active_costs:
+    - 金刚杵坐标阵与道场承压
+    - 杨枝净瓶收纳金色佛果
+  inventory:
+    carried:
+    - 金刚杵
+    - 杨枝净瓶（内有停止冲撞的金色佛果）
+    lost: []
+    damaged: []
+  narrative:
+    current_arc: 日本下篇：伊耶那岐金地终战后
+    completed_changes:
+    - 稳定藤丸立香降格坐标
+    - 过滤文明兵装与佛果
+    - 感知远端坐标反向挤压
+    unresolved_flags:
+    - 无脸人影状态
+    - 来者尚未抵达
+    - 净瓶内佛果后续处理
+    active_promises: []
+    future_pressure:
+    - 终战后的特异点空位正在吸引新的跨界异常

@@ -1,0 +1,70 @@
+metadata:
+  document_id: style-global-manifest-v1.1
+  story_id: __shared__
+  timeline_id: global
+  document_type: style_audit
+  title: 当前生效文风审计总表
+  audit_scope: global
+  version: '1.1'
+  status: deprecated
+  created_at: '2026-07-12'
+  updated_at: '2026-07-14'
+  supersedes: style-global-manifest-v1.0
+  source_file: D:/project/总纲补丁.txt
+audit:
+  resolution_order:
+  - 正常叙事与可读性
+  - 总纲补丁（highest）
+  - 当前段落场景类型专项规则
+  - 角色私有性与关系真实性
+  - 其他全局模块规则
+  active_modules:
+  - module_id: metaphor
+    title: 比喻模块
+    scope: global
+    priority: normal
+  - module_id: punctuation
+    title: 标点符号规范
+    scope: global
+    priority: normal
+  - module_id: information-filter
+    title: 存在性废话与心理状态约束
+    scope: global
+    priority: normal
+  - module_id: action
+    title: 动作描写模块
+    scope: global
+    priority: normal
+  - module_id: dialogue
+    title: 对话协议
+    scope: global
+    priority: normal
+  - module_id: narration-voice
+    title: 旁白描写模块
+    scope: global
+    priority: normal
+  - module_id: narrative-organization
+    title: 叙事组织模块
+    scope: global
+    priority: normal
+  - module_id: long-description
+    title: 长段描写限制与描写解构
+    scope: global
+    priority: normal
+  - module_id: master-patch
+    title: 正常叙事、活人感与角色私有性总纲补丁
+    scope: global
+    priority: highest
+  - module_id: scene-classifier
+    title: 场景类型判定协议
+    scope: scene_dispatcher
+    priority: high
+  - module_id: character-scene
+    title: 主人物与场景描写法则
+    scope: character_focused
+    priority: high
+  - module_id: battle
+    title: 战斗文风系统指令
+    scope: battle
+    priority: high
+  conflict_rule: 发生冲突时，以总纲补丁及更具体的当前场景规则为准；不得为机械合规破坏正常叙事。

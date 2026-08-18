@@ -1,0 +1,94 @@
+metadata:
+  document_id: state-current-amaterasu-no-mikoto-v1.1
+  story_id: overturned-world-fujimaru
+  timeline_id: main
+  document_type: character_state
+  title: 当前状态-天照命
+  character_id: amaterasu-no-mikoto
+  variant_id: amaterasu-no-mikoto-main
+  snapshot_type: current
+  effective_at: volume-04-chapter-017
+  last_updated: '2026-07-18'
+  version: '1.1'
+  status: active
+  supersedes: state-current-amaterasu-no-mikoto-v1.0
+  source_file: D:\Novel\outputs\第四卷_第15章_重写.txt; D:\Novel\outputs\第四卷_第16章_重写.txt; D:\Novel\outputs\第四卷_第17章_重写.txt
+character_state:
+  current_position:
+    location: 伊耶那岐金地东门残存金砖；第15至17章未再被观察
+    companions: []
+    faction: 已败北的原敌对方；当前失去战斗能力
+  physical:
+    health: 第15至17章未出现新的可观察变化；延续第十四章重伤
+    injuries:
+    - 退化为普通大小黑金孔雀
+    - 仅余三根尾羽
+    - 额骨与全身承受最终对波重创
+    fatigue: 极重度消耗
+    temporary_conditions: []
+    permanent_changes: []
+  mental:
+    dominant_emotions:
+    - 疲惫
+    - 平静
+    current_pressure:
+    - 后续态度未在第15至17章呈现
+    desires:
+    - 观察众人是否能自行选择未来
+    fears: []
+    unresolved_conflicts: []
+    behavior_effects:
+    - 第15至17章没有新的言行证据
+  knowledge:
+    known:
+    - 截至最后一次被观察时，迦勒底正在继续对弥勒作战
+    unknown:
+    - 她是否亲眼确认弥勒死亡
+    - 她是否得知特异点坐标偏移
+    mistaken_beliefs: []
+    suspicions: []
+    secrets_held: []
+  goals:
+    immediate:
+    - 休息并观察；第15至17章没有新证据
+    short_term:
+    - 未明确
+    long_term:
+    - 修复特异点并返回正常人理
+    priorities:
+    - 同伴生存
+    - 确认特异点异常
+    obstacles:
+    - 重伤
+    - 失去战斗能力
+  relationships: []
+  abilities:
+    available: []
+    unavailable:
+    - 天照御名与太阳权能
+    - 乌从欲连接
+    - 至命除
+    - 孔雀卵伤势转移
+    - 法相代偿
+    - 历史记录复归
+    newly_acquired: []
+    consumed_resources: []
+    active_costs: []
+  inventory:
+    carried: []
+    lost:
+    - 伊耶那岐金地世尊佛果
+    - 天照御名
+    - 太阳权能
+    damaged: []
+  narrative:
+    current_arc: 日本下篇：伊耶那岐金地终战后
+    completed_changes:
+    - 第15至17章没有新的出场事件
+    unresolved_flags:
+    - 是否知晓弥勒死亡
+    - 后续立场
+    - 六十六个孩子的安置
+    active_promises: []
+    future_pressure:
+    - 不得把世界状态变化自动写成她已经知晓的事实

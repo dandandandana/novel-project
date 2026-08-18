@@ -1,0 +1,97 @@
+metadata:
+  document_id: state-current-artoria-pendragon-alter-v1.0
+  story_id: overturned-world-fujimaru
+  timeline_id: main
+  document_type: character_state
+  title: 第四卷第14章末状态快照-阿尔托莉雅·潘德拉贡 Alter
+  character_id: artoria-pendragon-alter
+  variant_id: artoria-pendragon-alter-main
+  snapshot_type: snapshot
+  effective_at: volume-04-chapter-014
+  last_updated: '2026-07-17'
+  version: '1.0'
+  status: archived
+  supersedes: null
+  source_file: D:\Novel\outputs\第四卷_第14章_续写.txt
+character_state:
+  current_position:
+    location: 伊耶那岐金地北侧信标石台
+    companions:
+    - 言峰士郎（AE）
+    faction: 迦勒底阶段性协同行动方
+  physical:
+    health: 正文未明确异常
+    injuries: []
+    fatigue: 持续防守
+    temporary_conditions: []
+    permanent_changes: []
+  mental:
+    dominant_emotions:
+    - 冷静
+    - 专注
+    current_pressure:
+    - 北侧新增十七尊法相
+    desires:
+    - 守住主炮信标
+    fears: []
+    unresolved_conflicts: []
+    behavior_effects:
+    - 在未到必要时拒绝开启潘多拉
+  knowledge:
+    known:
+    - 主炮信标已自锁
+    - 天照命已败北
+    - 北侧出现十七尊新法相
+    unknown:
+    - 何时必须开启潘多拉
+    mistaken_beliefs: []
+    suspicions: []
+    secrets_held: []
+  goals:
+    immediate:
+    - 与Alterego言峰士郎守住主炮信标
+    short_term:
+    - 完成对弥勒的降格、主炮与创造之禊祓衔接
+    long_term:
+    - 修复特异点
+    priorities:
+    - 完成任务
+    - 同伴生存
+    obstacles:
+    - 北侧十七尊法相
+    - 弥勒
+  relationships:
+  - target_character: kotomine-shirou-ae
+    relationship_type: 协同行动者
+    trust: 能够共同守卫信标
+    dependence: 战斗协作
+    hostility: 无
+    current_attitude: 接受其关于潘多拉开启时机的限制
+    unresolved_issues: []
+    recent_change: 共同接管信标防守
+  abilities:
+    available:
+    - 潘多拉臂铠
+    - 开启吧，灾厄与希望
+    unavailable: []
+    newly_acquired: []
+    consumed_resources: []
+    active_costs:
+    - 潘多拉臂铠仍然闭合，七道承伤刻纹一条未亮
+  inventory:
+    carried:
+    - 潘多拉臂铠
+    lost: []
+    damaged: []
+  narrative:
+    current_arc: 日本下篇：伊耶那岐金地决战
+    completed_changes:
+    - 救援信标组三人并接管防守
+    - 保留潘多拉宝具未动用
+    unresolved_flags:
+    - 潘多拉开启时机
+    - 北侧法相防守
+    - 弥勒终战
+    active_promises: []
+    future_pressure:
+    - 必须把潘多拉留给弥勒或更严重的威胁

@@ -1,0 +1,96 @@
+metadata:
+  document_id: style-global-manifest-v1.4
+  story_id: __shared__
+  timeline_id: global
+  document_type: style_audit
+  title: 当前生效文风审计总表
+  audit_scope: global
+  version: '1.4'
+  status: active
+  created_at: '2026-07-12'
+  updated_at: '2026-07-26'
+  supersedes: style-global-manifest-v1.3
+  source_file: D:/project/文风补丁.txt
+  module_type: style
+  priority: highest
+  enforcement: mandatory
+audit:
+  resolution_order:
+  - 用户当前明确要求与事实硬约束
+  - 正常、清楚、可读的叙事
+  - 对话、旁白与场景叙事总文风协议（highest）
+  - 当前场景类型专项规则
+  - 角色私有性、关系真实性与中文母语感
+  - 其他全局文风模块
+  active_modules:
+  - module_id: metaphor
+    title: 比喻模块
+    scope: global
+    priority: normal
+  - module_id: punctuation
+    title: 标点符号规范
+    scope: global
+    priority: normal
+  - module_id: information-filter
+    title: 存在性废话与心理状态约束
+    scope: global
+    priority: normal
+  - module_id: action
+    title: 动作描写模块
+    scope: global
+    priority: normal
+  - module_id: dialogue
+    title: 对话协议
+    scope: global
+    priority: normal
+  - module_id: narration-voice
+    title: 旁白描写模块
+    scope: global
+    priority: normal
+  - module_id: narrative-organization
+    title: 叙事组织模块
+    scope: global
+    priority: normal
+  - module_id: long-description
+    title: 长段描写限制与描写解构
+    scope: global
+    priority: normal
+  - module_id: master-patch
+    document_id: style-master-patch-v2.0
+    title: 对话、旁白与场景叙事总文风协议
+    scope: global
+    priority: highest
+    enforcement: mandatory
+    version: '2.0'
+  - module_id: scene-classifier
+    title: 场景类型判定协议
+    scope: scene_dispatcher
+    priority: high
+  - module_id: character-scene
+    title: 主人物与场景描写法则
+    scope: character_focused
+    priority: high
+  - module_id: battle
+    title: 战斗文风系统指令
+    scope: battle
+    priority: high
+  - module_id: action-continuity
+    title: 动作连贯性与文字血肉化修正规范
+    scope: global
+    priority: high
+  - module_id: battle-syntax-sound
+    title: 句法黏合、连接词与战斗声场补强模块
+    scope: battle
+    priority: high
+  - module_id: native-chinese-dialogue
+    title: 中文母语感对白生成与翻译腔修正规则
+    scope: global_dialogue
+    priority: high
+    enforcement: mandatory
+  conflict_rule: 用户当前要求、事实与信息权限优先；文风内部冲突时，以角色当下动机、具体关系、正常可读性和master-patch 为准。更具体的场景模块可以细化执行，但不得恢复人设证明、设定倾倒、零结果描写、统一口语模板或复述式结尾。
+  retrieval_key: style_global_manifest_v1_4 master_style_patch_v2_active
+  integration_notes:
+  - master-patch 负责总优先级、场景契约、信息准入、活人对白、叙事密度和结尾推理空间
+  - native-chinese-dialogue 继续负责中文母语表达与翻译腔修正，不覆盖角色当下动机和关系边界
+  - scene-classifier、battle、action-continuity 等专项模块只在当前场景适用，并服从总文风的一场一变化和结果准入
+  - 总文风不覆盖大纲硬节点、Canon、History、State、Ruler 权限和 Judgment 已确定的主次

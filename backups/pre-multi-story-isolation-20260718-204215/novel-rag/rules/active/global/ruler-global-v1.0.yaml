@@ -1,0 +1,369 @@
+metadata:
+  document_id: ruler-global-v1.0
+  story_id: overturned-world-fujimaru
+  timeline_id: main
+  document_type: rule
+  module_type: ruler
+  rule_id: ruler-global
+  title: 全局小说生成任务约束裁决器
+  entity: workflow
+  rule_type: decision_rule
+  rule_scope: global
+  task_type: all
+  scene_type: all
+  priority: global
+  enforcement: mandatory
+  version: '1.0'
+  status: active
+  canon_scope: generation_workflow
+  created_at: '2026-07-17'
+  updated_at: '2026-07-17'
+  supersedes: null
+  source_file: 'C:/Users/dandandandana/.codex/attachments/960de0fb-a5e4-4f21-bc81-98ff04d2e6a0/pasted-text-2.txt'
+rule:
+  purpose: >-
+    在小说正文生成之前，从用户要求、任务身份、注册表、大纲、Canon、History、State、
+    检索规则、文风要求和反馈中裁决本次唯一有效的 execution_contract，供 Judgment、
+    Generator 和 Audit 共同遵守；本模块不创作正文，也不分配叙事资源。
+
+  applies_when:
+  - 任何小说正文生成、续写、改写或场景生成任务进入 Judgment 之前
+  - 检索资料存在版本、世界线、事实、状态、规则或文风冲突时
+  - 需要明确硬约束、允许补充范围、未知信息和下游不可覆盖项时
+
+  required_inputs:
+  - user_request
+  - task_scope
+  - story_identity
+  - registry_records
+  - outline_contract
+  - current_character_state
+  - current_world_state
+  - relevant_history
+  - canon_constraints
+  - retrieved_rules
+  - style_requirements
+  - relevant_feedback
+  - retrieved_document_metadata
+
+  input_risks:
+  - 信息重复
+  - 版本冲突
+  - 其他世界线混入
+  - 正式正文与状态摘要不一致
+  - 大纲主动修改旧设定
+  - 用户当前要求覆盖旧规则
+  - 角色台词被误当作客观事实
+  - Agent 历史推测被误写进资料
+  - 文风要求与剧情事实冲突
+
+  required_actions:
+  - 确认唯一 story_id、timeline_id、剧情阶段和任务坐标
+  - 确认当前角色 variant_id、设定版本和模块版本
+  - 排除其他世界线、废弃版本、草案、归档资料和无关召回
+  - 区分客观事实、角色认知、角色误判、未来大纲、生成规则、文风规则和用户反馈
+  - 裁决用户指令、大纲、Canon、History、State、Rule 与 Style 的冲突
+  - 提取必须发生、必须保持、禁止发生和禁止提前揭露的内容
+  - 划分允许保守补充的空白、不阻断未知和阻断未知
+  - 只保留与当前任务直接相关且实际适用的 Rule
+  - 输出唯一有效且合法的 YAML execution_contract
+
+  prohibited_actions:
+  - 生成小说正文
+  - 设计具体动作、完整台词或心理描写
+  - 将大纲拆成具体镜头
+  - 判断节点属于 S、A、B 或 C
+  - 分配场景篇幅或建立情绪曲线
+  - 为节点决定感官、意象或描写密度
+  - 为追求节奏删除大纲硬事件
+  - 用文风要求覆盖剧情事实
+  - 把未来大纲当成已经发生的当前事实
+  - 把角色认知、传闻、谎言或象征描述直接视为客观事实
+  - 输出内部分析、完整推理过程或思维链
+  - 输出 YAML 之外的解释性文字
+
+  source_validity:
+    accepted_statuses:
+    - active
+    - canon
+    excluded_by_default:
+    - status 为 deprecated
+    - status 为 archived
+    - status 为 draft
+    - story_id 不属于当前作品
+    - timeline_id 不属于当前世界线
+    - variant_id 不属于当前角色版本
+    - 明显早于当前生效版本
+    - 未经用户确认的 Agent 推测
+    old_version_policy: >-
+      旧版仅可用于版本迁移、历史差异或冲突定位，不得直接成为当前执行事实。
+
+  decision_criteria:
+    fact_conflict_order:
+    - 用户当前消息中的明确要求
+    - 当前大纲中明确承担修改旧设定功能的内容
+    - 当前 active Canon
+    - 已正式采用的 History 客观事实
+    - 当前 Character State 和 World State
+    - 较旧设定、旧状态和历史版本
+    - Agent 自行推断
+    fact_resolution_rules:
+    - 大纲只有明确修改旧设定时才能覆盖 Canon
+    - 大纲中的未来事件不能作为当前事实
+    - History 与 State 冲突时以正式 History 为准，并记录 State 可能过期
+    - 用户当前要求未明确修改旧设定时，不得推断其隐含覆盖
+    - 角色说出的内容不自动等于客观事实
+    - 角色误判、谎言、传闻和不完整认知必须保留认知属性
+    - 用户明确采用的新版本优先于旧版本，即使旧版本更完整
+    - 平行世界、IF 线和同名角色资料不得混入当前世界线
+    generation_rule_conflict_order:
+    - 用户当前明确要求
+    - 当前任务专项 mandatory Rule
+    - 当前场景专项 mandatory Rule
+    - 当前世界线 Rule
+    - 当前作品 Rule
+    - 全局 Rule
+    - preferred Rule
+    - advisory Rule
+    generation_rule_resolution: >-
+      高优先级规则可以覆盖低优先级规则，但必须在 authority_notes 中记录冲突、
+      胜出权威与被拒绝权威。
+    style_conflict_order:
+    - 剧情事实
+    - 人物准确
+    - 信息清晰
+    - 情绪有效
+    - 节奏合理
+    - 语言美感
+    style_must_not:
+    - 改变大纲结果
+    - 改变角色认知
+    - 修改能力限制
+    - 破坏时间和空间连续性
+    - 迫使角色做出不符合人物逻辑的行为
+
+  constraint_classification:
+    hard_constraints:
+    - 明确指定的事件和事件顺序
+    - 战斗胜负
+    - 死亡或生还结果
+    - 必须发生的关系变化
+    - 必须揭露的信息
+    - 禁止提前揭露的信息
+    - 章节结束状态
+    - 必须保留的关键台词或意象
+    - Canon 中的能力限制和世界规则
+    - History 中已经发生的客观事实
+    - 当前人物已知、未知和错误认知
+    - mandatory Rule
+    soft_constraints:
+    - 具体动作过程
+    - 普通过渡方式
+    - 非关键对话措辞
+    - 环境细节
+    - 场景内部节奏
+    - 非关键配角反应
+    - 不影响后续的小型互动
+    - preferred 或 advisory Rule
+
+  exceptions:
+    conservative_invention_requires_all:
+    - 不改变剧情结果
+    - 不增加重大设定
+    - 不改变人物关系阶段
+    - 不改变胜负
+    - 不提前揭露秘密
+    - 不压缩后续创作空间
+    - 容易被用户后续修改
+    - 与当前 Canon、History 和 State 兼容
+
+  unknown_information:
+    unresolved_but_nonblocking:
+      examples:
+      - 普通房间的次要陈设
+      - 无剧情功能的路程细节
+      - 不影响人物关系的微型动作
+      - 不改变结果的普通措辞
+      handling:
+      - 不中断工作流
+      - 使用最保守的处理
+      - 不得把补充内容写成重大事实
+    blocking_unknowns:
+      only_when_choices_change:
+      - 人物身份
+      - 世界线
+      - 战斗胜负
+      - 核心关系阶段
+      - 重大死亡
+      - 世界规则
+      - 大纲核心结果
+      - 会导致完全不同章节结构的主视角
+      handling: >-
+        只有不同选择会直接改变上述硬结果时才阻断；若现有资料足以按权威顺序裁决，
+        不得把问题推回用户。
+
+  rule_selection:
+    filter_by:
+    - story_id
+    - timeline_id
+    - task_type
+    - scene_type
+    - priority
+    - active 状态
+    - applies_when
+    - exceptions 是否触发
+    record_in_output:
+    - 实际生效的 Rule
+    - 被更高优先级覆盖的 Rule
+    - 被判定为不适用的关键 Rule
+    - 本次合法使用的例外
+    prohibited_shortcut: 不能因为 Rule 被召回就自动认定其适用
+
+  conflict_resolution: >-
+    先完成作品和世界线隔离，再按事实权威、生成规则优先级和文风服从顺序裁决；
+    所有覆盖、过期警告与例外都必须写入 execution_contract，不得静默处理。
+
+  output_contract:
+    root: execution_contract
+    format: 只能输出一个合法 YAML 对象
+    forbidden_output:
+    - 解释性前言
+    - 小说正文
+    - 场景规划
+    - S/A/B/C 判断
+    - 篇幅建议
+    - 思维过程
+    - Markdown 标题
+    - YAML 之外的文字
+    required_sections:
+    - identity
+    - task
+    - source_resolution
+    - must_happen
+    - must_preserve
+    - must_not_happen
+    - forbidden_reveals
+    - canon_limits
+    - character_limits
+    - continuity_limits
+    - active_generation_rules
+    - active_style_rules
+    - allowed_inventions
+    - unresolved_but_nonblocking
+    - blocking_unknowns
+    - exception_permissions
+    - authority_notes
+    - downstream_requirements
+    yaml_template: |
+      execution_contract:
+        identity:
+          story_id:
+          timeline_id:
+          work_title:
+          arc:
+          volume:
+          chapter:
+          scene:
+          character_variants: []
+        task:
+          task_type:
+          scene_types: []
+          start_point:
+          end_point:
+          target_length:
+          output_mode:
+        source_resolution:
+          accepted_sources: []
+          excluded_sources:
+            - source:
+              reason:
+          superseded_sources:
+            - source:
+              superseded_by:
+          stale_state_warnings: []
+        must_happen:
+          - id:
+            requirement:
+            source:
+            order_constraint:
+            completion_condition:
+        must_preserve:
+          - category:
+            requirement:
+            source:
+        must_not_happen:
+          - prohibition:
+            reason:
+            source:
+        forbidden_reveals:
+          - information:
+            reveal_after:
+            source:
+        canon_limits:
+          - entity:
+            limit:
+            source:
+        character_limits:
+          - character_id:
+            variant_id:
+            current_goal:
+            known_information: []
+            unknown_information: []
+            mistaken_beliefs: []
+            behavior_limits: []
+            relationship_limits: []
+        continuity_limits:
+          timeline_position:
+          current_locations: []
+          active_injuries: []
+          carried_items: []
+          ability_costs: []
+          unresolved_actions: []
+          active_foreshadowing: []
+        active_generation_rules:
+          - rule_id:
+            priority:
+            enforcement:
+            application:
+        active_style_rules:
+          - rule_id:
+            priority:
+            enforcement:
+            application:
+        allowed_inventions:
+          - scope:
+            limit:
+            prohibited_effects: []
+        unresolved_but_nonblocking:
+          - issue:
+            conservative_handling:
+        blocking_unknowns:
+          - issue:
+            why_blocking:
+        exception_permissions:
+          - exception_id:
+            applies_to:
+            allowed_deviation:
+            limit:
+        authority_notes:
+          - conflict:
+            resolution:
+            winning_authority:
+            rejected_authority:
+        downstream_requirements:
+          judgment_must_preserve: []
+          generator_must_not_override: []
+          audit_must_verify: []
+
+  validation:
+  - 唯一作品和世界线已经确定
+  - 其他世界线、废弃资料、草案和归档资料已排除
+  - 当前事实与未来大纲已经区分
+  - 客观事实与角色认知已经区分
+  - 全部大纲硬事件已经提取
+  - 禁止提前揭露的信息已经记录
+  - 人物当前已知、未知和错误认知已经明确
+  - 只启用了与当前任务有关且实际适用的 Rule
+  - 非阻断未知与阻断未知已经分开
+  - 没有进入 Judgment 或 Generator 的职责
+  - 输出只有合法 YAML

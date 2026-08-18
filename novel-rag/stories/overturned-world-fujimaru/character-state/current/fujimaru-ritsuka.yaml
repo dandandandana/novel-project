@@ -1,0 +1,135 @@
+metadata:
+  document_id: state-current-fujimaru-ritsuka-v1.6
+  story_id: overturned-world-fujimaru
+  timeline_id: main
+  document_type: character_state
+  title: 当前状态-藤丸立香
+  character_id: fujimaru-ritsuka
+  variant_id: fujimaru-ritsuka-main
+  snapshot_type: current
+  effective_at: volume-04-chapter-024
+  last_updated: '2026-08-08'
+  version: '1.6'
+  status: active
+  supersedes: state-current-fujimaru-ritsuka-v1.5
+  source_file: D:\Novel 1\Novel\outputs\第四卷_第21-24章_日本卷收尾.txt
+character_state:
+  current_position:
+    location: 迦勒底休整区与检查室
+    companions:
+    - 玛修·基列莱特
+    - 言峰士郎
+    - 千子村正
+    faction: 迦勒底
+  physical:
+    health: 人类躯体仍在恢复，能够正常行动
+    injuries:
+    - 掌心伤口已包扎
+    - 脸侧旧伤闭合
+    - 三道令咒仍为耗尽状态
+    fatigue: 日本终战后的疲劳明显缓解
+    temporary_conditions: []
+    permanent_changes: []
+  mental:
+    dominant_emotions:
+    - 安心
+    - 警觉
+    - 对后续道路的决意
+    current_pressure:
+    - 人理直接召唤支援仍未确认
+    - 祁荒仍未返回迦勒底
+    - 杨浞仍失联
+    desires:
+    - 恢复祁荒坐标路径
+    - 准备下一处特异点
+    - 与士郎继续同行
+    fears: []
+    unresolved_conflicts: []
+    behavior_effects: []
+  knowledge:
+    known:
+    - 第一特异点修复完成，迦勒底进入休整期
+    - 标准英灵召唤未得到人理直接响应
+    - 日本特异点的千子村正本人经跨界响应返回并保留记忆与人格
+    - 祁荒在召唤门闭合前仍存活且没有返回迦勒底
+    - 自己与言峰士郎已相互告白并确认恋人关系
+    unknown:
+    - 人理不直接支援迦勒底的原因
+    - 祁荒当前完整坐标与回收方法
+    - 杨浞是否存在可恢复残留
+    - 卫宫白与神琦灰对峙结果
+    mistaken_beliefs: []
+    suspicions: []
+    secrets_held: []
+  goals:
+    immediate:
+    - 完成休整与契约稳定
+    - 保存祁荒路径锚点
+    short_term:
+    - 调查人理支援异常
+    - 准备下一处特异点
+    long_term:
+    - 继续修复人理并守住同行者
+    priorities:
+    - 同伴生存
+    - 路径恢复
+    - 人理修复
+    obstacles:
+    - 令咒耗尽
+    - 人理直接召唤无响应
+    - 跨界路径不稳定
+  relationships:
+  - target_character: mash-kyrielight
+    relationship_type: 前辈与后辈／御主与从者
+    trust: 高
+    dependence: 长期同行与战斗协作
+    hostility: 无
+    current_attitude: 接受玛修照顾并继续共同出战
+    unresolved_issues: []
+    recent_change: 日本终战后共同休整
+  - target_character: kotomine-shirou
+    relationship_type: 恋人／御主与从者
+    trust: 高
+    dependence: 长期同行与战斗协作
+    hostility: 无
+    current_attitude: 明确倾慕并允许对方长期留在身边
+    unresolved_issues: []
+    recent_change: 第二次谈心后相互告白、接吻并确认关系
+  - target_character: sengo-muramasa
+    relationship_type: 御主与从者
+    trust: 高
+    dependence: 长期同行与战斗协作
+    hostility: 无
+    current_attitude: 确认她是日本特异点同一人格并接纳其归队
+    unresolved_issues: []
+    recent_change: 以跨界响应完成Saber契约
+  abilities:
+    available:
+    - 降格术
+    unavailable:
+    - 英杰之帜（令咒耗尽，当前不可发动）
+    newly_acquired:
+    - 千子村正的Saber契约
+    consumed_resources: []
+    active_costs:
+    - 令咒归零
+  inventory:
+    carried: []
+    lost: []
+    damaged: []
+  narrative:
+    current_arc: 日本卷收尾：休整、新关系与跨界召唤
+    completed_changes:
+    - 确认第一特异点修复完成
+    - 与言峰士郎确认恋人关系
+    - 召回日本特异点的千子村正本人
+    unresolved_flags:
+    - 人理直接支援异常
+    - 祁荒仍未归队
+    - 杨浞失联
+    - 卫宫白与神琦灰对峙结果
+    active_promises:
+    - 与言峰士郎继续同行
+    - 不丢失祁荒留下的坐标
+    future_pressure:
+    - 下一处特异点出现前需要恢复队伍与召唤能力

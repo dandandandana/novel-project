@@ -1,0 +1,107 @@
+metadata:
+  document_id: state-current-sengo-muramasa-v1.3
+  story_id: overturned-world-fujimaru
+  timeline_id: main
+  document_type: character_state
+  title: 第四卷第20章末状态快照-千子村正
+  character_id: sengo-muramasa
+  variant_id: sengo-muramasa-main
+  snapshot_type: snapshot
+  effective_at: volume-04-chapter-020
+  last_updated: '2026-08-08'
+  version: '1.3'
+  status: archived
+  supersedes: state-current-sengo-muramasa-v1.2
+  source_file: D:\Novel 1\Novel\outputs\第四卷_第18章_续写.txt; D:\Novel 1\Novel\outputs\第四卷_第19章_续写.txt; D:\Novel 1\Novel\outputs\第四卷_第20章_续写.txt
+character_state:
+  current_position:
+    location: 跨界窄门一侧；未返回迦勒底，具体世界坐标未确认
+    companions:
+    - 祁荒
+    faction: 迦勒底协同行动方
+  physical:
+    health: 重伤且未返回迦勒底
+    injuries:
+    - 右臂大半皮肉烧尽，现已进一步烧毁
+    - 右肋撕裂
+    - 右肩与肩甲被阿尔托莉雅黑剑掀开
+    - 剩余白火被压回胸口
+    fatigue: 连续锻刀、战斗与对抗神琦灰后的极重度消耗
+    temporary_conditions: []
+    permanent_changes: []
+  mental:
+    dominant_emotions:
+    - 强撑
+    - 务实
+    - 警惕
+    current_pressure:
+    - 未进入迦勒底回收序列
+    - 与祁荒滞留未知坐标
+    desires:
+    - 确认自身与祁荒的生存和落点
+    fears: []
+    unresolved_conflicts: []
+    behavior_effects: []
+  knowledge:
+    known:
+    - 神琦灰能够压制众人宝具与白火
+    - 卫宫白以一剑压回神琦灰炮击
+    - 自己与祁荒没有返回迦勒底
+    unknown:
+    - 当前具体世界坐标
+    - 迦勒底能否重新建立联络
+    - 卫宫白与神琦灰结果
+    mistaken_beliefs: []
+    suspicions: []
+    secrets_held: []
+  goals:
+    immediate:
+    - 维持伤势并确认祁荒状态
+    short_term:
+    - 寻找返回或联络迦勒底的方法
+    long_term:
+    - 继续完成必要的刀
+    priorities:
+    - 同伴生存
+    - 确认坐标
+    obstacles:
+    - 右臂大半烧毁
+    - 右肋撕裂
+    - 右肩与肩甲被阿尔托莉雅黑剑掀开
+  relationships:
+  - target_character: kotomine-shirou
+    relationship_type: 并肩作战者
+    trust: 能够接替其拼命争取的战位
+    dependence: 终战开路协作
+    hostility: 无
+    current_attitude: 用嘴硬方式拉起同样右臂重伤的士郎
+    unresolved_issues: []
+    recent_change: 在士郎钉住弥勒后接手最后一刀
+  abilities:
+    available:
+    - 创造之禊祓残余白火
+    - 锻刀
+    unavailable:
+    - 右臂正常使用
+    newly_acquired: []
+    consumed_resources: []
+    active_costs:
+    - 白火被压回胸口
+    - 右臂与右肩重创
+  inventory:
+    carried: []
+    lost: []
+    damaged:
+    - 右臂、肩甲与刀鞘严重受损
+  narrative:
+    current_arc: 日本篇结束后的跨界失联
+    completed_changes:
+    - 协助抵御神琦灰
+    - 以白火支援士郎箭矢
+    unresolved_flags:
+    - 未返回迦勒底
+    - 具体落点未知
+    - 右臂与白火状态
+    active_promises: []
+    future_pressure:
+    - 与祁荒共同滞留在迦勒底回收序列之外

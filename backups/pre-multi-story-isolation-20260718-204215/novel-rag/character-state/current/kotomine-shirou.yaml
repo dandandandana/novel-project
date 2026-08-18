@@ -1,0 +1,118 @@
+metadata:
+  document_id: state-current-kotomine-shirou-v1.3
+  story_id: overturned-world-fujimaru
+  timeline_id: main
+  document_type: character_state
+  title: 当前状态-言峰士郎
+  character_id: kotomine-shirou
+  variant_id: kotomine-shirou-main
+  snapshot_type: current
+  effective_at: volume-04-chapter-017
+  last_updated: '2026-07-18'
+  version: '1.3'
+  status: active
+  supersedes: state-current-kotomine-shirou-v1.2
+  source_file: D:\Novel\outputs\第四卷_第15章_重写.txt; D:\Novel\outputs\第四卷_第16章_重写.txt; D:\Novel\outputs\第四卷_第17章_重写.txt
+character_state:
+  current_position:
+    location: 伊耶那岐宫废墟
+    companions:
+    - 藤丸立香
+    - 玛修·基列莱特
+    - 千子村正
+    faction: 迦勒底协同行动方
+  physical:
+    health: 重伤，拟造躯壳正在缓慢封闭血管
+    injuries:
+    - 鼻梁与胸腔遭弥勒重击
+    - 右肩胛与右臂承受无名大戟反作用后重创
+    - 章末右臂从肩部向下完全失去知觉
+    - 右侧投影回路多处爆裂
+    fatigue: 濒临灵基承载上限
+    temporary_conditions:
+    - 右臂暂时无法使用
+    permanent_changes: []
+  mental:
+    dominant_emotions:
+    - 克制
+    - 保护欲
+    - 战后警惕
+    current_pressure:
+    - 右臂失去知觉
+    - 特异点坐标偏移
+    desires:
+    - 留在立香身边并确认新异常
+    fears: []
+    unresolved_conflicts: []
+    behavior_effects:
+    - 即使身体濒临崩溃，仍选择钉住弥勒为同伴开路
+  knowledge:
+    known:
+    - 王之财宝中存在一柄连吉尔伽美什也难以看清的无名大戟
+    - 自己只能从大戟中读到无姓名、无面孔的残缺动作轨迹
+    - 大戟投影会强行改变骨骼咬合、重心与发力方式
+    - 弥勒已经死亡，金地封锁解除
+    unknown:
+    - 无名大戟原主身份、完整来历与力量原理
+    - 特异点坐标偏移原因
+    - 来者身份
+    mistaken_beliefs: []
+    suspicions: []
+    secrets_held: []
+  goals:
+    immediate:
+    - 稳定右臂与投影回路伤势
+    - 保护藤丸立香
+    short_term:
+    - 协助确认特异点迁移与跨界异常
+    long_term:
+    - 修复特异点并返回正常人理
+    priorities:
+    - 同伴生存
+    - 确认特异点异常
+    obstacles:
+    - 右臂完全失去知觉
+    - 拟造躯壳修复缓慢
+    - 未知跨界来者
+  relationships:
+  - target_character: fujimaru-ritsuka
+    relationship_type: 伴侣与从者
+    trust: 高
+    dependence: 相互支持
+    hostility: 无
+    current_attitude: 按立香指挥承担最危险的钉住任务
+    unresolved_issues:
+    - 两人均处于严重消耗状态
+    recent_change: 在终战中以身体与无名大戟投影为她争取三秒窗口
+  abilities:
+    available:
+    - 投影魔术
+    - 拟造躯壳
+    unavailable:
+    - 无名大戟投影已经崩散
+    newly_acquired:
+    - 曾短时读取无名大戟的残缺动作轨迹
+    consumed_resources: []
+    active_costs:
+    - 右侧投影回路爆裂
+    - 右肩胛断裂
+    - 右臂失去知觉
+  inventory:
+    carried:
+    - 纸星星复制品
+    lost: []
+    damaged:
+    - 无名大戟投影已崩散
+  narrative:
+    current_arc: 日本下篇：伊耶那岐金地终战后
+    completed_changes:
+    - 投影无名大戟并击倒残存法相
+    - 以锁喉和戟杆钉住弥勒
+    - 参与终战开路
+    unresolved_flags:
+    - 无名大戟原主与原理未知
+    - 右臂恢复时间未知
+    - 坐标异常
+    active_promises: []
+    future_pressure:
+    - 未知兵器带来的短时战力已经消失，只留下严重反作用

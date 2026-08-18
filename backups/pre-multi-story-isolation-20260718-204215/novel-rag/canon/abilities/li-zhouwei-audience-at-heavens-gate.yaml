@@ -1,0 +1,55 @@
+{
+  "metadata": {
+    "document_id": "canon-ability-li-zhouwei-audience-at-heavens-gate-v1.0",
+    "story_id": "overturned-world-fujimaru",
+    "timeline_id": "main",
+    "document_type": "canon",
+    "title": "宝具设定-李周巍-谒天门",
+    "entity": "noble_phantasm",
+    "character_ids": [
+      "li-zhouwei"
+    ],
+    "event_tags": [
+      "谒天门",
+      "A+",
+      "noble_phantasm"
+    ],
+    "version": "1.0",
+    "status": "canon",
+    "canon_scope": "timeline",
+    "created_at": "2026-07-17",
+    "updated_at": "2026-07-17",
+    "supersedes": null,
+    "source_file": "user-message:2026-07-17/li-zhouwei-servant-profile"
+  },
+  "ability": {
+    "retrieval_key": "li_zhouwei_audience_at_heavens_gate",
+    "name": "谒天门",
+    "owner": "李周巍",
+    "owner_id": "li-zhouwei",
+    "rank": "A+",
+    "category": "noble_phantasm",
+    "type": "对人宝具 / 明阳帝权现象镇压",
+    "effect": "真名解放后从虚空降下巨大天门，镇压宝具展开、封锁从者行动并压制抵抗；目标反抗越剧烈，天门压制力越强。",
+    "activation": "解放真名并降下天门。",
+    "range": "对人；具体距离未说明。",
+    "cost": "未说明。",
+    "limitations": [
+      "持续时间、同时镇压目标数量、初始压制强度与脱离条件未说明。"
+    ],
+    "failure_conditions": [],
+    "known_by": [
+      "李周巍"
+    ],
+    "visual_expression": "未说明。",
+    "narrative_function": [
+      "以挣扎即自缚的机制压制目标行动与宝具展开。"
+    ],
+    "canon_notes": [],
+    "release_chant": [
+      "明阳敕令，天门垂临——",
+      "万象俯首，诸灵叩拜——",
+      "谒天门！"
+    ]
+  }
+}

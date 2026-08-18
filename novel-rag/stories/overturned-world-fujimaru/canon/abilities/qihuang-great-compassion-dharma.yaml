@@ -1,0 +1,37 @@
+metadata:
+  document_id: canon-ability-qihuang-great-compassion-dharma-v1.0
+  story_id: overturned-world-fujimaru
+  timeline_id: main
+  document_type: canon
+  title: 能力设定-祁荒-大慈大悲法门
+  entity: ability
+  character_ids: [qihuang]
+  event_tags: [大慈大悲法门, B, personal_skill]
+  version: '1.0'
+  status: canon
+  canon_scope: timeline
+  created_at: '2026-07-17'
+  updated_at: '2026-07-17'
+  supersedes: null
+  source_file: user-message:2026-07-17/qihuang-character-card
+ability:
+  retrieval_key: qihuang_great_compassion_dharma
+  name: 大慈大悲法门
+  owner: 观世音·祁荒
+  owner_id: qihuang
+  rank: B
+  type: 享乐条件式全属性强化
+  effect: 当祁荒的行动服务于自身欲望、处于享受状态时，全属性获得两个“+”的增幅；愉悦越强，战斗力越强。
+  activation: 祁荒正在享受且行动服务于自身欲望时满足条件。
+  range: 祁荒自身。
+  cost: 未说明。
+  limitations:
+  - 不满足享乐与自身欲望条件时不能确认获得增幅。
+  - 两个“+”以外的精确数值与持续时间未说明。
+  failure_conditions:
+  - 行动不服务于祁荒自身欲望，或祁荒并未享受时，已确认条件不成立。
+  known_by: [祁荒]
+  visual_expression: 未说明。
+  narrative_function:
+  - 将祁荒的享乐状态直接转化为战斗强化。
+  canon_notes: []

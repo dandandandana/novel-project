@@ -1,0 +1,37 @@
+metadata:
+  document_id: canon-ability-qihuang-all-desires-of-this-world-v1.0
+  story_id: overturned-world-fujimaru
+  timeline_id: main
+  document_type: canon
+  title: 能力设定-祁荒-此世全部之欲
+  entity: ability
+  character_ids: [qihuang]
+  event_tags: [此世全部之欲, EX, existence_authority]
+  version: '1.0'
+  status: canon
+  canon_scope: timeline
+  created_at: '2026-07-17'
+  updated_at: '2026-07-17'
+  supersedes: null
+  source_file: user-message:2026-07-17/qihuang-character-card
+ability:
+  retrieval_key: qihuang_all_desires_of_this_world
+  name: 此世全部之欲
+  owner: 观世音·祁荒
+  owner_id: qihuang
+  rank: EX
+  type: 智慧生命精神升华与局限化破坏
+  effect: 祁荒体内包含几十亿份快乐的漩涡，可使任何智慧存在的人生在一瞬间被极致快乐淹没并“升华”，本质是精神毁灭；也可局限化为破坏性光炮或火焰。
+  activation: 祁荒释放体内快乐漩涡，或主动将其局限化。
+  range: 一切具有智慧的存在，不受智慧构造形式限制；光炮和火焰的具体范围未说明。
+  cost: 未说明。
+  limitations:
+  - 此力量不是宝具，而是祁荒存在的理由。
+  - 作用范围、持续时间、抵抗方式和使用代价未说明。
+  failure_conditions: []
+  known_by: [祁荒]
+  visual_expression: 可局限化为光炮或火焰。
+  narrative_function:
+  - 以极致快乐完成精神毁灭，或转化为高规格破坏手段。
+  canon_notes:
+  - 真正成为魔性菩萨后，破坏上限约与盖提亚的Ars Almadel Salomonis相当甚至超越。

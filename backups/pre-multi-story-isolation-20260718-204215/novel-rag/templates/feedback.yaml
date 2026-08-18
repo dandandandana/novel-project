@@ -1,0 +1,18 @@
+metadata:
+  document_id: ""
+  story_id: ""
+  timeline_id: ""
+  document_type: feedback
+  title: ""
+  target_type: ""
+  target_id: ""
+  version: "1.0"
+  status: active
+feedback:
+  issue: ""
+  user_comment: ""
+  affected_scope: ""
+  correction_rule: []
+  examples: []
+  resolved_at: null
+

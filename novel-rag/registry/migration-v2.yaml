@@ -1,0 +1,11 @@
+migration:
+  version: '2.0'
+  completed_at: '2026-07-18T13:00:27.029295+00:00'
+  source_layout: flat-single-story
+  target_layout: shared-system-plus-isolated-stories
+  story_id: overturned-world-fujimaru
+  shared_documents_reidentified: 23
+  backup_root: D:\Novel\backups\pre-multi-story-isolation-20260718-204215
+  backup_manifest: D:\Novel\backups\pre-multi-story-isolation-20260718-204215\BACKUP-MANIFEST.json
+  backup_file_count: 726
+  backup_total_bytes: 20690963

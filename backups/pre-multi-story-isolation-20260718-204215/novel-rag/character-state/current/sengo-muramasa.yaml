@@ -1,0 +1,119 @@
+metadata:
+  document_id: state-current-sengo-muramasa-v1.2
+  story_id: overturned-world-fujimaru
+  timeline_id: main
+  document_type: character_state
+  title: 当前状态-千子村正
+  character_id: sengo-muramasa
+  variant_id: sengo-muramasa-main
+  snapshot_type: current
+  effective_at: volume-04-chapter-017
+  last_updated: '2026-07-18'
+  version: '1.2'
+  status: active
+  supersedes: state-current-sengo-muramasa-v1.1
+  source_file: D:\Novel\outputs\第四卷_第15章_重写.txt; D:\Novel\outputs\第四卷_第16章_重写.txt; D:\Novel\outputs\第四卷_第17章_重写.txt
+character_state:
+  current_position:
+    location: 伊耶那岐宫废墟
+    companions:
+    - 藤丸立香
+    - 言峰士郎
+    - 玛修·基列莱特
+    - 祁荒
+    faction: 迦勒底协同行动方
+  physical:
+    health: 重伤，仍能勉强站立与拖拽同伴
+    injuries:
+    - 右肋遭弥勒拳锋撕裂
+    - 右臂大半皮肉烧尽
+    - 裸露骨骼布满黑色裂纹
+    - 心口禊祓火纹在终战后熄灭
+    fatigue: 连续承载多种禊祓并完成最终斩击后的极重度消耗
+    temporary_conditions:
+    - 右臂暂时无法正常再生
+    permanent_changes: []
+  mental:
+    dominant_emotions:
+    - 坚定
+    - 疲惫
+    - 务实
+    current_pressure:
+    - 右臂严重损毁
+    - 多种禊祓状态不明
+    desires:
+    - 确认同伴伤势并处理终战后续
+    fears: []
+    unresolved_conflicts: []
+    behavior_effects:
+    - 拒绝因看不见未来而替养育自己的人认输
+  knowledge:
+    known:
+    - 众人能够为自己争取三秒开路窗口
+    - 斩尽三千繁华梦完成后地底出现带旧伤的惨白弧面
+    - 自己在斩击时无法确认地底异常的本质
+    - 弥勒已经死亡，金地封锁解除
+    unknown:
+    - 地底惨白弧面的身份与完整结构
+    - 四种禊祓恢复时间
+    - 特异点偏移原因
+    mistaken_beliefs: []
+    suspicions: []
+    secrets_held: []
+  goals:
+    immediate:
+    - 稳定右臂与禊祓反噬
+    - 协助照看负伤同伴
+    short_term:
+    - 查明地底异常与特异点偏移
+    long_term:
+    - 修复特异点并返回正常人理
+    priorities:
+    - 同伴生存
+    - 确认特异点异常
+    obstacles:
+    - 右臂骨骼裂纹
+    - 禊祓状态不明
+    - 多名同伴重伤
+  relationships:
+  - target_character: kotomine-shirou
+    relationship_type: 并肩作战者
+    trust: 能够接替其拼命争取的战位
+    dependence: 终战开路协作
+    hostility: 无
+    current_attitude: 用嘴硬方式拉起同样右臂重伤的士郎
+    unresolved_issues: []
+    recent_change: 在士郎钉住弥勒后接手最后一刀
+  abilities:
+    available:
+    - 灼阳之禊祓
+    - 清净之禊祓
+    - 创造之禊祓
+    - 怨仇之禊祓
+    unavailable:
+    - 斩尽三千繁华梦与天羽羽斩已经崩散
+    newly_acquired: []
+    consumed_resources: []
+    active_costs:
+    - 四种禊祓可用状态未明
+    - 右臂大半烧毁
+    - 心口火纹熄灭
+  inventory:
+    carried: []
+    lost: []
+    damaged:
+    - 终战短刀与天羽羽斩均已崩散
+  narrative:
+    current_arc: 日本下篇：伊耶那岐金地终战后
+    completed_changes:
+    - 以三秒窗口集约禊祓完成最终刀
+    - 解放斩尽三千繁华梦与天羽羽斩
+    - 斩开弥勒并令对星余量折入地底
+    unresolved_flags:
+    - 地底异常本质
+    - 禊祓恢复
+    - 右臂修复
+    - 特异点坐标偏移
+    active_promises: []
+    future_pressure:
+    - 终战核心已经完成，但代价使其短期无法再次承担同等级斩击

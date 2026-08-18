@@ -1,0 +1,11 @@
+modules:
+- module_type: rule
+  active_versions:
+  - ruler-global-v1.0
+  - ruler-narrative-information-disclosure-v1.0
+- module_type: judgment_spec
+  active_versions:
+  - judgment-global-v1.1
+- module_type: style_audit
+  active_versions:
+  - style-global-manifest-v1.4

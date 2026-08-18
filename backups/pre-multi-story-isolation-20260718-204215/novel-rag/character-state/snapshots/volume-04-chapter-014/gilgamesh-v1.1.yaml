@@ -1,0 +1,105 @@
+metadata:
+  document_id: state-current-gilgamesh-v1.1
+  story_id: overturned-world-fujimaru
+  timeline_id: main
+  document_type: character_state
+  title: 第四卷第14章末状态快照-吉尔伽美什
+  character_id: gilgamesh
+  variant_id: gilgamesh-main
+  snapshot_type: snapshot
+  effective_at: volume-04-chapter-014
+  last_updated: '2026-07-17'
+  version: '1.1'
+  status: archived
+  supersedes: state-current-gilgamesh-v1.0
+  source_file: D:\Novel\outputs\第四卷_第14章_续写.txt
+character_state:
+  current_position:
+    location: 伊耶那岐金地东门盆地，正向外围移动
+    companions:
+    - 杨浞
+    - 藤丸立香
+    - 言峰士郎
+    - 玛修·基列莱特
+    faction: 迦勒底协同行动方
+  physical:
+    health: 重伤但存活，需要EA支撑移动
+    injuries:
+    - 左肩、锁骨和部分胸腔被灰火抹除
+    - 左腿从膝盖向上失去知觉
+    - 右手虎口裂至腕部
+    fatigue: 重度战斗消耗
+    temporary_conditions: []
+    permanent_changes: []
+  mental:
+    dominant_emotions:
+    - 高傲
+    - 专注
+    current_pressure:
+    - 重伤且弥勒仍未解决
+    desires:
+    - 接受治疗并保留继续对弥勒作战的能力
+    fears: []
+    unresolved_conflicts: []
+    behavior_effects:
+    - 用王之财宝门扉强行完成移动，不承认落后于杨浞
+  knowledge:
+    known:
+    - 天照命的孔雀卵、城市羽目、乌从欲与至命除机制
+    - 天照命已经败北并退化为普通大小孔雀
+    unknown:
+    - 能否在弥勒终战前恢复
+    mistaken_beliefs: []
+    suspicions: []
+    secrets_held: []
+  goals:
+    immediate:
+    - 接受治疗
+    - 保留EA与王之财宝的后续作战能力
+    short_term:
+    - 完成对弥勒的降格、主炮与创造之禊祓衔接
+    long_term:
+    - 修复特异点
+    priorities:
+    - 完成任务
+    - 同伴生存
+    obstacles:
+    - 严重伤势
+    - 连续解放EA造成的负担
+    - 弥勒
+  relationships:
+  - target_character: yang-zhuo
+    relationship_type: 并肩作战的王者
+    trust: 战斗协同成立
+    dependence: 互相补足机制与火力
+    hostility: 竞争性口角
+    current_attitude: 认可其战力但拒绝示弱
+    unresolved_issues: []
+    recent_change: 共同完成对天照命的最终对波
+  abilities:
+    available:
+    - 王之财宝
+    - EA／开天辟地乖离之星
+    - 千里眼
+    unavailable: []
+    newly_acquired: []
+    consumed_resources: []
+    active_costs:
+    - EA已连续用于隔离幕、固有结界、伤害回路切断与最终对波
+  inventory:
+    carried:
+    - EA
+    - 九枚脱离燃料状态的时间卵
+    lost: []
+    damaged: []
+  narrative:
+    current_arc: 日本下篇：伊耶那岐金地决战
+    completed_changes:
+    - 与杨浞共同击败天照命
+    - 收纳九枚时间卵
+    unresolved_flags:
+    - 重伤治疗
+    - 弥勒终战
+    active_promises: []
+    future_pressure:
+    - 需要在保留王之财宝与EA战力的同时处理严重伤势
