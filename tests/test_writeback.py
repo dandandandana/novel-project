@@ -100,17 +100,17 @@ def test_runtime_story_directory_must_match_contract(tmp_path: Path) -> None:
 
 
 def test_failure_after_history_write_rolls_back(tmp_path: Path, monkeypatch) -> None:
-    import novel_rag.writeback as writeback
+    import novel_rag.writeback.confirm as writeback_confirm
     library, index = make_library(tmp_path)
     runtime = make_runtime(tmp_path)
-    original = writeback._atomic_text
+    original = writeback_confirm._atomic_text
 
     def fail_proposal(path: Path, text: str) -> None:
         if path.name == "state-writeback-proposal.json":
             raise OSError("simulated proposal failure")
         original(path, text)
 
-    monkeypatch.setattr(writeback, "_atomic_text", fail_proposal)
+    monkeypatch.setattr(writeback_confirm, "_atomic_text", fail_proposal)
     try:
         confirm_runtime(runtime, library_root=library, index_root=index, confirmed=True,
                         volume=1, chapter=2, scene=1)
