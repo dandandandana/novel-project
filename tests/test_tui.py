@@ -4,13 +4,13 @@ from pathlib import Path
 from types import SimpleNamespace
 
 from novel_rag.tui import run_tui
-from novel_rag.rag_import import ImportPreview
+from novel_rag.importers import ImportPreview
 from novel_rag.model_config import ModelConfigStore
 
 
 def _single_story(monkeypatch) -> None:
-    monkeypatch.setattr("novel_rag.tui.registered_story_ids", lambda _root: {"demo"})
-    monkeypatch.setattr("novel_rag.tui._timeline_ids", lambda _root, _story: ["main"])
+    monkeypatch.setattr("novel_rag.tui.menu.registered_story_ids", lambda _root: {"demo"})
+    monkeypatch.setattr("novel_rag.tui.menu.timeline_ids", lambda _root, _story: ["main"])
 
 
 def test_tui_can_exit_without_side_effects(tmp_path: Path, monkeypatch) -> None:
@@ -80,8 +80,8 @@ def test_tui_uploads_outline_and_remembers_it(tmp_path: Path, monkeypatch) -> No
         captured.update(path=path, kwargs=kwargs)
         return SimpleNamespace(status="imported", path=imported)
 
-    monkeypatch.setattr("novel_rag.tui.import_outline", fake_import)
-    monkeypatch.setattr("novel_rag.tui.preview_outline", lambda *_args, **_kwargs: ImportPreview(
+    monkeypatch.setattr("novel_rag.tui.menu.import_outline", fake_import)
+    monkeypatch.setattr("novel_rag.tui.menu.preview_outline", lambda *_args, **_kwargs: ImportPreview(
         "ready", imported, "outline-v1.0", "outline", "1.0", "outline-demo-main-v01-c002"
     ))
     answers = iter(["4", str(source), "", "", "2", "", "IMPORT", "7"])
@@ -184,9 +184,9 @@ def test_tui_previews_rag_before_import(tmp_path: Path, monkeypatch) -> None:
     source = tmp_path / "canon.yaml"
     captured = {}
     preview = ImportPreview("ready", tmp_path / "target.yaml", "canon-v1.0", "canon", "1.0", "canon")
-    monkeypatch.setattr("novel_rag.tui.preview_rag_yaml", lambda *_args, **_kwargs: preview)
+    monkeypatch.setattr("novel_rag.tui.menu.preview_rag_yaml", lambda *_args, **_kwargs: preview)
     monkeypatch.setattr(
-        "novel_rag.tui.import_rag_yaml",
+        "novel_rag.tui.menu.import_rag_yaml",
         lambda path, **kwargs: captured.update(path=path, kwargs=kwargs)
         or SimpleNamespace(status="imported", path=tmp_path / "target.yaml"),
     )
@@ -204,7 +204,7 @@ def test_tui_creates_feedback_from_simple_form(tmp_path: Path, monkeypatch) -> N
         captured.update(kwargs)
         return SimpleNamespace(path="feedback.yaml")
 
-    monkeypatch.setattr("novel_rag.feedback.create_feedback", fake_create)
+    monkeypatch.setattr("novel_rag.tui.menu.create_feedback", fake_create)
     answers = iter(["11", "1", "对白太快", "需要留出反应", "后续章节", "补足动作反馈",
                     "runtime", "task-1", "FEEDBACK", "7"])
     assert run_tui(tmp_path / "library", input_fn=lambda _prompt: next(answers),
@@ -221,7 +221,7 @@ def test_tui_feedback_requires_explicit_confirmation(tmp_path: Path, monkeypatch
         nonlocal called
         called = True
 
-    monkeypatch.setattr("novel_rag.feedback.create_feedback", fake_create)
+    monkeypatch.setattr("novel_rag.tui.menu.create_feedback", fake_create)
     answers = iter(["11", "1", "问题", "意见", "后续", "修正", "runtime", "task", "取消", "7"])
     assert run_tui(tmp_path / "library", input_fn=lambda _prompt: next(answers),
                    output=lambda _text: None) == 0

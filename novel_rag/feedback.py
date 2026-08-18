@@ -9,7 +9,7 @@ from typing import Any, Mapping, Sequence
 import yaml
 
 from .documents import RagDocument
-from .rag_import import (
+from .importers import (
     RagImportError,
     _ids,
     _import_text,

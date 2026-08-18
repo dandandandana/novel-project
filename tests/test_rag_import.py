@@ -147,12 +147,12 @@ def test_upload_rolls_back_document_and_index_on_rebuild_failure(tmp_path: Path,
         },
         "content": "VAULT-CANON-551",
     }, allow_unicode=True, sort_keys=False), encoding="utf-8")
-    import novel_rag.rag_import as rag_import
+    import novel_rag.importers.helpers as import_helpers
 
     def fail_rebuild(*args, **kwargs):
         raise RuntimeError("index unavailable")
 
-    monkeypatch.setattr(rag_import, "rebuild_isolated_indexes", fail_rebuild)
+    monkeypatch.setattr(import_helpers, "rebuild_isolated_indexes", fail_rebuild)
     try:
         import_rag_yaml(source, library_root=library, index_root=index, story_id="demo", timeline_id="main")
     except RagImportError:
