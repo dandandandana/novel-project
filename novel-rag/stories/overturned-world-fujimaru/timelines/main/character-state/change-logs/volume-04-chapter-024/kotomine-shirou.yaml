@@ -1,0 +1,21 @@
+metadata:
+  document_id: state-change-kotomine-shirou-v04-c024-v1.0
+  story_id: overturned-world-fujimaru
+  timeline_id: main
+  document_type: character_state
+  title: 第4卷第21至24章状态变化-言峰士郎
+  character_id: kotomine-shirou
+  variant_id: kotomine-shirou-main
+  snapshot_type: change_log
+  effective_at: volume-04-chapter-024
+  last_updated: '2026-08-08'
+  version: '1.0'
+  status: canon
+  supersedes: null
+  source_file: D:\Novel 1\Novel\outputs\第四卷_第21-24章_日本卷收尾.txt
+changes:
+- category: chapter_21_to_24_outcome
+  before: state-current-kotomine-shirou-v1.4
+  after: state-current-kotomine-shirou-v1.5
+  cause: 第四卷第21至24章休整、关系确认、召唤验证与村正跨界归队
+  evidence: history-v04-c021-to-c024

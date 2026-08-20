@@ -8,6 +8,7 @@ from .generation.helpers import (
     author_preferences_path,
     read_author_preferences,
     build_contract,
+    retrieve_context_bundle,
     retrieve_context,
     build_reference_profiles,
     load_scene_state,
@@ -15,6 +16,14 @@ from .generation.helpers import (
     validate_draft,
     _payload,
     _safe_task_id,
+)
+from .generation.retrieval import (
+    ContextItem,
+    LegacyRetrieverAdapter,
+    build_default_retriever,
+    build_legacy_retriever,
+    build_retrieval_request,
+    set_default_retriever_factory,
 )
 from .generation.pipeline import generate
 
@@ -27,6 +36,7 @@ __all__ = [
     "author_preferences_path",
     "read_author_preferences",
     "build_contract",
+    "retrieve_context_bundle",
     "retrieve_context",
     "build_reference_profiles",
     "load_scene_state",
@@ -34,5 +44,11 @@ __all__ = [
     "validate_draft",
     "_payload",
     "_safe_task_id",
+    "ContextItem",
+    "LegacyRetrieverAdapter",
+    "build_default_retriever",
+    "build_legacy_retriever",
+    "build_retrieval_request",
+    "set_default_retriever_factory",
     "generate",
 ]

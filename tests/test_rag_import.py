@@ -4,6 +4,7 @@ import yaml
 
 from novel_rag.documents import load_document
 from novel_rag.index import SqliteIndex, search_isolated
+from novel_rag.mutations import ChangeSet
 from novel_rag.rag_import import (
     RagImportError,
     import_outline,
@@ -137,7 +138,7 @@ def test_versioned_upload_deprecates_previous_and_is_idempotent(tmp_path: Path) 
     ).status == "noop"
 
 
-def test_upload_rolls_back_document_and_index_on_rebuild_failure(tmp_path: Path, monkeypatch) -> None:
+def test_upload_rolls_back_document_and_index_on_rebuild_failure(tmp_path: Path) -> None:
     library, index = make_library(tmp_path)
     source = tmp_path / "canon.yaml"
     source.write_text(yaml.safe_dump({
@@ -147,17 +148,56 @@ def test_upload_rolls_back_document_and_index_on_rebuild_failure(tmp_path: Path,
         },
         "content": "VAULT-CANON-551",
     }, allow_unicode=True, sort_keys=False), encoding="utf-8")
-    import novel_rag.importers.helpers as import_helpers
+    class FailingCoordinator:
+        def commit(self, changes):
+            assert changes.changes
+            raise RuntimeError("index unavailable")
 
-    def fail_rebuild(*args, **kwargs):
-        raise RuntimeError("index unavailable")
-
-    monkeypatch.setattr(import_helpers, "rebuild_isolated_indexes", fail_rebuild)
     try:
-        import_rag_yaml(source, library_root=library, index_root=index, story_id="demo", timeline_id="main")
+        import_rag_yaml(
+            source,
+            library_root=library,
+            index_root=index,
+            story_id="demo",
+            timeline_id="main",
+            coordinator=FailingCoordinator(),
+        )
     except RagImportError:
         pass
     else:
         raise AssertionError("failed index rebuild must abort upload")
     assert not (library / "stories" / "demo" / "canon" / "imported" / "canon-demo-vault-v1.0.yaml").exists()
     assert not (library / "stories" / "demo" / "registry" / "version-map.yaml").exists()
+
+
+def test_upload_delegates_changeset_to_injected_coordinator(tmp_path: Path) -> None:
+    library, index = make_library(tmp_path)
+    source = tmp_path / "canon.yaml"
+    source.write_text(yaml.safe_dump({
+        "metadata": {
+            "document_id": "canon-demo-delegated-v1.0", "story_id": "demo", "timeline_id": "main",
+            "document_type": "canon", "title": "Delegated", "status": "canon", "version": "1.0",
+        },
+        "content": "COORDINATOR-ONLY",
+    }, allow_unicode=True, sort_keys=False), encoding="utf-8")
+    seen: list[ChangeSet] = []
+
+    class RecordingCoordinator:
+        def commit(self, changes: ChangeSet):
+            seen.append(changes)
+            return type("Result", (), {"status": "promoted", "yaml_committed": True})()
+
+    result = import_rag_yaml(
+        source,
+        library_root=library,
+        index_root=index,
+        story_id="demo",
+        timeline_id="main",
+        coordinator=RecordingCoordinator(),
+    )
+
+    assert result.status == "imported"
+    assert len(seen) == 1
+    assert isinstance(seen[0], ChangeSet)
+    assert seen[0].metadata["document_id"] == result.document_id
+    assert result.path.exists() is False

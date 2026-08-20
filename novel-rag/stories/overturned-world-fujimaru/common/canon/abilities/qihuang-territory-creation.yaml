@@ -1,0 +1,36 @@
+metadata:
+  document_id: canon-ability-qihuang-territory-creation-v1.0
+  story_id: overturned-world-fujimaru
+  timeline_id: main
+  document_type: canon
+  title: 能力设定-祁荒-阵地建造
+  entity: ability
+  character_ids: [qihuang]
+  event_tags: [阵地建造, EX, class_skill]
+  version: '1.0'
+  status: canon
+  canon_scope: timeline
+  created_at: '2026-07-17'
+  updated_at: '2026-07-17'
+  supersedes: null
+  source_file: user-message:2026-07-17/qihuang-character-card
+ability:
+  retrieval_key: qihuang_territory_creation
+  name: 阵地建造
+  owner: 观世音·祁荒
+  owner_id: qihuang
+  rank: EX
+  type: 道场构筑与欲望增幅
+  effect: 瞬间构筑恢弘庙宇道场；祁荒在范围内全属性大幅增强，进入者的欲望被无限放大，更易受此世全部之欲影响。
+  activation: 祁荒主动构筑庙宇道场。
+  range: 庙宇道场范围；具体尺寸未说明。
+  cost: 未说明。
+  limitations:
+  - 增幅精确数值、庙宇持续时间与破坏条件未说明。
+  - 欲望放大不等于自动完成精神毁灭。
+  failure_conditions: []
+  known_by: [祁荒]
+  visual_expression: 规模恢弘的庙宇道场。
+  narrative_function:
+  - 建立祁荒的主场并放大敌我欲望风险。
+  canon_notes: []

@@ -1,0 +1,92 @@
+metadata:
+  document_id: state-snapshot-mash-kyrielight-v1.0
+  story_id: overturned-world-fujimaru
+  timeline_id: main
+  document_type: character_state
+  title: 第4卷第10章后状态快照-玛修·基列莱特
+  character_id: mash-kyrielight
+  variant_id: mash-kyrielight-main
+  snapshot_type: snapshot
+  effective_at: volume-04-chapter-010
+  last_updated: '2026-07-12'
+  version: '1.0'
+  status: canon
+  supersedes: null
+  source_file: D:\word2\五脏六腑彻底颠覆的世界由藤丸立香拯救-20260712.txt
+character_state:
+  current_position:
+    location: 伊耶那岐金地地下的未来文明舰桥
+    companions:
+    - 藤丸立香
+    - 言峰士郎
+    - 玛修·基列莱特
+    - 杨浞
+    faction: 迦勒底
+  physical:
+    health: 正文未明确
+    injuries: []
+    fatigue: 正文未明确
+    temporary_conditions: []
+    permanent_changes: []
+  mental:
+    dominant_emotions:
+    - 警戒
+    - 忠诚
+    current_pressure:
+    - 即将与弥勒交战
+    desires:
+    - 保护藤丸立香
+    fears: []
+    unresolved_conflicts: []
+    behavior_effects:
+    - 持盾挡在前辈身前
+  knowledge:
+    known:
+    - 终末人理圆满装置持有圣杯
+    - 地下舰桥能够提供主炮与召唤支援
+    - 杨浞已被召唤
+    unknown: []
+    mistaken_beliefs: []
+    suspicions: []
+    secrets_held: []
+  goals:
+    immediate:
+    - 保护藤丸立香并熟悉战场
+    short_term:
+    - 参与讨伐弥勒
+    long_term:
+    - 协助修复特异点
+    priorities:
+    - 藤丸立香的安全
+    obstacles:
+    - 弥勒
+  relationships:
+  - target_character: fujimaru-ritsuka
+    relationship_type: 后辈与前辈
+    trust: 高
+    dependence: 战斗协作
+    hostility: 无
+    current_attitude: 忠诚并主动保护
+    unresolved_issues: []
+    recent_change: 无
+  abilities:
+    available: []
+    unavailable: []
+    newly_acquired: []
+    consumed_resources: []
+    active_costs: []
+  inventory:
+    carried: []
+    lost: []
+    damaged: []
+  narrative:
+    current_arc: 日本下篇：讨伐弥勒前的战力部署
+    completed_changes:
+    - 与终末人理圆满装置达成阶段性合作
+    unresolved_flags:
+    - 弥勒尚未被讨伐
+    - 圣杯尚未回收
+    active_promises:
+    - 解决弥勒后由终末人理圆满装置归还圣杯
+    future_pressure:
+    - 即将展开讨伐弥勒的作战

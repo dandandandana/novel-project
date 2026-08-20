@@ -58,6 +58,7 @@ def import_rag_yaml(
     version: str | None = None,
     supersedes: str | Sequence[str] | None = None,
     document_family: str | None = None,
+    coordinator: Any | None = None,
 ) -> ImportResult:
     source = Path(source)
     if not source.is_file() or source.suffix.lower() not in {".yaml", ".yml"}:
@@ -69,7 +70,7 @@ def import_rag_yaml(
     return _import_text(
         text, source_path=source.resolve(), library_root=library_root, index_root=index_root,
         story_id=story_id, timeline_id=timeline_id, version=version,
-        supersedes=supersedes, document_family=document_family,
+        supersedes=supersedes, document_family=document_family, coordinator=coordinator,
     )
 
 
@@ -86,6 +87,7 @@ def import_outline(
     version: str | None = None,
     supersedes: str | Sequence[str] | None = None,
     document_family: str | None = None,
+    coordinator: Any | None = None,
 ) -> ImportResult:
     source = Path(source)
     if not source.is_file():
@@ -106,6 +108,7 @@ def import_outline(
                 text, source_path=source.resolve(), library_root=library_root, index_root=index_root,
                 story_id=story_id, timeline_id=timeline_id, expected_type="outline",
                 version=version, supersedes=supersedes, document_family=document_family,
+                coordinator=coordinator,
             )
     if volume < 0 or chapter < 1:
         raise RagImportError("volume 不得小于 0，chapter 必须大于 0")
@@ -134,6 +137,7 @@ def import_outline(
         serialized, source_path=source.resolve(), library_root=library_root, index_root=index_root,
         story_id=story_id, timeline_id=timeline_id, expected_type="outline",
         version=selected_version, supersedes=supersedes, document_family=family,
+        coordinator=coordinator,
     )
 
 

@@ -8,8 +8,22 @@ import sys
 from pathlib import Path
 
 from ..documents import read_yaml_mapping, registered_story_ids
-from ..index import rebuild_isolated_indexes, search_isolated
-from ..generation import GenerationError, PreferenceRequired, generate
+from ..catalog.paths import timeline_registry_path
+from ..graph import GraphError
+from ..composition import (
+    build_graph_retriever,
+    build_mutation_coordinator,
+    rebuild_graph_projections,
+    search_graph,
+    timeline_summary_root,
+)
+from ..identity import GraphKey
+from ..generation import (
+    GenerationError,
+    LegacyRetrieverAdapter,
+    PreferenceRequired,
+    generate,
+)
 from ..model_api import ModelAPIError
 from ..model_config import ModelConfigError
 from ..resume import ResumeError, continue_generation
@@ -19,6 +33,16 @@ from ..service import load_valid_documents
 from ..state import StateReviewError, approve_state_proposal, inspect_state_proposal, reject_state_proposal
 from ..importers import RagImportError, import_outline, import_rag_yaml, preview_outline, preview_rag_yaml
 from ..feedback import FeedbackError, create_feedback, list_feedback, resolve_feedback
+from ..doctor import run_doctor
+from ..mutations import (
+    SummaryDocument,
+    SummaryEditor,
+    SummaryError,
+    SummaryStore,
+    SummaryUpdate,
+    SummaryWriter,
+    MutationError,
+)
 from .helpers import _paths, _model_from_args
 
 
@@ -33,15 +57,49 @@ def command_validate(args: argparse.Namespace) -> int:
     return 1 if issues else 0
 
 
+def command_doctor(args: argparse.Namespace) -> int:
+    """Report installation capabilities required by graph projections."""
+
+    del args  # The preflight intentionally has no filesystem or user options.
+    report = run_doctor()
+    print(json.dumps(report.as_dict(), ensure_ascii=False, indent=2))
+    return 0 if report.ok else 1
+
+
 def command_index(args: argparse.Namespace) -> int:
     library, index_path = _paths(args)
-    documents, issues = load_valid_documents(library)
+    selected_story = getattr(args, "story", None)
+    selected_timeline = getattr(args, "timeline", None)
+    shared_only = bool(getattr(args, "shared", False))
+    if shared_only and (selected_story or selected_timeline):
+        print("ERROR --shared 不能与 --story/--timeline 同时使用")
+        return 1
+    if selected_timeline and not selected_story:
+        print("ERROR --timeline 必须与 --story 一起使用")
+        return 1
+    documents, issues = load_valid_documents(
+        library,
+        story_id=selected_story if selected_story else None,
+    )
     if issues:
         for issue in issues:
             print(f"ERROR {issue.path}: {issue.message}")
         print("存在校验错误，索引未更新。")
         return 1
-    results = rebuild_isolated_indexes(index_path, documents, registered_story_ids(library))
+    try:
+        results = rebuild_graph_projections(
+            index_path,
+            documents,
+            [selected_story] if selected_story else registered_story_ids(library),
+            story_id=selected_story,
+            timeline_id=selected_timeline,
+            shared_only=shared_only,
+            library_root=library,
+            prune_stale=not bool(selected_story or shared_only),
+        )
+    except (GraphError, OSError, ValueError) as exc:
+        print(f"ERROR {exc}")
+        return 1
     total_documents = sum(result.document_count for result in results)
     total_chunks = sum(result.chunk_count for result in results)
     for result in results:
@@ -59,7 +117,7 @@ def command_search(args: argparse.Namespace) -> int:
         print(f"ERROR 未注册 story_id: {args.story}")
         return 1
     timeline_rows = read_yaml_mapping(
-        library / "stories" / args.story / "registry" / "timelines.yaml"
+        timeline_registry_path(library, args.story)
     ).get("timelines", [])
     if not any(
         isinstance(row, dict)
@@ -69,16 +127,39 @@ def command_search(args: argparse.Namespace) -> int:
     ):
         print(f"ERROR 未注册 timeline_id: {args.story}/{args.timeline}")
         return 1
-    results = search_isolated(
-        index_path,
-        args.query,
-        args.story,
-        args.timeline,
-        document_types=args.type,
-        statuses=args.status,
-        limit=args.limit,
-        include_shared=not args.no_shared,
-    )
+    try:
+        if bool(getattr(args, "legacy", False)):
+            # The compatibility façade is reachable only through this
+            # explicit migration switch. Canonical searches use the
+            # composition root below.
+            results = search_graph(
+                index_path,
+                args.query,
+                GraphKey(args.story, args.timeline),
+                document_types=args.type,
+                statuses=args.status,
+                limit=args.limit,
+                include_shared=not args.no_shared,
+                library_root=library,
+                legacy=True,
+            )
+        else:
+            results = search_graph(
+                index_path,
+                args.query,
+                GraphKey(args.story, args.timeline),
+                document_types=args.type,
+                statuses=args.status,
+                limit=args.limit,
+                include_shared=not args.no_shared,
+                library_root=library,
+            )
+    except (GraphError, OSError, ValueError) as exc:
+        # The CLI turns a failed command into a diagnostic exit status, while
+        # the Python compatibility function above deliberately propagates the
+        # identity/stale/trigram error to its caller.
+        print(f"ERROR {exc}")
+        return 1
     output = [{
         "document_id": item.document_id, "title": item.title, "document_type": item.document_type,
         "status": item.status, "score": item.score, "source_file": item.source_file,
@@ -86,6 +167,167 @@ def command_search(args: argparse.Namespace) -> int:
     } for item in results]
     print(json.dumps(output, ensure_ascii=False, indent=2))
     return 0
+
+
+def _summary_content(args: argparse.Namespace) -> str:
+    content = getattr(args, "content", None)
+    content_file = getattr(args, "content_file", None)
+    if content is not None and content_file is not None:
+        raise ValueError("--content 与 --content-file 只能提供一个")
+    if content_file is not None:
+        return Path(content_file).read_text(encoding="utf-8-sig")
+    if content is None:
+        raise ValueError("必须提供 --content 或 --content-file")
+    return str(content)
+
+
+def _summary_target(root: Path, value: str) -> Path:
+    target = Path(value)
+    if not target.is_absolute():
+        target = root / target
+    target = target.resolve()
+    try:
+        target.relative_to(root.resolve())
+    except ValueError as exc:
+        raise SummaryError(f"摘要路径必须位于目标 timeline summaries 目录: {target}") from exc
+    return target
+
+
+def _summary_payload(document: SummaryDocument) -> dict[str, object]:
+    metadata = dict(document.metadata)
+    metadata.update(
+        {
+            "document_id": document.document_id,
+            "ownership": document.ownership,
+            "revision": document.revision,
+            "stale": document.stale,
+        }
+    )
+    if document.source_fingerprint is not None:
+        metadata["source_fingerprint"] = document.source_fingerprint
+    return {
+        "path": str(document.path),
+        "document_id": document.document_id,
+        "content": document.content,
+        "ownership": document.ownership,
+        "source_fingerprint": document.source_fingerprint,
+        "revision": document.revision,
+        "stale": document.stale,
+        "metadata": metadata,
+    }
+
+
+def _summary_documents(root: Path) -> list[SummaryDocument]:
+    if not root.is_dir():
+        return []
+    documents: list[SummaryDocument] = []
+    for path in sorted((*root.rglob("*.yaml"), *root.rglob("*.yml"))):
+        try:
+            documents.append(SummaryDocument.from_yaml(path))
+        except SummaryError:
+            # Listing remains useful when one unrelated YAML is malformed;
+            # show/edit still surface an exact error for the requested ID.
+            continue
+    return documents
+
+
+def command_summary(args: argparse.Namespace) -> int:
+    """List, inspect, or edit timeline summaries through MutationCoordinator."""
+
+    library, index_path = _paths(args)
+    try:
+        key = GraphKey(args.story, args.timeline)
+        root = timeline_summary_root(library, key)
+        action = args.summary_action
+        if action == "list":
+            print(json.dumps(
+                [_summary_payload(document) for document in _summary_documents(root)],
+                ensure_ascii=False,
+                indent=2,
+            ))
+            return 0
+
+        coordinator = build_mutation_coordinator(library, index_directory=index_path)
+        store = SummaryStore(root)
+        if action == "show":
+            print(json.dumps(
+                _summary_payload(store.find(args.document_id)),
+                ensure_ascii=False,
+                indent=2,
+                default=str,
+            ))
+            return 0
+        if action == "edit":
+            updated = SummaryEditor(root, coordinator=coordinator).update(
+                SummaryUpdate(
+                    args.document_id,
+                    expected_revision=args.expected_revision,
+                    content=_summary_content(args),
+                )
+            )
+            print(json.dumps(_summary_payload(updated), ensure_ascii=False, indent=2, default=str))
+            return 0
+        if action == "write-ai":
+            target = _summary_target(root, args.path)
+            metadata = {
+                "story_id": key.story_id,
+                "timeline_id": key.timeline_id,
+                "document_type": args.document_type,
+                "generated_by": args.generated_by,
+            }
+            written = SummaryWriter(root, coordinator=coordinator).write_ai(
+                target,
+                _summary_content(args),
+                document_id=args.document_id,
+                source_fingerprint=args.source_fingerprint,
+                metadata=metadata,
+            )
+            print(json.dumps(_summary_payload(written), ensure_ascii=False, indent=2, default=str))
+            return 0
+        raise SummaryError(f"未知 summary 操作: {action}")
+    except (SummaryError, GraphError, OSError, ValueError) as exc:
+        print(f"ERROR {exc}")
+        return 1
+
+
+def _mutation_result_payload(result: object) -> dict[str, object]:
+    rows = []
+    for item in getattr(result, "graph_results", ()):
+        key = getattr(item, "key", None)
+        key_value = key.as_dict() if hasattr(key, "as_dict") else str(key)
+        rows.append({
+            "key": key_value,
+            "status": getattr(item, "status", None),
+            "target_path": str(getattr(item, "target_path", "")) if getattr(item, "target_path", None) else None,
+            "staged_path": str(getattr(item, "staged_path", "")) if getattr(item, "staged_path", None) else None,
+            "error": getattr(item, "error", None),
+        })
+    return {
+        "status": getattr(result, "status", None),
+        "change_id": getattr(result, "change_id", None),
+        "yaml_committed": getattr(result, "yaml_committed", False),
+        "staging_root": str(getattr(result, "staging_root", "")) if getattr(result, "staging_root", None) else None,
+        "error": getattr(result, "error", None),
+        "graphs": rows,
+    }
+
+
+def command_pending(args: argparse.Namespace) -> int:
+    """List or retry durable graph-promotion pending manifests."""
+
+    library, index_path = _paths(args)
+    try:
+        coordinator = build_mutation_coordinator(library, index_directory=index_path)
+        if args.pending_action == "list":
+            print(json.dumps(coordinator.list_pending(), ensure_ascii=False, indent=2, default=str))
+            return 0
+        results = coordinator.retry_persisted_pending()
+        payload = [_mutation_result_payload(result) for result in results]
+        print(json.dumps(payload, ensure_ascii=False, indent=2, default=str))
+        return 0 if all(item["status"] in {"promoted", "noop"} for item in payload) else 1
+    except (MutationError, GraphError, OSError, ValueError) as exc:
+        print(f"ERROR {exc}")
+        return 1
 
 
 def command_list_stories(args: argparse.Namespace) -> int:
@@ -119,18 +361,36 @@ def command_generate(args: argparse.Namespace) -> int:
     for reference in args.reference or []:
         path = Path(reference)
         request["references"].append(path.read_text(encoding="utf-8-sig") if path.is_file() else reference)
+    library_root = Path(args.library).resolve()
+    index_root = Path(args.index).resolve() if args.index else library_root / "index"
+    retriever = None
     try:
         model = _model_from_args(args)
-        result = generate(request, model, library_root=Path(args.library).resolve(),
-                          index_root=Path(args.index).resolve() if args.index else None,
+        if getattr(args, "legacy", False):
+            # ``--legacy`` is an explicit migration mode.  Inject the
+            # generation package's adapter so generate() cannot silently pick
+            # the default graph composition root.
+            retriever = LegacyRetrieverAdapter(library_root, index_root)
+        else:
+            retriever = build_graph_retriever(
+                library_root,
+                GraphKey(args.story, args.timeline),
+                index_directory=index_root,
+            )
+        result = generate(request, model, library_root=library_root,
+                          index_root=index_root,
                           output_root=Path(args.output_root).resolve() if args.output_root else None,
-                          task_id=args.task_id)
+                          task_id=args.task_id, retriever=retriever)
     except PreferenceRequired as exc:
         print(f"AUTHOR_PREFERENCES_REQUIRED {exc.path}")
         return 2
-    except (GenerationError, ModelAPIError, ModelConfigError) as exc:
+    except (GenerationError, ModelAPIError, ModelConfigError, GraphError, OSError, ValueError) as exc:
         print(f"ERROR {exc}")
         return 1
+    finally:
+        close = getattr(retriever, "close", None)
+        if callable(close):
+            close()
     print(result.text)
     for warning in result.warnings:
         print(f"WARNING {warning}", file=sys.stderr)
@@ -261,8 +521,9 @@ def command_import_rag(args: argparse.Namespace) -> int:
             Path(args.source), library_root=library, index_root=index,
             story_id=args.story, timeline_id=args.timeline, version=args.version,
             supersedes=args.supersedes, document_family=args.family,
+            coordinator=build_mutation_coordinator(library, index_directory=index),
         )
-    except (RagImportError, OSError) as exc:
+    except (RagImportError, GraphError, OSError, ValueError) as exc:
         print(f"ERROR {exc}")
         return 1
     print(_dataclass_json(result))
@@ -290,8 +551,9 @@ def command_import_outline(args: argparse.Namespace) -> int:
             story_id=args.story, timeline_id=args.timeline, title=args.title,
             volume=args.volume, chapter=args.chapter, version=args.version,
             supersedes=args.supersedes, document_family=args.family,
+            coordinator=build_mutation_coordinator(library, index_directory=index),
         )
-    except (RagImportError, OSError) as exc:
+    except (RagImportError, GraphError, OSError, ValueError) as exc:
         print(f"ERROR {exc}")
         return 1
     print(_dataclass_json(result))
@@ -311,8 +573,9 @@ def command_feedback_create(args: argparse.Namespace) -> int:
             correction_rule=args.rule, examples=args.example,
             runtime_dir=args.runtime, history_id=args.history_id,
             version=args.version, supersedes=args.supersedes, document_family=args.family,
+            coordinator=build_mutation_coordinator(library, index_directory=index),
         )
-    except (FeedbackError, RagImportError, OSError) as exc:
+    except (FeedbackError, RagImportError, GraphError, OSError, ValueError) as exc:
         print(f"ERROR {exc}")
         return 1
     print(_dataclass_json(result))
@@ -325,7 +588,7 @@ def command_feedback_list(args: argparse.Namespace) -> int:
         rows = list_feedback(library_root=library, index_root=index, story_id=args.story,
                              timeline_id=args.timeline, status=args.status,
                              target_type=args.target_type, target_id=args.target_id)
-    except (FeedbackError, RagImportError, OSError) as exc:
+    except (FeedbackError, RagImportError, GraphError, OSError, ValueError) as exc:
         print(f"ERROR {exc}")
         return 1
     print(json.dumps([{name: getattr(row, name) for name in row.__dataclass_fields__} for row in rows],
@@ -343,6 +606,7 @@ def command_feedback_resolve(args: argparse.Namespace) -> int:
             library_root=library, index_root=index, story_id=args.story, timeline_id=args.timeline,
             feedback_id=args.feedback_id, resolution=args.resolution, version=args.version,
             supersedes=args.feedback_id,
+            coordinator=build_mutation_coordinator(library, index_directory=index),
         )
     except (FeedbackError, RagImportError, OSError) as exc:
         print(f"ERROR {exc}")

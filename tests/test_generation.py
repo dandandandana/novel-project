@@ -2,7 +2,7 @@ from pathlib import Path
 
 import yaml
 
-from novel_rag.generation import PreferenceRequired, build_contract, generate
+from novel_rag.generation import LegacyRetrieverAdapter, PreferenceRequired, build_contract, generate
 from novel_rag.generation import execute_scene
 from novel_rag.generation_schema import (
     AuthorPreferenceProfile, DynamicCharacterState, GenerationContract, GenerationRequest,
@@ -28,6 +28,12 @@ def make_library(tmp_path: Path, *, preferences: str | None = "默认") -> tuple
     SqliteIndex(index / "stories" / "demo.db").rebuild([])
     SqliteIndex(index / "shared.db").rebuild([])
     return library, index
+
+
+def _legacy_retriever(library: Path, index: Path) -> LegacyRetrieverAdapter:
+    """This legacy-index fixture opts into the compatibility adapter explicitly."""
+
+    return LegacyRetrieverAdapter(library, index)
 
 
 class FakeModel:
@@ -68,8 +74,10 @@ class FakeModel:
 def test_generate_full_pipeline_without_writeback(tmp_path: Path) -> None:
     library, index = make_library(tmp_path)
     model = FakeModel()
+    retriever = _legacy_retriever(library, index)
     result = generate({"story_id": "demo", "outline": "甲把信交给乙。"}, model,
-                      library_root=library, index_root=index, output_root=tmp_path / "outputs")
+                      library_root=library, index_root=index, output_root=tmp_path / "outputs",
+                      retriever=retriever)
     assert result.status == "pass"
     assert result.text.startswith("甲把信")
     assert model.calls == ["normalize", "decide_behavior", "derive_result", "render_prose", "validate"]
@@ -79,8 +87,10 @@ def test_generate_full_pipeline_without_writeback(tmp_path: Path) -> None:
 
 def test_missing_preferences_requests_bootstrap(tmp_path: Path) -> None:
     library, index = make_library(tmp_path, preferences=None)
+    retriever = _legacy_retriever(library, index)
     try:
-        generate({"story_id": "demo", "outline": "写一章"}, FakeModel(), library_root=library, index_root=index)
+        generate({"story_id": "demo", "outline": "写一章"}, FakeModel(), library_root=library,
+                 index_root=index, retriever=retriever)
     except PreferenceRequired as exc:
         assert exc.path.name == "author-preferences.txt"
     else:
@@ -90,8 +100,10 @@ def test_missing_preferences_requests_bootstrap(tmp_path: Path) -> None:
 def test_reference_profile_and_polish_are_after_scene_semantics(tmp_path: Path) -> None:
     library, index = make_library(tmp_path)
     model = FakeModel()
+    retriever = _legacy_retriever(library, index)
     generate({"story_id": "demo", "outline": "交信", "references": ["范文"]}, model,
-             library_root=library, index_root=index, output_root=tmp_path / "outputs")
+             library_root=library, index_root=index, output_root=tmp_path / "outputs",
+             retriever=retriever)
     assert model.calls.index("reference_profile") < model.calls.index("decide_behavior")
     assert model.calls.index("render_prose") < model.calls.index("polish")
 
@@ -107,8 +119,9 @@ def test_preferences_sections_are_parsed(tmp_path: Path) -> None:
 def test_repairs_at_most_three_then_requests_guidance(tmp_path: Path) -> None:
     library, index = make_library(tmp_path)
     model = FakeModel(repair_until=99)
+    retriever = _legacy_retriever(library, index)
     result = generate({"story_id": "demo", "outline": "交信"}, model, library_root=library,
-                      index_root=index, output_root=tmp_path / "outputs")
+                      index_root=index, output_root=tmp_path / "outputs", retriever=retriever)
     assert result.status == "user_guidance_required"
     assert result.attempts == 3
     assert model.calls.count("repair") == 3
@@ -163,8 +176,10 @@ def test_active_feedback_reaches_rendering_but_not_cpm(tmp_path: Path) -> None:
             return super().__call__(stage, payload)
 
     model = FeedbackModel()
+    retriever = _legacy_retriever(library, index)
     generate({"story_id": "demo", "outline": "LETTER-FEEDBACK-921 甲交出信"}, model,
-             library_root=library, index_root=index, output_root=tmp_path / "outputs")
+             library_root=library, index_root=index, output_root=tmp_path / "outputs",
+             retriever=retriever)
     assert "writing_feedback" not in model.payloads["decide_behavior"][0]
     assert model.payloads["render_prose"][0]["writing_feedback"]
 
@@ -180,7 +195,8 @@ def test_structured_author_events_survive_bad_normalizer(tmp_path: Path) -> None
         {"event": "第一件事", "event_id": "one"}, {"event": "第二件事", "event_id": "two"}
     ]}}
     model = BadNormalizer()
-    result = generate(request, model, library_root=library, index_root=index, output_root=tmp_path / "outputs")
+    result = generate(request, model, library_root=library, index_root=index, output_root=tmp_path / "outputs",
+                      retriever=_legacy_retriever(library, index))
     assert [item.event_id for item in result.events] == ["one", "two"]
 
 
@@ -206,7 +222,8 @@ def test_polish_without_semantic_envelope_is_rejected(tmp_path: Path) -> None:
                 return {"text": "硬事件被删掉了。"}
             return super().__call__(stage, payload)
     result = generate({"story_id": "demo", "outline": "交信", "references": ["范文"]}, BadPolisher(),
-                      library_root=library, index_root=index, output_root=tmp_path / "outputs")
+                      library_root=library, index_root=index, output_root=tmp_path / "outputs",
+                      retriever=_legacy_retriever(library, index))
     assert result.text == "甲把信递给乙，乙拿到信。"
     assert result.state is not None
 
@@ -221,7 +238,8 @@ def test_forged_polish_evidence_is_rejected(tmp_path: Path) -> None:
                         "event_evidence": {event_id: {"excerpt": "硬事件已被删除。", "actor": "甲", "result": "乙拿到信"}}}
             return super().__call__(stage, payload)
     result = generate({"story_id": "demo", "outline": "交信", "references": ["范文"]}, ForgedPolisher(),
-                      library_root=library, index_root=index, output_root=tmp_path / "outputs")
+                      library_root=library, index_root=index, output_root=tmp_path / "outputs",
+                      retriever=_legacy_retriever(library, index))
     assert result.text == "甲把信递给乙，乙拿到信。"
 
 
@@ -238,7 +256,8 @@ def test_negated_polish_cannot_replace_committed_event_text(tmp_path: Path) -> N
             return super().__call__(stage, payload)
 
     result = generate({"story_id": "demo", "outline": "交信", "references": ["范文"]}, NegatingPolisher(),
-                      library_root=library, index_root=index, output_root=tmp_path / "outputs")
+                      library_root=library, index_root=index, output_root=tmp_path / "outputs",
+                      retriever=_legacy_retriever(library, index))
     assert result.text == "甲把信递给乙，乙拿到信。"
 
 
@@ -254,7 +273,8 @@ def test_author_length_reaches_render_without_expansion_point(tmp_path: Path) ->
             return super().__call__(stage, payload)
 
     generate({"story_id": "demo", "outline": "交信", "length": {"target": 1200}}, LengthAwareModel(),
-             library_root=library, index_root=index, output_root=tmp_path / "outputs")
+             library_root=library, index_root=index, output_root=tmp_path / "outputs",
+             retriever=_legacy_retriever(library, index))
 
 
 def test_polish_cannot_negate_anchor_or_copy_reference_surface(tmp_path: Path) -> None:
@@ -276,10 +296,11 @@ def test_polish_cannot_negate_anchor_or_copy_reference_surface(tmp_path: Path) -
                 return {"capabilities": ["自然对白"], "forbidden_surface_copy": [secret]}
             return super().__call__(stage, payload)
 
+    retriever = _legacy_retriever(library, index)
     for suffix in ("但这一切根本没有发生，只是传闻。", secret):
         result = generate({"story_id": "demo", "outline": "交信", "references": [secret]}, UnsafePolisher(suffix),
                           library_root=library, index_root=index, output_root=tmp_path / "outputs",
-                          task_id=suffix[:3])
+                          task_id=suffix[:3], retriever=retriever)
         assert result.text == "甲把信递给乙，乙拿到信。"
         saved = Path(result.extensions["runtime_dir"], "references.json").read_text(encoding="utf-8")
         assert secret not in saved

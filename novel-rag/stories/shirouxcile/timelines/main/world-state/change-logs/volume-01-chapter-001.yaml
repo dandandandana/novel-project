@@ -1,0 +1,17 @@
+metadata:
+  document_id: world-state-shirouxcile-change-v01-c001-v1.0
+  story_id: shirouxcile
+  timeline_id: main
+  document_type: world_state
+  title: 第一卷第一章世界状态变化
+  version: '1.0'
+  status: canon
+  effective_at: volume-01-chapter-001
+  supersedes: null
+  source_file: D:\Novel 1\Novel\outputs\shirouXcile_第一章_新生回去_强化版.txt
+changes:
+- category: chapter_001_outcome
+  before: null
+  after: world-state-shirouxcile-current-v1.0
+  cause: 第一章确认的罗亚终结、饭馆经营与安翰斯追踪任务
+  evidence: history-shirouxcile-v01-c001-s001-v1.0 to history-shirouxcile-v01-c001-s007-v1.0

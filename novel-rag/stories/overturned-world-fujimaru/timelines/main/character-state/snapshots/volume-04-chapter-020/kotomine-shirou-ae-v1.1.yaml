@@ -1,0 +1,109 @@
+metadata:
+  document_id: state-current-kotomine-shirou-ae-v1.1
+  story_id: overturned-world-fujimaru
+  timeline_id: main
+  document_type: character_state
+  title: 第四卷第17章末状态快照-言峰士郎（AE）
+  character_id: kotomine-shirou-ae
+  variant_id: kotomine-shirou-ae-main
+  snapshot_type: snapshot
+  effective_at: volume-04-chapter-017
+  last_updated: '2026-07-18'
+  version: '1.1'
+  status: archived
+  supersedes: state-current-kotomine-shirou-ae-v1.0
+  source_file: D:\Novel\outputs\第四卷_第15章_重写.txt; D:\Novel\outputs\第四卷_第16章_重写.txt; D:\Novel\outputs\第四卷_第17章_重写.txt
+character_state:
+  current_position:
+    location: 伊耶那岐宫废墟
+    companions:
+    - 阿尔托莉雅·潘德拉贡 Alter
+    faction: 迦勒底阶段性协同行动方
+  physical:
+    health: 重伤但存活
+    injuries:
+    - 下颌骨裂
+    - 右耳失聪
+    - 左侧两根肋骨骨折
+    - 最终宝具后双手暂时无法握物
+    fatigue: 持续近战与宝具解放后的重度消耗
+    temporary_conditions:
+    - 双手暂时无法握物
+    permanent_changes: []
+  mental:
+    dominant_emotions:
+    - 不耐烦
+    - 放松一瞬
+    - 警惕
+    current_pressure:
+    - 重伤
+    - 特异点坐标偏移
+    desires:
+    - 确认阿尔托莉雅状态并等待新异常
+    fears: []
+    unresolved_conflicts: []
+    behavior_effects:
+    - 即使仰面倒地仍以刻薄对话确认彼此存活
+  knowledge:
+    known:
+    - 十二秒窗口内的主炮轴线已经清空
+    - 弥勒已经死亡，金地封锁解除
+    - 特异点坐标正在偏移
+    unknown:
+    - 神琦灰的完整计划
+    - 跨界来者身份
+    - 特异点偏移终点
+    mistaken_beliefs: []
+    suspicions: []
+    secrets_held: []
+  goals:
+    immediate:
+    - 稳定伤势并确认阿尔托莉雅存活
+    short_term:
+    - 观察特异点异常并准备再次行动
+    long_term:
+    - 修复特异点并返回正常人理
+    priorities:
+    - 同伴生存
+    - 确认特异点异常
+    obstacles:
+    - 双手无法握物
+    - 右耳失聪
+    - 肋骨骨折
+  relationships:
+  - target_character: artoria-pendragon-alter
+    relationship_type: 父女式协同行动者
+    trust: 高于口头表现
+    dependence: 战斗协作
+    hostility: 口头刻薄，无实质敌意
+    current_attitude: 以互相挖苦确认对方仍然存活
+    unresolved_issues: []
+    recent_change: 共同完成主炮疏散、近战压制与最终宝具对轰
+  abilities:
+    available:
+    - 无限剑制
+    - 天丛云村正·伪
+    unavailable: []
+    newly_acquired: []
+    consumed_resources: []
+    active_costs:
+    - 天丛云村正·伪已经崩散
+    - 双手暂时无法握物
+  inventory:
+    carried: []
+    lost: []
+    damaged:
+    - 投影黑刃与伪天丛云均已崩散
+  narrative:
+    current_arc: 日本下篇：伊耶那岐金地终战后
+    completed_changes:
+    - 完成主炮轴线疏散
+    - 参与人形弥勒近战
+    - 解放天丛云村正·伪
+    unresolved_flags:
+    - 神琦灰完整计划
+    - 伤势恢复
+    - 坐标异常
+    active_promises: []
+    future_pressure:
+    - 终战后短期失去持械能力

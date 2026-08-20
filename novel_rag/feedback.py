@@ -243,6 +243,7 @@ def create_feedback(
     version: str = "1.0",
     supersedes: str | Sequence[str] | None = None,
     document_family: str | None = None,
+    coordinator: Any | None = None,
 ) -> FeedbackResult:
     documents = _load_story_documents(library_root, story_id, timeline_id)
     runtime_ref, history_ref, normalized_states = _validate_bindings(
@@ -267,7 +268,8 @@ def create_feedback(
     result = _import_text(text, source_path=Path("<feedback>"), library_root=library_root,
                           index_root=index_root, story_id=story_id, timeline_id=timeline_id,
                           expected_type="feedback", version=version,
-                          supersedes=previous, document_family=family)
+                          supersedes=previous, document_family=family,
+                          coordinator=coordinator)
     return _result(result)
 
 
@@ -326,6 +328,7 @@ def resolve_feedback(
     resolution: str,
     version: str,
     supersedes: str | Sequence[str] | None = None,
+    coordinator: Any | None = None,
 ) -> FeedbackResult:
     documents = _load_story_documents(library_root, story_id, timeline_id)
     source = next((item for item in documents if item.document_id == feedback_id), None)
@@ -383,7 +386,8 @@ def resolve_feedback(
     result = _import_text(text, source_path=source.path, library_root=library_root,
                           index_root=index_root, story_id=story_id, timeline_id=timeline_id,
                           expected_type="feedback", version=version,
-                          supersedes=previous, document_family=family)
+                          supersedes=previous, document_family=family,
+                          coordinator=coordinator)
     return FeedbackResult(
         status="resolved" if result.status == "imported" else result.status,
         path=result.path,

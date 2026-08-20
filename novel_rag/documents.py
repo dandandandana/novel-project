@@ -14,6 +14,7 @@ from .config import (
     MODULE_TYPES,
     REQUIRED_METADATA,
     STATUSES,
+    validate_summary_metadata,
 )
 from .layout import (
     SHARED_STORY_ID,
@@ -104,6 +105,7 @@ def validate_document(document: RagDocument) -> list[str]:
             errors.append("character_state 必须包含 metadata.character_id")
         if not metadata.get("variant_id"):
             errors.append("character_state 必须包含 metadata.variant_id")
+    errors.extend(validate_summary_metadata(metadata))
     return errors
 
 
@@ -157,16 +159,31 @@ def legacy_document_directories(library_root: Path) -> list[Path]:
 
 
 def registry_values(library_root: Path) -> tuple[set[str], set[tuple[str, str]]]:
-    stories_data = _read_yaml(library_root / "registry" / "stories.yaml")
-    stories = {str(item["story_id"]) for item in stories_data.get("stories", []) if item.get("story_id")}
+    """Return registered story/timeline identifiers during migration.
+
+    This is a compatibility helper with no internal callers.  Keep its old
+    return shape, but resolve per-story registry roots through the catalog so
+    target-layout files take precedence in the same way as service callers.
+    New code should use :mod:`novel_rag.service` validation/catalog APIs.
+    """
+
+    from .catalog.paths import story_registry_roots
+
+    stories = set(registered_story_ids(library_root))
     timelines: set[tuple[str, str]] = set()
     for story_id in stories:
-        timelines_data = _read_yaml(story_root(library_root, story_id) / "registry" / "timelines.yaml")
-        timelines.update(
-            (str(item["story_id"]), str(item["timeline_id"]))
-            for item in timelines_data.get("timelines", [])
-            if item.get("story_id") and item.get("timeline_id")
-        )
+        for registry in story_registry_roots(library_root, story_id):
+            timelines_data = _read_yaml(registry / "timelines.yaml")
+            rows = timelines_data.get("timelines", [])
+            if not isinstance(rows, list):
+                continue
+            timelines.update(
+                (str(item["story_id"]), str(item["timeline_id"]))
+                for item in rows
+                if isinstance(item, dict)
+                and item.get("story_id")
+                and item.get("timeline_id")
+            )
     timelines.add((SHARED_STORY_ID, SHARED_TIMELINE_ID))
     return stories, timelines
 

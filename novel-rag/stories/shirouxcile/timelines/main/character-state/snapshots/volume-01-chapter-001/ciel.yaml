@@ -1,0 +1,125 @@
+metadata:
+  document_id: state-current-shirouxcile-ciel-v1.0
+  story_id: shirouxcile
+  timeline_id: main
+  document_type: character_state
+  title: 当前状态-希耶尔
+  character_id: ciel
+  variant_id: ciel-main
+  snapshot_type: snapshot
+  effective_at: volume-01-chapter-001
+  last_updated: '2026-08-09'
+  version: '1.0'
+  status: archived
+  supersedes: null
+  source_file: D:\Novel 1\Novel\outputs\shirouXcile_第一章_新生回去_强化版.txt
+character_state:
+  current_position:
+    location: 从法国咖喱饭馆出发，乘夜车前往安翰斯最后活动的法国东部区域
+    companions: []
+    faction: 埋葬机关能力复核中的前第七位代行者／咖喱饭馆店主
+  physical:
+    health: 当前无明确伤势，身体按普通人的速度愈合
+    injuries: []
+    fatigue: 可正常行动
+    temporary_conditions: []
+    permanent_changes:
+    - 罗亚彻底死亡后，世界修正式不死性永久消失，致命伤不会再恢复
+  mental:
+    dominant_emotions:
+    - 重新行动带来的熟悉感
+    - 对未来方向仍不确定
+    - 对饭馆与日常生活的真实留恋
+    current_pressure:
+    - 必须以会死亡的身体重新调整战法
+    - 需通过安翰斯任务证明当前能力
+    desires:
+    - 完成任务并活着回来
+    - 保留咖喱饭馆与普通生活
+    - 找到不由罗亚或任务替自己规定的方向
+    fears:
+    - 重新把全部人生交给任务
+    - 仍会本能地把自身死亡当作战术成本
+    unresolved_conflicts:
+    - 喜欢日常，却仍更熟悉危险与明确目标
+    - 愿意活下去，却尚未回答以后想怎样生活
+    behavior_effects:
+    - 会主动评估 mortal 身体的风险
+    - 仍下意识观察出口、异常与潜在死徒活动
+  knowledge:
+    known:
+    - 罗亚已经彻底死亡，自己失去不死性
+    - 安翰斯曾夺走并非法改造圣葬炮典
+    - 安翰斯三天前在法国东部活动并正在追踪另一名高阶死徒
+    - 沿安翰斯路线发生的失踪案更可能由其追踪目标造成
+    - 第七圣典可在正式申请后约十二小时获得支援
+    unknown:
+    - 安翰斯正在追踪的高阶死徒是奥尔菲斯·莫伊拉
+    - 卫宫士郎正与安翰斯暂时同行
+    - 安翰斯下一步会转移到马耳他
+    mistaken_beliefs: []
+    suspicions:
+    - 高阶死徒可能正在减速或建立固定据点
+    secrets_held:
+    - 自己恢复行动的深层理由是尚未学会为没有任务的人生选择方向
+  goals:
+    immediate:
+    - 追踪安翰斯
+    - 确认失踪案源头
+    - 回收圣葬炮典
+    short_term:
+    - 完成埋葬机关能力复核
+    - 在失去不死性后建立新的战斗方式
+    - 保持饭馆正常经营
+    long_term:
+    - 寻找属于希耶尔自己的未来
+    - 在职责与普通生活之间作出持续而非一次性的选择
+    priorities:
+    - 阻止无辜者继续失踪
+    - 活着完成任务
+    - 不抛弃已经建立的日常
+    obstacles:
+    - 安翰斯与未知高阶死徒的双重风险
+    - 第七圣典目前未随身携带
+    - 自身舍身战斗习惯
+  relationships:
+  - 纳鲁巴列克：批准能力复核并下达安翰斯任务，双方熟悉且会以挖苦掩饰关心
+  - 萨米尔：饭馆厨师与代理经营者，能以打趣直指希耶尔的危险习惯；工资提高两成
+  - 安翰斯：当前处决目标与偷走圣葬炮典的小偷，希耶尔拥有明确公私敌意
+  abilities:
+    available:
+    - 黑键
+    - 原理血戒与大型术式的使用知识
+    - 对死徒专业猎杀技术
+    - 埋葬机关战斗经验
+    unavailable:
+    - 第七圣典未随身携带，仍封存在机关武装库
+    newly_acquired: []
+    consumed_resources: []
+    active_costs:
+    - 任何致命伤都将永久致死，不能再以死亡换取攻击距离
+  inventory:
+    carried:
+    - 一束黑键
+    - 加密电话
+    - 两套便于行动的衣服
+    - 空白笔记
+    - 咖喱饭馆钥匙
+    lost: []
+    damaged: []
+  narrative:
+    current_arc: 罗亚终结后的新生与安翰斯追捕任务
+    completed_changes:
+    - 接受自己已成为会正常死亡的人
+    - 建立并真心喜欢普通生活
+    - 选择恢复行动但没有卖掉饭馆
+    unresolved_flags:
+    - 归队资格仍待任务完成后确认
+    - 安翰斯与失踪案目标的真实位置
+    - 如何同时保留日常与战斗生活
+    active_promises:
+    - 每周查看饭馆账目
+    - 尽量活着回来
+    future_pressure:
+    - 追踪将把她带向安翰斯、卫宫士郎与原理Fate
+    - 失去不死性后的舍身惯性会在实战中暴露

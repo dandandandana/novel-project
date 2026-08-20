@@ -23,14 +23,62 @@ def build_parser() -> argparse.ArgumentParser:
         command_init_preferences, command_confirm, command_state_review,
         command_state_approve, command_state_reject, command_import_rag,
         command_import_outline, command_feedback_create, command_feedback_list,
-        command_feedback_resolve, command_api_config, command_tui,
+        command_feedback_resolve, command_api_config, command_tui, command_doctor,
+        command_summary, command_pending,
     )
 
     validate = subparsers.add_parser("validate", help="校验注册表、元数据和引用")
     validate.add_argument("--story", help="只加载指定小说与共享系统层；注册表结构仍全量校验")
     validate.set_defaults(func=command_validate)
 
+    doctor = subparsers.add_parser(
+        "doctor", help="检查安装所需的 Python/SQLite/FTS5/trigram 能力"
+    )
+    doctor.set_defaults(func=command_doctor)
+
+    summary = subparsers.add_parser(
+        "summary", help="查看、编辑或写入 timeline 摘要 YAML"
+    )
+    summary.add_argument("--story", required=True)
+    summary.add_argument("--timeline", default="main")
+    summary_actions = summary.add_subparsers(dest="summary_action", required=True)
+    summary_list = summary_actions.add_parser("list", help="列出当前 timeline 摘要")
+    summary_list.set_defaults(func=command_summary)
+    summary_show = summary_actions.add_parser("show", help="显示一个摘要")
+    summary_show.add_argument("--document-id", required=True)
+    summary_show.set_defaults(func=command_summary)
+
+    def _summary_content_arguments(parser: argparse.ArgumentParser) -> None:
+        content = parser.add_mutually_exclusive_group(required=True)
+        content.add_argument("--content", help="摘要正文")
+        content.add_argument("--content-file", help="UTF-8 摘要正文文件")
+
+    summary_edit = summary_actions.add_parser("edit", help="以 expected revision 编辑摘要")
+    summary_edit.add_argument("--document-id", required=True)
+    summary_edit.add_argument("--expected-revision", type=int, required=True)
+    _summary_content_arguments(summary_edit)
+    summary_edit.set_defaults(func=command_summary)
+
+    summary_ai = summary_actions.add_parser("write-ai", help="写入无需批准的 AI 摘要")
+    summary_ai.add_argument("--path", required=True, help="目标 summaries 下的 YAML 文件名或路径")
+    summary_ai.add_argument("--document-id")
+    summary_ai.add_argument("--source-fingerprint")
+    summary_ai.add_argument("--document-type", default="chapter-summary")
+    summary_ai.add_argument("--generated-by", default="ai")
+    _summary_content_arguments(summary_ai)
+    summary_ai.set_defaults(func=command_summary)
+
+    pending = subparsers.add_parser("pending", help="查看或重试待提升图")
+    pending_actions = pending.add_subparsers(dest="pending_action", required=True)
+    pending_list = pending_actions.add_parser("list", help="列出库内 pending manifest")
+    pending_list.set_defaults(func=command_pending)
+    pending_retry = pending_actions.add_parser("retry", help="重试所有可恢复的 pending 图提升")
+    pending_retry.set_defaults(func=command_pending)
+
     index = subparsers.add_parser("index", help="校验并重建检索索引")
+    index.add_argument("--story", help="只重建指定 story 的图")
+    index.add_argument("--timeline", help="与 --story 一起只重建指定 timeline 图")
+    index.add_argument("--shared", action="store_true", help="只重建 shared.db")
     index.set_defaults(func=command_index)
 
     search = subparsers.add_parser("search", help="在指定作品和世界线中检索")
@@ -41,6 +89,7 @@ def build_parser() -> argparse.ArgumentParser:
     search.add_argument("--status", action="append", help="默认仅 active/canon；显式指定才检索其他状态")
     search.add_argument("--limit", type=int, default=6)
     search.add_argument("--no-shared", action="store_true", help="仅检索小说隔离索引，不注入共享系统层")
+    search.add_argument("--legacy", action="store_true", help="显式读取迁移期旧 stories/<story>.db 索引")
     search.set_defaults(func=command_search)
 
     list_stories = subparsers.add_parser("list-stories", help="列出已注册的隔离小说")
@@ -68,6 +117,7 @@ def build_parser() -> argparse.ArgumentParser:
     generate_parser.add_argument("--expand-at", action="append", help="不足时优先扩写的位置")
     generate_parser.add_argument("--output-root", help="运行时输出根目录")
     generate_parser.add_argument("--task-id", default="generation")
+    generate_parser.add_argument("--legacy", action="store_true", help="显式使用迁移期 YAML 兼容检索")
     generate_parser.set_defaults(func=command_generate)
 
     continue_parser = subparsers.add_parser("continue", help="为需要作者指导的未确认任务创建安全续作")

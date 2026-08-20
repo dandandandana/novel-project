@@ -12,17 +12,26 @@ novel-rag/
 │   ├── audit/ style-audit/ templates/
 │   └── registry/                     # 共享模块默认值与版本表
 ├── stories/<story_id>/               # 某一部小说的独立资料层
-│   ├── canon/ history/ outline/
-│   ├── character-state/ world-state/ feedback/
-│   ├── registry/                     # 本小说世界线、角色、版本与模块映射
-│   ├── system-overrides/             # 必要时覆盖共享系统模块
-│   └── retrieval-tests.yaml
+│   ├── common/                       # 小说级共享资料与 registry
+│   │   ├── canon/
+│   │   └── registry/                 # timelines、version-map 等
+│   └── timelines/<timeline_id>/      # 按世界线隔离的资料
+│       ├── canon/ history/ outline/
+│       ├── character-state/ world-state/ feedback/ summaries/
+│       ├── registry/                 # 当前世界线的 module-map
+│       ├── system-overrides/         # 必要时覆盖共享系统模块
+│       └── retrieval-tests.yaml
 └── index/
     ├── shared.db
-    └── stories/<story_id>.db
+    └── graphs/<story_id>/<timeline_id>.db
 ```
 
-完整边界与恢复说明见 [多小说隔离架构](novel-rag/ARCHITECTURE.md)。
+canonical GraphKey 图只写入 `index/graphs/<story_id>/<timeline_id>.db`；共享系统仍使用
+`index/shared.db`。迁移期间保留旧的 `stories/<story_id>/...` 根布局和
+`index/stories/<story_id>.db`，它们只作为显式 legacy 兼容输入，不会被默认检索、覆盖、删除或移动。
+只有全部资料完成 GraphKey 迁移并通过验收后，才进入另行批准的归档门。
+
+完整边界与恢复说明见 [混合 GraphRAG 架构](docs/HYBRID_GRAPHRAG_ARCHITECTURE.md)。
 
 ## 快速开始
 
@@ -43,7 +52,9 @@ novel-rag validate --story second-novel
 novel-rag index
 ```
 
-新小说会得到独立目录、注册表、检索测试和系统覆盖目录，并默认继承 `shared/registry/module-defaults.yaml`。内容资料必须写入 `stories/second-novel/`，不能写到根目录或另一部小说下。
+新小说会得到 `common/`、`timelines/main/`、注册表、检索测试和系统覆盖目录，并默认继承
+`shared/registry/module-defaults.yaml`。内容资料必须写入对应的
+`stories/second-novel/timelines/<timeline_id>/`，不能写到根目录或另一部小说下。
 
 ## 查询
 
@@ -116,8 +127,9 @@ TUI 提供建书与作者偏好向导、生成草稿、任务冲突处理、作�
 ## 写入与回写
 
 - 全局规则、判断、生成、审计、文风模块：写入 `novel-rag/shared/`。
-- 人物、设定、前文、大纲与状态：写入 `novel-rag/stories/<story_id>/`。
-- 仅某部小说需要的系统规则：写入该小说的 `system-overrides/`。
+- 人物、设定、前文、大纲与状态：写入
+  `novel-rag/stories/<story_id>/timelines/<timeline_id>/`；小说级共享资料写入 `common/`。
+- 仅某部小说需要的系统规则：写入该世界线的 `system-overrides/`。
 - 章节正文只有在用户确认后才能进入 `history` 并推动 current 状态。
 
 具体顺序见 [章节确认工作流](novel-rag/WORKFLOW.md) 与 [add_rag 工作流](skills/add_rag.md)。
@@ -131,7 +143,7 @@ novel-rag index
 python scripts\run_retrieval_tests.py
 ```
 
-隔离版校验会拒绝旧版根目录资料、未注册小说目录、物理目录与 `metadata.story_id` 不一致、共享层混入人物/剧情资料，以及版本表跨小说引用。
+隔离版校验会拒绝未完成注册的目录、物理目录与 `metadata.story_id` 不一致、共享层混入人物/剧情资料，以及版本表跨小说引用；迁移期旧根资料只通过显式兼容入口读取。
 确认生成正文并写入正式 History：
 
 ```powershell

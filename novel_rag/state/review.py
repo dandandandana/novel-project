@@ -9,25 +9,23 @@ from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any, Callable, Iterable, Mapping
 
-from ..documents import read_yaml_mapping, registered_story_ids
+from ..documents import RagDocument, read_yaml_mapping, registered_story_ids
+from ..identity import GraphKey
+from ..mutations import ChangeSet, MutationCoordinator, fingerprint_file
 from .types import StateReviewError, StateProposalReview, StatePromotionResult
 from .helpers import (
     _assert_path_scope,
     _atomic_text,
-    _atomic_yaml,
-    _backup_path,
     _candidate_characters,
     _candidate_world,
     _canonical_character_patch,
     _canonical_world_patch,
     _check_callback,
-    _default_checks,
     _find_history,
     _make_character_documents,
     _make_world_documents,
     _persist_decision,
     _reject_conflicting_history_file,
-    _restore_files,
     _runtime_paths,
     _safe_id,
     _scope_values,
@@ -35,8 +33,53 @@ from .helpers import (
     _version_map_path,
     read_yaml_mapping,
 )
-from ..index import rebuild_isolated_indexes
+from ..documents import load_document, validate_document
 from ..service import load_valid_documents
+
+
+def _build_default_mutation_coordinator(
+    *,
+    library_root: Path,
+    index_root: Path,
+    story_id: str,
+    timeline_id: str,
+) -> Any:
+    """Load the application write composition root only when a write occurs."""
+
+    try:
+        from ..composition import build_mutation_coordinator
+    except (ImportError, AttributeError) as exc:
+        raise StateReviewError(
+            "默认 MutationCoordinator composition 不可用；"
+            "请注入 coordinator 或配置 novel_rag.composition.build_mutation_coordinator"
+        ) from exc
+    try:
+        coordinator = build_mutation_coordinator(
+            library_root=library_root,
+            index_directory=index_root,
+        )
+    except TypeError as first:
+        try:
+            coordinator = build_mutation_coordinator(
+                library_root=library_root,
+                index_root=index_root,
+                story_id=story_id,
+                timeline_id=timeline_id,
+            )
+        except TypeError:
+            try:
+                coordinator = build_mutation_coordinator(library_root, index_root, story_id, timeline_id)
+            except TypeError:
+                try:
+                    coordinator = build_mutation_coordinator(library_root, index_directory=index_root)
+                except TypeError:
+                    try:
+                        coordinator = build_mutation_coordinator(library_root, index_root)
+                    except TypeError:
+                        raise first
+    if not hasattr(coordinator, "commit"):
+        raise StateReviewError("build_mutation_coordinator 必须返回带 commit() 的对象")
+    return coordinator
 
 
 def inspect_state_proposal(runtime_dir: Path, *, library_root: Path | None = None) -> dict[str, Any]:
@@ -100,6 +143,7 @@ def approve_state_proposal(
     validator: Callable[..., Any] | None = None,
     indexer: Callable[..., Any] | None = None,
     retrieval: Callable[..., Any] | None = None,
+    coordinator: MutationCoordinator | Any | None = None,
     note: str = "",
 ) -> StatePromotionResult:
     """Approve and promote a confirmed proposal.
@@ -167,8 +211,9 @@ def approve_state_proposal(
                 snapshots.append((snapshot_path, snapshot))
             change_logs.append((change_path, change))
             document_ids.append(str(document["metadata"]["document_id"]))
-            version_map_updates[_version_map_path(library_root, story_id)] = _update_version_map(
-                version_map_updates.get(_version_map_path(library_root, story_id), read_yaml_mapping(_version_map_path(library_root, story_id)) if _version_map_path(library_root, story_id).exists() else {}),
+            version_map_path = _version_map_path(library_root, story_id, timeline_id)
+            version_map_updates[version_map_path] = _update_version_map(
+                version_map_updates.get(version_map_path, read_yaml_mapping(version_map_path) if version_map_path.exists() else {}),
                 f"state-current-{safe_character_id}", str(document["metadata"]["document_id"]),
                 str(document["metadata"].get("supersedes") or "") or None, reason,
             )
@@ -192,7 +237,7 @@ def approve_state_proposal(
                 snapshots.append((world_snapshot_path, world_snapshot))
             change_logs.append((world_change_path, world_change))
             document_ids.append(world_id)
-            map_path = _version_map_path(library_root, story_id)
+            map_path = _version_map_path(library_root, story_id, timeline_id)
             version_map_updates[map_path] = _update_version_map(
                 version_map_updates.get(map_path, read_yaml_mapping(map_path) if map_path.exists() else {}),
                 "world-state-current", world_id,
@@ -204,37 +249,146 @@ def approve_state_proposal(
 
     proposal_path = runtime / "state-writeback-proposal.json"
     _assert_path_scope(proposal_path, runtime, label="proposal")
+    if proposal_path.is_symlink():
+        raise StateReviewError("proposal 不能是符号链接")
     for path, value in [*snapshots, *change_logs]:
         _reject_conflicting_history_file(path, value)
-    backups: dict[Path, bytes | None] = {}
-    for path, _ in [*docs, *snapshots, *change_logs, *[(path, value) for path, value in version_map_updates.items()]]:
+    changes: dict[Path, Mapping[str, Any]] = {}
+    for path, value in [*docs, *snapshots, *change_logs, *[(path, value) for path, value in version_map_updates.items()]]:
         _assert_path_scope(path, library_root, label="state promotion target")
-        _backup_path(path, backups)
-    _backup_path(proposal_path, backups)
+        changes[path] = value
+
     retrieval_cases = 0
-    try:
-        for path, value in snapshots:
-            _atomic_yaml(path, value)
-        for path, value in change_logs:
-            _atomic_yaml(path, value)
+
+    def _legacy_validate(_staged: Any) -> None:
+        """Compatibility callbacks run as pre-commit validation only."""
+
+        _documents, corpus_issues = load_valid_documents(library_root)
+        if corpus_issues:
+            raise StateReviewError(
+                "状态晋升前 validate 失败: "
+                + "; ".join(issue.message for issue in corpus_issues[:8])
+            )
         for path, value in docs:
-            _atomic_yaml(path, value)
-            from ..documents import load_document, validate_document
-            errors = validate_document(load_document(path))
+            # Validate the exact value that will be committed without writing
+            # the target early; staged-file ownership remains with the
+            # MutationCoordinator.
+            if not isinstance(value, Mapping) or not isinstance(value.get("metadata"), Mapping):
+                raise StateReviewError(f"状态模板缺少 metadata: {path.name}")
+            body = {key: child for key, child in value.items() if key != "metadata"}
+            errors = validate_document(
+                RagDocument(path=path, metadata=dict(value["metadata"]), body=body)
+            )
             if errors:
                 raise StateReviewError(f"状态模板校验失败 {path.name}: {'; '.join(errors)}")
-        for path, value in version_map_updates.items():
-            _atomic_yaml(path, value)
-        if validator is None and indexer is None and retrieval is None:
-            retrieval_cases = _default_checks(library_root, index_root)
-        else:
-            validation_result = _check_callback(validator, library_root)
-            if isinstance(validation_result, (list, tuple)) and validation_result:
-                raise StateReviewError("状态晋升后 validate 失败: " + "; ".join(str(item) for item in validation_result[:8]))
-            _check_callback(indexer, library_root, index_root)
-            retrieval_result = _check_callback(retrieval, library_root, index_root)
-            if isinstance(retrieval_result, int):
-                retrieval_cases = retrieval_result
+        validation_result = _check_callback(validator, library_root)
+        if isinstance(validation_result, (list, tuple)) and validation_result:
+            raise StateReviewError(
+                "状态晋升后 validate 失败: "
+                + "; ".join(str(item) for item in validation_result[:8])
+            )
+        if validation_result is False:
+            raise StateReviewError("状态晋升后 validate 失败")
+        index_result = _check_callback(indexer, library_root, index_root)
+        if isinstance(index_result, (list, tuple)) and index_result:
+            raise StateReviewError(
+                "状态晋升后 index/build 失败: "
+                + "; ".join(str(item) for item in index_result[:8])
+            )
+        if index_result is False:
+            raise StateReviewError("状态晋升后 index/build 失败")
+        nonlocal_retrieval["value"] = _check_callback(retrieval, library_root, index_root)
+        if isinstance(nonlocal_retrieval["value"], (list, tuple)) and nonlocal_retrieval["value"]:
+            raise StateReviewError(
+                "状态晋升后 retrieval 失败: "
+                + "; ".join(str(item) for item in nonlocal_retrieval["value"][:8])
+            )
+        if nonlocal_retrieval["value"] is False:
+            raise StateReviewError("状态晋升后 retrieval 失败")
+
+    # Capture the source baseline before compatibility callbacks or the
+    # composition root can inspect/build anything.  External edits during
+    # validation must still be rejected by the coordinator.
+    expected_files = {path: fingerprint_file(path) for path in changes}
+    nonlocal_retrieval: dict[str, Any] = {"value": None}
+    active_coordinator = coordinator
+    if active_coordinator is None:
+        # Run legacy callbacks as compatibility validation hooks, then use the
+        # application composition root for the real staged graph transaction.
+        # No YAML-only coordinator is allowed on the default path.
+        _legacy_validate(None)
+        active_coordinator = _build_default_mutation_coordinator(
+            library_root=library_root,
+            index_root=index_root,
+            story_id=story_id,
+            timeline_id=timeline_id,
+        )
+        try:
+            graph_keys = (GraphKey(story_id, timeline_id),)
+        except (TypeError, ValueError) as exc:
+            raise StateReviewError(f"无法构造目标 GraphKey: {exc}") from exc
+    else:
+        try:
+            graph_keys = (GraphKey(story_id, timeline_id),)
+        except (TypeError, ValueError) as exc:
+            raise StateReviewError(f"无法构造目标 GraphKey: {exc}") from exc
+
+    change_set = ChangeSet(
+        changes=changes,
+        affected_graph_keys=graph_keys,
+        expected_file_fingerprints=expected_files,
+        change_id=writeback_id,
+        metadata={"operation": "state_promotion", "story_id": story_id, "timeline_id": timeline_id},
+    )
+    retrieval_cases = 0
+    try:
+        mutation = active_coordinator.commit(change_set)
+        if not hasattr(mutation, "yaml_committed"):
+            raise StateReviewError("MutationCoordinator.commit 未返回 MutationResult")
+        mutation_status = str(getattr(mutation, "status", "promoted") or "promoted")
+
+        def _result_items(value: Any) -> tuple[Any, ...]:
+            if not value:
+                return ()
+            if isinstance(value, (str, bytes)):
+                return (value,)
+            try:
+                return tuple(value)
+            except TypeError:
+                return (value,)
+
+        pending_results = _result_items(getattr(mutation, "pending", ()))
+        failed_results = _result_items(getattr(mutation, "failed", ()))
+        if mutation_status == "failed" or not bool(mutation.yaml_committed) or failed_results:
+            raise StateReviewError(
+                "状态晋升失败，YAML 未提交: " + (getattr(mutation, "error", None) or "unknown mutation failure")
+            )
+        retrieval_result = nonlocal_retrieval["value"]
+        if isinstance(retrieval_result, int) and not isinstance(retrieval_result, bool):
+            retrieval_cases = retrieval_result
+        if mutation_status == "pending" or pending_results:
+            proposal.update({
+                "status": "pending",
+                "decision": "approve",
+                "reviewed_at": datetime.now(timezone.utc).isoformat(),
+                "review_note": note,
+                "promoted_document_ids": document_ids,
+                "snapshot_paths": [str(path) for path, _ in snapshots],
+                "change_log_paths": [str(path) for path, _ in change_logs],
+                "skipped": skipped,
+                "retrieval_cases": retrieval_cases,
+                "mutation_status": mutation_status,
+                "mutation_error": "; ".join(str(getattr(item, "error", "") or "") for item in pending_results),
+                "evidence": {"history_path": str(history_path), "history_document_id": history.document_id},
+            })
+            _atomic_text(proposal_path, json.dumps(proposal, ensure_ascii=False, indent=2))
+            return StatePromotionResult(
+                status="pending", decision="approve", writeback_id=writeback_id,
+                document_ids=document_ids,
+                snapshot_paths=[str(path) for path, _ in snapshots],
+                change_log_paths=[str(path) for path, _ in change_logs],
+                skipped=skipped, retrieval_cases=retrieval_cases,
+            )
         proposal.update({
             "status": "promoted",
             "decision": "approve",
@@ -249,16 +403,9 @@ def approve_state_proposal(
         })
         _atomic_text(proposal_path, json.dumps(proposal, ensure_ascii=False, indent=2))
     except Exception as exc:
-        _restore_files(backups)
-        if validator is None and indexer is None and retrieval is None:
-            try:
-                documents, _ = load_valid_documents(library_root)
-                rebuild_isolated_indexes(index_root, documents, registered_story_ids(library_root))
-            except Exception:
-                pass
         if isinstance(exc, StateReviewError):
             raise
-        raise StateReviewError(f"状态晋升失败并已回滚: {exc}") from exc
+        raise StateReviewError(f"状态晋升失败: {exc}") from exc
     return StatePromotionResult(
         status="promoted", decision="approve", writeback_id=writeback_id,
         document_ids=document_ids,

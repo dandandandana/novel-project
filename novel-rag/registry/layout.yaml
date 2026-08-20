@@ -7,4 +7,10 @@ story_root: stories/<story_id>
 shared_root: shared
 index_layout:
   shared: index/shared.db
-  story: index/stories/<story_id>.db
+  story: index/graphs/<story_id>/<timeline_id>.db
+legacy_compatibility:
+  read_only: true
+  source_layout: stories/<story_id>/{canon,registry,history,...}
+  derived_indexes: index/stories/<story_id>.db
+  status: retained_until_graphkey_migration_acceptance
+  archive_policy: do_not_delete_or_move_during_compatibility

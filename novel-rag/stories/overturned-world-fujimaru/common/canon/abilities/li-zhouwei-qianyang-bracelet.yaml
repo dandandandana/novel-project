@@ -1,0 +1,55 @@
+{
+  "metadata": {
+    "document_id": "canon-ability-li-zhouwei-qianyang-bracelet-v1.0",
+    "story_id": "overturned-world-fujimaru",
+    "timeline_id": "main",
+    "document_type": "canon",
+    "title": "宝具设定-李周巍-乾阳镯",
+    "entity": "noble_phantasm",
+    "character_ids": [
+      "li-zhouwei"
+    ],
+    "event_tags": [
+      "乾阳镯",
+      "EX",
+      "noble_phantasm"
+    ],
+    "version": "1.0",
+    "status": "canon",
+    "canon_scope": "timeline",
+    "created_at": "2026-07-17",
+    "updated_at": "2026-07-17",
+    "supersedes": null,
+    "source_file": "user-message:2026-07-17/li-zhouwei-servant-profile"
+  },
+  "ability": {
+    "retrieval_key": "li_zhouwei_qianyang_bracelet",
+    "name": "乾阳镯",
+    "owner": "李周巍",
+    "owner_id": "li-zhouwei",
+    "rank": "EX",
+    "category": "noble_phantasm",
+    "type": "对人宝具 / 天道手铐",
+    "effect": "明阳真君赐予龙属的金色手镯；真名解放后，无论对手是谁、拥有何种抗性或回避手段，都必定陷入一瞬间的恍惚与停顿。",
+    "activation": "解放真名，以乾阳镯锁定目标。",
+    "range": "对人；具体距离未说明。",
+    "cost": "未说明。",
+    "limitations": [
+      "停顿极短。",
+      "重复使用、目标数量、冷却与是否需要先完成锁定未说明。"
+    ],
+    "failure_conditions": [],
+    "known_by": [
+      "李周巍"
+    ],
+    "visual_expression": "未说明。",
+    "narrative_function": [
+      "制造顶级交锋中必然成立的瞬时破绽。"
+    ],
+    "canon_notes": [],
+    "release_chant": [
+      "明阳赐镯，龙属伏膺——",
+      "乾阳镯——锁！"
+    ]
+  }
+}

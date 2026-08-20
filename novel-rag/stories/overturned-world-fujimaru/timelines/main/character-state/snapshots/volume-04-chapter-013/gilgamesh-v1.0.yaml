@@ -1,0 +1,84 @@
+metadata:
+  document_id: state-current-gilgamesh-v1.0
+  story_id: overturned-world-fujimaru
+  timeline_id: main
+  document_type: character_state
+  title: 第四卷第13章末状态快照-吉尔伽美什
+  character_id: gilgamesh
+  variant_id: gilgamesh-main
+  snapshot_type: snapshot
+  effective_at: volume-04-chapter-013
+  last_updated: '2026-07-14'
+  version: '1.0'
+  status: archived
+  supersedes: null
+  source_file: D:\Novel\outputs\第四卷_第11至13章_续写.txt
+character_state:
+  current_position:
+    location: 伊耶那岐金地东门九层阵地
+    companions:
+    - 杨浞
+    faction: 迦勒底协同行动方
+  physical:
+    health: 正文未明确异常
+    injuries: []
+    fatigue: 正文未明确
+    temporary_conditions: []
+    permanent_changes: []
+  mental:
+    dominant_emotions:
+    - 专注
+    current_pressure:
+    - 伊耶那岐金地决战已经开始
+    desires:
+    - 与杨浞协同牵制天照命世尊
+    fears: []
+    unresolved_conflicts: []
+    behavior_effects:
+    - 按三线作战计划执行当前任务
+  knowledge:
+    known:
+    - 三线作战计划已经启动
+    - 创造之禊祓处于自主闭锁状态
+    - 主炮只有一发且降格后窗口为十二秒
+    unknown:
+    - 终末人理圆满装置隐瞒的最终目的
+    - 创造之禊祓是否会同意协助
+    mistaken_beliefs: []
+    suspicions: []
+    secrets_held: []
+  goals:
+    immediate:
+    - 与杨浞协同牵制天照命世尊
+    short_term:
+    - 完成伊耶那岐金地决战中的本组任务
+    long_term:
+    - 修复特异点
+    priorities:
+    - 完成任务
+    - 同伴生存
+    obstacles:
+    - 天照命世尊
+    - 弥勒与九十六尊法相
+  relationships: []
+  abilities:
+    available: []
+    unavailable: []
+    newly_acquired: []
+    consumed_resources: []
+    active_costs: []
+  inventory:
+    carried: []
+    lost: []
+    damaged: []
+  narrative:
+    current_arc: 日本下篇：伊耶那岐金地决战
+    completed_changes:
+    - 完成战前部署并进入各自战位
+    unresolved_flags:
+    - 创造之禊祓尚未唤醒
+    - 主炮尚未发射
+    - 弥勒尚未降格
+    active_promises: []
+    future_pressure:
+    - 三线必须在十二秒窗口内完成衔接

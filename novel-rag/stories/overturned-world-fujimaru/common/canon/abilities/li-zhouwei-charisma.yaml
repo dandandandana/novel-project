@@ -1,0 +1,52 @@
+{
+  "metadata": {
+    "document_id": "canon-ability-li-zhouwei-charisma-v1.0",
+    "story_id": "overturned-world-fujimaru",
+    "timeline_id": "main",
+    "document_type": "canon",
+    "title": "能力设定-李周巍-领袖气质",
+    "entity": "ability",
+    "character_ids": [
+      "li-zhouwei"
+    ],
+    "event_tags": [
+      "领袖气质",
+      "EX",
+      "personal_skill"
+    ],
+    "version": "1.0",
+    "status": "canon",
+    "canon_scope": "timeline",
+    "created_at": "2026-07-17",
+    "updated_at": "2026-07-17",
+    "supersedes": null,
+    "source_file": "user-message:2026-07-17/li-zhouwei-servant-profile"
+  },
+  "ability": {
+    "retrieval_key": "li_zhouwei_charisma",
+    "name": "领袖气质",
+    "owner": "李周巍",
+    "owner_id": "li-zhouwei",
+    "rank": "EX",
+    "category": "personal_skill",
+    "type": "概念级王权辐射",
+    "effect": "明阳钟爱之人的帝王威压，对面对他的存在施加精神层面的威慑与信服；无足够抗性的女性角色会受到不自主的魅惑影响。",
+    "activation": "他人面对李周巍时被动发挥。",
+    "range": "具体距离未说明。",
+    "cost": "无已说明的主动消耗。",
+    "limitations": [
+      "作为从者技能时强度受职阶容器限制。",
+      "足够精神抗性可抵抗女性魅惑效果；抗性标准未说明。",
+      "不能把威慑与信服直接写成永久洗脑。"
+    ],
+    "failure_conditions": [],
+    "known_by": [
+      "李周巍"
+    ],
+    "visual_expression": "未说明。",
+    "narrative_function": [
+      "建立帝王威压、统率力与对特定对象的魅惑压力。"
+    ],
+    "canon_notes": []
+  }
+}

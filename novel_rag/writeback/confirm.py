@@ -1,32 +1,116 @@
 """Confirm a finished generation runtime into a canon History document.
 
 ``confirm_runtime`` is the only write path that migrates generated prose
-into the library.  It validates the runtime, writes the History document,
-rebuilds indexes, runs retrieval regression tests, and rolls everything
-back on failure.
+into the library.  It validates the runtime and delegates formal YAML
+commit, graph rebuild, and retrieval regression to an injected
+``MutationCoordinator``.
 """
 
 from __future__ import annotations
 
 import hashlib
 import json
+import os
 import shutil
 from pathlib import Path
+from typing import Any, Callable
 
 import yaml
 
 from ..documents import load_document, read_yaml_mapping, registered_story_ids, validate_document
-from ..index import rebuild_isolated_indexes
-from ..layout import story_root
+from ..identity import GraphKey
+from ..catalog.paths import story_catalog_paths, timeline_registry_path
+from ..mutations import ChangeSet, MutationCoordinator, fingerprint_file
+from ..retrieval import Retriever
 from ..service import load_valid_documents
 from .helpers import _atomic_text, _read_json, _retrieval_tests
 from .types import WritebackError, WritebackResult
 
 
+def _build_default_mutation_coordinator(
+    *,
+    library_root: Path,
+    index_root: Path,
+    story_id: str,
+    timeline_id: str,
+) -> Any:
+    """Load the application write composition root lazily for confirmation."""
+
+    try:
+        from ..composition import build_mutation_coordinator
+    except (ImportError, AttributeError) as exc:
+        raise WritebackError(
+            "默认 MutationCoordinator composition 不可用；"
+            "请注入 coordinator 或配置 novel_rag.composition.build_mutation_coordinator"
+        ) from exc
+    try:
+        coordinator = build_mutation_coordinator(
+            library_root=library_root,
+            index_directory=index_root,
+        )
+    except TypeError as first:
+        try:
+            coordinator = build_mutation_coordinator(
+                library_root=library_root,
+                index_root=index_root,
+                story_id=story_id,
+                timeline_id=timeline_id,
+            )
+        except TypeError:
+            try:
+                coordinator = build_mutation_coordinator(library_root, index_root, story_id, timeline_id)
+            except TypeError:
+                try:
+                    coordinator = build_mutation_coordinator(library_root, index_directory=index_root)
+                except TypeError:
+                    try:
+                        coordinator = build_mutation_coordinator(library_root, index_root)
+                    except TypeError:
+                        raise first
+    if not hasattr(coordinator, "commit"):
+        raise WritebackError("build_mutation_coordinator 必须返回带 commit() 的对象")
+    return coordinator
+
+
+def _timeline_content_root(
+    library_root: Path,
+    story_id: str,
+    timeline_id: str,
+) -> tuple[Path, Path, bool]:
+    """Return ``(content_root, story_root, is_target_layout)`` for writes.
+
+    A target story owns timeline content below ``timelines/<id>``.  A
+    legacy-only story has no target marker and keeps the old story-root
+    location as an explicit compatibility path.  The distinction is made
+    before any directory creation, so confirming a target story can never
+    silently recreate ``stories/<story>/history``.
+    """
+
+    try:
+        key = GraphKey(story_id, timeline_id)
+        catalog = story_catalog_paths(
+            library_root,
+            story_id,
+            default_timeline_id=key.timeline_id,
+        )
+    except (TypeError, ValueError) as exc:
+        raise WritebackError(f"无法构造目标 story/timeline: {exc}") from exc
+    story = catalog.story_root
+    target_layout = catalog.timelines_root.exists() or catalog.common_registry_root.exists()
+    if target_layout:
+        return catalog.timelines_root / key.timeline_id, story, True
+    return story, story, False
+
+
 def confirm_runtime(runtime_dir: Path, *, library_root: Path, index_root: Path | None = None,
                     confirmed: bool, volume: int, chapter: int, scene: int,
                     title: str = "", pov: str = "", character_ids: list[str] | None = None,
-                    location_ids: list[str] | None = None) -> WritebackResult:
+                    location_ids: list[str] | None = None,
+                    coordinator: MutationCoordinator | Any | None = None,
+                    validator: Callable[..., Any] | None = None,
+                    indexer: Callable[..., Any] | None = None,
+                    retrieval: Callable[..., Any] | None = None,
+                    retriever: Retriever | None = None) -> WritebackResult:
     if not confirmed:
         raise WritebackError("必须显式传入 --yes 确认正文")
     if volume < 0 or min(chapter, scene) < 1:
@@ -56,7 +140,7 @@ def confirm_runtime(runtime_dir: Path, *, library_root: Path, index_root: Path |
     if story_id not in registered_story_ids(library_root):
         raise WritebackError(f"未注册 story_id: {story_id}")
     try:
-        current_story_root = story_root(library_root, story_id)
+        current_story_root = story_catalog_paths(library_root, story_id).story_root
     except ValueError as exc:
         raise WritebackError(str(exc)) from exc
     workflow_index = runtime_dir.parts.index(".workflow")
@@ -65,7 +149,11 @@ def confirm_runtime(runtime_dir: Path, *, library_root: Path, index_root: Path |
     recorded_runtime = extensions.get("runtime_dir")
     if recorded_runtime and Path(str(recorded_runtime)).resolve() != runtime_dir:
         raise WritebackError("result.json 记录的运行时目录不一致")
-    timelines = read_yaml_mapping(library_root / "stories" / story_id / "registry" / "timelines.yaml")
+    try:
+        timeline_path = timeline_registry_path(library_root, story_id, required=True)
+    except (FileNotFoundError, TypeError, ValueError) as exc:
+        raise WritebackError(f"未找到 story 的 timeline registry: {story_id}: {exc}") from exc
+    timelines = read_yaml_mapping(timeline_path)
     if not any(str(item.get("story_id")) == story_id and str(item.get("timeline_id")) == timeline_id
                for item in timelines.get("timelines", [])):
         raise WritebackError(f"未注册 timeline_id: {timeline_id}")
@@ -119,21 +207,23 @@ def confirm_runtime(runtime_dir: Path, *, library_root: Path, index_root: Path |
     if not isinstance(outline, dict):
         raise WritebackError("contract.outline 格式错误")
     document_id = f"history-{story_id}-v{volume:02d}-c{chapter:03d}-s{scene:03d}-{final_hash[:8]}"
-    target = (current_story_root / "history" / f"volume-{volume:02d}"
+    content_root, scope_root, _target_layout = _timeline_content_root(
+        library_root, story_id, timeline_id
+    )
+    target = (content_root / "history" / f"volume-{volume:02d}"
               / f"chapter-{chapter:03d}" / f"scene-{scene:03d}.yaml")
-    history_root = current_story_root / "history"
+    history_root = content_root / "history"
     if history_root.exists() and history_root.is_symlink():
         raise WritebackError("History 根目录不能是符号链接")
     ancestor = target.parent
-    while not ancestor.exists() and ancestor != current_story_root:
+    while not ancestor.exists() and ancestor != scope_root:
         ancestor = ancestor.parent
     if ancestor.is_symlink():
         raise WritebackError("History 目标祖先不能是符号链接")
     try:
-        ancestor.resolve().relative_to(current_story_root.resolve())
+        ancestor.resolve().relative_to(scope_root.resolve())
     except ValueError as exc:
         raise WritebackError("History 目标祖先越出当前小说范围") from exc
-    target.parent.mkdir(parents=True, exist_ok=True)
     allowed_history = history_root.resolve()
     try:
         target.resolve().relative_to(allowed_history)
@@ -155,8 +245,9 @@ def confirm_runtime(runtime_dir: Path, *, library_root: Path, index_root: Path |
         "content": final_text,
     }
     rendered = yaml.safe_dump(history, allow_unicode=True, sort_keys=False, width=120)
-    staging = runtime_dir / "staging" / target.name
-    staging.parent.mkdir(parents=True, exist_ok=True)
+    staging_root = runtime_dir / "staging"
+    staging = staging_root / target.name
+    staging_root.mkdir(parents=True, exist_ok=True)
     try:
         staging.resolve().relative_to(runtime_dir)
     except ValueError as exc:
@@ -173,6 +264,7 @@ def confirm_runtime(runtime_dir: Path, *, library_root: Path, index_root: Path |
         status = "noop"
     else:
         status = "committed"
+    target_fingerprint = fingerprint_file(target)
     proposal = {"status": "needs_review", "writeback_id": writeback_id, "history_document_id": document_id,
                 "note": "仅供人工审核；本次 confirm 未更新 character/world current。",
                 "candidate_state": result.get("state"),
@@ -180,48 +272,156 @@ def confirm_runtime(runtime_dir: Path, *, library_root: Path, index_root: Path |
                                        for item in events]}
     proposal_path = runtime_dir / "state-writeback-proposal.json"
     result_path = runtime_dir / "result.json"
-    original_result = result_path.read_bytes()
-    created_history = False
-    confirmation = WritebackResult(status=status, writeback_id=writeback_id, document_ids=[document_id],
-                                   history_path=str(target), state_promoted=False, retrieval_cases=0)
+    if proposal_path.is_symlink() or result_path.is_symlink() or confirmation_path.is_symlink():
+        raise WritebackError("运行时确认文件不能是符号链接")
+    confirmation = WritebackResult(
+        status=status,
+        writeback_id=writeback_id,
+        document_ids=[document_id],
+        history_path=str(target),
+        state_promoted=False,
+        retrieval_cases=0,
+    )
+
+    # Legacy callbacks remain pre-commit validation hooks.  Formal YAML
+    # persistence and graph promotion are owned by MutationCoordinator.
+    retrieval_count = 0
+    if coordinator is None:
+        _documents, corpus_issues = load_valid_documents(library_root)
+        if corpus_issues:
+            raise WritebackError(
+                "知识库校验失败: " + "; ".join(issue.message for issue in corpus_issues[:5])
+            )
+        for callback, label, args in (
+            (validator, "validate", (library_root,)),
+            (indexer, "index/build", (library_root, index_root)),
+        ):
+            if callback is None:
+                continue
+            try:
+                callback_result = callback(*args)
+            except TypeError as first:
+                try:
+                    callback_result = callback()
+                except TypeError:
+                    raise first
+            if callback_result is False or (
+                isinstance(callback_result, (list, tuple)) and callback_result
+            ):
+                detail = (
+                    "; ".join(str(item) for item in callback_result[:8])
+                    if isinstance(callback_result, (list, tuple))
+                    else "callback returned false"
+                )
+                raise WritebackError(f"{label} 失败: {detail}")
+        if retrieval is not None:
+            try:
+                retrieval_result = retrieval(library_root, index_root)
+            except TypeError as first:
+                try:
+                    retrieval_result = retrieval()
+                except TypeError:
+                    raise first
+            if retrieval_result is False:
+                raise WritebackError("retrieval 失败")
+            if isinstance(retrieval_result, int) and not isinstance(retrieval_result, bool):
+                retrieval_count = retrieval_result
+        elif retriever is not None:
+            retrieval_count = _retrieval_tests(library_root, index_root, retriever=retriever)
+
+    result.setdefault("extensions", {})["confirmed"] = True
+    result["extensions"]["writeback_id"] = writeback_id
+    result["extensions"]["history_document_ids"] = [document_id]
+    result["extensions"]["final_sha256"] = final_hash
+    result["extensions"]["prose_migrated"] = True
+    result["text"] = ""
+    for event in result.get("events", []):
+        event["prose"] = ""
+    confirmation.retrieval_cases = retrieval_count
+    persisted_confirmation = {
+        name: getattr(confirmation, name) for name in WritebackResult.__dataclass_fields__
+    }
+    persisted_confirmation["status"] = "committed"
+    proposal_stage = staging_root / proposal_path.name
+    result_stage = staging_root / result_path.name
+    confirmation_stage = staging_root / confirmation_path.name
     try:
-        if status == "committed":
-            _atomic_text(target, rendered)
-            created_history = True
-        _atomic_text(proposal_path, json.dumps(proposal, ensure_ascii=False, indent=2))
-        documents, issues = load_valid_documents(library_root)
-        if issues:
-            raise WritebackError("知识库校验失败: " + "；".join(issue.message for issue in issues[:5]))
-        rebuild_isolated_indexes(index_root, documents, registered_story_ids(library_root))
-        retrieval_count = _retrieval_tests(library_root, index_root)
-        confirmation.retrieval_cases = retrieval_count
-        result.setdefault("extensions", {})["confirmed"] = True
-        result["extensions"]["writeback_id"] = writeback_id
-        result["extensions"]["history_document_ids"] = [document_id]
-        result["extensions"]["final_sha256"] = final_hash
-        result["extensions"]["prose_migrated"] = True
-        result["text"] = ""
-        for event in result.get("events", []):
-            event["prose"] = ""
-        _atomic_text(result_path, json.dumps(result, ensure_ascii=False, indent=2))
-        persisted = {name: getattr(confirmation, name) for name in WritebackResult.__dataclass_fields__}
-        persisted["status"] = "committed"
-        _atomic_text(confirmation_path, json.dumps(persisted, ensure_ascii=False, indent=2))
-    except Exception as exc:
-        if created_history and target.exists():
-            target.unlink()
-        result_path.write_bytes(original_result)
-        proposal_path.unlink(missing_ok=True)
-        confirmation_path.unlink(missing_ok=True)
-        shutil.rmtree(runtime_dir / "staging", ignore_errors=True)
+        # Preflight runtime metadata before any formal YAML is committed.
+        # This also preserves the old staging/symlink safety boundary.
+        _atomic_text(proposal_stage, json.dumps(proposal, ensure_ascii=False, indent=2))
+        _atomic_text(result_stage, json.dumps(result, ensure_ascii=False, indent=2))
+        _atomic_text(confirmation_stage, json.dumps(persisted_confirmation, ensure_ascii=False, indent=2))
+
+        if coordinator is None:
+            active_coordinator = _build_default_mutation_coordinator(
+                library_root=library_root,
+                index_root=index_root,
+                story_id=story_id,
+                timeline_id=timeline_id,
+            )
+            graph_keys = (GraphKey(story_id, timeline_id),)
+        else:
+            try:
+                graph_keys = (GraphKey(story_id, timeline_id),)
+            except (TypeError, ValueError) as exc:
+                raise WritebackError(f"无法构造目标 GraphKey: {exc}") from exc
+            active_coordinator = coordinator
         try:
-            documents, _ = load_valid_documents(library_root)
-            rebuild_isolated_indexes(index_root, documents, registered_story_ids(library_root))
-        except Exception:
-            pass
+            change_set = ChangeSet(
+                changes={target: history},
+                affected_graph_keys=graph_keys,
+                expected_file_fingerprints={target: target_fingerprint},
+                change_id=writeback_id,
+                metadata={"operation": "confirm_runtime", "story_id": story_id, "timeline_id": timeline_id},
+            )
+            mutation = active_coordinator.commit(change_set)
+        except Exception as exc:
+            raise WritebackError(f"MutationCoordinator 提交失败: {exc}") from exc
+        if not hasattr(mutation, "yaml_committed"):
+            raise WritebackError("MutationCoordinator.commit 未返回 MutationResult")
+        mutation_status = str(getattr(mutation, "status", "promoted") or "promoted")
+
+        def _result_items(value: Any) -> tuple[Any, ...]:
+            if not value:
+                return ()
+            if isinstance(value, (str, bytes)):
+                return (value,)
+            try:
+                return tuple(value)
+            except TypeError:
+                return (value,)
+
+        pending_results = _result_items(getattr(mutation, "pending", ()))
+        failed_results = _result_items(getattr(mutation, "failed", ()))
+        if mutation_status == "failed" or not bool(mutation.yaml_committed) or failed_results:
+            raise WritebackError(
+                "回写失败，YAML 未提交: "
+                + (getattr(mutation, "error", None) or "unknown mutation failure")
+            )
+        if mutation_status == "pending" or pending_results:
+            proposal["status"] = "pending"
+            proposal["mutation_status"] = mutation_status
+            proposal["mutation_error"] = "; ".join(
+                str(getattr(item, "error", "") or "") for item in pending_results
+            )
+            _atomic_text(proposal_stage, json.dumps(proposal, ensure_ascii=False, indent=2))
+            os.replace(proposal_stage, proposal_path)
+            shutil.rmtree(staging_root, ignore_errors=True)
+            return WritebackResult(
+                status="pending", writeback_id=writeback_id, document_ids=[document_id],
+                history_path=str(target), state_promoted=False, retrieval_cases=retrieval_count,
+            )
+
+        os.replace(proposal_stage, proposal_path)
+        os.replace(result_stage, result_path)
+        os.replace(confirmation_stage, confirmation_path)
+    except Exception as exc:
+        # MutationCoordinator owns formal YAML rollback.  We only discard
+        # uncommitted runtime staging; no second restore implementation exists.
+        shutil.rmtree(staging_root, ignore_errors=True)
         if isinstance(exc, WritebackError):
             raise
-        raise WritebackError(f"回写失败并已回滚: {exc}") from exc
+        raise WritebackError(f"回写失败并已回滚未提交的变更: {exc}") from exc
 
     cleanup_targets = list(runtime_dir.glob("*.txt")) + list(runtime_dir.glob("audit-*.json"))
     cleanup_targets += [runtime_dir / "context.json", runtime_dir / "references.json"]

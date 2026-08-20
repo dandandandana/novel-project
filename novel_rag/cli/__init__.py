@@ -23,6 +23,9 @@ from .commands import (
     command_feedback_resolve,
     command_api_config,
     command_tui,
+    command_doctor,
+    command_summary,
+    command_pending,
 )
 from .helpers import _model_from_args, _paths, _add_model_arguments
 
@@ -51,6 +54,9 @@ __all__ = [
     "command_feedback_resolve",
     "command_api_config",
     "command_tui",
+    "command_doctor",
+    "command_summary",
+    "command_pending",
 ]
 
 
@@ -61,3 +67,7 @@ def main() -> int:
         sys.stdout.reconfigure(encoding="utf-8", errors="replace")
     args = build_parser().parse_args()
     return args.func(args)
+
+
+if __name__ == "__main__":  # python -m novel_rag.cli
+    raise SystemExit(main())

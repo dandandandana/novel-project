@@ -1,0 +1,21 @@
+metadata:
+  document_id: state-change-shirouxcile-enhance-v01-c002-c004-v1.0
+  story_id: shirouxcile
+  timeline_id: main
+  document_type: character_state
+  title: 第一卷第二至四章状态变化-enhance
+  character_id: enhance
+  variant_id: enhance-main
+  snapshot_type: change_log
+  effective_at: volume-01-chapter-004
+  last_updated: '2026-08-09'
+  version: '1.0'
+  status: canon
+  supersedes: null
+  source_file: D:\Novel 1\Novel\outputs\shirouXcile_part2_马耳他_情绪强化版.txt
+changes:
+- category: chapters_002_004_outcome
+  before: null
+  after: state-current-shirouxcile-enhance-v1.0
+  cause: 马耳他追踪、白石巷交战与Fate事件优先处置
+  evidence: history-shirouxcile-v01-c002-s001-v1.0 to history-shirouxcile-v01-c004-s008-v1.0

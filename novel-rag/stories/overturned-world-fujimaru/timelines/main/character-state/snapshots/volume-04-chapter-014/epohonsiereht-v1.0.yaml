@@ -1,0 +1,98 @@
+metadata:
+  document_id: state-current-epohonsiereht-v1.0
+  story_id: overturned-world-fujimaru
+  timeline_id: main
+  document_type: character_state
+  title: 第四卷第14章末状态快照-终末人理圆满机关
+  character_id: epohonsiereht
+  variant_id: epohonsiereht-main
+  snapshot_type: snapshot
+  effective_at: volume-04-chapter-010
+  last_updated: '2026-07-12'
+  version: '1.0'
+  status: archived
+  supersedes: null
+  source_file: D:\word2\五脏六腑彻底颠覆的世界由藤丸立香拯救-20260712.txt
+character_state:
+  current_position:
+    location: 伊耶那岐金地地下的未来文明舰桥
+    companions:
+    - 藤丸立香
+    - 言峰士郎
+    - 玛修·基列莱特
+    - 杨浞
+    faction: 迦勒底
+  physical:
+    health: 正文未明确
+    injuries: []
+    fatigue: 正文未明确
+    temporary_conditions: []
+    permanent_changes: []
+  mental:
+    dominant_emotions:
+    - 冷静
+    - 克制
+    current_pressure:
+    - 弥勒仍然存在
+    desires:
+    - 保存人类并让幸存者自行选择未来
+    fears:
+    - 人类再次因仰望星空而灭亡
+    unresolved_conflicts:
+    - 保存人类与限制人类未来之间的矛盾
+    behavior_effects:
+    - 与迦勒底达成阶段性合作
+  knowledge:
+    known:
+    - 未来文明与全人类意识数据
+    - 地下舰桥及主炮状态
+    - 弥勒与金地的情况
+    unknown: []
+    mistaken_beliefs: []
+    suspicions: []
+    secrets_held:
+    - 仍对藤丸立香一行隐瞒部分事项
+  goals:
+    immediate:
+    - 让迦勒底参与解决弥勒
+    short_term:
+    - 在弥勒被解决后让幸存人类自行选择
+    long_term:
+    - 保存人类文明及意识数据
+    priorities:
+    - 保存人类
+    obstacles:
+    - 弥勒
+    - 自身对人类未来的恐惧
+  relationships:
+  - target_character: fujimaru-ritsuka
+    relationship_type: 阶段性盟友
+    trust: 有限
+    dependence: 共同讨伐弥勒
+    hostility: 无
+    current_attitude: 合作但有所隐瞒
+    unresolved_issues:
+    - 圣杯归还条件
+    - 双方隐瞒事项
+    recent_change: 同意提供一次主炮火力及召唤阵
+  abilities:
+    available: []
+    unavailable: []
+    newly_acquired: []
+    consumed_resources: []
+    active_costs: []
+  inventory:
+    carried: []
+    lost: []
+    damaged: []
+  narrative:
+    current_arc: 日本下篇：讨伐弥勒前的战力部署
+    completed_changes:
+    - 与终末人理圆满装置达成阶段性合作
+    unresolved_flags:
+    - 弥勒尚未被讨伐
+    - 圣杯尚未回收
+    active_promises:
+    - 解决弥勒后由终末人理圆满装置归还圣杯
+    future_pressure:
+    - 即将展开讨伐弥勒的作战

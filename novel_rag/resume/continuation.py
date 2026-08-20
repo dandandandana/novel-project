@@ -15,6 +15,7 @@ from pathlib import Path
 from typing import Any, Mapping
 
 from ..generation import GenerationResult, Model, generate
+from ..retrieval import Retriever
 from .helpers import _default_child_task, _guidance_text, _read_object, _runtime_parts, _write_json
 from .types import ResumeError
 
@@ -28,6 +29,7 @@ def continue_generation(
     index_root: Path | None = None,
     output_root: Path | None = None,
     task_id: str | None = None,
+    retriever: Retriever | None = None,
 ) -> GenerationResult:
     """Create a child generation runtime using author guidance.
 
@@ -103,6 +105,7 @@ def continue_generation(
         index_root=Path(index_root) if index_root is not None else None,
         output_root=target_output,
         task_id=child_task_id,
+        retriever=retriever,
     )
     child_dir = Path(str(child.extensions.get("runtime_dir") or "")).resolve()
     if not child_dir.exists() or child_dir.parent.name != story_id:
@@ -151,7 +154,9 @@ def resume_generation(
     index_root: Path | None = None,
     output_root: Path | None = None,
     task_id: str | None = None,
+    retriever: Retriever | None = None,
 ) -> GenerationResult:
     """Compatibility alias with an explicit verb for API clients."""
     return continue_generation(runtime_dir, guidance, model, library_root=library_root,
-                               index_root=index_root, output_root=output_root, task_id=task_id)
+                               index_root=index_root, output_root=output_root,
+                               task_id=task_id, retriever=retriever)

@@ -12,9 +12,9 @@ from typing import Any, Callable, Iterable, Mapping
 
 import yaml
 
-from ..documents import load_document, read_yaml_mapping, registered_story_ids
-from ..index import rebuild_isolated_indexes, search_isolated
-from ..layout import story_root
+from ..catalog.paths import story_catalog_paths
+from ..documents import load_document, read_yaml_mapping
+from ..identity import GraphKey
 from ..service import load_valid_documents
 from .types import (
     StateReviewError,
@@ -40,10 +40,6 @@ def _atomic_text(path: Path, text: str) -> None:
     temporary = path.with_name(path.name + ".tmp")
     temporary.write_text(text, encoding="utf-8")
     temporary.replace(path)
-
-
-def _atomic_yaml(path: Path, value: Mapping[str, Any]) -> None:
-    _atomic_text(path, yaml.safe_dump(dict(value), allow_unicode=True, sort_keys=False, width=120))
 
 
 def _safe_id(value: Any, *, field_name: str) -> str:
@@ -101,34 +97,90 @@ def _runtime_paths(runtime_dir: Path, *, require_confirmed: bool = True) -> tupl
         raise StateReviewError("只能审核已经 confirm 的 runtime")
     if not proposal.get("writeback_id"):
         raise StateReviewError("提案缺少 writeback_id")
-    if proposal.get("status") not in {"needs_review", "promoted", "rejected"}:
+    if proposal.get("status") not in {"needs_review", "pending", "promoted", "rejected"}:
         raise StateReviewError(f"无法审核提案状态: {proposal.get('status')!r}")
     return runtime, contract, result, proposal
+
+
+def _story_catalog(library_root: Path, story_id: str, timeline_id: str = "main") -> Any:
+    """Resolve the canonical catalog paths for a story/timeline.
+
+    State promotion accepts legacy-only fixtures for compatibility, but all
+    target-layout writes are rooted in this catalog object.  Constructing a
+    ``GraphKey`` here keeps the physical timeline directory path bound to the
+    same identity contract used by graph mutation.
+    """
+
+    try:
+        key = GraphKey(str(story_id), str(timeline_id))
+        return story_catalog_paths(
+            library_root,
+            key.story_id,
+            default_timeline_id=key.timeline_id,
+        )
+    except (TypeError, ValueError) as exc:
+        raise StateReviewError(f"无法构造目标 story/timeline: {exc}") from exc
+
+
+def _timeline_content_root(
+    library_root: Path,
+    story_id: str,
+    timeline_id: str,
+) -> tuple[Path, Path, bool]:
+    """Return ``(timeline_root, story_root, is_target_layout)``.
+
+    A story becomes target-layout as soon as either its ``timelines`` tree or
+    ``common`` registry exists.  Legacy-only stories deliberately keep the
+    old story root as a read/write compatibility surface; mixed stories never
+    receive new files below that root.
+    """
+
+    catalog = _story_catalog(library_root, story_id, timeline_id)
+    target_layout = catalog.timelines_root.exists() or catalog.common_registry_root.exists()
+    if target_layout:
+        return catalog.timelines_root / catalog.default_timeline_id, catalog.story_root, True
+    return catalog.story_root, catalog.story_root, False
+
+
+def _legacy_state_path(catalog: Any, relative: str) -> Path:
+    """Return an old-root state path for compatibility reads only."""
+
+    return catalog.story_root / Path(relative)
 
 
 def _find_history(library_root: Path, story_id: str, history_document_id: str, timeline_id: str) -> tuple[Path, Any]:
     if not history_document_id:
         raise StateReviewError("提案缺少 confirmed History document_id")
-    root = _assert_path_scope(story_root(library_root, story_id) / "history", library_root, label="History")
-    if not root.exists():
-        raise StateReviewError("confirmed History 不存在")
-    for path in sorted(root.rglob("*.yaml")):
-        if path.is_symlink():
-            raise StateReviewError(f"History 不能包含符号链接: {path}")
-        try:
-            document = load_document(path)
-        except Exception:
+    timeline_root, scope_root, target_layout = _timeline_content_root(
+        library_root, story_id, timeline_id
+    )
+    roots = [timeline_root / "history"]
+    if target_layout:
+        # A partially migrated library may still have confirmed legacy
+        # History.  Read it only as a compatibility fallback; promotions
+        # continue to write the target timeline root.
+        roots.append(scope_root / "history")
+    for candidate in roots:
+        root = _assert_path_scope(candidate, scope_root, label="History")
+        if not root.exists():
             continue
-        metadata = document.metadata
-        if document.document_id != str(history_document_id):
-            continue
-        if str(metadata.get("story_id")) != story_id or str(metadata.get("timeline_id")) != timeline_id:
-            raise StateReviewError("History 的 story/timeline 与提案不一致")
-        if metadata.get("status") != "canon":
-            raise StateReviewError("只有 canon History 可以作为状态证据")
-        if not str(document.body.get("content") or "").strip():
-            raise StateReviewError("confirmed History 没有正文内容")
-        return path, document
+        for path in sorted(root.rglob("*.yaml")):
+            if path.is_symlink():
+                raise StateReviewError(f"History 不能包含符号链接: {path}")
+            try:
+                document = load_document(path)
+            except Exception:
+                continue
+            metadata = document.metadata
+            if document.document_id != str(history_document_id):
+                continue
+            if str(metadata.get("story_id")) != story_id or str(metadata.get("timeline_id")) != timeline_id:
+                raise StateReviewError("History 的 story/timeline 与提案不一致")
+            if metadata.get("status") != "canon":
+                raise StateReviewError("只有 canon History 可以作为状态证据")
+            if not str(document.body.get("content") or "").strip():
+                raise StateReviewError("confirmed History 没有正文内容")
+            return path, document
     raise StateReviewError(f"找不到 confirmed History: {history_document_id}")
 
 
@@ -302,8 +354,16 @@ def _today() -> str:
     return datetime.now(timezone.utc).date().isoformat()
 
 
-def _version_map_path(library_root: Path, story_id: str) -> Path:
-    return story_root(library_root, story_id) / "registry" / "version-map.yaml"
+def _version_map_path(library_root: Path, story_id: str, timeline_id: str = "main") -> Path:
+    catalog = _story_catalog(library_root, story_id, timeline_id)
+    target_layout = catalog.timelines_root.exists() or catalog.common_registry_root.exists()
+    if target_layout:
+        # Version lineage is story-wide catalog data, not timeline-owned
+        # content.  Prefer the target common path even when an old map still
+        # exists, so a promotion cannot create/update a legacy root file.
+        return catalog.common_registry_root / "version-map.yaml"
+    # Legacy-only fixtures explicitly retain their old registry location.
+    return catalog.legacy_registry_root / "version-map.yaml"
 
 
 def _update_version_map(source: Path | Mapping[str, Any], family: str, current: str,
@@ -356,36 +416,27 @@ def _check_callback(callback: Callable[..., Any] | None, *args: Any) -> Any:
 
 
 def _default_checks(library_root: Path, index_root: Path) -> int:
+    """Validate the corpus without owning graph/index persistence.
+
+    Graph rebuild and retrieval regression now belong to the injected
+    :class:`MutationCoordinator`.  The compatibility helper keeps the old
+    private entry point but refuses to silently use a second search path.
+    """
+
     documents, issues = load_valid_documents(library_root)
     if issues:
         joined = "; ".join(issue.message for issue in issues[:8])
         raise StateReviewError(f"状态晋升后 validate 失败: {joined}")
-    rebuild_isolated_indexes(index_root, documents, registered_story_ids(library_root))
     cases: list[dict[str, Any]] = []
     for path in sorted((library_root / "stories").glob("*/retrieval-tests.yaml")):
         data = read_yaml_mapping(path)
         values = data.get("tests", [])
         if isinstance(values, list):
             cases.extend(item for item in values if isinstance(item, dict))
-    failures: list[str] = []
-    for case in cases:
-        try:
-            results = search_isolated(
-                index_root,
-                str(case.get("query") or ""),
-                str(case.get("story_id") or ""),
-                str(case.get("timeline_id") or ""),
-                document_types=case.get("document_types"),
-                limit=20,
-            )
-        except Exception as exc:
-            failures.append(f"{case.get('id', 'unnamed')}: {exc}")
-            continue
-        ids = {item.document_id for item in results}
-        if set(case.get("expected_document_ids", [])) - ids:
-            failures.append(str(case.get("id", "unnamed")))
-    if failures:
-        raise StateReviewError("状态晋升后 retrieval 失败: " + ", ".join(failures))
+    if cases:
+        raise StateReviewError(
+            "存在检索回归用例，但未注入 MutationCoordinator 的 retrieval regression"
+        )
     return len(cases)
 
 
@@ -421,9 +472,26 @@ def _make_character_documents(
     writeback_id: str,
     reason: str,
 ) -> tuple[dict[str, Any], dict[str, Any] | None, Path, Path | None, Path, dict[str, Any]]:
-    root = story_root(library_root, story_id)
-    current_path = _assert_path_scope(root / "character-state" / "current" / f"{character_id}.yaml", root, label="character current")
+    root, scope_root, target_layout = _timeline_content_root(
+        library_root, story_id, timeline_id
+    )
+    current_path = _assert_path_scope(
+        root / "character-state" / "current" / f"{character_id}.yaml",
+        scope_root,
+        label="character current",
+    )
     old = _load_current(current_path)
+    if old is None and target_layout:
+        # Mixed-layout reads remain compatible, while ``current_path`` stays
+        # the target location returned to the mutation coordinator.
+        catalog = _story_catalog(library_root, story_id, timeline_id)
+        legacy_path = _assert_path_scope(
+            _legacy_state_path(catalog, f"character-state/current/{character_id}.yaml"),
+            scope_root,
+            label="legacy character current",
+        )
+        if legacy_path != current_path:
+            old = _load_current(legacy_path)
     if old is None:
         document = _template(library_root, "character-current.yaml")
         metadata = dict(document.setdefault("metadata", {}))
@@ -478,12 +546,12 @@ def _make_character_documents(
         snapshot["metadata"] = snapshot_metadata
         snapshot_path = _assert_path_scope(
             root / "character-state" / "snapshots" / effective / f"{character_id}-v{snapshot_metadata.get('version', '1.0')}.yaml",
-            root,
+            scope_root,
             label="character snapshot",
         )
     change_path = _assert_path_scope(
         root / "character-state" / "change-logs" / effective / f"{character_id}.yaml",
-        root,
+        scope_root,
         label="character change-log",
     )
     change_id = f"state-change-{character_id}-{_slug(effective)}-{writeback_id[:8]}"
@@ -525,9 +593,24 @@ def _make_world_documents(
     writeback_id: str,
     reason: str,
 ) -> tuple[dict[str, Any], dict[str, Any] | None, Path, Path | None, Path, dict[str, Any], str]:
-    root = story_root(library_root, story_id)
-    current_path = _assert_path_scope(root / "world-state" / "current" / "current.yaml", root, label="world current")
+    root, scope_root, target_layout = _timeline_content_root(
+        library_root, story_id, timeline_id
+    )
+    current_path = _assert_path_scope(
+        root / "world-state" / "current" / "current.yaml",
+        scope_root,
+        label="world current",
+    )
     old = _load_current(current_path)
+    if old is None and target_layout:
+        catalog = _story_catalog(library_root, story_id, timeline_id)
+        legacy_path = _assert_path_scope(
+            _legacy_state_path(catalog, "world-state/current/current.yaml"),
+            scope_root,
+            label="legacy world current",
+        )
+        if legacy_path != current_path:
+            old = _load_current(legacy_path)
     if old is None:
         document = _template(library_root, "world-current.yaml")
         metadata = dict(document.setdefault("metadata", {}))
@@ -570,12 +653,12 @@ def _make_world_documents(
         snapshot["metadata"] = snapshot_metadata
         snapshot_path = _assert_path_scope(
             root / "world-state" / "snapshots" / effective / f"world-state-v{snapshot_metadata.get('version', '1.0')}.yaml",
-            root,
+            scope_root,
             label="world snapshot",
         )
     change_path = _assert_path_scope(
         root / "world-state" / "change-logs" / effective / "world.yaml",
-        root,
+        scope_root,
         label="world change-log",
     )
     change_id = f"world-change-{_slug(effective)}-{writeback_id[:8]}"
@@ -603,29 +686,6 @@ def _make_world_documents(
         }],
     }
     return document, snapshot, current_path, snapshot_path, change_path, change, new_id
-
-
-def _restore_files(backups: Mapping[Path, bytes | None]) -> None:
-    for path, content in reversed(list(backups.items())):
-        try:
-            if content is None:
-                path.unlink(missing_ok=True)
-            else:
-                path.parent.mkdir(parents=True, exist_ok=True)
-                path.write_bytes(content)
-        except OSError:
-            pass
-
-
-def _backup_path(path: Path, backups: dict[Path, bytes | None]) -> None:
-    if path in backups:
-        return
-    if path.exists():
-        if path.is_symlink():
-            raise StateReviewError(f"不能覆盖符号链接: {path}")
-        backups[path] = path.read_bytes()
-    else:
-        backups[path] = None
 
 
 def _reject_conflicting_history_file(path: Path, value: Mapping[str, Any]) -> None:

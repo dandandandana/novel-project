@@ -1,0 +1,37 @@
+metadata:
+  document_id: canon-ability-qihuang-willow-branch-purification-vase-v1.0
+  story_id: overturned-world-fujimaru
+  timeline_id: main
+  document_type: canon
+  title: 宝具设定-祁荒-杨枝净瓶
+  entity: noble_phantasm
+  character_ids: [qihuang]
+  event_tags: [杨枝净瓶, A++, noble_phantasm]
+  version: '1.0'
+  status: canon
+  canon_scope: timeline
+  created_at: '2026-07-17'
+  updated_at: '2026-07-17'
+  supersedes: null
+  source_file: user-message:2026-07-17/qihuang-character-card
+ability:
+  retrieval_key: qihuang_willow_branch_purification_vase
+  name: 杨枝净瓶
+  owner: 观世音·祁荒
+  owner_id: qihuang
+  rank: A++
+  category: noble_phantasm
+  type: 对人宝具 / 净化、认知控制与概念腐蚀
+  effect: 玉质双口瓶中的液体是祁荒权能的具象化，可依其意志执行A++净化、洗脑、心灵控制，或物理与概念双重腐蚀。
+  activation: 祁荒通过净瓶选择并施加对应权能效果。
+  range: 对人；具体距离未说明。
+  cost: 未说明。
+  limitations:
+  - 单次能否组合多种效果、持续时间、抵抗条件与使用代价未说明。
+  - 净瓶只是容器，破坏本体不会削弱祁荒的对应权能。
+  failure_conditions: []
+  known_by: [祁荒]
+  visual_expression: 玉质双口瓶，一口朝上倒水，一口在肩注水。
+  narrative_function:
+  - 在治疗净化、认知支配与概念腐蚀之间切换。
+  canon_notes: []

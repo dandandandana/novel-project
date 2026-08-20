@@ -4,6 +4,7 @@ import shutil
 from pathlib import Path
 from typing import Mapping
 
+from .layout import validate_story_id
 
 PREFERENCE_SECTIONS = (
     "模式", "POV", "叙述距离", "对白", "描写", "禁忌", "标题与排版", "Reference", "其他",
@@ -11,6 +12,7 @@ PREFERENCE_SECTIONS = (
 
 
 def author_preferences_path(library_root: Path, story_id: str) -> Path:
+    validate_story_id(story_id)
     return library_root / "stories" / story_id / "author-preferences.txt"
 
 

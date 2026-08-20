@@ -1,0 +1,101 @@
+metadata:
+  document_id: state-current-kotomine-shirou-v1.2
+  story_id: overturned-world-fujimaru
+  timeline_id: main
+  document_type: character_state
+  title: 第四卷第14章末状态快照-言峰士郎
+  character_id: kotomine-shirou
+  variant_id: kotomine-shirou-main
+  snapshot_type: snapshot
+  effective_at: volume-04-chapter-014
+  last_updated: '2026-07-17'
+  version: '1.2'
+  status: archived
+  supersedes: state-current-kotomine-shirou-v1.1
+  source_file: D:\Novel\outputs\第四卷_第14章_续写.txt
+character_state:
+  current_position:
+    location: 伊耶那岐金地东门盆地外围
+    companions:
+    - 藤丸立香
+    - 玛修·基列莱特
+    faction: 迦勒底协同行动方
+  physical:
+    health: 仍可移动和战斗
+    injuries:
+    - 右腕至手肘存在承担信标佛光造成的投影回路裂伤
+    fatigue: 持续战斗后的疲劳未明确
+    temporary_conditions: []
+    permanent_changes: []
+  mental:
+    dominant_emotions:
+    - 专注
+    - 克制
+    current_pressure:
+    - 伤员救治与弥勒终战
+    desires:
+    - 继续陪同藤丸立香完成计划
+    fears: []
+    unresolved_conflicts: []
+    behavior_effects:
+    - 完成信标任务后回到立香身边
+  knowledge:
+    known:
+    - 主炮信标已自锁并由Alterego组防守
+    - 神琦灰的目标不止于维持当前人理
+    - 创造之禊祓已取得
+    - 天照命已败北
+    unknown:
+    - 神琦灰的真实目标
+    - 创造之禊祓代价
+    - 终末人理圆满装置最终目的
+    mistaken_beliefs: []
+    suspicions: []
+    secrets_held: []
+  goals:
+    immediate:
+    - 协助治疗与护送伤员
+    - 继续保护藤丸立香
+    short_term:
+    - 完成对弥勒的降格、主炮与创造之禊祓衔接
+    long_term:
+    - 修复特异点
+    priorities:
+    - 完成任务
+    - 同伴生存
+    obstacles:
+    - 投影回路裂伤
+    - 弥勒
+  relationships:
+  - target_character: fujimaru-ritsuka
+    relationship_type: 伴侣与从者
+    trust: 高
+    dependence: 相互支持
+    hostility: 无
+    current_attitude: 亲密且支持
+    unresolved_issues: []
+    recent_change: 完成信标任务并按约回到立香身边
+  abilities:
+    available: []
+    unavailable: []
+    newly_acquired: []
+    consumed_resources: []
+    active_costs:
+    - 右腕至手肘投影回路裂伤
+  inventory:
+    carried:
+    - 纸星星复制品
+    lost:
+    - 主炮信标（已完成安置并自锁）
+    damaged: []
+  narrative:
+    current_arc: 日本下篇：伊耶那岐金地决战
+    completed_changes:
+    - 完成主炮信标安置与自锁
+    - 在Alterego组接防后返回藤丸立香身边
+    unresolved_flags:
+    - 弥勒终战
+    - 右臂投影回路伤势
+    active_promises: []
+    future_pressure:
+    - 需在负伤状态下继续协助伤员撤离与终局计划

@@ -1,0 +1,74 @@
+metadata:
+  document_id: world-state-current-v1.2
+  story_id: overturned-world-fujimaru
+  timeline_id: main
+  document_type: world_state
+  title: 第四卷第13章末世界状态快照
+  version: '1.2'
+  status: archived
+  effective_at: volume-04-chapter-013
+  supersedes: world-state-current-v1.1
+  source_file: D:\Novel\outputs\第四卷_第11至13章_续写.txt
+  updated_at: '2026-07-14'
+world_state:
+  timeline_position: 第四卷第13章末，伊耶那岐金地决战开始
+  locations:
+  - location_id: izanagi-golden-land
+    current_condition: 东门、地下与北侧祭道三线同时交战
+    controlling_faction: 弥勒侧
+    accessibility: 迦勒底三组已经进入
+    known_hazards:
+    - 九十六尊法相
+    - 天照命世尊
+    - 假修武星
+    recent_events:
+    - 天照命世尊与杨浞、吉尔伽美什开始交战
+  - location_id: izanagi-golden-land-underground
+    current_condition: 第三层以后通信中断
+    controlling_faction: 未知
+    accessibility: 千子村正与祁荒已潜入
+    known_hazards:
+    - 人格容器
+    - 空间封锁
+    recent_events:
+    - 确认人格汇聚实验失败记录
+  - location_id: tsukuyomi-golden-land
+    current_condition: 城门关闭，居民集中避难
+    controlling_faction: 伊耶娜美
+    accessibility: 受限
+    known_hazards:
+    - 居民与伊耶娜美生命相连
+    recent_events:
+    - 伊耶娜美留守维持生命联系
+  factions:
+  - faction_id: chaldea
+    current_goal: 完成降格、信标、主炮与创造之禊祓的十二秒衔接
+    leadership: 藤丸立香
+    alliances:
+    - 伊耶娜美
+    - 终末人理圆满装置（阶段性）
+    enemies:
+    - 弥勒
+    - 天照命世尊
+    - 法相
+    known_information:
+    - 主炮只有一发
+    - 创造之禊祓自主闭锁
+    resources:
+    - 主炮一发
+    - 降格术
+    - 英杰之帜
+    - Rider杨浞
+    recent_changes:
+    - 三线决战计划启动
+  global_events:
+  - 修武星持续照耀，正常昼夜被打乱
+  - 伊耶那岐金地决战开始
+  public_knowledge: []
+  hidden_world_changes:
+  - 地下人格汇聚实验与失踪容器的去向尚不明确
+  unresolved_world_flags:
+  - 创造之禊祓是否同意协助
+  - 假修武星来源
+  - 终末人理圆满装置最终目的
+  - 主炮衔接尚未完成

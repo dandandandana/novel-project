@@ -14,6 +14,7 @@ from pathlib import Path
 from typing import Any, Mapping
 
 from ..documents import read_yaml_mapping, registered_story_ids
+from ..catalog.paths import timeline_registry_path
 from ..generation_schema import (
     AuthorEvent,
     AuthorPreferenceProfile,
@@ -28,9 +29,14 @@ from ..generation_schema import (
     ValidationIssue,
     ValidationReport,
 )
-from ..index import SearchResult, search_isolated
 from ..layout import story_root
 from ..service import load_valid_documents
+from .retrieval import (
+    ContextItem,
+    Retriever,
+    bundle_to_context_items,
+    retrieve_bundle,
+)
 from .types import GenerationError, Model, STAGE_INSTRUCTIONS, PreferenceRequired
 
 
@@ -65,9 +71,18 @@ def read_author_preferences(library_root: Path, story_id: str) -> AuthorPreferen
 def _validate_identity(library_root: Path, request: GenerationRequest) -> None:
     if request.story_id not in registered_story_ids(library_root):
         raise GenerationError(f"未注册 story_id: {request.story_id}")
-    rows = read_yaml_mapping(
-        story_root(library_root, request.story_id) / "registry" / "timelines.yaml"
-    ).get("timelines", [])
+    # ``timelines.yaml`` is story-wide catalog data.  Resolve it through the
+    # canonical catalog path so a target-layout story reads
+    # ``common/registry`` while legacy-only stories retain their compatibility
+    # location.  Generation is read-only here; no target directories are
+    # created as a side effect of identity preflight.
+    try:
+        registry_path = timeline_registry_path(library_root, request.story_id, required=True)
+    except FileNotFoundError as exc:
+        raise GenerationError(
+            f"未注册 timeline_id: {request.story_id}/{request.timeline_id}（缺少 timeline registry）"
+        ) from exc
+    rows = read_yaml_mapping(registry_path).get("timelines", [])
     if not any(isinstance(row, dict) and row.get("story_id") == request.story_id
                and row.get("timeline_id") == request.timeline_id for row in rows):
         raise GenerationError(f"未注册 timeline_id: {request.story_id}/{request.timeline_id}")
@@ -198,28 +213,45 @@ def build_contract(request: GenerationRequest, preferences: AuthorPreferenceProf
     return contract
 
 
-def retrieve_context(contract: GenerationContract, index_root: Path, *, limit: int = 12) -> list[SearchResult]:
-    queries = [event.event for event in contract.outline.required_events if event.event]
-    if contract.outline.required_result:
-        queries.append(contract.outline.required_result)
-    if not queries and contract.outline.raw_input:
-        queries.append(contract.outline.raw_input)
-    results: dict[str, SearchResult] = {}
-    try:
-        for query in queries[:4]:
-            compact = " ".join(query.split())[:120]
-            candidates = [compact]
-            candidates.extend(token for token in re.findall(r"[A-Za-z0-9][A-Za-z0-9._-]{2,}", compact)
-                              if token not in candidates)
-            for candidate in candidates[:4]:
-                for item in search_isolated(index_root, candidate, contract.request.story_id,
-                                            contract.request.timeline_id,
-                                            document_types=["canon", "history", "character_state", "world_state", "rule", "feedback"],
-                                            limit=min(6, limit), include_shared=True):
-                    results[item.document_id] = item
-    except FileNotFoundError as exc:
-        raise GenerationError(f"{exc}；请先执行 novel-rag index") from exc
-    return sorted(results.values(), key=lambda item: item.score, reverse=True)[:limit]
+def retrieve_context_bundle(
+    contract: GenerationContract,
+    index_root: Path,
+    *,
+    library_root: Path | None = None,
+    retriever: Retriever | None = None,
+):
+    """Retrieve the stable ContextBundle consumed by generation."""
+
+    return retrieve_bundle(
+        contract,
+        index_root,
+        library_root=library_root,
+        retriever=retriever,
+    )
+
+
+def retrieve_context(
+    contract: GenerationContract,
+    index_root: Path,
+    *,
+    limit: int = 12,
+    library_root: Path | None = None,
+    retriever: Retriever | None = None,
+) -> list[ContextItem]:
+    """Return the historical context item shape for existing prompt stages.
+
+    Retrieval itself is always performed through ``Retriever`` and
+    ``ContextBundle``.  Only this final conversion preserves the old public
+    helper's item fields for callers that have not migrated yet.
+    """
+
+    request, bundle = retrieve_context_bundle(
+        contract,
+        index_root,
+        library_root=library_root,
+        retriever=retriever,
+    )
+    return bundle_to_context_items(bundle, request, limit=limit)
 
 
 def build_reference_profiles(references: list[Any], model: Model) -> list[ReferenceProfile]:

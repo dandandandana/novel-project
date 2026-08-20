@@ -1,0 +1,129 @@
+metadata:
+  document_id: state-current-shirouxcile-emiya-shirou-v1.0
+  story_id: shirouxcile
+  timeline_id: main
+  document_type: character_state
+  title: 当前状态-卫宫士郎
+  character_id: emiya-shirou
+  variant_id: emiya-shirou-main
+  snapshot_type: current
+  effective_at: volume-01-chapter-004
+  last_updated: '2026-08-09'
+  version: '1.0'
+  status: active
+  supersedes: null
+  source_file: D:\Novel 1\Novel\outputs\shirouXcile_part2_马耳他_情绪强化版.txt
+character_state:
+  current_position:
+    location: 马耳他蓝色小船餐厅，准备带希耶尔前往合租阁楼
+    companions:
+    - ciel
+    faction: 独立行动的魔术师／奥尔菲斯追踪者
+  physical:
+    health: 可正常行动
+    injuries:
+    - 右肩被希耶尔扭伤并撞伤
+    - 颈侧有黑键浅切伤
+    - 战斗后全身多处轻微撞伤
+    fatigue: 连续追踪、战斗、写报告与餐厅早班后疲劳
+    temporary_conditions:
+    - 右肩发力略慢
+    permanent_changes: []
+  mental:
+    dominant_emotions:
+    - 担心希耶尔的舍身打法
+    - 对她的怒火保持克制
+    - 阻止Fate继续害人的专注
+    current_pressure:
+    - 安翰斯失联
+    - Fate巢穴可能随时再次带走平民
+    desires:
+    - 救回失踪者并阻止奥尔菲斯
+    - 避免希耶尔和安翰斯互相杀死
+    - 让行动建立在证据上
+    fears:
+    - 有人在八小时等待期内当场失踪
+    - 同伴用生命换取战术收益
+    unresolved_conflicts:
+    - 自己同样习惯把自身放进代价，却试图阻止希耶尔这样做
+    behavior_effects:
+    - 会优先救平民并保留对手退路
+    - 必要时仍可能无视等待命令进入危险区域
+  knowledge:
+    known:
+    - 希耶尔已失去不死性且仍有舍身战斗惯性
+    - 希耶尔暂缓处决安翰斯但坚持回收圣葬炮典
+    - 奥尔菲斯的Fate会以真实因果构造另一段人生
+    - 马耳他医院骑士团与教会已进入Fate优先应对
+    - 第七圣典和原理血戒八小时后抵达
+    unknown:
+    - 安翰斯当前藏身处
+    - 希耶尔与罗亚、艾蕾西亚的完整过去
+    - 奥尔菲斯精确巢穴和完整原理
+    mistaken_beliefs: []
+    suspicions:
+    - 奥尔菲斯通过接受岔命的愿望获取力量
+    - 骑士的念珠在死亡前已被取走说明接触发生得更早
+    secrets_held:
+    - 1994年冬木灾害与自身封闭的童年记忆
+  goals:
+    immediate:
+    - 带希耶尔查看阁楼资料
+    - 寻找安翰斯
+    - 核对岛北侧旧建筑和接触名单
+    short_term:
+    - 阻止奥尔菲斯继续捕食
+    - 保护失踪者与返回者
+    - 维持与希耶尔的临时合作
+    long_term:
+    - 继续处理死徒事件并救助无辜者
+    priorities:
+    - 平民即时安全
+    - Fate事件
+    - 避免无证据处决
+    obstacles:
+    - 安翰斯失联
+    - 希耶尔对其协助祖的立场不信任
+    - 自身也容易违反撤离和等待命令
+  relationships:
+  - 希耶尔：从拦截处决的交战者转为相互监督的临时同伴；已看穿彼此的舍身倾向
+  - 安翰斯：二十七天的目标合作与合租关系，互相嫌弃但彼此会回去找对方
+  - 米蕾拉：蓝色小船店主，熟悉士郎在厨房帮忙并会拿他与希耶尔打趣
+  - 医院骑士团：共享档案、现场报告和救援合作
+  abilities:
+    available:
+    - 投影魔术
+    - 多种近战兵器与剑雨
+    - 兵器残留技艺的读取与运用
+    - 结界和临时联络术式
+    - 战场救援与伤口处理
+    unavailable: []
+    newly_acquired:
+    - 与希耶尔互换的八小时临时联络术式
+    consumed_resources:
+    - 白石巷连续投影所耗魔力
+    active_costs:
+    - 右肩伤影响大幅发力
+  inventory:
+    carried:
+    - 手机
+    - 临时通行证
+    - 临时联络剑印
+    lost: []
+    damaged:
+    - 深色外套下摆烧损
+  narrative:
+    current_arc: 与安翰斯追踪奥尔菲斯，并与希耶尔形成临时共斗
+    completed_changes:
+    - 向希耶尔公开安翰斯与奥尔菲斯的追踪关系
+    - 以证据促使安翰斯的即时处决暂缓
+    - 与希耶尔交换联络术式
+    unresolved_flags:
+    - 安翰斯是否会返回阁楼
+    - Fate对士郎会展示1994年冬木何种岔命
+    - 等待装备期间是否会出现即时救援
+    active_promises:
+    - 发现目标时第一时间通知希耶尔
+    - 能等待时不独自进入巢穴
+    future_pressure:
+    - Fate会利用士郎愿意以自身不存在换取火灾死者生还的倾向

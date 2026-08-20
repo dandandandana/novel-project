@@ -65,7 +65,7 @@ def test_rebuild_removes_unregistered_story_index(tmp_path):
     rebuild_isolated_indexes(index_root, [doc(
         tmp_path / "old.yaml", "old-story", "main", "canon", "旧作品", "旧索引"
     )], ["old-story"])
-    stale = index_root / "stories" / "old-story.db"
+    stale = index_root / "graphs" / "old-story" / "main.db"
     assert stale.exists()
 
     rebuild_isolated_indexes(index_root, [], [])

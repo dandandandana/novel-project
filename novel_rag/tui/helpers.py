@@ -12,8 +12,8 @@ from typing import Any
 import yaml
 
 from ..documents import read_yaml_mapping
+from ..catalog.paths import resolve_timeline_registry_path, resolve_version_map_path
 from ..generation import GenerationError
-from ..layout import story_root
 from ..model_api import ModelAPIError, OpenAICompatibleModel
 from ..model_config import ModelConfigStore
 
@@ -65,7 +65,9 @@ def choose(input_fn: Input, output: Output, title: str, values: list[str]) -> st
 
 
 def timeline_ids(library_root: Path, story_id: str) -> list[str]:
-    rows = read_yaml_mapping(story_root(library_root, story_id) / "registry" / "timelines.yaml").get("timelines", [])
+    rows = read_yaml_mapping(
+        resolve_timeline_registry_path(library_root, story_id, required=False)
+    ).get("timelines", [])
     return [str(row["timeline_id"]) for row in rows
             if isinstance(row, dict) and row.get("story_id") == story_id and row.get("timeline_id")]
 
@@ -108,8 +110,20 @@ def latest_runtime(output_root: Path, story_id: str) -> Path | None:
     return max(candidates, key=lambda path: path.stat().st_mtime, default=None)
 
 
-def current_family_document(library_root: Path, story_id: str, family: str) -> str:
-    value = read_yaml_mapping(story_root(library_root, story_id) / "registry" / "version-map.yaml")
+def current_family_document(
+    library_root: Path,
+    story_id: str,
+    family: str,
+    timeline_id: str | None = None,
+) -> str:
+    value = read_yaml_mapping(
+        resolve_version_map_path(
+            library_root,
+            story_id,
+            timeline_id=timeline_id,
+            required=False,
+        )
+    )
     for row in value.get("versions", []) if isinstance(value.get("versions"), list) else []:
         if isinstance(row, dict) and str(row.get("document_family") or "") == family:
             return str(row.get("current") or "")

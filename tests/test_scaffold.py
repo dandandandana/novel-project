@@ -20,17 +20,30 @@ def test_create_story_builds_isolated_tree_and_inherits_shared_modules(tmp_path)
     root = create_story(tmp_path, story_id="second-novel", title="第二部小说")
 
     assert root == tmp_path / "stories" / "second-novel"
-    assert (root / "canon").is_dir()
-    assert (root / "history").is_dir()
-    assert (root / "world-state").is_dir()
-    assert (root / "system-overrides" / "style-audit").is_dir()
-    module_map = yaml.safe_load((root / "registry" / "module-map.yaml").read_text(encoding="utf-8"))
+    assert (root / "common" / "canon").is_dir()
+    assert (root / "common" / "registry").is_dir()
+    assert (root / "timelines" / "main" / "history").is_dir()
+    assert (root / "timelines" / "main" / "world-state").is_dir()
+    assert (root / "timelines" / "main" / "summaries").is_dir()
+    assert (root / "timelines" / "main" / "system-overrides" / "style-audit").is_dir()
+    module_map = yaml.safe_load(
+        (root / "timelines" / "main" / "registry" / "module-map.yaml").read_text(
+            encoding="utf-8"
+        )
+    )
     assert module_map["modules"] == [{
         "module_type": "rule",
         "active_versions": ["shared-rule-v1.0"],
         "story_id": "second-novel",
         "timeline_id": "main",
     }]
+    timeline_registry = yaml.safe_load(
+        (root / "common" / "registry" / "timelines.yaml").read_text(encoding="utf-8")
+    )
+    assert timeline_registry["story_id"] == "second-novel"
+    assert timeline_registry["timelines"][0]["parent_timeline_id"] is None
+    assert timeline_registry["timelines"][0]["divergence_at"] is None
+    assert timeline_registry["timelines"][0]["divergence_snapshot"] is None
     catalog = yaml.safe_load((tmp_path / "registry" / "stories.yaml").read_text(encoding="utf-8"))
     assert catalog["stories"][0]["storage_path"] == "stories/second-novel"
 

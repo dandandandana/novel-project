@@ -1,0 +1,84 @@
+metadata:
+  document_id: state-current-izanami-v1.3
+  story_id: overturned-world-fujimaru
+  timeline_id: main
+  document_type: character_state
+  title: 当前状态-伊耶娜美
+  character_id: izanami
+  variant_id: izanami-main
+  snapshot_type: current
+  effective_at: volume-04-chapter-020
+  last_updated: '2026-08-08'
+  version: '1.3'
+  status: active
+  supersedes: state-current-izanami-v1.2
+  source_file: D:\Novel 1\Novel\outputs\第四卷_第18章_续写.txt; D:\Novel 1\Novel\outputs\第四卷_第19章_续写.txt; D:\Novel 1\Novel\outputs\第四卷_第20章_续写.txt
+character_state:
+  current_position:
+    location: 日本原有时代；随特异点修复被归还
+    companions: []
+    faction: 迦勒底协同行动方
+  physical:
+    health: 重伤后被归还时代
+    injuries:
+    - 胸前遭白桦木杖重击
+    - 右臂、长枪与月刃被自身雷霆撕碎
+    fatigue: 救世之兽战斗形态后的极重度消耗
+    temporary_conditions: []
+    permanent_changes: []
+  mental:
+    dominant_emotions:
+    - 决绝
+    - 平静
+    current_pressure:
+    - 阻挡神琦灰直至圣杯回收
+    desires:
+    - 随日本山海复原
+    fears: []
+    unresolved_conflicts: []
+    behavior_effects: []
+  knowledge:
+    known:
+    - 圣杯回收倒数启动
+    - 自己作为本地神灵无法被带离
+    - 神琦灰压倒性强大
+    unknown:
+    - 迦勒底回归后的状况
+    - 卫宫白与神琦灰对峙结果
+    mistaken_beliefs: []
+    suspicions: []
+    secrets_held: []
+  goals:
+    immediate:
+    - 回归并维持日本山海
+    short_term: []
+    long_term:
+    - 守护原有时代
+    priorities:
+    - 日本世界存续
+    obstacles:
+    - 胸前遭白桦木杖重击
+    - 右臂、长枪与月刃被自身雷霆撕碎
+  relationships: []
+  abilities:
+    available:
+    - 日本神灵权能（随时代归还）
+    unavailable: []
+    newly_acquired: []
+    consumed_resources: []
+    active_costs:
+    - 右臂与武装在终战中毁损
+  inventory:
+    carried: []
+    lost: []
+    damaged: []
+  narrative:
+    current_arc: 日本篇结束：归还原有时代
+    completed_changes:
+    - 以黑月和长枪迎战神琦灰
+    - 在特异点修复时散回日本山海
+    unresolved_flags:
+    - 归还后的个体状态
+    active_promises: []
+    future_pressure:
+    - 本地神灵没有进入迦勒底转移筐体

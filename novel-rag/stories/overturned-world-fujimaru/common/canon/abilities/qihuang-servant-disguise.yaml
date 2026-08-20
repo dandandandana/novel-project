@@ -1,0 +1,37 @@
+metadata:
+  document_id: canon-ability-qihuang-servant-disguise-v1.0
+  story_id: overturned-world-fujimaru
+  timeline_id: main
+  document_type: canon
+  title: 能力设定-祁荒-伪装从者
+  entity: ability
+  character_ids: [qihuang]
+  event_tags: [伪装从者, EX, class_skill]
+  version: '1.0'
+  status: canon
+  canon_scope: timeline
+  created_at: '2026-07-17'
+  updated_at: '2026-07-17'
+  supersedes: null
+  source_file: user-message:2026-07-17/qihuang-character-card
+ability:
+  retrieval_key: qihuang_servant_disguise
+  name: 伪装从者
+  owner: 观世音·祁荒
+  owner_id: qihuang
+  rank: EX
+  type: 灵基与职阶伪装
+  effect: 祁荒已彻底替代观世音；外部观测到的灵基、气息和权能与真正的观音菩萨完全一致，并以Lancer形式现界、伪装参数与能力。
+  activation: 对外现界和接受外部观测时适用。
+  range: 外部对其灵基、气息、权能与职阶的观测。
+  cost: 未说明。
+  limitations:
+  - 真实职阶仍为Pretender/SAVER。
+  - 金刚杵只是在伪装状态下作为枪使用。
+  - 识破条件未说明。
+  failure_conditions: []
+  known_by: [祁荒]
+  visual_expression: 外显为Lancer。
+  narrative_function:
+  - 隐藏真实职阶与参数，使祁荒以Lancer身份活动。
+  canon_notes: []

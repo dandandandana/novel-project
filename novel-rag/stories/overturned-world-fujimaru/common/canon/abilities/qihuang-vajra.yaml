@@ -1,0 +1,38 @@
+metadata:
+  document_id: canon-ability-qihuang-vajra-v1.0
+  story_id: overturned-world-fujimaru
+  timeline_id: main
+  document_type: canon
+  title: 宝具设定-祁荒-金刚杵
+  entity: noble_phantasm
+  character_ids: [qihuang]
+  event_tags: [金刚杵, EX, noble_phantasm]
+  version: '1.0'
+  status: canon
+  canon_scope: timeline
+  created_at: '2026-07-17'
+  updated_at: '2026-07-17'
+  supersedes: null
+  source_file: user-message:2026-07-17/qihuang-character-card
+ability:
+  retrieval_key: qihuang_vajra
+  name: 金刚杵
+  owner: 观世音·祁荒
+  owner_id: qihuang
+  rank: EX
+  category: noble_phantasm
+  type: 对人宝具 / 概念破坏与梵音升华
+  effect: 宝具解放的一击无视物理防御，粉碎目标的“执着”与“障碍”，并施加直接作用于灵魂的高等级精神污染和强制升华；未解放时可作坚不可摧的高等级近战武器。
+  activation: 作为宝具解放挥击，或在非解放状态下用于近战。
+  range: 对人；具体距离未说明。
+  cost: 未说明。
+  limitations:
+  - 拥有类似精神干涉免疫能力的存在不受梵音精神污染与强制升华影响。
+  - 精神免疫是否同时阻止概念破坏未说明。
+  failure_conditions:
+  - 目标具备对应精神干涉免疫时，精神污染与强制升华部分无效。
+  known_by: [祁荒]
+  visual_expression: 以金刚杵挥击，Lancer伪装时可作为枪使用。
+  narrative_function:
+  - 以概念破坏突破物理防御，并直接攻击灵魂。
+  canon_notes: []

@@ -1,0 +1,116 @@
+metadata:
+  document_id: world-state-shirouxcile-current-v1.1
+  story_id: shirouxcile
+  timeline_id: main
+  document_type: world_state
+  title: 第一卷第四章后世界状态
+  version: '1.1'
+  status: active
+  effective_at: volume-01-chapter-004
+  supersedes: world-state-shirouxcile-current-v1.0
+  source_file: D:\Novel 1\Novel\outputs\shirouXcile_part2_马耳他_情绪强化版.txt
+  updated_at: '2026-08-09'
+world_state:
+  timeline_position: 第一卷第四章末，马耳他Fate事件成为首要目标，第七圣典等武装八小时后抵达
+  locations:
+  - location_id: malta-garret
+    current_condition: 卫宫士郎与安翰斯的合租据点仍存有地图、档案和安翰斯衣物，住址已被希耶尔掌握
+    controlling_faction: 卫宫士郎租住
+    accessibility: 希耶尔将与士郎共同前往
+    known_hazards:
+    - 可能被奥尔菲斯监视
+    recent_events:
+    - 安翰斯在白石巷后尚未返回
+  - location_id: malta-white-stone-alley
+    current_condition: 居民疏散后发生祖级交战，储藏室、屋顶、墙面与地下旧渠受损
+    controlling_faction: 医院骑士团维持封锁与善后
+    accessibility: 居民正在返回
+    known_hazards:
+    - 残留武器与术式
+    - 旧渠海水倒灌
+    recent_events:
+    - 希耶尔压制安翰斯
+    - 士郎救出遗漏男孩并阻止处决
+    - 安翰斯从地下路线逃脱
+  - location_id: malta-hospitaller-old-hospital
+    current_condition: 收治Fate返回者并重新检查接触链
+    controlling_faction: 医院骑士团
+    accessibility: 联合行动人员可进入
+    known_hazards:
+    - 返回者仍受完整岔命记忆影响
+    - 询问者可能已进入奥尔菲斯接触范围
+    recent_events:
+    - 累计十七人失踪、七人返回、一名骑士死亡
+    - 开始核查念珠和复述经历者
+  - location_id: blue-boat-curry-restaurant
+    current_condition: 正常营业，卫宫士郎临时负责早班厨房
+    controlling_faction: 米蕾拉
+    accessibility: 对公众开放
+    known_hazards: []
+    recent_events:
+    - 希耶尔与士郎交换Fate情报并达成临时合作
+  - location_id: malta-north-fate-area
+    current_condition: 奥尔菲斯临时巢穴范围已缩小到岛北旧建筑群，精确位置未明
+    controlling_faction: 奥尔菲斯·莫伊拉疑似活动
+    accessibility: 装备抵达前外围封锁
+    known_hazards:
+    - Fate岔命
+    - 精神捕食
+    - 可能重复接触同一目标
+    recent_events:
+    - 医院骑士在此掉队并死亡
+  factions:
+  - faction_id: burial-agency
+    current_goal: Fate事件优先，八小时内向马耳他转运第七圣典、原理血戒和补充武装
+    leadership: 纳鲁巴列克
+    alliances:
+    - 医院骑士团
+    - 卫宫士郎的临时合作
+    enemies:
+    - 奥尔菲斯·莫伊拉
+    known_information:
+    - Fate相关症状与旧档一致
+    - 安翰斯处决暂缓但圣葬炮典仍须回收
+    resources:
+    - 第七圣典
+    - 原理血戒
+    - 三套黑键
+    - 四式典补充组件
+    recent_changes:
+    - 任务由安翰斯能力复核转为Fate事件优先
+  - faction_id: knights-hospitaller
+    current_goal: 保护马耳他居民、返回者并协助定位Fate巢穴
+    leadership: 马耳他医院骑士团地方指挥
+    alliances:
+    - 埋葬机关
+    - 卫宫士郎
+    enemies:
+    - 奥尔菲斯·莫伊拉
+    known_information:
+    - 安翰斯与士郎曾救出多人
+    - Fate返回者主观经历可达数十年
+    resources:
+    - 医院
+    - 巡逻队
+    - 旧建筑和地下水道档案
+    - 西西里运输线
+    recent_changes:
+    - 白石巷疏散完成
+    - 开始扩大接触名单检查
+  global_events:
+  - 奥尔菲斯·莫伊拉的Fate原理在马耳他获得确认
+  - 安翰斯即时处决暂缓
+  - 希耶尔与卫宫士郎建立八小时临时联络和共同行动约束
+  public_knowledge:
+  - 白石巷以煤气泄漏名义疏散并发生墙体损坏
+  - 蓝色小船餐厅正常营业
+  hidden_world_changes:
+  - 第七圣典与原理血戒分线转运，预计八小时后抵达
+  - Fate可能在事件发生前已取走受害者贴身物并完成早期接触
+  - 安翰斯重伤后藏入未知地下路线
+  unresolved_world_flags:
+  - 奥尔菲斯巢穴精确位置
+  - 十名未返回失踪者的状态
+  - Fate完整捕食与强化机制
+  - 安翰斯是否返回阁楼
+  - 希耶尔和士郎面对各自岔命时的选择

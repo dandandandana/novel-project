@@ -10,7 +10,8 @@ import yaml
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT))
 
-from novel_rag.index import rebuild_isolated_indexes, search_isolated
+from novel_rag.composition import rebuild_graph_projections, search_graph
+from novel_rag.identity import GraphKey
 from novel_rag.scaffold import create_story
 from novel_rag.service import load_valid_documents
 
@@ -75,29 +76,49 @@ def main() -> None:
             ("red-novel", "红色小说", "red_character"),
         ):
             story = create_story(library, story_id=story_id, title=title)
-            write_yaml(story / "canon" / "sentinel.yaml", story_document(story_id, marker))
+            write_yaml(
+                story / "timelines" / "main" / "canon" / "sentinel.yaml",
+                story_document(story_id, marker),
+            )
 
         documents, issues = load_valid_documents(library)
         if issues:
             raise AssertionError("\n".join(f"{issue.path}: {issue.message}" for issue in issues))
         index_root = library / "index"
-        rebuild_isolated_indexes(index_root, documents, ["blue-novel", "red-novel"])
+        rebuild_graph_projections(
+            index_root,
+            documents,
+            ["blue-novel", "red-novel"],
+            library_root=library,
+        )
 
-        blue = search_isolated(index_root, "isolation_probe", "blue-novel", "main", limit=10)
-        red = search_isolated(index_root, "isolation_probe", "red-novel", "main", limit=10)
+        blue = search_graph(
+            index_root,
+            "isolation_probe",
+            GraphKey("blue-novel", "main"),
+            limit=10,
+            library_root=library,
+        )
+        red = search_graph(
+            index_root,
+            "isolation_probe",
+            GraphKey("red-novel", "main"),
+            limit=10,
+            library_root=library,
+        )
         blue_ids = {item.document_id for item in blue}
         red_ids = {item.document_id for item in red}
         if blue_ids != {"blue-novel-sentinel-v1.0", "shared-sentinel-v1.0"}:
             raise AssertionError(f"blue isolation failed: {sorted(blue_ids)}")
         if red_ids != {"red-novel-sentinel-v1.0", "shared-sentinel-v1.0"}:
             raise AssertionError(f"red isolation failed: {sorted(red_ids)}")
-        blue_without_shared = search_isolated(
+        blue_without_shared = search_graph(
             index_root,
             "isolation_probe",
-            "blue-novel",
-            "main",
+            GraphKey("blue-novel", "main"),
             limit=10,
             include_shared=False,
+            library_root=library,
         )
         if {item.document_id for item in blue_without_shared} != {"blue-novel-sentinel-v1.0"}:
             raise AssertionError("--no-shared boundary failed")

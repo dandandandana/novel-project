@@ -4,7 +4,7 @@ import json
 import yaml
 import pytest
 
-from novel_rag.generation import GenerationError, generate
+from novel_rag.generation import GenerationError, LegacyRetrieverAdapter, generate
 from novel_rag.index import SqliteIndex
 from novel_rag.resume import ResumeError, continue_generation
 
@@ -48,16 +48,24 @@ class GuidanceModel:
         raise AssertionError(stage)
 
 
+def _legacy_retriever(library: Path, index: Path) -> LegacyRetrieverAdapter:
+    """This legacy-index fixture opts into the compatibility adapter explicitly."""
+
+    return LegacyRetrieverAdapter(library, index)
+
+
 def test_continue_generation_creates_child_and_preserves_parent(tmp_path: Path) -> None:
     library, index = make_library(tmp_path)
     output = tmp_path / "outputs"
     model = GuidanceModel()
+    retriever = _legacy_retriever(library, index)
     parent = generate({"story_id": "demo", "outline": "甲打开门"}, model,
-                      library_root=library, index_root=index, output_root=output, task_id="parent")
+                      library_root=library, index_root=index, output_root=output, task_id="parent",
+                      retriever=retriever)
     parent_dir = Path(parent.extensions["runtime_dir"])
     child = continue_generation(parent_dir, "让甲先确认门外没有人", model,
                                 library_root=library, index_root=index, output_root=output,
-                                task_id="parent-guidance")
+                                task_id="parent-guidance", retriever=retriever)
     child_dir = Path(child.extensions["runtime_dir"])
     assert child_dir != parent_dir
     assert parent_dir.exists()
@@ -73,9 +81,10 @@ def test_continue_requires_guidance_status_and_does_not_touch_parent(tmp_path: P
     library, index = make_library(tmp_path)
     output = tmp_path / "outputs"
     model = GuidanceModel()
+    retriever = _legacy_retriever(library, index)
     parent = generate({"story_id": "demo", "outline": "甲打开门"}, model,
                       library_root=library, index_root=index, output_root=output,
-                      task_id="parent")
+                      task_id="parent", retriever=retriever)
     parent_dir = Path(parent.extensions["runtime_dir"])
     parent_result = (parent_dir / "result.json").read_bytes()
     result = json.loads(parent_result.decode("utf-8"))
@@ -83,7 +92,7 @@ def test_continue_requires_guidance_status_and_does_not_touch_parent(tmp_path: P
     (parent_dir / "result.json").write_text(json.dumps(result, ensure_ascii=False), encoding="utf-8")
     with pytest.raises(ResumeError, match="user_guidance_required"):
         continue_generation(parent_dir, "继续", model, library_root=library, index_root=index,
-                            output_root=output, task_id="child")
+                            output_root=output, task_id="child", retriever=retriever)
     assert json.loads((parent_dir / "result.json").read_text(encoding="utf-8"))["status"] == "pass"
 
 
@@ -91,11 +100,14 @@ def test_generate_conflict_rejected_and_confirmed_never_overwritten(tmp_path: Pa
     library, index = make_library(tmp_path)
     output = tmp_path / "outputs"
     model = GuidanceModel()
+    retriever = _legacy_retriever(library, index)
     first = generate({"story_id": "demo", "outline": "甲打开门"}, model,
-                     library_root=library, index_root=index, output_root=output, task_id="same")
+                     library_root=library, index_root=index, output_root=output, task_id="same",
+                     retriever=retriever)
     with pytest.raises(GenerationError, match="使用新的 task_id"):
         generate({"story_id": "demo", "outline": "甲打开门"}, model,
-                 library_root=library, index_root=index, output_root=output, task_id="same")
+                 library_root=library, index_root=index, output_root=output, task_id="same",
+                 retriever=retriever)
     runtime = Path(first.extensions["runtime_dir"])
     result_path = runtime / "result.json"
     result = json.loads(result_path.read_text(encoding="utf-8"))
@@ -104,4 +116,4 @@ def test_generate_conflict_rejected_and_confirmed_never_overwritten(tmp_path: Pa
     with pytest.raises(GenerationError, match="已经确认"):
         generate({"story_id": "demo", "outline": "甲打开门"}, model,
                  library_root=library, index_root=index, output_root=output,
-                 task_id="same", overwrite_runtime=True)
+                 task_id="same", overwrite_runtime=True, retriever=retriever)

@@ -20,18 +20,20 @@ from .helpers import (
     _validate_identity,
     read_author_preferences,
     build_contract,
-    retrieve_context,
+    retrieve_context_bundle,
     build_reference_profiles,
     load_scene_state,
     execute_scene,
     validate_draft,
 )
+from .retrieval import Retriever, bundle_to_context_items
 
 
 def generate(request_input: str | Mapping[str, Any], model, *,
              library_root: Path, index_root: Path | None = None,
              output_root: Path | None = None,
-             task_id: str = "generation", overwrite_runtime: bool = False) -> GenerationResult:
+             task_id: str = "generation", overwrite_runtime: bool = False,
+             retriever: Retriever | None = None) -> GenerationResult:
     request = GenerationRequest.from_input(request_input)
     _validate_identity(library_root, request)
     output_base = (output_root or library_root.parent / "outputs").resolve()
@@ -41,7 +43,13 @@ def generate(request_input: str | Mapping[str, Any], model, *,
     preferences = read_author_preferences(library_root, request.story_id)
     contract = build_contract(request, preferences, model)
     index_root = index_root or library_root / "index"
-    context = retrieve_context(contract, index_root)
+    retrieval_request, context_bundle = retrieve_context_bundle(
+        contract,
+        index_root,
+        library_root=library_root,
+        retriever=retriever,
+    )
+    context = bundle_to_context_items(context_bundle, retrieval_request)
     contract.context = {"retrieved": [_payload(item) for item in context],
                         "cpm_context": [_payload(item) for item in context if item.document_type in {"canon", "history", "character_state", "world_state", "rule"}]}
     initial_state, character_profiles = load_scene_state(library_root, request.story_id, request.timeline_id)

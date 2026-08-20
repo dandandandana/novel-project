@@ -1,0 +1,966 @@
+tests:
+- id: canon-fujimaru-profile
+  story_id: overturned-world-fujimaru
+  timeline_id: main
+  query: 藤丸立香 性格
+  document_types:
+  - canon
+  expected_document_ids:
+  - canon-character-fujimaru-ritsuka-v1.1
+  forbidden_statuses:
+  - draft
+  - deprecated
+  - archived
+  checks:
+  - correctness
+  - timeline_isolation
+  - version
+  - content_type
+- id: canon-root-magic
+  story_id: overturned-world-fujimaru
+  timeline_id: main
+  query: 逆行根源
+  document_types:
+  - canon
+  expected_document_ids:
+  - canon-world-core-rules-v1.0
+  forbidden_statuses:
+  - draft
+  - deprecated
+  - archived
+  checks:
+  - correctness
+  - timeline_isolation
+  - version
+  - content_type
+- id: history-chaldea-director
+  story_id: overturned-world-fujimaru
+  timeline_id: main
+  query: 奥尔加玛丽
+  document_types:
+  - history
+  expected_document_ids: []
+  forbidden_statuses:
+  - draft
+  - deprecated
+  - archived
+  checks:
+  - correctness
+  - timeline_isolation
+  - temporal
+  - content_type
+- id: canon-fujimaru-degradation
+  story_id: overturned-world-fujimaru
+  timeline_id: main
+  query: 降格术
+  document_types:
+  - canon
+  expected_document_ids:
+  - canon-ability-fujimaru-ritsuka-degradation-v1.0
+  forbidden_statuses:
+  - draft
+  - deprecated
+  - archived
+  checks:
+  - correctness
+  - timeline_isolation
+  - version
+  - content_type
+- id: canon-fujimaru-banner-of-heroes
+  story_id: overturned-world-fujimaru
+  timeline_id: main
+  query: 英杰之帜
+  document_types:
+  - canon
+  expected_document_ids:
+  - canon-ability-fujimaru-ritsuka-banner-of-heroes-v1.0
+  forbidden_statuses:
+  - draft
+  - deprecated
+  - archived
+  checks:
+  - correctness
+  - timeline_isolation
+  - version
+  - content_type
+- id: state-fujimaru-abilities
+  story_id: overturned-world-fujimaru
+  timeline_id: main
+  query: 降格术 英杰之帜
+  document_types:
+  - character_state
+  expected_document_ids:
+  - state-current-fujimaru-ritsuka-v1.6
+  forbidden_document_ids:
+  - state-current-fujimaru-ritsuka-v1.5
+  - state-current-fujimaru-ritsuka-v1.4
+  - state-current-fujimaru-ritsuka-v1.3
+  - state-current-fujimaru-ritsuka-v1.2
+  - state-current-fujimaru-ritsuka-v1.1
+  forbidden_statuses:
+  - draft
+  - deprecated
+  - archived
+  checks:
+  - correctness
+  - timeline_isolation
+  - temporal
+  - version
+  - content_type
+- id: canon-chaldea-abandoned
+  story_id: overturned-world-fujimaru
+  timeline_id: main
+  query: 被人理抛弃的迦勒底
+  document_types:
+  - canon
+  expected_document_ids:
+  - canon-world-chaldea-abandoned-by-human-order-v1.0
+  forbidden_statuses:
+  - draft
+  - deprecated
+  - archived
+  checks:
+  - correctness
+  - timeline_isolation
+  - version
+  - content_type
+- id: canon-amaterasu
+  story_id: overturned-world-fujimaru
+  timeline_id: main
+  query: 天照命 乌从欲
+  document_types:
+  - canon
+  expected_document_ids:
+  - canon-character-amaterasu-no-mikoto-v1.0
+  forbidden_statuses:
+  - draft
+  - deprecated
+  - archived
+  checks:
+  - correctness
+  - timeline_isolation
+  - version
+  - content_type
+- id: canon-maitreya-reworked
+  story_id: overturned-world-fujimaru
+  timeline_id: main
+  query: 弥勒 极乐佛身
+  document_types:
+  - canon
+  expected_document_ids:
+  - canon-character-maitreya-v1.0
+  forbidden_document_ids:
+  - canon-character-maitreya-v0.9
+  forbidden_statuses:
+  - draft
+  - deprecated
+  - archived
+  checks:
+  - correctness
+  - timeline_isolation
+  - version
+  - content_type
+- id: canon-izanami-savior-beast
+  story_id: overturned-world-fujimaru
+  timeline_id: main
+  query: 救世之兽 黄泉救援
+  document_types:
+  - canon
+  expected_document_ids:
+  - canon-character-izanami-savior-beast-v1.0
+  forbidden_statuses:
+  - draft
+  - deprecated
+  - archived
+  checks:
+  - correctness
+  - timeline_isolation
+  - version
+  - content_type
+- id: style-battle-rules
+  story_id: overturned-world-fujimaru
+  timeline_id: main
+  query: 回合制战斗
+  document_types:
+  - style_audit
+  expected_document_ids:
+  - style-battle-v1.0
+  forbidden_statuses:
+  - draft
+  - deprecated
+  - archived
+  checks:
+  - correctness
+  - timeline_isolation
+  - version
+  - content_type
+- id: style-action-continuity
+  story_id: overturned-world-fujimaru
+  timeline_id: main
+  query: 动作连贯性与文字血肉化
+  document_types:
+  - style_audit
+  expected_document_ids:
+  - style-action-continuity-v1.0
+  forbidden_statuses:
+  - draft
+  - deprecated
+  - archived
+  checks:
+  - correctness
+  - timeline_isolation
+  - version
+  - content_type
+- id: style-battle-syntax-sound
+  story_id: overturned-world-fujimaru
+  timeline_id: main
+  query: 建立完整的战斗声场
+  document_types:
+  - style_audit
+  expected_document_ids:
+  - style-battle-syntax-sound-v1.0
+  forbidden_statuses:
+  - draft
+  - deprecated
+  - archived
+  checks:
+  - correctness
+  - timeline_isolation
+  - version
+  - content_type
+- id: ruler-global-execution-contract
+  story_id: overturned-world-fujimaru
+  timeline_id: main
+  query: execution_contract 世界线
+  document_types:
+  - rule
+  expected_document_ids:
+  - ruler-global-v1.0
+  forbidden_statuses:
+  - draft
+  - deprecated
+  - archived
+  checks:
+  - correctness
+  - timeline_isolation
+  - version
+  - content_type
+- id: judgment-global-generation-plan
+  story_id: overturned-world-fujimaru
+  timeline_id: main
+  query: generation_plan
+  document_types:
+  - judgment_spec
+  expected_document_ids:
+  - judgment-global-v1.1
+  forbidden_statuses:
+  - draft
+  - deprecated
+  - archived
+  checks:
+  - correctness
+  - timeline_isolation
+  - version
+  - content_type
+- id: judgment-native-chinese-dialogue
+  story_id: overturned-world-fujimaru
+  timeline_id: main
+  query: dialogue_planning_policy
+  document_types:
+  - judgment_spec
+  expected_document_ids:
+  - judgment-global-v1.1
+  forbidden_document_ids:
+  - judgment-global-v1.0
+  forbidden_statuses:
+  - draft
+  - deprecated
+  - archived
+  checks:
+  - correctness
+  - timeline_isolation
+  - version
+  - content_type
+- id: style-native-chinese-dialogue
+  story_id: overturned-world-fujimaru
+  timeline_id: main
+  query: native_chinese_dialogue_style
+  document_types:
+  - style_audit
+  expected_document_ids:
+  - style-native-chinese-dialogue-v1.0
+  forbidden_statuses:
+  - draft
+  - deprecated
+  - archived
+  checks:
+  - correctness
+  - timeline_isolation
+  - version
+  - content_type
+- id: canon-qihuang-profile
+  story_id: overturned-world-fujimaru
+  timeline_id: main
+  query: qihuang_profile
+  document_types:
+  - canon
+  expected_document_ids:
+  - canon-character-qihuang-v1.0
+  forbidden_statuses:
+  - draft
+  - deprecated
+  - archived
+  checks:
+  - correctness
+  - timeline_isolation
+  - version
+  - content_type
+- id: canon-qihuang-all-desires
+  story_id: overturned-world-fujimaru
+  timeline_id: main
+  query: qihuang_all_desires_of_this_world
+  document_types:
+  - canon
+  expected_document_ids:
+  - canon-ability-qihuang-all-desires-of-this-world-v1.0
+  forbidden_statuses:
+  - draft
+  - deprecated
+  - archived
+  checks:
+  - correctness
+  - timeline_isolation
+  - version
+  - content_type
+- id: canon-qihuang-purification-vase
+  story_id: overturned-world-fujimaru
+  timeline_id: main
+  query: qihuang_willow_branch_purification_vase
+  document_types:
+  - canon
+  expected_document_ids:
+  - canon-ability-qihuang-willow-branch-purification-vase-v1.0
+  forbidden_statuses:
+  - draft
+  - deprecated
+  - archived
+  checks:
+  - correctness
+  - timeline_isolation
+  - version
+  - content_type
+- id: state-qihuang-abilities
+  story_id: overturned-world-fujimaru
+  timeline_id: main
+  query: 文明侵蚀 金刚杵
+  document_types:
+  - character_state
+  expected_document_ids:
+  - state-current-qihuang-v1.5
+  forbidden_document_ids:
+  - state-current-qihuang-v1.4
+  - state-current-qihuang-v1.3
+  - state-current-qihuang-v1.2
+  - state-current-qihuang-v1.1
+  - state-current-qihuang-v1.0
+  forbidden_statuses:
+  - draft
+  - deprecated
+  - archived
+  checks:
+  - correctness
+  - timeline_isolation
+  - temporal
+  - version
+  - content_type
+- id: history-volume-04-chapter-014-defeat
+  story_id: overturned-world-fujimaru
+  timeline_id: main
+  query: 至命之火 天照命败北后的东门
+  document_types:
+  - history
+  expected_document_ids:
+  - history-v04-c014-s016-v1.0
+  forbidden_statuses:
+  - draft
+  - deprecated
+  - archived
+  checks:
+  - correctness
+  - timeline_isolation
+  - temporal
+  - version
+  - content_type
+- id: state-amaterasu-after-chapter-014
+  story_id: overturned-world-fujimaru
+  timeline_id: main
+  query: 退化为普通大小黑金孔雀
+  document_types:
+  - character_state
+  expected_document_ids:
+  - state-current-amaterasu-no-mikoto-v1.1
+  forbidden_statuses:
+  - draft
+  - deprecated
+  - archived
+  checks:
+  - correctness
+  - timeline_isolation
+  - temporal
+  - version
+  - content_type
+  forbidden_document_ids:
+  - state-current-amaterasu-no-mikoto-v1.0
+- id: state-muramasa-creation-misogi
+  story_id: overturned-world-fujimaru
+  timeline_id: main
+  query: 日本特异点记忆与人格连续性完整保留
+  document_types:
+  - character_state
+  expected_document_ids:
+  - state-current-sengo-muramasa-v1.4
+  forbidden_document_ids:
+  - state-current-sengo-muramasa-v1.3
+  - state-current-sengo-muramasa-v1.2
+  - state-current-sengo-muramasa-v1.1
+  - state-current-sengo-muramasa-v1.0
+  forbidden_statuses:
+  - draft
+  - deprecated
+  - archived
+  checks:
+  - correctness
+  - timeline_isolation
+  - temporal
+  - version
+  - content_type
+- id: canon-li-zhouwei-profile
+  story_id: overturned-world-fujimaru
+  timeline_id: main
+  query: li_zhouwei_profile
+  document_types:
+  - canon
+  expected_document_ids:
+  - canon-character-li-zhouwei-v1.0
+  forbidden_statuses:
+  - draft
+  - deprecated
+  - archived
+  checks:
+  - correctness
+  - timeline_isolation
+  - version
+  - content_type
+- id: canon-li-zhouwei-zhimingchu
+  story_id: overturned-world-fujimaru
+  timeline_id: main
+  query: li_zhouwei_zhimingchu
+  document_types:
+  - canon
+  expected_document_ids:
+  - canon-ability-li-zhouwei-zhimingchu-v1.0
+  forbidden_statuses:
+  - draft
+  - deprecated
+  - archived
+  checks:
+  - correctness
+  - timeline_isolation
+  - version
+  - content_type
+- id: canon-li-zhouwei-king-halberd
+  story_id: overturned-world-fujimaru
+  timeline_id: main
+  query: li_zhouwei_second_manifest_forged_white_renewed_ming_king_halberd
+  document_types:
+  - canon
+  expected_document_ids:
+  - canon-ability-li-zhouwei-second-manifest-forged-white-renewed-ming-king-halberd-v1.0
+  forbidden_statuses:
+  - draft
+  - deprecated
+  - archived
+  checks:
+  - correctness
+  - timeline_isolation
+  - version
+  - content_type
+- id: rule-narrative-information-disclosure
+  story_id: overturned-world-fujimaru
+  timeline_id: main
+  query: narrative_information_disclosure_no_omniscient_leak
+  document_types:
+  - rule
+  expected_document_ids:
+  - ruler-narrative-information-disclosure-v1.0
+  forbidden_statuses:
+  - draft
+  - deprecated
+  - archived
+  checks:
+  - correctness
+  - timeline_isolation
+  - version
+  - content_type
+- id: rule-point-of-view-boundary
+  story_id: overturned-world-fujimaru
+  timeline_id: main
+  query: point_of_view_knowledge_boundary
+  document_types:
+  - rule
+  expected_document_ids:
+  - ruler-narrative-information-disclosure-v1.0
+  forbidden_statuses:
+  - draft
+  - deprecated
+  - archived
+  checks:
+  - correctness
+  - timeline_isolation
+  - version
+  - content_type
+- id: rule-no-ability-manualization
+  story_id: overturned-world-fujimaru
+  timeline_id: main
+  query: no_ability_manualization
+  document_types:
+  - rule
+  expected_document_ids:
+  - ruler-narrative-information-disclosure-v1.0
+  forbidden_statuses:
+  - draft
+  - deprecated
+  - archived
+  checks:
+  - correctness
+  - timeline_isolation
+  - version
+  - content_type
+- id: rule-narrator-knowledge-boundary-natural-language
+  story_id: overturned-world-fujimaru
+  timeline_id: main
+  query: 角色不知道的信息
+  document_types:
+  - rule
+  expected_document_ids:
+  - ruler-narrative-information-disclosure-v1.0
+  forbidden_statuses:
+  - draft
+  - deprecated
+  - archived
+  checks:
+  - correctness
+  - timeline_isolation
+  - version
+  - content_type
+- id: history-chapter-015-main-cannon-result
+  story_id: overturned-world-fujimaru
+  timeline_id: main
+  query: 降格完成 炮线清空 主炮命中 白火仍在燃烧
+  document_types:
+  - history
+  expected_document_ids:
+  - history-v04-c015-s005-v1.0
+  forbidden_statuses:
+  - draft
+  - deprecated
+  - archived
+  checks:
+  - correctness
+  - timeline_isolation
+  - temporal
+  - content_type
+- id: history-chapter-016-unnamed-halberd
+  story_id: overturned-world-fujimaru
+  timeline_id: main
+  query: 门后没有宝具雨 只悬着一柄大戟
+  document_types:
+  - history
+  expected_document_ids:
+  - history-v04-c016-s004-v1.0
+  forbidden_statuses:
+  - draft
+  - deprecated
+  - archived
+  checks:
+  - correctness
+  - timeline_isolation
+  - temporal
+  - content_type
+- id: history-chapter-017-sky-severed
+  story_id: overturned-world-fujimaru
+  timeline_id: main
+  query: 白昼被切成两半
+  document_types:
+  - history
+  expected_document_ids:
+  - history-v04-c017-s004-v1.0
+  forbidden_statuses:
+  - draft
+  - deprecated
+  - archived
+  checks:
+  - correctness
+  - timeline_isolation
+  - temporal
+  - content_type
+- id: history-chapter-017-cross-world-coordinate
+  story_id: overturned-world-fujimaru
+  timeline_id: main
+  query: 桌上的透明坐标已经失去原本形状
+  document_types:
+  - history
+  expected_document_ids:
+  - history-v04-c017-s005-v1.0
+  forbidden_statuses:
+  - draft
+  - deprecated
+  - archived
+  checks:
+  - correctness
+  - timeline_isolation
+  - temporal
+  - content_type
+- id: state-kotomine-unnamed-halberd-boundary
+  story_id: overturned-world-fujimaru
+  timeline_id: main
+  query: 无名大戟原主身份
+  document_types:
+  - character_state
+  expected_document_ids:
+  - state-current-kotomine-shirou-v1.5
+  forbidden_document_ids:
+  - state-current-kotomine-shirou-v1.4
+  - state-current-kotomine-shirou-v1.3
+  - state-current-kotomine-shirou-v1.2
+  forbidden_statuses:
+  - draft
+  - deprecated
+  - archived
+  checks:
+  - correctness
+  - timeline_isolation
+  - temporal
+  - version
+  - content_type
+- id: state-maitreya-deceased
+  story_id: overturned-world-fujimaru
+  timeline_id: main
+  query: 弥勒 生命与思潮信号归零 死亡
+  document_types:
+  - character_state
+  expected_document_ids:
+  - state-current-maitreya-v1.0
+  forbidden_statuses:
+  - draft
+  - deprecated
+  - archived
+  checks:
+  - correctness
+  - timeline_isolation
+  - temporal
+  - version
+  - content_type
+- id: state-epohonsiereht-main-cannon-overheat
+  story_id: overturned-world-fujimaru
+  timeline_id: main
+  query: 下一次发射时间无法计算
+  document_types:
+  - character_state
+  expected_document_ids:
+  - state-current-epohonsiereht-v1.2
+  forbidden_document_ids:
+  - state-current-epohonsiereht-v1.1
+  - state-current-epohonsiereht-v1.0
+  forbidden_statuses:
+  - draft
+  - deprecated
+  - archived
+  checks:
+  - correctness
+  - timeline_isolation
+  - temporal
+  - version
+  - content_type
+- id: world-state-after-chapter-020-keeps-maitreya-outcome
+  story_id: overturned-world-fujimaru
+  timeline_id: main
+  query: 弥勒生命与思潮信号归零
+  document_types:
+  - world_state
+  expected_document_ids:
+  - world-state-current-v1.6
+  forbidden_document_ids:
+  - world-state-current-v1.5
+  - world-state-current-v1.4
+  - world-state-current-v1.3
+  forbidden_statuses:
+  - draft
+  - deprecated
+  - archived
+  checks:
+  - correctness
+  - timeline_isolation
+  - temporal
+  - version
+  - content_type
+- id: style-master-patch-v2-key
+  story_id: overturned-world-fujimaru
+  timeline_id: main
+  query: master_style_patch_v2 dialogue_narration_scene_protocol
+  document_types:
+  - style_audit
+  expected_document_ids:
+  - style-master-patch-v2.0
+  forbidden_statuses:
+  - draft
+  - deprecated
+  - archived
+  checks:
+  - correctness
+  - timeline_isolation
+  - version
+  - content_type
+  forbidden_document_ids:
+  - style-master-patch-v1.0
+- id: style-master-patch-character-motivation
+  story_id: overturned-world-fujimaru
+  timeline_id: main
+  query: 角色当下反应 关系真实感 信息效率 人设展示
+  document_types:
+  - style_audit
+  expected_document_ids:
+  - style-master-patch-v2.0
+  forbidden_statuses:
+  - draft
+  - deprecated
+  - archived
+  checks:
+  - correctness
+  - timeline_isolation
+  - version
+  - content_type
+  forbidden_document_ids:
+  - style-master-patch-v1.0
+- id: style-master-patch-scene-contract
+  story_id: overturned-world-fujimaru
+  timeline_id: main
+  query: 每个完整场景只能有一个主要变化
+  document_types:
+  - style_audit
+  expected_document_ids:
+  - style-master-patch-v2.0
+  forbidden_statuses:
+  - draft
+  - deprecated
+  - archived
+  checks:
+  - correctness
+  - timeline_isolation
+  - version
+  - content_type
+  forbidden_document_ids:
+  - style-master-patch-v1.0
+- id: style-master-patch-reader-inference
+  story_id: overturned-world-fujimaru
+  timeline_id: main
+  query: 禁止证据回收清单
+  document_types:
+  - style_audit
+  expected_document_ids:
+  - style-master-patch-v2.0
+  forbidden_statuses:
+  - draft
+  - deprecated
+  - archived
+  checks:
+  - correctness
+  - timeline_isolation
+  - version
+  - content_type
+  forbidden_document_ids:
+  - style-master-patch-v1.0
+- id: style-global-manifest-v1-4
+  story_id: overturned-world-fujimaru
+  timeline_id: main
+  query: style_global_manifest_v1_4 master_style_patch_v2_active
+  document_types:
+  - style_audit
+  expected_document_ids:
+  - style-global-manifest-v1.4
+  forbidden_statuses:
+  - draft
+  - deprecated
+  - archived
+  checks:
+  - correctness
+  - timeline_isolation
+  - version
+  - content_type
+  forbidden_document_ids:
+  - style-global-manifest-v1.3
+- id: history-chapter-020-qihuang-muramasa-not-returned
+  story_id: overturned-world-fujimaru
+  timeline_id: main
+  query: 两人都没有随转移阵返回迦勒底
+  document_types:
+  - history
+  expected_document_ids:
+  - history-v04-c020-s003-v1.0
+  forbidden_statuses:
+  - draft
+  - deprecated
+  - archived
+  checks:
+  - correctness
+  - temporal
+  - content_type
+- id: state-qihuang-not-returned-chapter-020
+  story_id: overturned-world-fujimaru
+  timeline_id: main
+  query: 仍未返回迦勒底 路径待重建
+  document_types:
+  - character_state
+  expected_document_ids:
+  - state-current-qihuang-v1.5
+  forbidden_document_ids:
+  - state-current-qihuang-v1.4
+  - state-current-qihuang-v1.3
+  forbidden_statuses:
+  - draft
+  - deprecated
+  - archived
+  checks:
+  - correctness
+  - temporal
+  - version
+- id: world-state-after-chapter-024
+  story_id: overturned-world-fujimaru
+  timeline_id: main
+  query: 人理直接召唤支援仍未确认
+  document_types:
+  - world_state
+  expected_document_ids:
+  - world-state-current-v1.6
+  forbidden_document_ids:
+  - world-state-current-v1.5
+  - world-state-current-v1.4
+  forbidden_statuses:
+  - draft
+  - deprecated
+  - archived
+  checks:
+  - correctness
+  - temporal
+  - version
+- id: history-chapter-021-first-singularity-rest
+  story_id: overturned-world-fujimaru
+  timeline_id: main
+  query: 第一特异点修复完成
+  document_types:
+  - history
+  expected_document_ids:
+  - history-v04-c021-s002-v1.0
+  forbidden_document_ids: []
+  forbidden_statuses:
+  - draft
+  - deprecated
+  - archived
+  checks:
+  - correctness
+  - temporal
+  - version
+  - content_type
+- id: history-chapter-023-ritsuka-shirou-confession
+  story_id: overturned-world-fujimaru
+  timeline_id: main
+  query: 我也喜欢你
+  document_types:
+  - history
+  expected_document_ids:
+  - history-v04-c023-s002-v1.0
+  forbidden_document_ids: []
+  forbidden_statuses:
+  - draft
+  - deprecated
+  - archived
+  checks:
+  - correctness
+  - temporal
+  - version
+  - content_type
+- id: history-chapter-024-muramasa-identity-continuity
+  story_id: overturned-world-fujimaru
+  timeline_id: main
+  query: 人格连续性：确认
+  document_types:
+  - history
+  expected_document_ids:
+  - history-v04-c024-s005-v1.0
+  forbidden_document_ids: []
+  forbidden_statuses:
+  - draft
+  - deprecated
+  - archived
+  checks:
+  - correctness
+  - temporal
+  - version
+  - content_type
+- id: state-muramasa-returned-same-person
+  story_id: overturned-world-fujimaru
+  timeline_id: main
+  query: 日本特异点记忆与人格连续性完整保留
+  document_types:
+  - character_state
+  expected_document_ids:
+  - state-current-sengo-muramasa-v1.4
+  forbidden_document_ids:
+  - state-current-sengo-muramasa-v1.3
+  forbidden_statuses:
+  - draft
+  - deprecated
+  - archived
+  checks:
+  - correctness
+  - temporal
+  - version
+  - content_type
+- id: state-qihuang-still-not-returned
+  story_id: overturned-world-fujimaru
+  timeline_id: main
+  query: 仍未返回迦勒底 路径待重建
+  document_types:
+  - character_state
+  expected_document_ids:
+  - state-current-qihuang-v1.5
+  forbidden_document_ids:
+  - state-current-qihuang-v1.4
+  forbidden_statuses:
+  - draft
+  - deprecated
+  - archived
+  checks:
+  - correctness
+  - temporal
+  - version
+  - content_type
+- id: world-human-order-direct-support-unconfirmed
+  story_id: overturned-world-fujimaru
+  timeline_id: main
+  query: 人理直接召唤支援仍未确认
+  document_types:
+  - world_state
+  expected_document_ids:
+  - world-state-current-v1.6
+  forbidden_document_ids:
+  - world-state-current-v1.5
+  forbidden_statuses:
+  - draft
+  - deprecated
+  - archived
+  checks:
+  - correctness
+  - temporal
+  - version
+  - content_type

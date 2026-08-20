@@ -1,0 +1,114 @@
+metadata:
+  document_id: state-current-fujimaru-ritsuka-v1.4
+  story_id: overturned-world-fujimaru
+  timeline_id: main
+  document_type: character_state
+  title: 第四卷第17章末状态快照-藤丸立香
+  character_id: fujimaru-ritsuka
+  variant_id: fujimaru-ritsuka-main
+  snapshot_type: snapshot
+  effective_at: volume-04-chapter-017
+  last_updated: '2026-07-18'
+  version: '1.4'
+  status: archived
+  supersedes: state-current-fujimaru-ritsuka-v1.3
+  source_file: D:\Novel\outputs\第四卷_第15章_重写.txt; D:\Novel\outputs\第四卷_第16章_重写.txt; D:\Novel\outputs\第四卷_第17章_重写.txt
+character_state:
+  current_position:
+    location: 伊耶那岐宫废墟外围
+    companions:
+    - 言峰士郎
+    - 玛修·基列莱特
+    - 祁荒
+    - 千子村正
+    faction: 迦勒底协同行动方
+  physical:
+    health: 重度疲劳但仍保持清醒
+    injuries:
+    - 脸侧被文明兵装擦出细长伤口
+    - 逆向术式过载导致指尖持续发颤
+    fatigue: 连续降格、坐标维持与终战指挥造成重度消耗
+    temporary_conditions: []
+    permanent_changes: []
+  mental:
+    dominant_emotions:
+    - 警惕
+    - 克制
+    - 专注
+    current_pressure:
+    - 弥勒死后特异点坐标开始偏移
+    - 同伴普遍重伤
+    desires:
+    - 确认坐标偏移方向并稳定伤员与居民
+    fears: []
+    unresolved_conflicts: []
+    behavior_effects:
+    - 拒绝替本世界的人决定未来，只提供自己能够给予的支援
+  knowledge:
+    known:
+    - 弥勒已经被降格、主炮贯穿并最终死亡
+    - 伊耶那岐金地封锁解除
+    - 终末主炮已经过热，无法计算下次发射时间
+    - 祁荒确认有来者正在沿远端坐标接近
+    unknown:
+    - 来者身份与目的
+    - 特异点偏移终点
+    - 终末人理圆满装置隐瞒的最终目的
+    mistaken_beliefs: []
+    suspicions: []
+    secrets_held: []
+  goals:
+    immediate:
+    - 救治重伤同伴
+    - 确认特异点异常迁移
+    short_term:
+    - 稳定金地并查明跨界坐标异常
+    long_term:
+    - 修复特异点并返回正常人理
+    priorities:
+    - 同伴生存
+    - 确认特异点异常
+    obstacles:
+    - 只剩一道令咒
+    - 主炮过热
+    - 多人重伤
+    - 跨界来者身份未明
+  relationships:
+  - target_character: mash-kyrielight
+    relationship_type: 前辈与后辈／御主与从者
+    trust: 高
+    dependence: 战斗与精神支援
+    hostility: 无
+    current_attitude: 将最后两道令咒中的一道作为英杰之帜交给玛修
+    unresolved_issues:
+    - 玛修左臂与武装伤势
+    recent_change: 英杰之帜改由玛修承载并完成终战正面对轰
+  abilities:
+    available:
+    - 降格术
+    - 英杰之帜
+    unavailable: []
+    newly_acquired: []
+    consumed_resources:
+    - 一道令咒用于强化杨浞
+    - 一道令咒用于强化玛修
+    active_costs:
+    - 剩余令咒一道
+    - 逆向术式过载
+  inventory:
+    carried: []
+    lost: []
+    damaged: []
+  narrative:
+    current_arc: 日本下篇：伊耶那岐金地终战后
+    completed_changes:
+    - 完成弥勒降格
+    - 指挥十二秒疏散与主炮命中
+    - 指挥终战合击并确认弥勒死亡
+    unresolved_flags:
+    - 特异点异常迁移
+    - 跨界来者身份与目的
+    - 圣杯与人理修复核心仍未出现
+    active_promises: []
+    future_pressure:
+    - 终战胜利立即转化为新的坐标危机

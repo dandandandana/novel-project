@@ -122,6 +122,33 @@ def test_story_metadata_cannot_cross_physical_boundary(tmp_path):
     assert any("物理小说目录与 metadata.story_id 不一致" in issue.message for issue in issues)
 
 
+def test_target_story_documents_win_over_copy_only_legacy_tree(tmp_path):
+    """A migrated target copy is authoritative while legacy sources remain."""
+
+    initialize_library(tmp_path)
+    value = {
+        "metadata": {
+            "document_id": "target-wins-v1.0",
+            "story_id": "s",
+            "timeline_id": "main",
+            "document_type": "history",
+            "title": "目标布局",
+            "status": "canon",
+            "version": "1.0",
+        },
+        "content": "target",
+    }
+    legacy = tmp_path / "stories" / "s" / "history" / "scene.yaml"
+    target = tmp_path / "stories" / "s" / "timelines" / "main" / "history" / "scene.yaml"
+    write_yaml(legacy, {**value, "content": "legacy"})
+    write_yaml(target, value)
+
+    documents, issues = load_valid_documents(tmp_path)
+
+    assert issues == []
+    assert [document.path.resolve() for document in documents] == [target.resolve()]
+
+
 def test_shared_system_document_can_be_inherited_by_story(tmp_path):
     initialize_library(tmp_path)
     write_yaml(

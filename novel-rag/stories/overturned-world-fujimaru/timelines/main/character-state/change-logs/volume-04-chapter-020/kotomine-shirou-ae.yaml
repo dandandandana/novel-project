@@ -1,0 +1,21 @@
+metadata:
+  document_id: state-change-kotomine-shirou-ae-v04-c020-v1.0
+  story_id: overturned-world-fujimaru
+  timeline_id: main
+  document_type: character_state
+  title: 第4卷第18至20章状态变化-言峰士郎（AE）
+  character_id: kotomine-shirou-ae
+  variant_id: kotomine-shirou-ae-main
+  snapshot_type: change_log
+  effective_at: volume-04-chapter-020
+  last_updated: '2026-08-08'
+  version: '1.0'
+  status: canon
+  supersedes: null
+  source_file: D:\Novel 1\Novel\outputs\第四卷_第18章_续写.txt; D:\Novel 1\Novel\outputs\第四卷_第19章_续写.txt; D:\Novel 1\Novel\outputs\第四卷_第20章_续写.txt
+changes:
+- category: chapter_18_to_20_outcome
+  before: state-current-kotomine-shirou-ae-v1.1
+  after: state-current-kotomine-shirou-ae-v1.2
+  cause: 第四卷第18至20章神琦灰袭击、圣杯回收与日本人理修复
+  evidence: history-v04-c020

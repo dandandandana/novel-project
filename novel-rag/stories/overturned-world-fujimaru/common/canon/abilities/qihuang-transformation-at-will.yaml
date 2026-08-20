@@ -1,0 +1,36 @@
+metadata:
+  document_id: canon-ability-qihuang-transformation-at-will-v1.0
+  story_id: overturned-world-fujimaru
+  timeline_id: main
+  document_type: canon
+  title: 能力设定-祁荒-变化自在
+  entity: ability
+  character_ids: [qihuang]
+  event_tags: [变化自在, B, personal_skill]
+  version: '1.0'
+  status: canon
+  canon_scope: timeline
+  created_at: '2026-07-17'
+  updated_at: '2026-07-17'
+  supersedes: null
+  source_file: user-message:2026-07-17/qihuang-character-card
+ability:
+  retrieval_key: qihuang_transformation_at_will
+  name: 变化自在
+  owner: 观世音·祁荒
+  owner_id: qihuang
+  rank: B
+  type: 三十三化身与气息遮蔽
+  effect: 可变幻为天神、地鬼、女人、万物等任何形态，并附带A++级气息遮蔽；主动隐蔽时，世界上没有任何存在能够发现她。
+  activation: 祁荒主动变化形态或主动隐蔽。
+  range: 祁荒自身。
+  cost: 未说明。
+  limitations:
+  - 祁荒更喜欢以原貌示人。
+  - 变化持续时间、复制能力范围与解除条件未说明。
+  failure_conditions: []
+  known_by: [祁荒]
+  visual_expression: 可显现为任何形态。
+  narrative_function:
+  - 进行完全变身与绝对级主动隐蔽。
+  canon_notes: []

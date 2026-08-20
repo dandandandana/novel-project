@@ -1,0 +1,111 @@
+metadata:
+  document_id: state-current-gilgamesh-v1.3
+  story_id: overturned-world-fujimaru
+  timeline_id: main
+  document_type: character_state
+  title: 当前状态-吉尔伽美什
+  character_id: gilgamesh
+  variant_id: gilgamesh-main
+  snapshot_type: current
+  effective_at: volume-04-chapter-020
+  last_updated: '2026-08-08'
+  version: '1.3'
+  status: active
+  supersedes: state-current-gilgamesh-v1.2
+  source_file: D:\Novel 1\Novel\outputs\第四卷_第18章_续写.txt; D:\Novel 1\Novel\outputs\第四卷_第19章_续写.txt; D:\Novel 1\Novel\outputs\第四卷_第20章_续写.txt
+character_state:
+  current_position:
+    location: 迦勒底灵子转移筐体与医疗区
+    companions:
+    - 藤丸立香
+    - 玛修·基列莱特
+    - 言峰士郎
+    faction: 迦勒底协同行动方
+  physical:
+    health: 重伤回归
+    injuries:
+    - 左肩、锁骨与胸腔缺损
+    - 左腿无法支撑
+    - 右手虎口裂伤
+    fatigue: 地下支援与灵子转移后的重度消耗
+    temporary_conditions: []
+    permanent_changes: []
+  mental:
+    dominant_emotions:
+    - 愤怒
+    - 悲痛
+    - 克制
+    current_pressure:
+    - 杨浞信号丢失
+    - 问武平清觯断裂
+    desires:
+    - 接受治疗并保留杨浞遗物
+    fears: []
+    unresolved_conflicts: []
+    behavior_effects: []
+  knowledge:
+    known:
+    - 杨浞选择牺牲并且信号丢失
+    - 问武平清觯在其死亡时断裂
+    - 圣杯回收与日本人理修复完成
+    - 祁荒与村正未返回迦勒底
+    unknown:
+    - 杨浞是否存在残留
+    - 祁荒与村正当前坐标
+    mistaken_beliefs: []
+    suspicions: []
+    secrets_held: []
+  goals:
+    immediate:
+    - 保存断裂的问武平清觯
+    - 稳定重伤
+    short_term:
+    - 确认未归同伴去向
+    long_term:
+    - 继续修复人理
+    priorities:
+    - 王的尊严
+    - 同伴遗留
+    obstacles:
+    - 左肩、锁骨与胸腔缺损
+    - 左腿无法支撑
+    - 右手虎口裂伤
+  relationships:
+  - target_character: yang-zhuo
+    relationship_type: 并肩作战的王者
+    trust: 接受关键战术提示
+    dependence: 情报与宝库资源互补
+    hostility: 竞争性口角
+    current_attitude: 不满其卖关子，但仍立即按提示取出大戟
+    unresolved_issues:
+    - 杨浞如何知道宝库藏品
+    recent_change: 共同通过通讯支援士郎完成投影
+  abilities:
+    available:
+    - 王之财宝
+    - EA
+    - 千里眼
+    unavailable: []
+    newly_acquired: []
+    consumed_resources: []
+    active_costs:
+    - 重伤限制移动
+    - 宝库门扉连续开启
+  inventory:
+    carried:
+    - EA
+    - 断裂的问武平清觯
+    lost: []
+    damaged:
+    - 问武平清觯断成两半
+  narrative:
+    current_arc: 日本篇结束：返回迦勒底
+    completed_changes:
+    - 保管问武平清觯
+    - 打开回收门扉但未能带回杨浞
+    unresolved_flags:
+    - 杨浞残留
+    - 祁荒与村正未归
+    active_promises: []
+    future_pressure:
+    - 回归时仍携带断裂的问武平清觯

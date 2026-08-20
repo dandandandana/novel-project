@@ -1,0 +1,96 @@
+metadata:
+  document_id: state-current-sengo-muramasa-v1.1
+  story_id: overturned-world-fujimaru
+  timeline_id: main
+  document_type: character_state
+  title: 第四卷第14章末状态快照-千子村正
+  character_id: sengo-muramasa
+  variant_id: sengo-muramasa-main
+  snapshot_type: snapshot
+  effective_at: volume-04-chapter-014
+  last_updated: '2026-07-17'
+  version: '1.1'
+  status: archived
+  supersedes: state-current-sengo-muramasa-v1.0
+  source_file: D:\Novel\outputs\第四卷_第14章_续写.txt
+character_state:
+  current_position:
+    location: 伊耶那岐金地地下第三层创造空间
+    companions:
+    - 祁荒
+    faction: 迦勒底协同行动方
+  physical:
+    health: 右手被白火抹除后已经重生
+    injuries:
+    - 掌心至心口留下白色火纹
+    fatigue: 持续承载创造之禊祓，消耗未明确
+    temporary_conditions: []
+    permanent_changes: []
+  mental:
+    dominant_emotions:
+    - 坚定
+    - 专注
+    current_pressure:
+    - 需要维持白火洗除并打开撤离通道
+    desires:
+    - 把选择结局的权利交还创造物自身
+    fears: []
+    unresolved_conflicts: []
+    behavior_effects:
+    - 拒绝以说服或强制方式取得创造之禊祓，以锻造和自身承担促使其选择
+  knowledge:
+    known:
+    - 伊耶娜美是从互相冲突的故尊记忆中自主活下来的个体
+    - 创造之禊祓因恐惧创造物受苦而拒绝完成任何创造
+    - 天照命已败北
+    - 东门需要地下伤员撤离通道
+    unknown:
+    - 创造之禊祓的具体代价
+    - 白色火纹的长期影响
+    mistaken_beliefs: []
+    suspicions: []
+    secrets_held: []
+  goals:
+    immediate:
+    - 与祁荒打开第三层出口
+    - 维持对弥勒佛印与封锁的洗除
+    short_term:
+    - 完成对弥勒的降格、主炮与创造之禊祓衔接
+    long_term:
+    - 修复特异点
+    priorities:
+    - 完成任务
+    - 同伴生存
+    obstacles:
+    - 弥勒封锁
+    - 创造之禊祓代价未知
+  relationships: []
+  abilities:
+    available:
+    - 灼阳之禊祓
+    - 创造之禊祓
+    unavailable: []
+    newly_acquired:
+    - 创造之禊祓
+    consumed_resources: []
+    active_costs:
+    - 右手重生并留下贯穿掌心至心口的白色火纹
+    - 具体使用代价未知
+  inventory:
+    carried:
+    - 创造之禊祓
+    lost: []
+    damaged:
+    - 用于开门的短刀已经崩断并被白火抹去
+  narrative:
+    current_arc: 日本下篇：伊耶那岐金地决战
+    completed_changes:
+    - 确认故尊复现真相
+    - 唤醒并取得创造之禊祓
+    - 白火开始沿地脉洗除弥勒佛印
+    unresolved_flags:
+    - 创造之禊祓代价
+    - 地下出口尚未完全打开
+    active_promises: []
+    future_pressure:
+    - 必须先建立伤员撤离路线，再与主炮和降格计划衔接

@@ -1,0 +1,93 @@
+metadata:
+  document_id: world-state-current-v1.4
+  story_id: overturned-world-fujimaru
+  timeline_id: main
+  document_type: world_state
+  title: 第四卷第17章后世界状态
+  version: '1.4'
+  status: archived
+  effective_at: volume-04-chapter-017
+  supersedes: world-state-current-v1.3
+  source_file: D:\Novel\outputs\第四卷_第15章_重写.txt; D:\Novel\outputs\第四卷_第16章_重写.txt; D:\Novel\outputs\第四卷_第17章_重写.txt
+  updated_at: '2026-07-18'
+world_state:
+  timeline_position: 第四卷第17章末，弥勒死亡、金地解封，特异点坐标开始异常偏移
+  locations:
+  - location_id: izanagi-palace
+    current_condition: 宫殿毁灭，佛像失去支撑断首倒塌，地表与山系严重破坏
+    controlling_faction: 无稳定控制者；迦勒底协同行动方暂时留在废墟
+    accessibility: 金地封锁解除，但废墟、地层拱起与空间裂隙造成高风险
+    known_hazards:
+    - 持续下沉的山川
+    - 未闭合的天空裂隙
+    - 大量重伤人员
+    recent_events:
+    - 弥勒死亡
+    - 天羽羽斩切开天空
+    - 佛像与宫殿失去神性支撑
+  - location_id: izanagi-golden-land-underground
+    current_condition: 终末主炮已经发射并过热，地下第三层用作重伤员安置点
+    controlling_faction: 终末人理圆满装置与迦勒底阶段性协作方
+    accessibility: 地下出口已经由创造白火打开
+    known_hazards:
+    - 主炮过热
+    - 地下结构受对星余波与地层变动影响
+    recent_events:
+    - 杨浞与吉尔伽美什在创造室外接受稳定治疗
+    - 主炮从地下贯穿弥勒
+  - location_id: cross-world-coordinate
+    current_condition: 透明坐标被无法稳定的无脸人影挤压，距离发生错位
+    controlling_faction: 未确认
+    accessibility: 卫宫白已压缩错位距离并打开窄门，但尚未完成跨界
+    known_hazards:
+    - 空间距离失真
+    - 无脸人影身份与目的未知
+    recent_events:
+    - 祁荒感知远端坐标反向挤压
+    - 卫宫白开始打开通往伊耶那岐金地的门
+  factions:
+  - faction_id: chaldea
+    current_goal: 救治重伤同伴、稳定金地并查明特异点迁移与跨界坐标异常
+    leadership: 藤丸立香
+    alliances:
+    - 终末人理圆满装置（阶段性）
+    - Alterego言峰士郎与阿尔托莉雅（阶段性）
+    enemies: []
+    known_information:
+    - 弥勒生命与思潮信号归零
+    - 金地封锁解除
+    - 主炮过热
+    - 特异点坐标正在偏移
+    resources:
+    - 剩余一道令咒
+    - 祁荒的坐标阵与杨枝净瓶
+    - 潘多拉宝具仍未开启
+    - 终末人理圆满装置的观测能力
+    recent_changes:
+    - 弥勒从敌对方移除
+    - 多数前线成员重伤
+    - 终战目标转为坐标异常
+  global_events:
+  - 弥勒生命与思潮信号归零
+  - 伊耶那岐金地封锁解除
+  - 居民失去统一救世主庇护并开始自行决定未来
+  - 天空留下白昼可见星光的裂隙
+  - 终末主炮过热，下一次发射时间无法计算
+  - 特异点坐标开始异常偏移
+  public_knowledge:
+  - 金地居民亲眼看见弥勒真实佛身、人形战斗与死亡
+  - 居民已经知道未来不再由弥勒替他们决定
+  - 城市与山川遭到严重破坏，后续生存和安置需要自行选择
+  hidden_world_changes:
+  - 弥勒死亡留下的特异点坐标空位正在遭到无法稳定的无脸人影挤压
+  - 卫宫白已经在另一世界开启跨界窄门，但尚未抵达
+  - 终末人理圆满装置仍未说明其完整最终目的
+  unresolved_world_flags:
+  - 特异点坐标偏移的终点与原因
+  - 无脸人影的身份、状态与目的
+  - 卫宫白能否完成跨界
+  - 地下惨白弧面与新增贯通裂口的本质
+  - 金地居民的安置、治理与星空选择
+  - 杨枝净瓶内金色佛果的后续处理
+  - 终战成员的重伤与禊祓恢复
+  - 圣杯归还与人理修复核心仍未完成

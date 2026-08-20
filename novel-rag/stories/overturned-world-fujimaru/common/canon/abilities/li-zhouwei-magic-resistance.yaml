@@ -1,0 +1,51 @@
+{
+  "metadata": {
+    "document_id": "canon-ability-li-zhouwei-magic-resistance-v1.0",
+    "story_id": "overturned-world-fujimaru",
+    "timeline_id": "main",
+    "document_type": "canon",
+    "title": "能力设定-李周巍-对魔力",
+    "entity": "ability",
+    "character_ids": [
+      "li-zhouwei"
+    ],
+    "event_tags": [
+      "对魔力",
+      "B",
+      "class_skill"
+    ],
+    "version": "1.0",
+    "status": "canon",
+    "canon_scope": "timeline",
+    "created_at": "2026-07-17",
+    "updated_at": "2026-07-17",
+    "supersedes": null,
+    "source_file": "user-message:2026-07-17/li-zhouwei-servant-profile"
+  },
+  "ability": {
+    "retrieval_key": "li_zhouwei_magic_resistance",
+    "name": "对魔力",
+    "owner": "李周巍",
+    "owner_id": "li-zhouwei",
+    "rank": "B",
+    "category": "class_skill",
+    "type": "Lancer职阶基础抗魔技能",
+    "effect": "李周巍的灵基本就对超自然干涉具有极高抗性，从者容器进一步将其格式化为对魔力；可无效化三节以下魔术，大魔术也难以造成实质伤害。",
+    "activation": "常时被动生效。",
+    "range": "李周巍自身。",
+    "cost": "无已说明的主动消耗。",
+    "limitations": [
+      "对大魔术的效果描述为难以造成实质伤害，并非绝对无效。",
+      "对神代魔术、宝具与非魔术超自然干涉的具体抗性未说明。"
+    ],
+    "failure_conditions": [],
+    "known_by": [
+      "李周巍"
+    ],
+    "visual_expression": "未说明。",
+    "narrative_function": [
+      "抵抗常规魔术与多数超自然干涉。"
+    ],
+    "canon_notes": []
+  }
+}

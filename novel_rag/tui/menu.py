@@ -19,9 +19,18 @@ from ..importers import (
     preview_outline,
     preview_rag_yaml,
 )
-from ..index import rebuild_isolated_indexes
+from ..composition import (
+    build_graph_retriever,
+    build_mutation_coordinator,
+    rebuild_graph_projections,
+    search_graph,
+    timeline_summary_root,
+)
+from ..graph import GraphError
+from ..identity import GraphKey
 from ..model_api import ModelAPIError
 from ..model_config import ModelConfigError, default_config_path
+from ..mutations import SummaryDocument, SummaryEditor, SummaryError, SummaryStore, SummaryUpdate, SummaryWriter
 from ..resume import continue_generation
 from ..service import load_valid_documents
 from ..state import approve_state_proposal, inspect_state_proposal, reject_state_proposal
@@ -34,24 +43,159 @@ from .helpers import (
 from .wizards import api_config_wizard, preferences_wizard, create_story_wizard
 
 
+def _summary_payload(document: SummaryDocument) -> dict[str, Any]:
+    metadata = dict(document.metadata)
+    metadata.update(
+        {
+            "document_id": document.document_id,
+            "ownership": document.ownership,
+            "revision": document.revision,
+            "stale": document.stale,
+        }
+    )
+    if document.source_fingerprint is not None:
+        metadata["source_fingerprint"] = document.source_fingerprint
+    return {
+        "path": str(document.path),
+        "document_id": document.document_id,
+        "content": document.content,
+        "ownership": document.ownership,
+        "source_fingerprint": document.source_fingerprint,
+        "revision": document.revision,
+        "stale": document.stale,
+        "metadata": metadata,
+    }
+
+
+def _summary_menu(
+    library_root: Path,
+    index_root: Path,
+    key: GraphKey,
+    coordinator: Any,
+    input_fn: Input,
+    output: Output,
+) -> None:
+    root = timeline_summary_root(library_root, key)
+    store = SummaryStore(root)
+    output("1. 列出摘要  2. 查看摘要  3. 编辑摘要  4. 写入 AI 摘要  其他. 返回")
+    action = ask(input_fn, "选择")
+    if action == "1":
+        rows: list[SummaryDocument] = []
+        if root.is_dir():
+            for path in sorted((*root.rglob("*.yaml"), *root.rglob("*.yml"))):
+                try:
+                    rows.append(SummaryDocument.from_yaml(path))
+                except SummaryError:
+                    continue
+        output(json.dumps([_summary_payload(item) for item in rows], ensure_ascii=False, indent=2, default=str))
+    elif action == "2":
+        document = store.find(ask(input_fn, "摘要 document_id", required=True))
+        output(json.dumps(_summary_payload(document), ensure_ascii=False, indent=2, default=str))
+    elif action == "3":
+        document_id = ask(input_fn, "摘要 document_id", required=True)
+        current = store.find(document_id)
+        expected_revision = number(
+            input_fn,
+            output,
+            "expected revision",
+            default=current.revision,
+            minimum=0,
+        )
+        content = ask(input_fn, "新的摘要正文", required=True)
+        updated = SummaryEditor(root, coordinator=coordinator).update(
+            SummaryUpdate(
+                document_id,
+                expected_revision=current.revision if expected_revision is None else expected_revision,
+                content=content,
+            )
+        )
+        output(json.dumps(_summary_payload(updated), ensure_ascii=False, indent=2, default=str))
+    elif action == "4":
+        filename = ask(input_fn, "目标 YAML 文件名", required=True)
+        target = Path(filename)
+        if not target.is_absolute():
+            target = root / target
+        target = target.resolve()
+        try:
+            target.relative_to(root.resolve())
+        except ValueError as exc:
+            raise SummaryError("摘要路径必须位于当前 timeline summaries 目录") from exc
+        content = ask(input_fn, "AI 摘要正文", required=True)
+        document_id = ask(input_fn, "document_id（可留空使用文件名）") or None
+        source_fingerprint = ask(input_fn, "source fingerprint（可留空）") or None
+        written = SummaryWriter(root, coordinator=coordinator).write_ai(
+            target,
+            content,
+            document_id=document_id,
+            source_fingerprint=source_fingerprint,
+            metadata={
+                "story_id": key.story_id,
+                "timeline_id": key.timeline_id,
+                "document_type": "chapter-summary",
+                "generated_by": "ai",
+            },
+        )
+        output(json.dumps(_summary_payload(written), ensure_ascii=False, indent=2, default=str))
+
+
+def _pending_menu(coordinator: Any, input_fn: Input, output: Output) -> None:
+    """Expose durable graph-promotion recovery without hiding per-graph state."""
+
+    rows = coordinator.list_pending()
+    output(json.dumps(rows, ensure_ascii=False, indent=2, default=str))
+    action = ask(input_fn, "输入 RETRY 重试全部 pending；其他返回")
+    if action.strip().upper() != "RETRY":
+        return
+    results = coordinator.retry_persisted_pending()
+    output(json.dumps(
+        [
+            {
+                "status": getattr(result, "status", None),
+                "change_id": getattr(result, "change_id", None),
+                "yaml_committed": getattr(result, "yaml_committed", False),
+                "staging_root": str(getattr(result, "staging_root", ""))
+                if getattr(result, "staging_root", None) else None,
+                "error": getattr(result, "error", None),
+                "graphs": [
+                    {
+                        "key": item.key.as_dict() if hasattr(item.key, "as_dict") else str(item.key),
+                        "status": item.status,
+                        "target_path": str(item.target_path) if item.target_path else None,
+                        "staged_path": str(item.staged_path) if item.staged_path else None,
+                        "error": item.error,
+                    }
+                    for item in getattr(result, "graph_results", ())
+                ],
+            }
+            for result in results
+        ],
+        ensure_ascii=False,
+        indent=2,
+        default=str,
+    ))
+
+
 def run_tui(
     library_root: Path,
     index_root: Path | None = None,
     *,
     input_fn: Input = input,
     output: Output = print,
-    generate_fn: Callable[..., Any] = generate,
+    generate_fn: Callable[..., Any] | None = None,
     confirm_fn: Callable[..., Any] = None,
     resume_fn: Callable[..., Any] | None = None,
     state_inspect_fn: Callable[..., Any] | None = None,
     state_approve_fn: Callable[..., Any] | None = None,
     state_reject_fn: Callable[..., Any] | None = None,
     model_config_path: Path | None = None,
+    search_fn: Callable[..., Any] | None = None,
 ) -> int:
     confirm_fn = confirm_fn or confirm_runtime
 
     library_root = library_root.resolve()
     index_root = (index_root or library_root / "index").resolve()
+    generate_fn = generate_fn or generate
+    search_fn = search_fn or search_graph
     output_root = library_root.parent / "outputs"
     model_config_path = Path(model_config_path or default_config_path()).expanduser()
     try:
@@ -72,13 +216,15 @@ def run_tui(
         output(f"ERROR {exc}")
         return 1
 
+    coordinator = build_mutation_coordinator(library_root, index_directory=index_root)
     last_runtime = latest_runtime(output_root, story_id)
     last_outline: Path | None = None
     while True:
         output("\n=== Novel RAG ===")
         output("1. 生成草稿\n2. 查看最近运行\n3. 确认并回写\n4. 上传大纲\n5. 上传 RAG YAML"
                "\n6. 校验并重建索引\n7. 退出\n8. 审核状态提案\n9. 继续需要指导的任务"
-               "\n10. 作品与作者偏好\n11. Feedback 管理\n12. 本地模型 API 设置")
+               "\n10. 作品与作者偏好\n11. Feedback 管理\n12. 本地模型 API 设置"
+               "\n13. 摘要管理\n14. 检索\n15. Pending 图恢复")
         try:
             choice = ask(input_fn, "选择", required=True)
             if choice == "7":
@@ -107,13 +253,41 @@ def run_tui(
                         output("已取消生成。")
                         continue
                     task_id = ask(input_fn, "新的任务 ID", required=True)
-                result = generate_fn(
-                    {"story_id": story_id, "timeline_id": timeline_id, "outline": outline,
-                     "current_request": current_request, "references": references,
-                     "length": {"target": target}},
-                    model, library_root=library_root, index_root=index_root,
-                    output_root=output_root, task_id=task_id,
-                )
+                request = {
+                    "story_id": story_id, "timeline_id": timeline_id, "outline": outline,
+                    "current_request": current_request, "references": references,
+                    "length": {"target": target},
+                }
+                if generate_fn is generate:
+                    retriever = build_graph_retriever(
+                        library_root,
+                        GraphKey(story_id, timeline_id),
+                        index_directory=index_root,
+                    )
+                    try:
+                        result = generate_fn(
+                            request,
+                            model,
+                            library_root=library_root,
+                            index_root=index_root,
+                            output_root=output_root,
+                            task_id=task_id,
+                            retriever=retriever,
+                        )
+                    finally:
+                        retriever.close()
+                else:
+                    # Tests and embedding hosts may inject their own command
+                    # service; production TUI generation always gets the
+                    # canonical composition retriever above.
+                    result = generate_fn(
+                        request,
+                        model,
+                        library_root=library_root,
+                        index_root=index_root,
+                        output_root=output_root,
+                        task_id=task_id,
+                    )
                 last_runtime = Path(result.extensions["runtime_dir"])
                 output(f"生成状态: {result.status}\nruntime: {last_runtime}")
                 for warning in result.warnings:
@@ -155,6 +329,7 @@ def run_tui(
                     volume=volume if volume is not None else 0, chapter=chapter,
                     scene=scene if scene is not None else 1,
                     title=title, pov=pov, character_ids=character_ids, location_ids=location_ids,
+                    coordinator=coordinator,
                 )
                 output(f"回写状态: {result.status}\nHistory: {result.history_path}"
                        f"\n已清理临时文件: {getattr(result, 'cleaned_files', 0)}"
@@ -197,6 +372,7 @@ def run_tui(
                     story_id=story_id, timeline_id=timeline_id, title=title,
                     volume=volume if volume is not None else 0, chapter=chapter, version=version,
                     supersedes=supersedes, document_family=family or preview.document_family,
+                    coordinator=coordinator,
                 )
                 last_outline = imported.path
                 output(f"大纲上传状态: {imported.status}\n路径: {imported.path}")
@@ -227,6 +403,7 @@ def run_tui(
                     source, library_root=library_root, index_root=index_root,
                     story_id=story_id, timeline_id=timeline_id,
                     version=version, supersedes=supersedes, document_family=family,
+                    coordinator=coordinator,
                 )
                 output(f"RAG 上传状态: {imported.status}\n路径: {imported.path}")
             elif choice == "6":
@@ -236,7 +413,12 @@ def run_tui(
                         output(f"ERROR {issue.path}: {issue.message}")
                     output("存在校验问题，索引未更新。")
                     continue
-                results = rebuild_isolated_indexes(index_root, documents, registered_story_ids(library_root))
+                results = rebuild_graph_projections(
+                    index_root,
+                    documents,
+                    registered_story_ids(library_root),
+                    library_root=library_root,
+                )
                 output(f"校验通过：{len(documents)} 个文档；已重建 {len(results)} 个索引分区。")
             elif choice == "8":
                 inspect = state_inspect_fn or inspect_state_proposal
@@ -249,7 +431,13 @@ def run_tui(
                 decision = ask(input_fn, "输入 APPROVE 批准，REJECT 拒绝，其他输入取消")
                 if decision == "APPROVE":
                     reason = ask(input_fn, "审核说明", default="作者已核对最终正文与状态变化")
-                    reviewed = approve(runtime, library_root=library_root, index_root=index_root, note=reason)
+                    reviewed = approve(
+                        runtime,
+                        library_root=library_root,
+                        index_root=index_root,
+                        note=reason,
+                        coordinator=coordinator,
+                    )
                     output(f"状态提案处理完成: {getattr(reviewed, 'status', reviewed)}")
                 elif decision == "REJECT":
                     reason = ask(input_fn, "拒绝原因", required=True)
@@ -307,7 +495,8 @@ def run_tui(
                                               user_comment=comment, affected_scope=scope,
                                               correction_rule=[rule], target_type=target_type,
                                               target_id=target_id,
-                                              runtime_dir=last_runtime if target_type == "runtime" else None)
+                                              runtime_dir=last_runtime if target_type == "runtime" else None,
+                                              coordinator=coordinator)
                     output(f"Feedback 已保存: {getattr(created, 'path', created)}")
                 elif action == "2":
                     rows = list_feedback(library_root=library_root, story_id=story_id,
@@ -321,12 +510,46 @@ def run_tui(
                     resolved = resolve_feedback(library_root=library_root, index_root=index_root,
                                                 story_id=story_id, timeline_id=timeline_id,
                                                 feedback_id=document_id, resolution=resolution,
-                                                version=version, supersedes=document_id)
+                                                version=version, supersedes=document_id,
+                                                coordinator=coordinator)
                     output(f"Feedback 已解决: {getattr(resolved, 'status', resolved)}")
                 else:
                     output("无效选项。")
             elif choice == "12":
                 api_config_wizard(model_config_path, input_fn, output)
+            elif choice == "13":
+                _summary_menu(
+                    library_root,
+                    index_root,
+                    GraphKey(story_id, timeline_id),
+                    coordinator,
+                    input_fn,
+                    output,
+                )
+            elif choice == "14":
+                query = ask(input_fn, "检索词", required=True)
+                results = search_fn(
+                    index_root,
+                    query,
+                    GraphKey(story_id, timeline_id),
+                    library_root=library_root,
+                    include_shared=True,
+                    limit=6,
+                )
+                output(json.dumps(
+                    [
+                        {
+                            name: getattr(item, name)
+                            for name in getattr(item, "__dataclass_fields__", {})
+                        }
+                        for item in results
+                    ],
+                    ensure_ascii=False,
+                    indent=2,
+                    default=str,
+                ))
+            elif choice == "15":
+                _pending_menu(coordinator, input_fn, output)
             else:
                 output("无效选项。")
         except (EOFError, KeyboardInterrupt):
@@ -335,5 +558,6 @@ def run_tui(
         except PreferenceRequired as exc:
             output(f"请先运行 init-preferences 并填写: {exc.path}")
         except (GenerationError, ModelAPIError, ModelConfigError, WritebackError, RagImportError,
-                OSError, ValueError, KeyError, json.JSONDecodeError, yaml.YAMLError) as exc:
+                GraphError, SummaryError, OSError, ValueError, KeyError,
+                json.JSONDecodeError, yaml.YAMLError) as exc:
             output(f"ERROR {exc}")

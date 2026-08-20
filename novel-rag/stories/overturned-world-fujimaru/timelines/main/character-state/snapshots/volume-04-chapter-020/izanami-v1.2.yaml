@@ -1,0 +1,81 @@
+metadata:
+  document_id: state-current-izanami-v1.2
+  story_id: overturned-world-fujimaru
+  timeline_id: main
+  document_type: character_state
+  title: 第四卷第17章末状态快照-伊耶娜美
+  character_id: izanami
+  variant_id: izanami-main
+  snapshot_type: snapshot
+  effective_at: volume-04-chapter-017
+  last_updated: '2026-07-18'
+  version: '1.2'
+  status: archived
+  supersedes: state-current-izanami-v1.1
+  source_file: D:\Novel\outputs\第四卷_第15章_重写.txt; D:\Novel\outputs\第四卷_第16章_重写.txt; D:\Novel\outputs\第四卷_第17章_重写.txt
+character_state:
+  current_position:
+    location: 月读命金地城主府；第15至17章未再被观察
+    companions: []
+    faction: 迦勒底协同行动方
+  physical:
+    health: 第15至17章没有新的可观察伤势
+    injuries: []
+    fatigue: 是否仍持续承载居民生命联系未在正文确认
+    temporary_conditions: []
+    permanent_changes: []
+  mental:
+    dominant_emotions:
+    - 专注
+    current_pressure:
+    - 第15至17章没有她的直接视角或对话
+    desires:
+    - 延续保护月读命金地居民的目标
+    fears: []
+    unresolved_conflicts: []
+    behavior_effects:
+    - 不根据世界状态替她补写已知信息
+  knowledge:
+    known:
+    - 截至最后一次被观察时，她仍在城主府维持居民生命联系
+    unknown:
+    - 她是否确认弥勒死亡
+    - 居民生命联系是否随金地解封而变化
+    - 特异点坐标偏移
+    mistaken_beliefs: []
+    suspicions: []
+    secrets_held: []
+  goals:
+    immediate:
+    - 维持并确认居民生命状态
+    short_term:
+    - 等待能够验证生命联系是否解除的直接证据
+    long_term:
+    - 修复特异点并返回正常人理
+    priorities:
+    - 同伴生存
+    - 确认特异点异常
+    obstacles:
+    - 自身与居民的生命联系状态未确认
+  relationships: []
+  abilities:
+    available: []
+    unavailable: []
+    newly_acquired: []
+    consumed_resources: []
+    active_costs: []
+  inventory:
+    carried: []
+    lost: []
+    damaged: []
+  narrative:
+    current_arc: 日本下篇：伊耶那岐金地终战后
+    completed_changes:
+    - 第15至17章没有新的出场事件
+    unresolved_flags:
+    - 居民生命联系现状
+    - 是否获知弥勒死亡
+    - 特异点偏移
+    active_promises: []
+    future_pressure:
+    - 不得把作者已经知道的终战结果自动赋予角色

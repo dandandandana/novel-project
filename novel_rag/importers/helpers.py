@@ -5,16 +5,25 @@ from __future__ import annotations
 import hashlib
 import re
 import shutil
-import tempfile
 from copy import deepcopy
 from pathlib import Path
 from typing import Any, Mapping, Sequence
 
 import yaml
 
+from ..catalog import (
+    ValidatedCorpus,
+    fingerprint_paths,
+    load_timeline_registry,
+    resolve_module_map_path,
+    resolve_timeline_registry_path,
+    resolve_version_map_path,
+    story_registry_roots,
+)
 from ..documents import RagDocument, registered_story_ids, validate_document
-from ..index import rebuild_isolated_indexes, search_isolated
+from ..graph import GraphBuilder, GraphKey, SharedBuilder
 from ..layout import story_root
+from ..mutations import ChangeSet, GraphBuildArtifact, MutationCoordinator, fingerprint_file
 from ..service import load_valid_documents
 from .types import (
     RagImportError,
@@ -73,17 +82,6 @@ def _read_mapping(path: Path, default: dict[str, Any] | None = None) -> dict[str
     return value
 
 
-def _atomic_write(path: Path, text: str) -> None:
-    if path.exists() and path.is_symlink():
-        raise RagImportError(f"拒绝写入符号链接: {path}")
-    path.parent.mkdir(parents=True, exist_ok=True)
-    temporary = path.with_suffix(path.suffix + ".tmp")
-    if temporary.exists() and temporary.is_symlink():
-        raise RagImportError("refuse writing symlink temporary file")
-    temporary.write_text(text, encoding="utf-8")
-    temporary.replace(path)
-
-
 def _validate_roots(library_root: Path, index_root: Path | None) -> tuple[Path, Path]:
     library = library_root.resolve()
     index = (index_root or library / "index").resolve()
@@ -93,6 +91,28 @@ def _validate_roots(library_root: Path, index_root: Path | None) -> tuple[Path, 
     return library, index
 
 
+def _story_registry_roots(library_root: Path, story_id: str) -> tuple[Path, ...]:
+    return story_registry_roots(library_root, story_id)
+
+
+def _timeline_registry_path(library_root: Path, story_id: str) -> Path:
+    return resolve_timeline_registry_path(library_root, story_id)
+
+
+def _selected_registry_root(library_root: Path, story_id: str, timeline_id: str) -> Path:
+    # This helper is retained for compatibility with migration callers.  The
+    # actual version-map resolver below is common-owned and must not use this
+    # timeline registry root.
+    roots = story_registry_roots(library_root, story_id, timeline_id=timeline_id)
+    return roots[0]
+
+
+def _document_root(library_root: Path, story_id: str, timeline_id: str) -> Path:
+    story = story_root(library_root.resolve(), story_id)
+    timelines = story / "timelines"
+    return timelines / timeline_id if timelines.is_dir() else story
+
+
 def _validate_identity(library_root: Path, story_id: str, timeline_id: str) -> Path:
     try:
         root = story_root(library_root.resolve(), story_id)
@@ -100,7 +120,7 @@ def _validate_identity(library_root: Path, story_id: str, timeline_id: str) -> P
         raise RagImportError(str(exc)) from exc
     if story_id not in registered_story_ids(library_root):
         raise RagImportError(f"未注册 story_id: {story_id}")
-    registry = root / "registry" / "timelines.yaml"
+    registry = _timeline_registry_path(library_root, story_id)
     rows = _read_mapping(registry).get("timelines", [])
     if not isinstance(rows, list) or not any(
         isinstance(row, Mapping)
@@ -217,21 +237,207 @@ def _normalise_candidate(
     return serialized, document, family, selected_version, tuple(selected_supersedes)
 
 
-def _retrieval_tests(library_root: Path, index_root: Path) -> int:
+def _retrieval_cases(library_root: Path) -> list[dict[str, Any]]:
     cases: list[dict[str, Any]] = []
-    for path in sorted((library_root / "stories").glob("*/retrieval-tests.yaml")):
+    for path in sorted((library_root / "stories").rglob("retrieval-tests.yaml")):
         rows = _read_mapping(path).get("tests", [])
         if isinstance(rows, list):
             cases.extend(row for row in rows if isinstance(row, Mapping))
-    failures: list[str] = []
-    for case in cases:
+    return cases
+
+
+def _retrieval_tests(library_root: Path, index_root: Path) -> int:
+    """Return the number of configured gates.
+
+    Actual assertions run against each staged ``GraphReader`` before the
+    coordinator promotes it.  Keeping this helper as a count preserves the
+    historical ``ImportResult.retrieval_cases`` field without re-opening a
+    committed database through the legacy index façade.
+    """
+
+    del index_root
+    return len(_retrieval_cases(library_root))
+
+
+def _yaml_source_fingerprint(library_root: Path) -> str:
+    paths: list[Path] = []
+    for suffix in ("*.yaml", "*.yml"):
+        paths.extend(
+            path
+            for path in library_root.rglob(suffix)
+            if "index" not in path.relative_to(library_root).parts
+            and not any(
+                part.startswith(".mutation-")
+                for part in path.relative_to(library_root).parts
+            )
+        )
+    return fingerprint_paths(sorted(set(paths)), root=library_root)
+
+
+def _projected_library(staged: Any, library_root: Path) -> Path:
+    """Materialize a read-only source projection from staged ChangeSet files.
+
+    The projection lives below the coordinator's private staging root.  It is
+    only an input to catalog validation and graph builders; canonical YAML and
+    index paths are never changed here.
+    """
+
+    projected = Path(staged.root) / "source"
+    if not projected.exists():
+        shutil.copytree(
+            library_root,
+            projected,
+            dirs_exist_ok=True,
+            ignore=shutil.ignore_patterns("index", ".mutation-*"),
+        )
+    for original, staged_path in staged.staged_files.items():
+        target = Path(original).resolve()
         try:
-            results = search_isolated(index_root, str(case["query"]), str(case["story_id"]),
-                                      str(case["timeline_id"]), document_types=case.get("document_types"), limit=20)
+            relative = target.relative_to(library_root.resolve())
+        except ValueError as exc:
+            raise RagImportError(f"ChangeSet 路径越出 library_root: {target}") from exc
+        destination = projected / relative
+        destination.parent.mkdir(parents=True, exist_ok=True)
+        shutil.copy2(Path(staged_path), destination)
+    return projected
+
+
+def _load_projected_corpus(
+    staged: Any,
+    *,
+    library_root: Path,
+    story_id: str,
+) -> tuple[Path, ValidatedCorpus, Any]:
+    projected = _projected_library(staged, library_root)
+    documents, issues = load_valid_documents(
+        projected,
+        story_id=story_id,
+        include_shared=True,
+    )
+    if issues:
+        raise RagImportError(
+            "staged YAML 校验失败: "
+            + "；".join(issue.message for issue in issues[:8])
+        )
+    registry_path = _timeline_registry_path(projected, story_id)
+    try:
+        registry = load_timeline_registry(
+            registry_path,
+            expected_story_id=story_id,
+            snapshot_root=projected / "stories" / story_id,
+        )
+        corpus = ValidatedCorpus.from_documents(
+            documents,
+            root=projected,
+            timeline_registry=registry,
+            strict=True,
+        )
+    except Exception as exc:
+        raise RagImportError(f"staged catalog 校验失败: {exc}") from exc
+    return projected, corpus, registry
+
+
+def _affected_graph_keys(
+    library_root: Path,
+    *,
+    story_id: str,
+    timeline_id: str,
+) -> tuple[GraphKey, ...]:
+    keys: list[GraphKey] = [GraphKey.shared()]
+    registry_path = _timeline_registry_path(library_root, story_id)
+    try:
+        registry = load_timeline_registry(
+            registry_path,
+            expected_story_id=story_id,
+            snapshot_root=library_root / "stories" / story_id,
+        )
+        keys.extend(GraphKey(story_id, entry.timeline_id) for entry in registry.entries)
+    except Exception:
+        # Identity was already validated by _prepare_text.  A narrow legacy
+        # fixture may not satisfy the richer timeline registry contract; still
+        # rebuild the explicitly selected graph and shared projection.
+        pass
+    selected = GraphKey(story_id, timeline_id)
+    if selected not in keys:
+        keys.append(selected)
+    return tuple(dict.fromkeys(keys))
+
+
+def _module_references(
+    projected: Path,
+    *,
+    story_id: str,
+    timeline_id: str,
+    corpus: ValidatedCorpus,
+    registry: Any,
+) -> tuple[dict[str, str], ...]:
+    allowed = set(registry.allowed_timeline_ids(timeline_id)) if registry is not None else {timeline_id}
+    by_id = {document.document_id: document for document in corpus.documents}
+    references: list[dict[str, str]] = []
+    # Resolve one authoritative module-map for this GraphKey.  Do not merge a
+    # legacy story registry with a target timeline registry when both exist.
+    registry_path = resolve_module_map_path(
+        projected,
+        story_id,
+        timeline_id=timeline_id,
+    )
+    for row in _read_mapping(registry_path).get("modules", []):
+        if not isinstance(row, Mapping):
+            continue
+        row_story = str(row.get("story_id") or story_id)
+        row_timeline = str(row.get("timeline_id") or timeline_id)
+        if row_story not in {"", story_id} or row_timeline not in {*allowed, "", "common"}:
+            continue
+        module_type = str(row.get("module_type") or "")
+        active = row.get("active_versions", row.get("active_version", ()))
+        active_ids = _ids(active)
+        for document_id in active_ids:
+            source = by_id.get(document_id)
+            metadata = source.metadata if source is not None else {}
+            references.append(
+                {
+                    "module_type": module_type,
+                    "document_id": document_id,
+                    "version": str(metadata.get("version") or ""),
+                    "source_file": str(source.path) if source is not None else "",
+                }
+            )
+    for document in corpus.documents:
+        values = document.metadata.get("module_references", ())
+        if isinstance(values, Mapping):
+            values = (values,)
+        for value in values if isinstance(values, (list, tuple, set)) else ():
+            if isinstance(value, Mapping) and value.get("document_id"):
+                references.append(
+                    {
+                        "module_type": str(value.get("module_type", value.get("type", ""))),
+                        "document_id": str(value["document_id"]),
+                        "version": str(value.get("version", "")),
+                        "source_file": str(value.get("source_file", "")),
+                    }
+                )
+    deduplicated = {
+        (item["module_type"], item["document_id"], item["version"]): item
+        for item in references
+        if item["module_type"] and item["document_id"]
+    }
+    return tuple(deduplicated[key] for key in sorted(deduplicated))
+
+
+def _run_retrieval_gate(reader: Any, key: GraphKey, projected: Path) -> None:
+    failures: list[str] = []
+    for case in _retrieval_cases(projected):
+        if (str(case.get("story_id")), str(case.get("timeline_id"))) != (
+            key.story_id,
+            key.timeline_id,
+        ):
+            continue
+        try:
+            results = reader.search(str(case["query"]), limit=20)
         except Exception as exc:
             raise RagImportError(f"检索回归失败 {case.get('id', 'unnamed')}: {exc}") from exc
-        ids = {item.document_id for item in results}
-        statuses = {item.status for item in results}
+        ids = {str(item.document_id) for item in results}
+        statuses = {str(item.status) for item in results}
         missing = set(case.get("expected_document_ids", [])) - ids
         forbidden = set(case.get("forbidden_document_ids", [])) & ids
         bad_statuses = set(case.get("forbidden_statuses", [])) & statuses
@@ -239,7 +445,37 @@ def _retrieval_tests(library_root: Path, index_root: Path) -> int:
             failures.append(str(case.get("id", "unnamed")))
     if failures:
         raise RagImportError("检索回归失败: " + ", ".join(failures))
-    return len(cases)
+
+
+def _default_coordinator(
+    *,
+    library_root: Path,
+    index_root: Path,
+    story_id: str,
+    timeline_id: str,
+) -> MutationCoordinator:
+    """Lazily use the application composition root for importer commits."""
+
+    del story_id, timeline_id
+    try:
+        from ..composition import build_mutation_coordinator
+    except (ImportError, AttributeError) as exc:
+        raise RagImportError(
+            "默认 MutationCoordinator composition 不可用；导入已拒绝，"
+            "请提供显式 coordinator"
+        ) from exc
+    try:
+        coordinator = build_mutation_coordinator(
+            library_root=library_root,
+            index_directory=index_root,
+        )
+    except Exception as exc:
+        raise RagImportError(f"无法建立导入 MutationCoordinator: {exc}") from exc
+    if not callable(getattr(coordinator, "commit", None)):
+        raise RagImportError("默认 MutationCoordinator 缺少 commit()，导入已拒绝")
+    if not callable(getattr(coordinator, "graph_builder", None)):
+        raise RagImportError("默认 MutationCoordinator 缺少 graph_builder，导入已拒绝")
+    return coordinator
 
 
 def _prepare_text(
@@ -268,7 +504,14 @@ def _prepare_text(
     )
     metadata = document.metadata
     document_id = document.document_id
-    version_map_path = root / "registry" / "version-map.yaml"
+    # Version lineage is story-wide common data.  The catalog resolver falls
+    # back to legacy ``stories/<story>/registry`` only when no target common
+    # map exists; it never selects a timeline-owned version-map.
+    version_map_path = resolve_version_map_path(
+        library_root,
+        story_id,
+        timeline_id=timeline_id,
+    )
     rows = _version_rows(version_map_path)
     row = _find_family_row(rows, family, [document_id, *selected_supersedes])
     current, issues = load_valid_documents(library_root, story_id=story_id, include_shared=False)
@@ -320,7 +563,9 @@ def _prepare_text(
         if unknown:
             conflicts.append("supersedes 未找到: " + ", ".join(unknown))
 
-    destination = root / _DESTINATIONS[str(metadata["document_type"])]
+    destination = _document_root(library_root, story_id, timeline_id) / _DESTINATIONS[
+        str(metadata["document_type"])
+    ]
     target = destination / f"{_safe_name(document_id)}.yaml"
     try:
         target.resolve().relative_to(root.resolve())
@@ -367,67 +612,113 @@ def _prepare_text(
                            updated_rows, version_map_path, old_paths)
 
 
-def _rollback_files(backups: Mapping[Path, bytes | None]) -> None:
-    for path, data in backups.items():
-        try:
-            if data is None:
-                path.unlink(missing_ok=True)
-            else:
-                _atomic_write(path, data.decode("utf-8"))
-        except Exception:
-            pass
+def _deprecated_text(path: Path) -> str:
+    data = _read_mapping(path)
+    metadata = data.get("metadata")
+    if isinstance(metadata, dict) and metadata.get("status") in {"active", "canon"}:
+        metadata["status"] = "deprecated"
+    return yaml.safe_dump(data, allow_unicode=True, sort_keys=False, width=120)
 
 
-def _commit_prepared(prepared: _PreparedImport, *, library_root: Path, index_root: Path) -> ImportResult:
+def _commit_prepared(
+    prepared: _PreparedImport,
+    *,
+    library_root: Path,
+    index_root: Path,
+    story_id: str,
+    timeline_id: str,
+    coordinator: Any | None = None,
+) -> ImportResult:
     preview = prepared.preview
     if preview.conflicts:
         raise RagImportError("上传冲突: " + "；".join(preview.conflicts))
     if preview.status == "noop":
         return ImportResult("noop", preview.path, preview.document_id, preview.document_family,
                             preview.version, preview.supersedes, (), 0)
-    backup_files: dict[Path, bytes | None] = {}
-    paths = [prepared.target, prepared.version_map_path, *prepared.old_paths]
-    for path in paths:
-        if path in backup_files:
-            continue
-        backup_files[path] = path.read_bytes() if path.exists() else None
-    index_backup = Path(tempfile.mkdtemp(prefix="novel-rag-index-backup-"))
+    changes: dict[Path, str] = {
+        prepared.target: prepared.text,
+        prepared.version_map_path: yaml.safe_dump(
+            {"versions": prepared.version_rows},
+            allow_unicode=True,
+            sort_keys=False,
+            width=120,
+        ),
+    }
+    for path in prepared.old_paths:
+        changes[path] = _deprecated_text(path)
+    expected_files = {path: fingerprint_file(path) for path in changes}
     try:
-        if index_root.exists():
-            shutil.copytree(index_root, index_backup / "index", dirs_exist_ok=True)
-        for path in prepared.old_paths:
-            data = _read_mapping(path)
-            metadata = data.get("metadata")
-            if isinstance(metadata, dict) and metadata.get("status") in {"active", "canon"}:
-                metadata["status"] = "deprecated"
-                _atomic_write(path, yaml.safe_dump(data, allow_unicode=True, sort_keys=False, width=120))
-        _atomic_write(prepared.target, prepared.text)
-        _atomic_write(prepared.version_map_path, yaml.safe_dump(
-            {"versions": prepared.version_rows}, allow_unicode=True, sort_keys=False, width=120
-        ))
-        documents, issues = load_valid_documents(library_root)
-        if issues:
-            raise RagImportError("导入后校验失败: " + "；".join(issue.message for issue in issues[:5]))
-        rebuild_isolated_indexes(index_root, documents, registered_story_ids(library_root))
+        active_coordinator = coordinator or _default_coordinator(
+            library_root=library_root,
+            index_root=index_root,
+            story_id=story_id,
+            timeline_id=timeline_id,
+        )
+        if callable(active_coordinator) and not hasattr(active_coordinator, "commit"):
+            try:
+                active_coordinator = active_coordinator(
+                    library_root=library_root,
+                    index_root=index_root,
+                    story_id=story_id,
+                    timeline_id=timeline_id,
+                )
+            except TypeError:
+                active_coordinator = active_coordinator(
+                    library_root=library_root,
+                    index_root=index_root,
+                )
+        change_set = ChangeSet(
+            changes=changes,
+            affected_graph_keys=_affected_graph_keys(
+                library_root,
+                story_id=story_id,
+                timeline_id=timeline_id,
+            ),
+            expected_fingerprint=_yaml_source_fingerprint(library_root),
+            expected_file_fingerprints=expected_files,
+            change_id=f"import:{story_id}:{timeline_id}:{preview.document_id}",
+            metadata={
+                "operation": "import",
+                "story_id": story_id,
+                "timeline_id": timeline_id,
+                "document_id": preview.document_id,
+                "document_type": preview.document_type,
+            },
+        )
+        result = active_coordinator.commit(change_set)
+        status = str(getattr(result, "status", "promoted") or "promoted")
+        graph_results = tuple(getattr(result, "graph_results", ()) or ())
+        failed_graphs = tuple(
+            item for item in graph_results if str(getattr(item, "status", "")).lower() == "failed"
+        )
+        pending_graphs = tuple(
+            item for item in graph_results if str(getattr(item, "status", "")).lower() == "pending"
+        )
+        if (
+            status.lower() == "failed"
+            or failed_graphs
+            or getattr(result, "yaml_committed", True) is False
+        ):
+            detail = str(getattr(result, "error", "") or "") or "; ".join(
+                f"{getattr(item, 'key', '<unknown>')}: {getattr(item, 'error', '') or 'failed'}"
+                for item in failed_graphs
+            ) or status
+            raise RagImportError(f"导入事务未完成: {detail}")
         retrieval_count = _retrieval_tests(library_root, index_root)
-        return ImportResult("imported", prepared.target, preview.document_id, preview.document_family,
-                            preview.version, preview.supersedes,
-                            tuple(dict.fromkeys([prepared.target, prepared.version_map_path, *prepared.old_paths])),
-                            retrieval_count)
+        return ImportResult(
+            "pending" if status.lower() == "pending" or pending_graphs else "imported",
+            prepared.target,
+            preview.document_id,
+            preview.document_family,
+            preview.version,
+            preview.supersedes,
+            tuple(dict.fromkeys([prepared.target, prepared.version_map_path, *prepared.old_paths])),
+            retrieval_count,
+        )
     except Exception as exc:
-        _rollback_files(backup_files)
-        try:
-            if index_root.exists():
-                shutil.rmtree(index_root)
-            if (index_backup / "index").exists():
-                shutil.copytree(index_backup / "index", index_root, dirs_exist_ok=True)
-        except Exception:
-            pass
         if isinstance(exc, RagImportError):
             raise
-        raise RagImportError(f"导入事务失败并已回滚: {exc}") from exc
-    finally:
-        shutil.rmtree(index_backup, ignore_errors=True)
+        raise RagImportError(f"导入事务失败: {exc}") from exc
 
 
 def _import_text(
@@ -442,6 +733,7 @@ def _import_text(
     version: str | None = None,
     supersedes: str | Sequence[str] | None = None,
     document_family: str | None = None,
+    coordinator: Any | None = None,
 ) -> ImportResult:
     library, index = _validate_roots(library_root, index_root)
     prepared = _prepare_text(
@@ -449,4 +741,11 @@ def _import_text(
         story_id=story_id, timeline_id=timeline_id, expected_type=expected_type,
         version=version, supersedes=supersedes, document_family=document_family,
     )
-    return _commit_prepared(prepared, library_root=library, index_root=index)
+    return _commit_prepared(
+        prepared,
+        library_root=library,
+        index_root=index,
+        story_id=story_id,
+        timeline_id=timeline_id,
+        coordinator=coordinator,
+    )

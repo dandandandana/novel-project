@@ -6,7 +6,13 @@ from typing import Any
 
 import yaml
 
-from .layout import STORY_DATA_DIRS, SYSTEM_DIRS, shared_registry_root, story_root, validate_story_id
+from .config import (
+    DEFAULT_TIMELINE_ID,
+    TARGET_COMMON_DIRS,
+    TARGET_TIMELINE_DIRS,
+)
+from .identity import GraphKey
+from .layout import shared_registry_root, story_root, validate_story_id
 
 
 def _load(path: Path) -> dict[str, Any]:
@@ -29,14 +35,18 @@ def create_story(
     *,
     story_id: str,
     title: str,
-    timeline_id: str = "main",
+    timeline_id: str = DEFAULT_TIMELINE_ID,
     timeline_name: str = "主世界线",
     language: str = "zh-CN",
     inherit_shared: bool = True,
 ) -> Path:
     validate_story_id(story_id)
-    if not timeline_id.strip():
-        raise ValueError("timeline_id 不能为空")
+    if timeline_id == "common":
+        raise ValueError("timeline_id=common 保留给 common 作用域")
+    try:
+        GraphKey(story_id, timeline_id)
+    except ValueError as exc:
+        raise ValueError(str(exc)) from exc
     root = story_root(library_root, story_id)
     if root.exists():
         raise FileExistsError(f"小说目录已存在: {root}")
@@ -47,33 +57,43 @@ def create_story(
     if any(str(item.get("story_id")) == story_id for item in rows if isinstance(item, dict)):
         raise ValueError(f"story_id 已注册: {story_id}")
 
-    for dirname in STORY_DATA_DIRS:
-        directory = root / dirname
+    common_root = root / "common"
+    timeline_root = root / "timelines" / timeline_id
+    for dirname in TARGET_COMMON_DIRS:
+        directory = common_root / dirname
         directory.mkdir(parents=True, exist_ok=False)
         (directory / ".gitkeep").write_text("\n", encoding="utf-8")
-    for dirname in SYSTEM_DIRS:
-        directory = root / "system-overrides" / dirname
+    for dirname in TARGET_TIMELINE_DIRS:
+        directory = timeline_root / dirname
+        directory.mkdir(parents=True, exist_ok=True)
+        (directory / ".gitkeep").write_text("\n", encoding="utf-8")
+    for dirname in ("rules", "judgment", "generator", "audit", "style-audit"):
+        directory = timeline_root / "system-overrides" / dirname
         directory.mkdir(parents=True, exist_ok=True)
         (directory / ".gitkeep").write_text("\n", encoding="utf-8")
 
-    registry = root / "registry"
-    registry.mkdir(parents=True)
+    common_registry = common_root / "registry"
+    timeline_registry = timeline_root / "registry"
     _write(
-        registry / "timelines.yaml",
+        common_registry / "timelines.yaml",
         {
+            "story_id": story_id,
             "timelines": [
                 {
                     "story_id": story_id,
                     "timeline_id": timeline_id,
+                    "parent_timeline_id": None,
+                    "divergence_at": None,
+                    "divergence_snapshot": None,
                     "name": timeline_name,
                     "status": "active",
                 }
             ]
         },
     )
-    _write(registry / "character-variants.yaml", {"character_variants": []})
-    _write(registry / "aliases.yaml", {"aliases": []})
-    _write(registry / "version-map.yaml", {"versions": []})
+    _write(common_registry / "character-variants.yaml", {"character_variants": []})
+    _write(common_registry / "aliases.yaml", {"aliases": []})
+    _write(common_registry / "version-map.yaml", {"versions": []})
 
     modules: list[dict[str, Any]] = []
     if inherit_shared:
@@ -85,8 +105,8 @@ def create_story(
             item["story_id"] = story_id
             item["timeline_id"] = timeline_id
             modules.append(item)
-    _write(registry / "module-map.yaml", {"modules": modules})
-    _write(root / "retrieval-tests.yaml", {"tests": []})
+    _write(timeline_registry / "module-map.yaml", {"modules": modules})
+    _write(timeline_root / "retrieval-tests.yaml", {"tests": []})
 
     preferences_template = library_root / "templates" / "author-preferences.txt"
     if preferences_template.exists():

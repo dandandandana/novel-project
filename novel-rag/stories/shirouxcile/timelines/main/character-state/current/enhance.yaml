@@ -1,0 +1,132 @@
+metadata:
+  document_id: state-current-shirouxcile-enhance-v1.0
+  story_id: shirouxcile
+  timeline_id: main
+  document_type: character_state
+  title: 当前状态-安翰斯
+  character_id: enhance
+  variant_id: enhance-main
+  snapshot_type: current
+  effective_at: volume-01-chapter-004
+  last_updated: '2026-08-09'
+  version: '1.0'
+  status: active
+  supersedes: null
+  source_file: D:\Novel 1\Novel\outputs\shirouXcile_part2_马耳他_情绪强化版.txt
+character_state:
+  current_position:
+    location: 马耳他港区地下旧渠之外的未知藏身处
+    companions: []
+    faction: 独立祖／奥尔菲斯追踪者
+  physical:
+    health: 重伤但仍在再生，恢复受双武装反噬拖慢
+    injuries:
+    - 肋骨再次断裂
+    - 鼻骨断裂
+    - 右肩反复脱臼与贯穿伤
+    - 左肩圣葬炮典旧伤炸裂
+    - 左腿冻伤
+    - 手掌被黑键切穿
+    fatigue: 长时间追踪与连续战斗后消耗明显
+    temporary_conditions:
+    - 圣葬炮典供能结构受损
+    - Avenger与圣葬炮典持续妨碍再生
+    permanent_changes: []
+  mental:
+    dominant_emotions:
+    - 逃脱后的警戒
+    - 对医院骑士团泄露行动的不满
+    - 对士郎介入的默认信任
+    current_pressure:
+    - 希耶尔已抵达马耳他并掌握住处
+    - 奥尔菲斯仍在岛北活动
+    desires:
+    - 继续追杀奥尔菲斯
+    - 保住圣葬炮典与Avenger
+    - 避免被希耶尔处决
+    fears: []
+    unresolved_conflicts:
+    - 与希耶尔的圣葬炮典旧账
+    - 与士郎合作结束后的立场
+    behavior_effects:
+    - 会预设多条地下逃生与诱饵路线
+    - 受伤时仍以嘴上占便宜维持节奏
+  knowledge:
+    known:
+    - 希耶尔已经失去不死性并开始重新计算死亡风险
+    - 士郎会阻止无证据处决并优先救平民
+    - 医院骑士团掌握自己的马耳他活动与路线
+    - 奥尔菲斯在岛北建立临时活动范围
+    unknown:
+    - 希耶尔与士郎已达成八小时临时合作
+    - 埋葬机关正在转运第七圣典与原理血戒
+    - 希耶尔已复核自己的近期击杀记录
+    mistaken_beliefs:
+    - 医院骑士团主动把抓捕计划卖给希耶尔
+    suspicions:
+    - 奥尔菲斯可能已重复接触同一批幸存者和骑士
+    secrets_held:
+    - 曾在Fate中看见没有复仇必要、家人仍活着的人生并拒绝
+  goals:
+    immediate:
+    - 藏匿并恢复伤势
+    - 避开希耶尔追踪
+    - 重新取得与士郎的联系
+    short_term:
+    - 找到并杀死奥尔菲斯
+    - 阻止Fate继续扩大
+    long_term:
+    - 继续执行自己的复仇与猎祖名单
+    priorities:
+    - 生存与恢复
+    - 奥尔菲斯
+    - 避免平民成为Fate食物
+    obstacles:
+    - 严重伤势与双武装反噬
+    - 希耶尔掌握炮典结构和作战习惯
+    - 马耳他地下路线已部分暴露
+  relationships:
+  - 卫宫士郎：二十七天目标合作与合租同伴；相信士郎会回来找自己
+  - 希耶尔：追杀十余年的旧敌与圣葬炮典原主，互相熟悉战术
+  - 医院骑士团：曾共同救人并获得地方居民帮助，现因抓捕泄密产生不满
+  - 奥尔菲斯·莫伊拉：复仇名单上的高阶祖，原理对安翰斯收益异常低
+  abilities:
+    available:
+    - Avenger
+    - 受损的圣葬炮典
+    - 祖级身体与再生
+    - 地下路线与反追踪经验
+    unavailable:
+    - 圣葬炮典完整稳定装填
+    newly_acquired: []
+    consumed_resources:
+    - 白石巷逃脱与诱饵路线消耗的血液和魔力
+    active_costs:
+    - Avenger与圣葬炮典同时侵蚀身体
+    - 多处伤势反复再生
+  inventory:
+    carried:
+    - Avenger
+    - 圣葬炮典
+    - 港区地下路线情报
+    lost:
+    - 阁楼里的地图
+    - 留在阁楼的两件外套
+    damaged:
+    - 炮典外侧保险和供能导管
+    - 黑色长外套
+  narrative:
+    current_arc: 马耳他Fate追踪与白石巷逃脱
+    completed_changes:
+    - 被希耶尔正面压制后从地下诱饵路线逃脱
+    - 士郎公开介入并阻止即时处决
+    unresolved_flags:
+    - 是否返回阁楼
+    - 如何面对希耶尔暂缓处决后的追问
+    - 奥尔菲斯巢穴的最终位置
+    active_promises:
+    - 中午十二点旧钟塔汇合已因战斗失约
+    - 继续奥尔菲斯追踪
+    future_pressure:
+    - 希耶尔将携第七圣典和原理血戒加入Fate战斗
+    - 严重伤势可能迫使其接受士郎再次治疗

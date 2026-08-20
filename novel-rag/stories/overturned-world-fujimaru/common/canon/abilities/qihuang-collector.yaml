@@ -1,0 +1,36 @@
+metadata:
+  document_id: canon-ability-qihuang-collector-v1.0
+  story_id: overturned-world-fujimaru
+  timeline_id: main
+  document_type: canon
+  title: 能力设定-祁荒-收藏家
+  entity: ability
+  character_ids: [qihuang]
+  event_tags: [收藏家, EX, personal_skill]
+  version: '1.0'
+  status: canon
+  canon_scope: timeline
+  created_at: '2026-07-17'
+  updated_at: '2026-07-17'
+  supersedes: null
+  source_file: user-message:2026-07-17/qihuang-character-card
+ability:
+  retrieval_key: qihuang_collector
+  name: 收藏家
+  owner: 观世音·祁荒
+  owner_id: qihuang
+  rank: EX
+  type: 跨时代宝库调用
+  effect: 从漫长行善生涯积累的无尽供奉宝库中取出品质最高的道具；财宝跨越时代与文化，总量甚至超过吉尔伽美什。
+  activation: 祁荒主动从宝库取用道具。
+  range: 祁荒的个人宝库。
+  cost: 未说明。
+  limitations:
+  - 宝库清单、单次取用数量、调用速度与消耗未说明。
+  - 不得擅自认定某件特定道具必然存在。
+  failure_conditions: []
+  known_by: [祁荒]
+  visual_expression: 未说明。
+  narrative_function:
+  - 提供跨时代、跨文化的高品质道具资源。
+  canon_notes: []

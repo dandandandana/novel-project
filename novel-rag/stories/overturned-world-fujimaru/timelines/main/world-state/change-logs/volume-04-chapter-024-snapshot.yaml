@@ -1,0 +1,78 @@
+metadata:
+  document_id: world-state-current-v1.5
+  story_id: overturned-world-fujimaru
+  timeline_id: main
+  document_type: world_state
+  title: 第四卷第20章后世界状态
+  version: '1.5'
+  status: archived
+  effective_at: volume-04-chapter-020
+  supersedes: world-state-current-v1.4
+  source_file: D:\Novel 1\Novel\outputs\第四卷_第18章_续写.txt; D:\Novel 1\Novel\outputs\第四卷_第19章_续写.txt; D:\Novel 1\Novel\outputs\第四卷_第20章_续写.txt
+  updated_at: '2026-08-08'
+world_state:
+  timeline_position: 第四卷第20章末，圣杯回收，日本特异点消失，人理基盘修复完成
+  locations:
+  - location_id: chaldea
+    current_condition: 立香、玛修、言峰士郎与吉尔伽美什已回归，伤员进入救治
+    controlling_faction: 迦勒底
+    accessibility: 灵子转移完成
+    known_hazards:
+    - 多人重伤
+    - 三名同伴未归
+    recent_events:
+    - 圣杯回收
+    - 日本人理修复
+  - location_id: izanagi-golden-land
+    current_condition: 特异点已经消失并归还原有时代
+    controlling_faction: 不再适用
+    accessibility: 迦勒底当前无法直接进入
+    known_hazards: []
+    recent_events:
+    - 终末人理圆满机关消散
+    - 杨浞信号丢失
+    - 伊耶那美随日本山海归还
+  - location_id: cross-world-coordinate
+    current_condition: 卫宫白以斩线压制神琦灰；祁荒与千子村正未进入迦勒底回收序列
+    controlling_faction: 未确认
+    accessibility: 跨界窄门状态未知
+    known_hazards:
+    - 神琦灰
+    - 距离与世界结构失真
+    recent_events:
+    - 卫宫白跨界
+    - 祁荒与千子村正失联
+  factions:
+  - faction_id: chaldea
+    current_goal: 救治回归人员并确认未归同伴
+    leadership: 藤丸立香
+    alliances: []
+    enemies:
+    - 神琦灰
+    known_information:
+    - 日本人理修复完成
+    - 祁荒与千子村正未返回迦勒底
+    - 杨浞信号丢失
+    resources:
+    - 已回收圣杯
+    - 藤丸立香令咒归零
+    recent_changes:
+    - 日本特异点完成
+    - 队伍回归不完整
+  global_events:
+  - 弥勒生命与思潮信号归零
+  - 神琦灰袭击伊耶那岐金地
+  - 终末人理圆满机关显露BEAST反应并消散
+  - 圣杯回收确认
+  - 日本特异点消失
+  - 人理基盘修复完成
+  public_knowledge:
+  - 日本原有时代随人理修复恢复
+  hidden_world_changes:
+  - 卫宫白与神琦灰仍隔斩线对峙
+  - 祁荒和千子村正未返回迦勒底且具体坐标未知
+  unresolved_world_flags:
+  - 祁荒与千子村正当前坐标
+  - 杨浞是否存在可恢复残留
+  - 卫宫白与神琦灰对峙结果
+  - Alterego言峰士郎与阿尔托莉雅后续

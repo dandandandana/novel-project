@@ -1,0 +1,93 @@
+metadata:
+  document_id: state-current-epohonsiereht-v1.2
+  story_id: overturned-world-fujimaru
+  timeline_id: main
+  document_type: character_state
+  title: 当前状态-终末人理圆满机关
+  character_id: epohonsiereht
+  variant_id: epohonsiereht-main
+  snapshot_type: current
+  effective_at: volume-04-chapter-020
+  last_updated: '2026-08-08'
+  version: '1.2'
+  status: active
+  supersedes: state-current-epohonsiereht-v1.1
+  source_file: D:\Novel 1\Novel\outputs\第四卷_第18章_续写.txt; D:\Novel 1\Novel\outputs\第四卷_第19章_续写.txt; D:\Novel 1\Novel\outputs\第四卷_第20章_续写.txt
+character_state:
+  current_position:
+    location: 伊耶那岐金地；机关残体在转移完成时全部崩散
+    companions: []
+    faction: 迦勒底阶段性盟友
+  physical:
+    health: 机关本体消散／功能终止
+    injuries:
+    - 第三宝具执行后转化为BEAST形态
+    - 舰身被自身炮击切断
+    - 残余手掌在维持转移阵时全部崩散
+    fatigue: 系统终止
+    temporary_conditions: []
+    permanent_changes: []
+  mental:
+    dominant_emotions:
+    - 冷静
+    - 决绝
+    current_pressure:
+    - 必须完成圣杯回收与人理修复
+    desires:
+    - 要求人类继续向前
+    fears: []
+    unresolved_conflicts: []
+    behavior_effects: []
+  knowledge:
+    known:
+    - 第二宝具主炮曾经过热，下一次发射时间无法计算
+    - 第三宝具已在弥勒死亡后执行
+    - 自身出现BEAST判定
+    - 圣杯回收与灵子转移需要四十八秒
+    unknown: []
+    mistaken_beliefs: []
+    suspicions: []
+    secrets_held: []
+  goals:
+    immediate: []
+    short_term: []
+    long_term: []
+    priorities: []
+    obstacles:
+    - 第三宝具执行后转化为BEAST形态
+    - 舰身被自身炮击切断
+    - 残余手掌在维持转移阵时全部崩散
+  relationships:
+  - target_character: fujimaru-ritsuka
+    relationship_type: 阶段性盟友
+    trust: 有限
+    dependence: 共同完成弥勒终战
+    hostility: 无
+    current_attitude: 报告炮击、死亡信号、封锁解除与坐标偏移
+    unresolved_issues:
+    - 圣杯归还条件
+    - 双方隐瞒事项
+    recent_change: 完成约定的一次主炮支援
+  abilities:
+    available: []
+    unavailable:
+    - 全部机关与主炮功能
+    newly_acquired: []
+    consumed_resources:
+    - 第三宝具已执行
+    active_costs:
+    - 机关完全崩散
+  inventory:
+    carried: []
+    lost: []
+    damaged: []
+  narrative:
+    current_arc: 日本篇终局：完成使命并消散
+    completed_changes:
+    - 交付圣杯
+    - 显露BEAST形态阻挡神琦灰
+    - 以最后手掌维持转移阵
+    unresolved_flags: []
+    active_promises: []
+    future_pressure:
+    - 留下‘人类，请继续向前’的最终请求
