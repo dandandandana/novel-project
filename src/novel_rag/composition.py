@@ -40,6 +40,7 @@ from .layout import (
     SHARED_STORY_ID,
     SHARED_TIMELINE_ID,
     index_root,
+    registry_root,
     shared_index_path,
     story_graph_path,
     story_root,
@@ -560,6 +561,7 @@ def _search_canonical(
     include_shared: bool,
     library_root: Path | None,
 ) -> list[SearchResult]:
+    """依赖：只读图及资料验证入口。输入：查询、图键及可选库根。输出：命中或源证明错误。实现：核真实资料，沿用纯平铺语料的清单兼容读取。"""
     if limit <= 0:
         return []
     if not query.strip():
@@ -571,6 +573,11 @@ def _search_canonical(
             f"canonical GraphKey 图不存在: {story_path}；"
             "如需读取旧索引，请显式传入 legacy=True"
         )
+
+    if library_root is None:
+        sibling_root = index_directory.parent
+        if index_directory == index_root(sibling_root) and (registry_root(sibling_root) / "stories.yaml").is_file():
+            library_root = sibling_root
 
     if library_root is not None:
         service = build_graph_retriever(
@@ -604,11 +611,9 @@ def _search_canonical(
             elif raw_shared is not None:
                 raw_shared.close()
 
-    story_fingerprint = _manifest_fingerprint(story_path)
     story_base = GraphReader(
-        story_path,
-        expected_key=key,
-        expected_fingerprint=story_fingerprint,
+        story_path, expected_key=key,
+        expected_fingerprint=_manifest_fingerprint(story_path),
     )
     shared_base: Any | None = None
     try:
@@ -616,11 +621,9 @@ def _search_canonical(
             shared_path = shared_index_path(index_directory)
             if not shared_path.is_file():
                 raise FileNotFoundError(f"共享系统索引不存在，请先执行 index: {shared_path}")
-            shared_fingerprint = _manifest_fingerprint(shared_path, shared=True)
             shared_base = SharedReader(
-                shared_path,
-                expected_key=GraphKey.shared(),
-                expected_fingerprint=shared_fingerprint,
+                shared_path, expected_key=GraphKey.shared(),
+                expected_fingerprint=_manifest_fingerprint(shared_path, shared=True),
             )
         story_reader = _RecordingReader(story_base, omit_shared_manifest=not include_shared)
         shared_reader = _RecordingReader(shared_base) if shared_base is not None else None
@@ -695,7 +698,7 @@ def search_graph(
     library_root: str | Path | None = None,
     legacy: bool = False,
 ) -> list[Any]:
-    """Canonical graph search; legacy reads require an explicit switch."""
+    """依赖：canonical/legacy 读取入口。输入：图键、查询与检索选项。输出：命中或错误。实现：按路径选择当前资料核验或纯平铺图兼容读取。"""
 
     if not isinstance(key, GraphKey):
         raise TypeError("search_graph 需要 canonical GraphKey")

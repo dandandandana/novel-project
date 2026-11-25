@@ -17,10 +17,13 @@ from typing import Any, Callable
 
 import yaml
 
-from ..documents import load_document, read_yaml_mapping, registered_story_ids, validate_document
+from ..documents import load_document, read_yaml_mapping, read_yaml_snapshot, registered_story_ids, validate_document
 from ..identity import GraphKey
+from ..catalog.layout import LegacyLayoutMapper
 from ..catalog.paths import story_catalog_paths, timeline_registry_path
-from ..mutations import ChangeSet, MutationCoordinator, fingerprint_file
+from ..mutations import ChangeSet, MutationCoordinator
+from ..mutations.source import require_source_write_scope
+from ..mutations.types import MISSING_FINGERPRINT
 from ..retrieval import Retriever
 from ..service import load_valid_documents
 from .helpers import _atomic_text, _read_json, _retrieval_tests
@@ -111,6 +114,7 @@ def confirm_runtime(runtime_dir: Path, *, library_root: Path, index_root: Path |
                     indexer: Callable[..., Any] | None = None,
                     retrieval: Callable[..., Any] | None = None,
                     retriever: Retriever | None = None) -> WritebackResult:
+    """依赖：catalog、源快照与 Coordinator。输入：已确认 runtime 和坐标。输出：正式回执或 WritebackError。实现：绑定本线目标身份和同次字节 CAS 后提交。"""
     if not confirmed:
         raise WritebackError("必须显式传入 --yes 确认正文")
     if volume < 0 or min(chapter, scene) < 1:
@@ -158,15 +162,23 @@ def confirm_runtime(runtime_dir: Path, *, library_root: Path, index_root: Path |
                for item in timelines.get("timelines", [])):
         raise WritebackError(f"未注册 timeline_id: {timeline_id}")
 
-    confirmation_path = runtime_dir / "confirmation.json"
-    if extensions.get("confirmed") is True:
-        if not confirmation_path.exists():
-            raise WritebackError("运行时已标记确认，但缺少 confirmation.json")
-        previous = _read_json(confirmation_path)
+    scope = GraphKey(story_id, timeline_id)
+    mapper = LegacyLayoutMapper(library_root)
+
+    def check_history_owner(path, metadata):
+        """依赖：布局 mapper 与写权限。输入：正式路径和该版本 metadata。输出：无或 WritebackError。实现：将已解析的物理归属与当前写线比较。"""
+        try:
+            require_source_write_scope(mapper.normalize_path(path, metadata=metadata), scope)
+        except ValueError as exc:
+            raise WritebackError(str(exc)) from exc
+
+    def confirmed_receipt(previous):
+        """依赖：实际正式 History。输入：已存回执。输出：已确认结果或错误。实现：两条重试入口均复核路径、声明与坐标。"""
         history_path = Path(str(previous.get("history_path") or ""))
-        if not history_path.exists():
+        if not history_path.is_file():
             raise WritebackError("已确认的正式 History 不存在")
         metadata = load_document(history_path).metadata
+        check_history_owner(history_path, metadata)
         expected = (story_id, timeline_id, volume, chapter, scene)
         actual = (str(metadata.get("story_id")), str(metadata.get("timeline_id")),
                   int(metadata.get("volume")), int(metadata.get("chapter")), int(metadata.get("scene")))
@@ -175,6 +187,12 @@ def confirm_runtime(runtime_dir: Path, *, library_root: Path, index_root: Path |
         values = {key: previous[key] for key in WritebackResult.__dataclass_fields__ if key in previous}
         values["status"] = "noop"
         return WritebackResult(**values)
+
+    confirmation_path = runtime_dir / "confirmation.json"
+    if extensions.get("confirmed") is True:
+        if not confirmation_path.exists():
+            raise WritebackError("运行时已标记确认，但缺少 confirmation.json")
+        return confirmed_receipt(_read_json(confirmation_path))
 
     final_path = runtime_dir / "final.txt"
     try:
@@ -190,9 +208,7 @@ def confirm_runtime(runtime_dir: Path, *, library_root: Path, index_root: Path |
     if confirmation_path.exists():
         previous = _read_json(confirmation_path)
         if previous.get("writeback_id") == writeback_id and previous.get("status") == "committed":
-            values = {key: previous[key] for key in WritebackResult.__dataclass_fields__ if key in previous}
-            values["status"] = "noop"
-            return WritebackResult(**values)
+            return confirmed_receipt(previous)
         raise WritebackError("该运行时目录已经确认过不同正文或坐标")
 
     events = result.get("events") or []
@@ -256,15 +272,19 @@ def confirm_runtime(runtime_dir: Path, *, library_root: Path, index_root: Path |
     errors = validate_document(load_document(staging))
     if errors:
         raise WritebackError("History 模板校验失败: " + "；".join(errors))
+    check_history_owner(target, history["metadata"])
+    target_fingerprint = MISSING_FINGERPRINT
     if target.exists():
-        existing = load_document(target)
+        snapshot = read_yaml_snapshot(target)
+        existing = load_document(target, snapshot=snapshot)
+        check_history_owner(target, existing.metadata)
+        target_fingerprint = snapshot.source_hash
         if str(existing.body.get("content") or "") != final_text:
             raise WritebackError(f"目标场景已存在且正文不同: {target}")
         document_id = existing.document_id
         status = "noop"
     else:
         status = "committed"
-    target_fingerprint = fingerprint_file(target)
     proposal = {"status": "needs_review", "writeback_id": writeback_id, "history_document_id": document_id,
                 "note": "仅供人工审核；本次 confirm 未更新 character/world current。",
                 "candidate_state": result.get("state"),

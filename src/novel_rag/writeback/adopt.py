@@ -7,7 +7,8 @@ from pathlib import Path
 from threading import RLock
 
 from ..catalog.corpus import document_coordinate
-from ..mutations.source import build_source_mutation_coordinator
+from ..catalog.layout import LegacyLayoutMapper
+from ..mutations.source import build_source_mutation_coordinator, require_source_write_scope
 from ..documents import DocumentRef, load_document, read_yaml_snapshot
 from ..identity import GraphKey, StoryCoordinate
 from ..std.serialization import json_text
@@ -29,7 +30,7 @@ class AdoptionService:
 
     def adopt(self, run_id: str, draft_revision: int, expected_source_hash: str | None,
               coordinates, operation_id: str) -> dict:
-        """依赖：真实DraftRef/源锁/intent。输入：所选修订、源CAS、坐标、幂等操作ID。输出：adopted结果/冲突。实现：锁内备份+intent+单源replace，源成功后单独发布记忆，失败不撤正文。"""
+        """依赖：真实DraftRef、目录映射器及源锁。输入：所选修订、源CAS、坐标、操作ID。输出：采用回执或权限/版本错误。实现：仅替换本线History，锁内校验归属并持久化intent，提交后独立发布记忆。"""
         with self.lock:
             if not isinstance(operation_id, str) or not 1 <= len(operation_id) <= 128:
                 raise ValueError("source_invalid: operation_id长度不合法")
@@ -49,24 +50,26 @@ class AdoptionService:
                          "coordinates": {"volume": coordinate.volume, "chapter": coordinate.chapter, "scene": coordinate.scene}}
             argument_hash = fingerprint_bytes(json.dumps(arguments, sort_keys=True).encode("utf-8"))
             result_box = {}
+            mapper = LegacyLayoutMapper(self.root)
 
             def prepare(changes):
-                """依赖：Coordinator已持源锁/完整字节快照。输入：占位ChangeSet。输出：真实单源ChangeSet或已提交noop。实现：先恢复旧intent，再核目标CAS/备份/持久intent，随后才stage。"""
+                """依赖：Coordinator已持源锁及同次源快照。输入：占位ChangeSet。输出：本线History更改或已提交回执。实现：先判断真实目标权限，再恢复原intent、核版本并备份。"""
                 import json
 
                 full = load_story_sources(self.root, scope)
                 base = run["binding"].get("base_ref")
                 target_ref = self.store.target_source_ref(run)
-                target = None
                 revising_target = bool(target_ref and target_ref.get("coordinate") and coordinate == StoryCoordinate.from_value(target_ref["coordinate"]))
                 if revising_target:
                     original, _ = full.read(target_ref["document_id"])
                     if original.metadata["document_type"] != "history":
                         raise ValueError("source_invalid: 采用修订只改History，不自动改Canon")
-                    target = original.path
-                if target is None:
+                    identity = mapper.normalize_path(original.path, metadata=original.metadata)
+                else:
                     target = self.root / "stories" / scope.story_id / "timelines" / scope.timeline_id / "history" / f"volume-{coordinate.volume:02d}" / f"chapter-{coordinate.chapter:02d}" / f"scene-{coordinate.scene:02d}.yaml"
-                target.resolve().relative_to((self.root / "stories" / scope.story_id).resolve())
+                    identity = mapper.normalize_path(target, metadata=scope.as_dict())
+                require_source_write_scope(identity, scope)
+                target = identity.source_path
                 # 所有旧提交事实在新adoption_id写入前固化，避免A→B→重试A覆盖B。
                 for pending_path in sorted(journal_root.glob("*.json")):
                     pending = json.loads(pending_path.read_text(encoding="utf-8"))
@@ -76,6 +79,8 @@ class AdoptionService:
                     pending = json.loads(path.read_text(encoding="utf-8"))
                     if pending["arguments_hash"] != argument_hash:
                         raise StoreConflict("revision_conflict: 同采用ID参数不同")
+                    if pending.get("scope") != scope.as_dict():
+                        raise ValueError("scope_denied: 采用意图不属于本作品线")
                     self._recover_intent(path, pending)
                     if pending.get("state") == "adopted":
                         result_box.update(intent=pending)
@@ -106,6 +111,7 @@ class AdoptionService:
                 else:
                     original = load_document(target, snapshot=snapshot)
                     metadata = dict(original.metadata)
+                    require_source_write_scope(mapper.normalize_path(target, metadata=metadata), scope)
                     metadata["document_id"] = original.document_id
                     revision = int(metadata.get("source_revision", 1)) + 1
                     backup = self.store.protect_source(self.root, scope, target, snapshot)
@@ -134,7 +140,7 @@ class AdoptionService:
                 self._recover_intent(path, result_box["intent"])
 
             coordinator = build_source_mutation_coordinator(self.root, pre_commit=prepare,
-                                                            after_source_commit=confirm_source)
+                                                            after_source_commit=confirm_source, write_scope=scope)
             try:
                 mutation = coordinator.commit(ChangeSet(changes={}, change_id=operation_id))
                 if not mutation.yaml_committed:
@@ -166,23 +172,38 @@ class AdoptionService:
             return deepcopy(result)
 
     def _recover_intent(self, path: Path, intent: dict) -> None:
-        """依赖：实际正式文件/原hash/同文件adoption_id。输入：durable intent。输出：原地状态+持久回执。实现：匹配已提交/原源未变/其它冲突三分，不重放未知结果。"""
-        if intent.get("state") == "adopted":
-            return
+        """依赖：目录映射器、实际目标与提交标识。输入：持久采用意图。输出：更新状态或拒绝越域。实现：先核目标归属，凭已提交文件的范围、坐标和正文确认原操作。"""
         target = self._intent_target(intent)
+        scope = GraphKey(**intent["scope"])
         try:
             snapshot = read_yaml_snapshot(target)
-            metadata, content = snapshot.data.get("metadata", {}), snapshot.data.get("content")
-            matched = metadata.get("document_id") == intent["document_id"] and metadata.get("adoption_id") == intent["operation_id"] and isinstance(content, str) and fingerprint_bytes(content.encode("utf-8")) == intent["content_hash"]
         except (ValueError, OSError):
-            snapshot, matched = None, False
+            snapshot = None
+        metadata = snapshot.data.get("metadata") if snapshot else None
+        if not isinstance(metadata, dict):
+            metadata = {}
+        identity = LegacyLayoutMapper(self.root).normalize_path(target, metadata=metadata or scope.as_dict())
+        require_source_write_scope(identity, scope)
+        if intent.get("state") == "adopted":
+            return
+        coordinate = StoryCoordinate.from_value(intent["arguments"]["coordinates"])
+        content = snapshot.data.get("content") if snapshot else None
+        matched = (metadata.get("document_id") == intent["document_id"]
+                   and metadata.get("adoption_id") == intent["operation_id"]
+                   and metadata.get("story_id") == scope.story_id
+                   and metadata.get("timeline_id") == scope.timeline_id
+                   and metadata.get("document_type") == "history"
+                   and metadata.get("source_revision") == intent["source_revision"]
+                   and all(metadata.get(field) == value for field, value in intent["arguments"]["coordinates"].items())
+                   and isinstance(content, str)
+                   and fingerprint_bytes(content.encode("utf-8")) == intent["content_hash"])
         if matched:
             intent["state"] = "adopted"
             intent["result"] = {"adopted": True, "document_id": intent["document_id"],
                                 "source_revision": intent["source_revision"], "source_hash": snapshot.source_hash,
                                 "draft_ref": intent["draft_ref"],
-                                "source_ref": DocumentRef(intent["document_id"], intent["source_revision"], snapshot.source_hash,
-                                                          GraphKey(**intent["scope"]), StoryCoordinate.from_value(intent["arguments"]["coordinates"])).as_dict(),
+                                 "source_ref": DocumentRef(intent["document_id"], intent["source_revision"], snapshot.source_hash,
+                                                           scope, coordinate).as_dict(),
                                 "memory_state": "memory_pending"}
         elif fingerprint_file(target) == intent["expected_source_hash"]:
             intent["state"] = "uncommitted"
@@ -240,11 +261,16 @@ class AdoptionService:
         if mapped:
             existing = read_yaml_snapshot(target) if target.exists() else None
             metadata = existing.data.get("metadata", {}) if existing else {}
+            if not isinstance(metadata, dict):
+                raise ValueError("source_invalid: 记忆摘要的元数据格式不合法")
+            projection_identity = LegacyLayoutMapper(self.root).normalize_path(target, metadata=metadata or scope.as_dict())
+            require_source_write_scope(projection_identity, scope)
             matching = (metadata.get("document_id") == publication["projection_id"] and
                         metadata.get("memory_kind") == "memory_projection" and metadata.get("ownership", "auto") == "auto" and
                         metadata.get("memory_batches") == mapped)
             if not matching:
-                SummaryWriter(summary_root, library_root=self.root, source_only=True).write_ai(
+                coordinator = build_source_mutation_coordinator(self.root, write_scope=scope)
+                SummaryWriter(summary_root, coordinator=coordinator, library_root=self.root, source_only=True).write_ai(
                     target, "创作时记录的经过与仍有效参考。", document_id=publication["projection_id"],
                     metadata={"story_id": scope.story_id, "timeline_id": scope.timeline_id, "document_type": "chapter-summary",
                               "title": "章节参考", "status": "active", "version": "3", "memory_schema_version": 3,
@@ -263,25 +289,29 @@ class AdoptionService:
 
 def edit_reference(library_root: Path, store, scope: GraphKey, document_id: str,
                    expected_revision: int, expected_source_hash: str, content) -> dict:
-    """依赖：SourceCorpus/原SummaryEditor/源提交工厂/Store备份。输入：作者scope、ID、双CAS与新内容。输出：实际新源。实现：显式编辑Canon或笔记，摘要归属交原owner；无模型调用或任意路径。"""
+    """依赖：SourceCorpus、目录映射器与源提交工厂。输入：作者作用域、ID、版本、hash及新内容。输出：更新来源或权限/版本错误。实现：作者可编辑本线或共同Canon/笔记，继承来源只读。"""
     from ..mutations.summary import SummaryEditor, SummaryUpdate
 
     if isinstance(expected_revision, bool) or not isinstance(expected_revision, int) or not isinstance(expected_source_hash, str):
         raise ValueError("source_invalid: 编辑资料需要整数revision与实际文件hash")
     root = Path(library_root).resolve()
+    mapper = LegacyLayoutMapper(root)
     corpus = load_story_sources(root, scope)
     document, ref = corpus.read(document_id)
+    require_source_write_scope(mapper.normalize_path(document.path, metadata=document.metadata), scope, allow_common=True)
     if ref.source_hash != expected_source_hash:
         raise StoreConflict("revision_conflict: 资料文件已改变")
     kind = document.metadata["document_type"]
     if "summary" in kind:
-        SummaryEditor(document.path.parent, library_root=root, source_only=True).update(
+        coordinator = build_source_mutation_coordinator(root, write_scope=scope, allow_common=True)
+        SummaryEditor(document.path.parent, coordinator=coordinator, library_root=root, source_only=True).update(
             SummaryUpdate(document_id, expected_revision, content, expected_source_hash))
     elif kind == "canon":
         def prepare(changes):
-            """依赖：已持源锁的当前SourceCorpus。输入：占位ChangeSet。输出：单Canon更改。实现：同次字节核双CAS，先保存旧源，稳定身份/坐标只前进revision。"""
+            """依赖：源锁、当前SourceCorpus和目录映射器。输入：占位ChangeSet。输出：单Canon更改或拒绝。实现：核目标权限和同次快照的双CAS，再保存旧源。"""
             current = load_story_sources(root, scope)
             doc, actual = current.read(document_id)
+            require_source_write_scope(mapper.normalize_path(doc.path, metadata=doc.metadata), scope, allow_common=True)
             if actual.source_hash != expected_source_hash or actual.source_revision != expected_revision:
                 raise StoreConflict("revision_conflict: 设定版本已改变")
             snapshot = current.snapshots[document_id]
@@ -294,7 +324,8 @@ def edit_reference(library_root: Path, store, scope: GraphKey, document_id: str,
             return ChangeSet(changes={doc.path: {"metadata": metadata, **body}}, affected_graph_keys=(),
                              expected_file_fingerprints={doc.path: expected_source_hash})
 
-        result = build_source_mutation_coordinator(root, pre_commit=prepare).commit(ChangeSet(changes={}))
+        result = build_source_mutation_coordinator(root, pre_commit=prepare, write_scope=scope,
+                                                   allow_common=True).commit(ChangeSet(changes={}))
         if not result.yaml_committed:
             raise ValueError("source_invalid: " + (result.error or "设定未提交"))
     else:

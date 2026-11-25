@@ -79,7 +79,7 @@ Harness增量沿权威架构§15：外部LLM由宿主驱动，prepare不读模�
 | YAML 加载 | `src/novel_rag/documents.py::read_yaml_mapping` | 各处直接 `yaml.safe_load` 于注册表类文件 |
 | 同次源字节/解析/hash快照、正式引用 | `documents.py::read_yaml_snapshot / YamlSnapshot / DocumentRef`（Ref 类型归 contracts） | 解析旧内容后读取新hash；源owner反向import生成业务 |
 | 公共原子字节/JSON保存 | `std/atomic_io.py::atomic_write_bytes / atomic_write_json`（coordinator 同对象重导出） | 新Store/adopt里复制temp/fsync/replace；凭证writer另保安全语义 |
-| 公共文档坐标/common识别 | `catalog/corpus.py::document_coordinate / is_common_document` | 第二套游标或布局解释器 |
+| 公共文档坐标、物理归属与 common 识别 | `catalog/corpus.py::document_coordinate / is_common_document`，`catalog/layout.py::LegacyLayoutMapper.normalize_path / resolve_catalog_document_path` | 复制布局映射、用 YAML 标记覆盖实际时间线或绕过祖先 cutoff |
 | v3作品线注册与只读作品源范围 | `service.py::load_story_scope_registry / load_story_sources / SourceCorpus` | 复制作品线注册校验、为读取偏好枚举正文、复制rglob/YAML解析 |
 | 作者偏好路径与模型可见原文 | `onboarding.py::author_preferences_path / read_author_preferences_text`；旧 generation 路径入口同对象重导出 | 在 context 或工具另读一遍已绑定的偏好，另拼文件路径，或用解码后的文本代替网页保存的原始字节 CAS |
 | 同次源快照的游标视图 | `SourceCorpus.at_cursor`（prepare/MemoryService消费） | 同一工具重新扫描来源、旧解析值配新hash |
@@ -108,7 +108,7 @@ Harness增量沿权威架构§15：外部LLM由宿主驱动，prepare不读模�
 | 模型可见记忆结构、首次示例、拒绝指引与整批校验 | `memory/schema.py::draft_reference_schema / remember_update_schema / remember_update_examples / memory_update_guidance / state_entry_schema / validate_state_entry / validate_memory_update / validate_stored_batch`；`contracts/references.py::validate_source_refs / validate_position`（复用graph常量、state.DOMAINS、GraphKey/StoryCoordinate及parse_source_ref；MemoryService/config/Store共用） | update只声明空object；工具/MCP/上下文另抄示例或校验器；回读host字段整条回写、错误猜ID/自动重写；输入与容器分别维护；把世界内来源当文件Ref或自造获知点 |
 | 来源hash格式 | `contracts/references.py::SOURCE_FINGERPRINT_PATTERN`（config 同对象重导出） | 各处复制sha256正则；正文/人物语义仍由MemoryService负责 |
 | 固定run的loopback HTTP/stdio接入 | `harness.py::BackendClient / McpStdioAdapter`（CLI使用同一client） | MCP复制五工具schema/打开Store，或自动重发未知POST/把token放上下文 |
-| v3源提交/采用与作者资料编辑 | `mutations/source.py::build_source_mutation_coordinator`（composition 兼容委托）、`writeback/adopt.py::AdoptionService / edit_reference` | 新事务引擎、采用依赖文学门/全库建图；笔记编辑仍委托SummaryEditor |
+| 源写权限、v3提交/采用与作者资料编辑 | `mutations/source.py::require_source_write_scope / build_source_mutation_coordinator`、`writeback/adopt.py::AdoptionService / edit_reference`；v2 正文确认和状态晋升共用写权限检查 | 从可见性推断写权限、新事务引擎或第二个采用实例；笔记编辑仍委托SummaryEditor |
 | 新作品建树/注册/同意图重试 | `scaffold.py::create_story`（CLI/TUI/网页共用） | HTTP复制建树、普通覆盖stories.yaml、无锁读改写或删除未证实残留；`exist_ok`核原意图，注册最后原子提交 |
 | v3记忆容器形状 | `config.py::validate_memory_metadata`，documents复用summary校验 | reader对坏容器崩溃；容器层不解释人物/因果或批准正文 |
 | Metro磁贴配置/展示导航/时钟 | `web/static/tiles.json`、`launcher.js`、`assets/manifest.json`；业务仍`workspace.js` | 第二个API client/Store/SSE、导航重建业务DOM/自动取消、配置执行HTML/脚本或远程图片 |

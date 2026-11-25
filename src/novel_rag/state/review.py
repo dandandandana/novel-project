@@ -9,9 +9,12 @@ from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any, Callable, Iterable, Mapping
 
-from ..documents import RagDocument, read_yaml_mapping, registered_story_ids
+from ..catalog.layout import LegacyLayoutMapper
+from ..documents import RagDocument, read_yaml_mapping, read_yaml_snapshot, registered_story_ids
 from ..identity import GraphKey
 from ..mutations import ChangeSet, MutationCoordinator, fingerprint_file
+from ..mutations.source import require_source_write_scope
+from ..mutations.types import MISSING_FINGERPRINT
 from .types import StateReviewError, StateProposalReview, StatePromotionResult
 from .helpers import (
     _assert_path_scope,
@@ -146,7 +149,7 @@ def approve_state_proposal(
     coordinator: MutationCoordinator | Any | None = None,
     note: str = "",
 ) -> StatePromotionResult:
-    """Approve and promote a confirmed proposal.
+    """依赖：模板、源归属与 Coordinator。输入：已确认提案及批准范围。输出：晋升回执或 StateReviewError。实现：核对已有资料和待写版本归属，以同次检查的字节 CAS 提交。
 
     ``field_scopes`` is optional.  Without it, only explicitly recognised
     canonical template fields are promoted.  Unknown/transient fields are
@@ -309,7 +312,24 @@ def approve_state_proposal(
     # Capture the source baseline before compatibility callbacks or the
     # composition root can inspect/build anything.  External edits during
     # validation must still be rejected by the coordinator.
-    expected_files = {path: fingerprint_file(path) for path in changes}
+    scope = GraphKey(story_id, timeline_id)
+    mapper = LegacyLayoutMapper(library_root)
+    expected_files = {}
+    for path, payload in changes.items():
+        if path in version_map_updates:
+            expected_files[path] = fingerprint_file(path)
+            continue
+        try:
+            require_source_write_scope(mapper.normalize_path(path, metadata=payload["metadata"]), scope)
+            if path.exists():
+                previous = read_yaml_snapshot(path)
+                previous_doc = load_document(path, snapshot=previous)
+                require_source_write_scope(mapper.normalize_path(path, metadata=previous_doc.metadata), scope)
+                expected_files[path] = previous.source_hash
+            else:
+                expected_files[path] = MISSING_FINGERPRINT
+        except ValueError as exc:
+            raise StateReviewError(str(exc)) from exc
     nonlocal_retrieval: dict[str, Any] = {"value": None}
     active_coordinator = coordinator
     if active_coordinator is None:

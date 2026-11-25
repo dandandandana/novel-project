@@ -142,13 +142,17 @@ def relative_parts(library_root: Path, path: Path) -> tuple[str, ...]:
     return path.resolve().relative_to(library_root.resolve()).parts
 
 
-def classify_document_path(library_root: Path, path: Path) -> tuple[str, str | None]:
-    parts = relative_parts(library_root, path)
+def classify_document_path(
+    library_root: Path, path: Path, *, follow_symlinks: bool = True,
+) -> tuple[str, str | None]:
+    """依赖：库相对路径。输入：库根、来源和路径解析方式。输出：story/shared/unknown 及作品 ID。实现：同一布局同时支持实际归属和词法槽位分类。"""
+    parts = (relative_parts(library_root, path) if follow_symlinks
+             else path.absolute().relative_to(library_root.absolute()).parts)
     if len(parts) >= 2 and parts[0] == "shared" and parts[1] in SYSTEM_DIRS:
         return "shared", None
     if len(parts) >= 3 and parts[0] == "stories":
         story_id = parts[1]
-        if parts[2] in STORY_DATA_DIRS or parts[2] == "system-overrides":
+        if parts[2] in STORY_DATA_DIRS or parts[2] in {"system-overrides", "summaries"}:
             return "story", story_id
         # Target v2 layout: stable common material and timeline-owned
         # documents are physically separated under the story directory.

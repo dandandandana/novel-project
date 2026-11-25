@@ -501,6 +501,7 @@ class GraphBuilder:
         return tuple(documents)
 
     def build(self) -> GraphBuildResult:
+        """依赖：图语料、SQLite 和原子提升。输入：已绑定的语料和目标图。输出：建图结果或错误。实现：构建暂存图，按当前语料及检索检查验收后提升。"""
         manifest_holder: dict[str, GraphManifest] = {}
 
         def populate(connection: sqlite3.Connection) -> GraphManifest:
@@ -538,11 +539,12 @@ class GraphBuilder:
             return manifest
 
         def accept(staged_path: Path) -> None:
-            # Reader validation is the acceptance gate.
+            """依赖：当前已裁语料、只读图及回归。输入：临时图路径。输出：通过或拒绝。实现：核对投影使用的原语料指纹并执行既有回归。"""
             with GraphReader(
                 staged_path,
                 expected_key=self.key,
                 expected_fingerprint=manifest_holder["manifest"].source_fingerprint,
+                corpus=self.corpus,
             ) as reader:
                 verify_integrity(reader.connection)
                 if self.retrieval_regression is not None:

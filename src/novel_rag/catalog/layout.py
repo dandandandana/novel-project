@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 
-from dataclasses import dataclass
+from dataclasses import dataclass, field
 from pathlib import Path, PurePosixPath
 from typing import Any, Mapping
 
@@ -12,12 +12,14 @@ from ..identity import (
     SHARED_TIMELINE_ID,
     validate_identifier,
 )
+from ..layout import classify_document_path
 from .errors import LayoutMappingError
 
 
+COMMON_TIMELINE_ID = "common"
 LEGACY_COMMON_DIRS = frozenset({"canon", "registry"})
 LEGACY_TIMELINE_DIRS = frozenset(
-    {"history", "outline", "character-state", "world-state", "feedback", "system-overrides"}
+    {"history", "outline", "character-state", "world-state", "feedback", "summaries", "system-overrides"}
 )
 
 
@@ -32,6 +34,7 @@ class NormalizedPath:
     timeline_id: str | None
     relative_path: PurePosixPath
     legacy: bool
+    library_root: Path | None = field(default=None, compare=False)
 
     @property
     def canonical_path(self) -> Path:
@@ -61,6 +64,7 @@ class LegacyLayoutMapper:
         *,
         metadata: Mapping[str, Any] | None = None,
     ) -> NormalizedPath:
+        """依赖：作品布局和 metadata。输入：来源路径及可选声明。输出：物理或旧布局归属。实现：按根定位并核对显式身份。"""
         source = self._inside_library(path)
         relative = source.relative_to(self.library_root)
         parts = relative.parts
@@ -77,6 +81,7 @@ class LegacyLayoutMapper:
                 timeline_id=SHARED_TIMELINE_ID,
                 relative_path=PurePosixPath(*parts[1:]),
                 legacy=False,
+                library_root=self.library_root,
             )
         if parts[0] == "registry":
             return NormalizedPath(
@@ -87,6 +92,7 @@ class LegacyLayoutMapper:
                 timeline_id=None,
                 relative_path=PurePosixPath(*parts),
                 legacy=False,
+                library_root=self.library_root,
             )
         if len(parts) < 2 or parts[0] != "stories":
             raise LayoutMappingError(f"不支持的资料路径: {source}")
@@ -118,7 +124,7 @@ class LegacyLayoutMapper:
         category = tail[0]
         if category in LEGACY_COMMON_DIRS:
             explicit_timeline = self._metadata_timeline(metadata)
-            if explicit_timeline and explicit_timeline != self.default_timeline_id:
+            if explicit_timeline not in (None, self.default_timeline_id, COMMON_TIMELINE_ID):
                 return self._target_timeline(
                     source, story_id, explicit_timeline, tail, metadata, legacy=True
                 )
@@ -137,6 +143,7 @@ class LegacyLayoutMapper:
                 timeline_id=None,
                 relative_path=PurePosixPath(*tail),
                 legacy=True,
+                library_root=self.library_root,
             )
         raise LayoutMappingError(f"不支持的小说资料目录: {source}")
 
@@ -152,17 +159,18 @@ class LegacyLayoutMapper:
         *,
         legacy: bool,
     ) -> NormalizedPath:
+        """依赖：已识别的 common 路径。输入：物理位置和可选声明。输出：common 归属或冲突。实现：保留默认 timeline 和旧 common 标识。"""
         if not tail:
             raise LayoutMappingError(f"common 目录不是资料文件: {source}")
         self._check_metadata_story(metadata, story_id)
         explicit = self._metadata_timeline(metadata)
-        if explicit and explicit != self.default_timeline_id:
+        if explicit not in (None, self.default_timeline_id, COMMON_TIMELINE_ID):
             raise LayoutMappingError(
                 f"路径属于 common，但 metadata.timeline_id 指向其他 timeline: {explicit}"
             )
         relative = PurePosixPath(*tail)
         target = self.library_root / "stories" / story_id / "common" / Path(*tail)
-        return NormalizedPath(source, target, "common", story_id, None, relative, legacy)
+        return NormalizedPath(source, target, "common", story_id, None, relative, legacy, self.library_root)
 
     def _target_timeline(
         self,
@@ -174,6 +182,7 @@ class LegacyLayoutMapper:
         *,
         legacy: bool,
     ) -> NormalizedPath:
+        """依赖：布局与标识校验。输入：来源、物理作品线、相对路径及声明。输出：规范归属或错误。实现：核对作品、时间线并保留真实源路径。"""
         self._validate_timeline_id(timeline_id)
         if not tail:
             raise LayoutMappingError(f"timeline 资料目录不是资料文件: {source}")
@@ -192,7 +201,7 @@ class LegacyLayoutMapper:
             / timeline_id
             / Path(*tail)
         )
-        return NormalizedPath(source, target, "timeline", story_id, timeline_id, relative, legacy)
+        return NormalizedPath(source, target, "timeline", story_id, timeline_id, relative, legacy, self.library_root)
 
     def _inside_library(self, path: str | Path) -> Path:
         candidate = Path(path)
@@ -244,6 +253,40 @@ class LegacyLayoutMapper:
             raise LayoutMappingError(str(exc)) from exc
 
 
+def _catalog_document_root(path: Path, library_root: Path | None) -> Path | None:
+    """依赖：词法布局分类。输入：绝对路径与可选库根。输出：可辨资料根或 None。实现：先检查指定根，再检查路径中正式目录前缀。"""
+    if library_root is not None and path.is_relative_to(library_root):
+        if classify_document_path(library_root, path, follow_symlinks=False)[0] != "unknown":
+            return library_root
+    for index, part in enumerate(path.parts):
+        if part in {"stories", "shared"}:
+            root = Path(*path.parts[:index])
+            if classify_document_path(root, path, follow_symlinks=False)[0] != "unknown":
+                return root
+    return None
+
+
+def resolve_catalog_document_path(
+    path: Path,
+    metadata: Mapping[str, Any] | None = None,
+    *,
+    library_root: Path | None = None,
+) -> NormalizedPath | None:
+    """依赖：现有布局分类和路径 mapper。输入：来源路径、metadata、可选指纹根。输出：已验证归属，或无物理布局的适配资料返回 None。实现：定位受控目录并复用 mapper 核验。"""
+    path = path.absolute()
+    library_root = library_root.absolute() if library_root is not None else None
+    root = _catalog_document_root(path, library_root)
+    if root is None:
+        path = path.resolve(strict=False)
+        root = _catalog_document_root(path, library_root)
+        if root is None:
+            return None
+    identity = LegacyLayoutMapper(root).normalize_path(path, metadata=metadata)
+    if classify_document_path(identity.library_root or root, identity.source_path, follow_symlinks=False)[0] == "unknown":
+        raise LayoutMappingError(f"正式资料路径指向非资料位置: {path}")
+    return identity
+
+
 def normalize_legacy_path(
     library_root: str | Path,
     path: str | Path,
@@ -261,10 +304,12 @@ normalize_document_path = normalize_legacy_path
 
 
 __all__ = [
+    "COMMON_TIMELINE_ID",
     "LEGACY_COMMON_DIRS",
     "LEGACY_TIMELINE_DIRS",
     "LegacyLayoutMapper",
     "NormalizedPath",
     "normalize_document_path",
     "normalize_legacy_path",
+    "resolve_catalog_document_path",
 ]

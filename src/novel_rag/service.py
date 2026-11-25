@@ -156,7 +156,9 @@ def load_story_sources(
     endpoint: str = "after",
 ) -> SourceCorpus:
     """依赖：作品线注册表、文档快照和路径。输入：库、作品线、before/after游标。输出：只读SourceCorpus。实现：按注册表继承边界校验源字节，再裁叙事游标。"""
-    from .catalog.corpus import document_coordinate, is_common_document
+    from .catalog.corpus import document_coordinate
+    from .catalog.errors import LayoutMappingError
+    from .catalog.layout import LegacyLayoutMapper
     from .config import DEFAULT_SEARCH_STATUSES
 
     root = Path(library_root).resolve()
@@ -165,6 +167,7 @@ def load_story_sources(
     registry = load_story_scope_registry(root, scope)
     book_root = story_root(root, scope.story_id).resolve()
     cutoffs = registry.cutoffs(scope.timeline_id)
+    mapper = LegacyLayoutMapper(root)
     documents, refs, snapshots, gaps = [], {}, {}, []
     for path in _paths_for_scope(root, scope.story_id, False):
         try:
@@ -175,8 +178,7 @@ def load_story_sources(
                 continue
             snapshot = read_yaml_snapshot(path)
             document = load_document(path, snapshot=snapshot)
-            if document.metadata.get("story_id") != scope.story_id:
-                raise DocumentError("物理目录与story_id不一致")
+            identity = mapper.normalize_path(path, metadata=document.metadata)
             errors = validate_document(document)
             if errors:
                 raise DocumentError("；".join(errors))
@@ -184,12 +186,11 @@ def load_story_sources(
                 continue
             if document.metadata.get("document_type") in SYSTEM_DOCUMENT_TYPES:
                 continue
-            common = is_common_document(document)
-            timeline = str(document.metadata.get("timeline_id") or "")
-            if not common and timeline not in cutoffs:
+            timeline = identity.timeline_id
+            if identity.scope != "common" and timeline not in cutoffs:
                 raise DocumentError("物理目录与timeline lineage不一致")
             position = document_coordinate(document)
-            cutoff = None if common else cutoffs.get(timeline)
+            cutoff = cutoffs.get(timeline) if timeline is not None else None
             if cutoff is not None and (position is None or not position.is_complete):
                 gaps.append(f"{document.document_id}: 祖先来源时点不明")
                 continue
@@ -199,7 +200,8 @@ def load_story_sources(
                 gaps.append(f"{document.document_id}: 旧来源无叙事坐标，仅作原文参考")
             if document.document_id in refs:
                 raise DocumentError("document_id重复")
-            actual_scope = GraphKey(scope.story_id, timeline or scope.timeline_id)
+            declared_timeline = document.metadata.get("timeline_id")
+            actual_scope = GraphKey(scope.story_id, timeline or declared_timeline or scope.timeline_id)
             refs[document.document_id] = DocumentRef(
                 document_id=document.document_id,
                 source_revision=int(document.metadata.get("source_revision", 1)),
@@ -209,6 +211,10 @@ def load_story_sources(
             )
             snapshots[document.document_id] = snapshot
             documents.append(document)
+        except LayoutMappingError as exc:
+            location = relative.as_posix()
+            detail = str(exc).replace(str(path), location)
+            gaps.append(f"{location}: source_invalid: {detail}")
         except (DocumentError, ValueError, OSError) as exc:
             gaps.append(f"{path.name}: source_invalid: {exc}")
     return SourceCorpus(scope, tuple(documents), refs, snapshots, registry, tuple(gaps)).at_cursor(coordinate, endpoint)
@@ -328,7 +334,12 @@ def load_valid_documents(
     *,
     include_shared: bool = True,
 ) -> tuple[list[RagDocument], list[ValidationIssue]]:
+    """依赖：现有 catalog 路径和全库注册。输入：库根及可选作品。输出：合法文档与定位问题。实现：结合物理身份、文档结构及注册关系校验。"""
+    from .catalog.errors import LayoutMappingError
+    from .catalog.layout import COMMON_TIMELINE_ID, LegacyLayoutMapper
+
     library_root = library_root.resolve()
+    mapper = LegacyLayoutMapper(library_root)
     issues = validate_registries(library_root)
     stories, timelines = _registry_values_compat(library_root)
     if story_id is not None and story_id not in stories:
@@ -360,11 +371,18 @@ def load_valid_documents(
             if document_type not in SYSTEM_DOCUMENT_TYPES:
                 errors.append(f"shared 目录只允许系统文档，实际为: {document_type}")
         elif physical_scope == "story":
+            identity = None
             if metadata_story != physical_story:
                 errors.append(f"物理小说目录与 metadata.story_id 不一致: {physical_story}/{metadata_story}")
+            else:
+                try:
+                    identity = mapper.normalize_path(path, metadata=metadata)
+                except LayoutMappingError as exc:
+                    errors.append(str(exc))
             if metadata_story and metadata_story not in stories:
                 errors.append(f"story_id 未在全局目录注册: {metadata_story}")
-            if metadata_story and metadata_timeline and (metadata_story, metadata_timeline) not in timelines:
+            common_marker = identity is not None and identity.scope == "common" and metadata_timeline == COMMON_TIMELINE_ID
+            if metadata_story and metadata_timeline and not common_marker and (metadata_story, metadata_timeline) not in timelines:
                 errors.append(f"timeline_id 未在小说 registry 注册: {metadata_story}/{metadata_timeline}")
             parts = relative_parts(library_root, path)
             in_overrides = (

@@ -1,6 +1,8 @@
 from pathlib import Path
 
+from novel_rag.composition import search_graph
 from novel_rag.documents import RagDocument
+from novel_rag.identity import GraphKey
 from novel_rag.index import SqliteIndex, rebuild_isolated_indexes, search_isolated
 
 
@@ -31,6 +33,7 @@ def test_draft_requires_explicit_status(tmp_path):
 
 
 def test_isolated_indexes_do_not_leak_story_content_but_share_system_rules(tmp_path):
+    """依赖：临时图和两种检索入口。输入：两部合成作品与共享规则。输出：命中 ID 或标题断言。实现：比较平铺内存语料在独立作品图中的结果。"""
     documents = [
         doc(tmp_path / "s1.yaml", "s1", "main", "canon", "第一部人物", "隔离哨兵 苍蓝人物"),
         doc(tmp_path / "s2.yaml", "s2", "main", "canon", "第二部人物", "隔离哨兵 赤红人物"),
@@ -55,6 +58,9 @@ def test_isolated_indexes_do_not_leak_story_content_but_share_system_rules(tmp_p
     s2 = search_isolated(index_root, "隔离哨兵", "s2", "main", limit=10)
     assert {item.title for item in s1} == {"第一部人物", "共享文风规则"}
     assert {item.title for item in s2} == {"第二部人物", "共享文风规则"}
+    assert {item.document_id for item in search_graph(index_root, "隔离哨兵", GraphKey("s1", "main"))} == {
+        item.document_id for item in s1
+    }
     assert {item.title for item in search_isolated(
         index_root, "隔离哨兵", "s1", "main", limit=10, include_shared=False
     )} == {"第一部人物"}

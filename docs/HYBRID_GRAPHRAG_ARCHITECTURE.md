@@ -792,6 +792,8 @@ hash 输入域固定：source_hash/expected_source_hash 委托 fingerprint_file�
 <a id="source-references"></a>
 ### 8.1 来源引用分型
 
+作品资料先由 catalog 校验物理归属。目标布局的 `stories/<story>/timelines/<timeline>/` 必须与 YAML 声明的作品和时间线一致。合法 common 与旧布局沿用目录映射器的合同。身份明确后，lineage 与各祖先的 cutoff 决定可读范围；真实时间线目录中的资料不能用 common 标签跳过分歧点。继承来源的引用保留实际来源身份与完整文件指纹。
+
 ~~~text
 MemorySourceRef = DocumentRef | DraftRef | AuthorInputRef
 DocumentRef = {kind: document, document_id, source_revision, source_hash, scope, coordinate?}
@@ -806,6 +808,8 @@ DocumentRef 支持其实际声明的 Canon/前文，经历与动态差分需要�
 采用时可映射的 DraftRef 转为正式 DocumentRef，AuthorInputRef 保留原输入身份与计划性质。发布引用输入的笔记前，store 先将确切文本保留到 input-versions 并核验 hash，再交 summary 保存引用。失败只为 memory_pending，重试复用原 ID/hash。作品备份/搬迁和工作区清理保留被发布记录引用的 input-versions 与 source-versions，不依赖原 run.json 永远存在；这两类是来源版本，不是另一个事实库。没有引用计数数据库或跨文件原子事务承诺。
 
 ## 9. 采用、幂等与可恢复提交
+
+采用 History 要求目标实际属于该 run 的作品和时间线。祖先章节可作为草稿基线；在子线对同一坐标采用继承章节时，服务在正式写入前返回 `scope_denied`，保留草稿及其原始引用。现有模型未定义父子同坐标的版本遮蔽，不能自动创建覆盖版本。作者可修订通过自身 DocumentRef 选定的子线章节，也可按既有规则在新的合法坐标创建子线 History。编辑入口对本作品 common Canon 和笔记沿用原规则。锁内目标检查、CAS 与回执均绑定实际目标，重试不能把父线原件认证成子线提交。
 
 v3 AdoptionService 不调用 confirm_runtime，不伪造 validation.pass，不调用 state-approve，不删除草稿或完整正文。
 

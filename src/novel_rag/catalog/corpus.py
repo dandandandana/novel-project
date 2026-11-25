@@ -12,7 +12,8 @@ import yaml
 
 from ..documents import DocumentError, RagDocument, load_document, validate_document
 from ..identity import GraphKey, StoryCoordinate
-from .errors import CorpusValidationError
+from .errors import CorpusValidationError, LayoutMappingError
+from .layout import COMMON_TIMELINE_ID, resolve_catalog_document_path
 from .timelines import TimelineRegistry
 
 
@@ -74,8 +75,13 @@ def _document_bytes(document: RagDocument) -> bytes:
         ).encode("utf-8")
 
 
-def fingerprint_paths(paths: Iterable[str | Path], *, root: str | Path | None = None) -> str:
-    """Hash sorted relative paths and exact file bytes using SHA-256."""
+def fingerprint_paths(
+    paths: Iterable[str | Path],
+    *,
+    root: str | Path | None = None,
+    source_bytes: Mapping[Path, bytes] | None = None,
+) -> str:
+    """依赖：标准库 SHA-256。输入：路径、可选根及已读快照字节。输出：精确源码指纹。实现：按相对路径排序并哈希，优先使用调用者已核验的同次读取得到的字节。"""
 
     root_path = Path(root).resolve(strict=False) if root is not None else None
     records: list[tuple[str, bytes]] = []
@@ -83,7 +89,7 @@ def fingerprint_paths(paths: Iterable[str | Path], *, root: str | Path | None = 
         path = Path(raw_path)
         label = _stable_path(path, root_path)
         try:
-            content = path.read_bytes()
+            content = source_bytes[path] if source_bytes is not None and path in source_bytes else path.read_bytes()
         except OSError as exc:
             raise CorpusValidationError(f"无法读取 fingerprint 文件 {path}: {exc}") from exc
         records.append((label, content))
@@ -148,16 +154,19 @@ def yaml_source_fingerprint(root: str | Path) -> str:
     return fingerprint_paths(sorted(set(paths)), root=root_path)
 
 
-_COMMON_TIMELINE_IDS = frozenset({"", "common"})
+_COMMON_TIMELINE_IDS = frozenset({"", COMMON_TIMELINE_ID})
 _COMMON_SCOPE_VALUES = frozenset(
     {"common", "story-common", "story_common", "story", "global"}
 )
 
 
-def is_common_document(document: RagDocument) -> bool:
-    """依赖：RagDocument 路径与 metadata。输入：已解析文档。输出：是否属于 common 资料。实现：检查显式标记及兼容目录归属。"""
+def is_common_document(document: RagDocument, *, library_root: Path | None = None) -> bool:
+    """依赖：catalog 路径 mapper。输入：文档、可选资料根。输出：common 布尔值或身份错误。实现：可辨物理资料沿规范归属，平铺适配文档仍可声明 common。"""
 
     metadata = document.metadata
+    identity = resolve_catalog_document_path(document.path, metadata, library_root=library_root)
+    if identity is not None:
+        return identity.scope == "common"
     timeline_id = str(metadata.get("timeline_id") or "")
     if timeline_id in _COMMON_TIMELINE_IDS:
         return True
@@ -168,15 +177,6 @@ def is_common_document(document: RagDocument) -> bool:
     if metadata.get("common") is True:
         return True
 
-    parts = tuple(part.casefold() for part in document.path.parts)
-    for index, part in enumerate(parts):
-        if part != "stories" or index + 2 >= len(parts):
-            continue
-        category = parts[index + 2]
-        if category == "common":
-            return True
-        if category in {"canon", "registry"} and timeline_id in {"", "main"}:
-            return True
     return False
 
 
@@ -234,6 +234,7 @@ class ValidatedCorpus:
         timeline_registry: TimelineRegistry | None = None,
         strict: bool = True,
     ) -> "ValidatedCorpus":
+        """依赖：文档 Schema 和路径 owner。输入：原资料与可选图范围。输出：语料及问题。实现：验证文件身份、结构和去重，strict 时拒绝任何问题。"""
         adapted: list[RagDocument] = []
         issues: list[CorpusIssue] = []
         seen: dict[str, Path] = {}
@@ -250,6 +251,11 @@ class ValidatedCorpus:
                 continue
             errors = validate_document(document)
             issues.extend(CorpusIssue(document.path, error) for error in errors)
+            try:
+                common = is_common_document(document, library_root=root_path)
+            except LayoutMappingError as exc:
+                issues.append(CorpusIssue(document.path, str(exc)))
+                common = False
             document_id = document.document_id
             previous = seen.get(document_id)
             if previous is not None:
@@ -274,6 +280,7 @@ class ValidatedCorpus:
                 if (
                     story_id == graph_key.story_id
                     and timeline_registry is not None
+                    and not common
                     and str(metadata.get("timeline_id") or "")
                     not in (
                         set(timeline_registry.allowed_timeline_ids(graph_key.timeline_id))
@@ -348,7 +355,7 @@ class ValidatedCorpus:
         return fingerprint_documents(self.documents, root=root or self.root)
 
     def for_graph(self, graph_key: GraphKey) -> "ValidatedCorpus":
-        """Return the subset compatible with a graph identity and lineage."""
+        """依赖：catalog 路径和注册表。输入：目标图身份。输出：已裁语料或身份、坐标错误。实现：先核物理归属，再裁 lineage 与祖先截止。"""
 
         allowed = {graph_key.timeline_id}
         cutoffs: dict[str, StoryCoordinate | None] = {}
@@ -361,12 +368,16 @@ class ValidatedCorpus:
             metadata = document.metadata
             story_id = str(metadata.get("story_id") or "")
             timeline_id = str(metadata.get("timeline_id") or "")
+            try:
+                common = is_common_document(document, library_root=self.root)
+            except LayoutMappingError as exc:
+                raise CorpusValidationError(str(CorpusIssue(document.path, str(exc)))) from exc
             if story_id == "__shared__":
                 selected.append(document)
                 continue
             if story_id != graph_key.story_id:
                 continue
-            if is_common_document(document):
+            if common:
                 selected.append(document)
                 continue
             if timeline_id not in allowed:

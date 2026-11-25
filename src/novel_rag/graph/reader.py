@@ -123,8 +123,9 @@ def ensure_reader_freshness(
     manifest_fingerprint: str,
     expected_fingerprint: str | None,
     source_root: str | None,
+    graph_key: GraphKey | None = None,
 ) -> bool:
-    """Prove one reader's freshness against its recorded source files.
+    """依赖：源指纹与可选预验指纹。输入：图连接、清单与可选目标身份。输出：通过或只读错误。实现：复核已登记源及边界，纯平铺源不可读时要求预验指纹。
 
     Returns ``True`` once freshness is proven.  Raises when the recomputed
     database fingerprint diverges from the manifest (stale) or when no proof
@@ -135,6 +136,7 @@ def ensure_reader_freshness(
     current = database_fingerprint(
         connection,
         source_root=Path(source_root) if source_root else None,
+        graph_key=graph_key,
     )
     if current is None:
         if expected_fingerprint is None:
@@ -298,6 +300,7 @@ class GraphReader(_SQLiteReaderLifecycle):
         return self._manifest
 
     def _ensure_fresh(self) -> None:
+        """依赖：当前连接、图键和源指纹。输入：已打开的 reader。输出：无或 GraphReadError。实现：首次查询时验证来源及归属，已验证的 reader 复用结果。"""
         if self._connection is None:
             raise GraphReadError("GraphReader 已关闭")
         if self._freshness_checked:
@@ -308,6 +311,7 @@ class GraphReader(_SQLiteReaderLifecycle):
             manifest_fingerprint=self._manifest.source_fingerprint,
             expected_fingerprint=self._expected_fingerprint,
             source_root=self._manifest.source_root,
+            graph_key=self._expected_key,
         )
 
     @property

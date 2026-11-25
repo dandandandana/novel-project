@@ -6,6 +6,8 @@ from collections.abc import Iterable, Mapping
 from pathlib import Path
 from typing import Any
 
+from ..catalog.corpus import is_common_document
+from ..catalog.errors import LayoutMappingError
 from ..identity import GraphKey, StoryCoordinate
 from ..std.serialization import json_text
 from .types import ModuleReference, ValidatedCorpus
@@ -87,15 +89,7 @@ def _ancestor_coordinate_or_error(
 
 
 def scope_corpus(corpus: Any, key: GraphKey) -> ValidatedCorpus:
-    """Return the canonical, lineage-scoped corpus for one GraphKey.
-
-    ``ValidatedCorpus.for_graph`` owns coordinate cutoffs.  This adapter adds
-    two graph-boundary checks that the catalog intentionally leaves to the
-    projector: every non-shared document must belong to this story, and a
-    sibling/descendant timeline must be rejected instead of silently omitted.
-    Common documents may have an empty or ``common`` timeline marker and are
-    retained in the target projection.
-    """
+    """依赖：catalog 来源身份与注册表。输入：已适配语料和目标图。输出：受限语料或建图错误。实现：拒绝错位及异线输入，再裁祖先截止。"""
 
     source = require_validated_corpus(corpus)
     if source.graph_key is not None and source.graph_key != key:
@@ -109,11 +103,16 @@ def scope_corpus(corpus: Any, key: GraphKey) -> ValidatedCorpus:
     except ValueError as exc:
         raise GraphBuildError(f"无法解析目标 timeline lineage: {exc}") from exc
 
+    scoped_rows = []
     for document in source.documents:
+        try:
+            common = is_common_document(document, library_root=source.root)
+        except LayoutMappingError as exc:
+            raise GraphBuildError(f"{document.path}: {exc}") from exc
         metadata = metadata_of(document)
         story_id = str(metadata.get("story_id", ""))
         timeline_id = str(metadata.get("timeline_id", ""))
-        is_common = timeline_id in {"", "common"} or str(metadata.get("scope", "")) == "common"
+        scoped_rows.append((document, metadata, timeline_id, common))
         if story_id == "__shared__":
             continue
         if story_id != key.story_id:
@@ -121,7 +120,7 @@ def scope_corpus(corpus: Any, key: GraphKey) -> ValidatedCorpus:
                 "文档 story_id 与 GraphKey 不一致: "
                 f"{story_id!r} != {key.story_id!r}"
             )
-        if not is_common and timeline_id not in allowed:
+        if not common and timeline_id not in allowed:
             raise GraphBuildError(
                 "文档 timeline 不属于目标 GraphKey lineage: "
                 f"{timeline_id!r} -> {key.timeline_id!r}"
@@ -133,17 +132,8 @@ def scope_corpus(corpus: Any, key: GraphKey) -> ValidatedCorpus:
         raise GraphBuildError(f"无法解析目标 timeline cutoff: {exc}") from exc
 
     selected: list[Any] = []
-    for document in source.documents:
-        metadata = metadata_of(document)
-        story_id = str(metadata.get("story_id", ""))
-        timeline_id = str(metadata.get("timeline_id", ""))
-        is_common = timeline_id in {"", "common"} or str(metadata.get("scope", "")) == "common"
-        if story_id == "__shared__":
-            selected.append(document)
-            continue
-        if story_id != key.story_id or (not is_common and timeline_id not in allowed):
-            continue
-        cutoff = cutoffs.get(timeline_id)
+    for document, metadata, timeline_id, common in scoped_rows:
+        cutoff = None if common else cutoffs.get(timeline_id)
         if cutoff is not None:
             coordinate = _ancestor_coordinate_or_error(
                 document,
@@ -154,20 +144,6 @@ def scope_corpus(corpus: Any, key: GraphKey) -> ValidatedCorpus:
             if coordinate > cutoff:
                 continue
         selected.append(document)
-
-    selected_ids = {document_id_of(document, metadata_of(document)) for document in selected}
-    # Catalog.for_graph intentionally treats only registered timeline IDs as
-    # inherited segments.  Common material is a graph-wide scope and can be
-    # represented by an empty or ``common`` timeline marker.
-    for document in source.documents:
-        metadata = metadata_of(document)
-        story_id = str(metadata.get("story_id", ""))
-        timeline_id = str(metadata.get("timeline_id", ""))
-        is_common = timeline_id in {"", "common"} or str(metadata.get("scope", "")) == "common"
-        document_id = document_id_of(document, metadata)
-        if story_id == key.story_id and is_common and document_id not in selected_ids:
-            selected.append(document)
-            selected_ids.add(document_id)
 
     return ValidatedCorpus.from_documents(
         selected,
