@@ -10,13 +10,23 @@ requires-python = ">=3.10"
 dependencies = ["PyYAML>=6.0"]
 
 [project.optional-dependencies]
-dev = ["pytest>=7.0"]
+dev = ["novel-rag[model,tui,web]", "pytest>=7.0", "playwright>=1.45,<2", "build>=1.2,<2"]
+model = ["httpx>=0.28,<0.29"]
+tui = ["prompt-toolkit>=3.0,<6"]
+web = ["fastapi>=0.125,<0.126", "uvicorn>=0.38,<0.39", "httpx>=0.28,<0.29"]
 
 [project.scripts]
 novel-rag = "novel_rag.cli:main"
 
 [tool.setuptools.packages.find]
+where = ["src"]
 include = ["novel_rag*"]
+namespaces = false
+
+[tool.setuptools.package-data]
+"novel_rag" = ["templates/*.yaml"]
+"novel_rag.generation" = ["resources.json"]
+"novel_rag.web" = ["static/*", "static/assets/*"]
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]

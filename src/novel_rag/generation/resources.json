@@ -1,0 +1,104 @@
+{
+  "natural_dialogue": {
+    "resource_id": "natural_dialogue",
+    "kind": "writing_reference",
+    "text": "适用：多人交谈、身份与亲疏有别，或请求难以启齿，并会被来人和现场事务打断时。\r\n\r\n写法：话轮承接人物当下目的与听者身份；眼色、称谓、插话和事务可改变说法。中断结束后，原诉求可从先前停处继续。听懂、照料眼前需要与满足全部请求应分别成立。\r\n\r\n原文 few-shot｜《红楼梦》第六回：\r\n<few_shot source=\"A-natural_dialogue.md\">\r\n这里刘姥姥心神方定，才又说道：“今日我带了你侄儿来，也不为别的，只因他老子娘在家里，连吃的都没有。如今天又冷了，越想没个派头儿，只得带了你侄儿奔了你老来。”\r\n\r\n说著又推板儿道：“你那爹在家怎么教你来？打发咱们作煞事来？只顾吃果子咧。”\r\n\r\n凤姐早已明白了，听他不会说话，因笑止道：“不必说了，我知道了。”\r\n\r\n因问周瑞家的：“这姥姥不知可用了早饭没有？”\r\n\r\n刘姥姥忙说道：“一早就往这里赶咧，那里还有吃饭的工夫咧。”\r\n\r\n凤姐听说，忙命快传饭来。\r\n</few_shot>\r\n\r\n借鉴：请求说得迂回而窘迫，听者先截住失措的表达，再经由旁人落实眼前回应。",
+    "source": {
+      "asset": "docs/references/kardia-r13-full-symbolic-lean.source.txt",
+      "source_sha256": "a999dd0f4113672d6c61e18b1502b7ed839f40674c5735375adc7b0cfe8e876e",
+      "provided_fragment": true
+    }
+  },
+  "desire_mismatch": {
+    "resource_id": "desire_mismatch",
+    "kind": "writing_reference",
+    "text": "适用：双方从同一次交谈中索取不同结果，局部回应存在，核心问题仍悬而未决时。\r\n\r\n写法：人物可接住自己愿意、能够或急于处理的那一层；未获回应的诉求可换入口返场。沉默、转问、给钱或谈实际处境各有具体对象，不能自动等同于拒绝、接受或关系解决。\r\n\r\n结构证据（原文结构摘要）：《猎人》中，Pelagea 先希望 Yegor 回去看看，继而请求他至少留下，并说出婚姻中从未有过爱。沉默后，Yegor 转问她如何生活；她回答生计，又提起 Akulina。Yegor 最终告别并给她一张钞票。生计得到过问和实际帮助，共同生活的诉求没有获得满足。",
+    "source": {
+      "asset": "docs/references/kardia-r13-full-symbolic-lean.source.txt",
+      "source_sha256": "a999dd0f4113672d6c61e18b1502b7ed839f40674c5735375adc7b0cfe8e876e",
+      "provided_fragment": true
+    }
+  },
+  "independent_logic": {
+    "resource_id": "independent_logic",
+    "kind": "writing_reference",
+    "text": "适用：新证据推翻 POV 人物的既有解释，而双方仍以不同价值尺度判断同一选择时。\r\n\r\n写法：先让合理但有限的判断接受事实修正，再让分歧落在各自真正看重的条件上。人物可追问、拒绝解释或坚持选择；独立逻辑来自优先级不同，不要求反常、冷酷或故意制造反转。\r\n\r\n结构证据（原文结构摘要）：《月亮与六便士》中，叙述者原以为 Strickland 为另一个女人离家，直接询问后得知他只是要画画。事实猜测被推翻后，叙述者继续用年龄、经验与成功可能质疑；Strickland 却把四十岁视为不能再拖的理由，并反复确认画画的必要性。",
+    "source": {
+      "asset": "docs/references/kardia-r13-full-symbolic-lean.source.txt",
+      "source_sha256": "a999dd0f4113672d6c61e18b1502b7ed839f40674c5735375adc7b0cfe8e876e",
+      "provided_fragment": true
+    }
+  },
+  "reality_causality": {
+    "resource_id": "reality_causality",
+    "kind": "writing_reference",
+    "text": "适用：环境、资源与信息持续限制选择，人物必须边行动边判断，同时现场仍有值得停留的感官或审美体验。\r\n\r\n写法：让条件变化引出判断与尝试，再由实际反馈影响后续选择；按场面需要取其中相关环节，不必每次走完全程。尝试可以带来局部成功、错误发现或短暂平静；这些体验真实成立，却不会自动解除燃料、去路、伤势等整体困境。只在已有条件支持时升级风险。\r\n\r\n结构证据（原文结构摘要）：《夜航》中，风暴对通信和操纵的干扰迫使 Fabien 放弃书写、维持控制，照明弹又揭示航向已偏至海面；他被云隙星光吸引而爬升，获得平静和壮丽视野，剩余燃料却仍使总体困境继续。",
+    "source": {
+      "asset": "docs/references/kardia-r13-full-symbolic-lean.source.txt",
+      "source_sha256": "a999dd0f4113672d6c61e18b1502b7ed839f40674c5735375adc7b0cfe8e876e",
+      "provided_fragment": true
+    }
+  },
+  "natural_spoken_chinese": {
+    "resource_id": "natural_spoken_chinese",
+    "kind": "writing_reference",
+    "text": "适用：现代熟人对话需要自然承接、逐步说明事情，并保留各自说话习惯时。\r\n\r\n写法：从对方刚说的词、误解或玩笑接话，通过纠正、追问、改口和补充逐渐抵达请求。允许有关系意味的闲话和回环；是否展开取决于人物兴趣与目的，不能靠统一贫嘴或强塞语气词制造口语感。\r\n\r\n原文 few-shot｜路内《少年巴比伦》：\r\n<few_shot source=\"E-natural_spoken_chinese.md\">\r\n那天我一听秦阿姨要来，就恭喜白蓝。我问她：“给你撮的是谁啊?”\r\n\r\n白蓝说：“好像是宣传科的小毕。”\r\n\r\n我不认识宣传科的小毕，我说：“噢，就是画黑板报的啊。”\r\n\r\n白蓝说：“不要乱讲，宣传科不只是画黑板报。”\r\n\r\n“但我只看见过他们画黑板报。”我顿了顿，故意问她，“那我应该走开才对啊，何必在这里做电灯泡呢?”\r\n\r\n“她缠了我很久，我烦她，又不好意思赶她走。你在这里坐一会，她觉得没劲了，就会走了。”\r\n</few_shot>\r\n\r\n借鉴：话轮接住上一句的具体词义或误解，借纠正和追问自然逼近真正请求。",
+    "source": {
+      "asset": "docs/references/kardia-r13-full-symbolic-lean.source.txt",
+      "source_sha256": "a999dd0f4113672d6c61e18b1502b7ed839f40674c5735375adc7b0cfe8e876e",
+      "provided_fragment": true
+    }
+  },
+  "narrative_continuity": {
+    "resource_id": "narrative_continuity",
+    "kind": "writing_reference",
+    "text": "适用：连续感知、回忆与判断容易被切碎，或空间调查需要从物件状态形成可核对的问题。\r\n\r\n写法：内在体验可以从眼前感知自然进入具体联想、记忆、判断或自我修正，再由现场变化接回当下，不必固定经过所有环节。调查则沿位置、物件状态和差异选择证据，再提出与证据直接相关的问题；两种用途都不压成动作因果流水账，也不把空间写成清单。\r\n\r\n原文 few-shot｜《火车》第一章，张秋明译：\r\n<few_shot source=\"F-narrative_continuity.md\">\r\n自从去年底出院以来，今天是本间第二次到办公室露面。一想到上一次不知是哪里借来的胆闹出的骚动，他现在还是感觉不太舒服。工作和公平的竞技运动不同，因为犯规而下场时，并不是换了选手便了事，而是整个游戏规则都改了，再也找不到自己的位置——应该还不至于搞到这步田地。本间第一次觉得后悔，当初要是不停职就好了。\r\n\r\n大概就是因为那样，明明没有人看着自己，却为了那股又臭又硬的牛脾气，坚持在这车厢里站着不坐。不对，就是因为没有人看着自己，因为不必担心有人会上前安慰自己：这阵子也不好受吧。\r\n</few_shot>\r\n\r\n借鉴：回访办公室的经历引出后悔，再回到车厢里坚持站立的当下，自我反驳使心理继续展开。",
+    "source": {
+      "asset": "docs/references/kardia-r13-full-symbolic-lean.source.txt",
+      "source_sha256": "a999dd0f4113672d6c61e18b1502b7ed839f40674c5735375adc7b0cfe8e876e",
+      "provided_fragment": true
+    }
+  },
+  "everyday_life_process": {
+    "resource_id": "everyday_life_process",
+    "kind": "writing_reference",
+    "text": "适用：日常生活、共同劳作或跨时段变化需要变得可感，重点在生活怎样长期运转，而非罗列风物。\r\n\r\n写法：把作息、分工、器物使用、身体状态和买卖往来连在同一过程里；用概述跨过重复日常和年月，在有代表性的场面、物件与习惯处展开。长期变化通过空间、工具、品类和行动余裕显出，不要求每句推进即时事件，也不让细节拖住正在发生的急事。\r\n\r\n原文 few-shot｜汪曾祺《异秉》：\r\n<few_shot source=\"G-everyday_life_process.md\">\r\n他们家起得很早。天不亮王二就起来备料，然后就烧煮。他媳妇梳好头就推磨磨豆腐。——王二的熏烧摊每天要卖出很多回卤豆腐干，这豆腐干是自家做的。磨得了豆腐，就帮王二烧火。火光照得她的圆盘脸红红的(附近的空气里弥漫着王二家飘出的五香味)。后来王二喂了一头小毛驴，她就不用围着磨盘转了，只要把小驴牵上磨，不时往磨眼里倒半碗豆子，注一点水就行了。省出时间，好做针线。一家四口，大裁小剪，很费工夫。\r\n</few_shot>\r\n\r\n借鉴：备料、推磨、烧火与针线连成生活过程；添驴改变劳动分工，火光和气味同时使现场可感。",
+    "source": {
+      "asset": "docs/references/kardia-r13-full-symbolic-lean.source.txt",
+      "source_sha256": "a999dd0f4113672d6c61e18b1502b7ed839f40674c5735375adc7b0cfe8e876e",
+      "provided_fragment": true
+    }
+  },
+  "information_transmission": {
+    "resource_id": "information_transmission",
+    "kind": "writing_reference",
+    "text": "适用：人物处于不同地域、群体或知情层级，消息需要经过传递、等待、删节或核实时。\n\n写法：先确定实际载体、发送者与接收者，再写收到的部分和人物解释。发出、送达、阅读、理解分开；书信与当地见闻可互补；听到信号只能形成有依据的判断，不能补出完整现场。公开动向只提供相应圈层的合理概要，内部细节须实际接触；未知来源、猜测寄信人、旧消息和隐蔽内容保持未决。\n\n通用适配（用户补充，不是玄鉴原文设定）：学校课堂、教材、教师讲解、校内通知和校园广播；报纸杂志、电视新闻、广播节目；电话短信、邮件、网络报道与社交平台；单位/军队/社团的会议、通告、授权档案。渠道是开放例子，须符合当前作品时代。已有教育/职业背景可支持合理基础知识，具体学科、内部档案和私密内容仍需接触与权限。刊登/发布/播出/上课不表示所有角色已知；记录实际学习、阅读、收听、观看或接收部分，并考虑刊期、节目时点、覆盖范围、信号设备和语言。知道报道的说法不认证事件真实，转载/转播同源不算独立印证。\n\n结构证据（正版公开片段的摘要，并非全书原文）：《玄鉴仙族》第八十三章消息由具体人物带回，接收者评价不同；第八百一十章已有书信仍向当地人询问，寄信人依据形制推测；第三十九章听闻与当面解释分开，神识观察也未取得隐藏天赋；第四百一十章依据轰鸣判断交战，再行动；第二百九十章等候者只获接待说明，没有会议内容。\n\n借鉴：来源、所得内容、人物解释和获知位置分别保留。角色所知用CharacterView；information记录channel/source/certainty/basis，value不超出实际所得，来源未知用null；时间由真实正文检查点绑定。群体成员、在场、作者全知都不自动授予知识。不为当前作品引入原作人物、剧情、统一传讯速度或未经设定成立的能力。",
+    "source": {
+      "asset": "docs/references/xuanjian-information-notes.md",
+      "source_sha256": "f43bacbf99617d275b4d1d5e252cb3379aa2f650462bb09f499f4a1728d7d525",
+      "provided_fragment": false,
+      "evidence_scope": "正版公开试读和公开检索片段；仅核实局部结构，未读取VIP全文或导入全书",
+      "adaptation_sources": [
+        {"asset": "docs/references/information-fog.source.txt", "source_sha256": "3298f5956b49ed63add7b18c44daccd9db4249a62154bb15817608d05f843fe0", "provided_fragment": true},
+        {"asset": "docs/references/information-fog-channels.addendum.txt", "source_sha256": "b26cb9f6cf1c3c0e94d37b19bacc24c3e7414e73986558f2c9bf782b146379ea", "provided_fragment": true}
+      ],
+      "reference_urls": [
+        "https://www.readnovel.com/chapter/24488947201576304/66859758061145450",
+        "https://www.qidian.com/chapter/1035420986/795368322/",
+        "https://www.readnovel.com/chapter/24488947201576304/66346857898494233",
+        "https://www.qidian.com/chapter/1035420986/757873696/",
+        "https://www.qidian.com/chapter/1035420986/747533165/"
+      ]
+    }
+  },
+  "conflict_escalation": {
+    "resource_id": "conflict_escalation",
+    "kind": "writing_reference",
+    "text": "适用：具体行为触碰关系边界，争执需要显出双方对同一行为的不同理解及其后果时。\r\n\r\n写法：让要求、拒绝和理由逐层改变话轮。若人物确有压抑已久且必须说明的内容，可以集中披露；披露能使对方重新理解局面，但理解、同意、停止争执与关系修复仍是不同结果。\r\n\r\n原文 few-shot｜桐华《长相思》第八章：\r\n<few_shot source=\"H-conflict_escalation.md\">\r\n小六突然坐了起来，恼怒地问：“这里是清水镇，不是青丘，你为什么还不离开？” 璟凝视着小六说：“你在这里，我不离开。” 小六气的把手里的蒲扇砸到他身上，“你不是说听我的话吗？那就离开，远远地离开，不要再来打扰我的生活。你是涂山璟，不是也十七！”\r\n</few_shot>\r\n\r\n借鉴：冲突从“为什么不走”推进到“是否听从要求”，最终落在身份与关系边界上。",
+    "source": {
+      "asset": "docs/references/kardia-r13-full-symbolic-lean.source.txt",
+      "source_sha256": "a999dd0f4113672d6c61e18b1502b7ed839f40674c5735375adc7b0cfe8e876e",
+      "provided_fragment": true
+    }
+  }
+}

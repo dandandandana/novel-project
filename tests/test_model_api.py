@@ -34,7 +34,7 @@ def test_responses_api_request_and_json_output() -> None:
         return FakeResponse({"output_text": '{"status":"pass"}'})
 
     model = OpenAICompatibleModel(
-        "https://example.test/v1", "writer", api_key="secret", opener=opener, sleeper=lambda _delay: None
+        "https://example.test/v1", "writer", mode="responses", api_key="secret", opener=opener, sleeper=lambda _delay: None
     )
     result = model("validate", {"instruction": "check", "text": "正文"})
 
@@ -73,7 +73,7 @@ def test_retryable_http_error_retries_without_exposing_body() -> None:
         return FakeResponse({"output_text": "正文"})
 
     model = OpenAICompatibleModel(
-        "http://localhost:1234/v1", "local", retries=1, opener=opener, sleeper=lambda _delay: None
+        "http://localhost:1234/v1", "local", mode="responses", retries=1, opener=opener, sleeper=lambda _delay: None
     )
     assert model("render_prose", {"instruction": "write"}) == "正文"
     assert attempts == 2
@@ -81,13 +81,57 @@ def test_retryable_http_error_retries_without_exposing_body() -> None:
 
 def test_non_object_json_model_output_is_rejected() -> None:
     model = OpenAICompatibleModel(
-        "http://localhost:1234/v1", "local",
+        "http://localhost:1234/v1", "local", mode="responses",
         opener=lambda *_args, **_kwargs: FakeResponse({"output_text": "[1, 2]"}),
     )
     with pytest.raises(ModelAPIError, match="必须是对象"):
         model("validate", {"instruction": "check"})
+
+
 def test_model_repr_does_not_expose_api_key() -> None:
     model = OpenAICompatibleModel(base_url="http://localhost/v1", model="writer", api_key="SECRET")
     assert "SECRET" not in repr(model)
 
 
+
+
+def test_normalize_mode_accepts_aliases_and_defaults_to_completions() -> None:
+    from novel_rag.model_api import normalize_mode
+
+    assert normalize_mode(None) == "chat"
+    assert normalize_mode("") == "chat"
+    assert normalize_mode("chat") == "chat"
+    assert normalize_mode("Completions") == "chat"
+    assert normalize_mode(" openai-completions ") == "chat"
+    assert normalize_mode("openai_responses") == "responses"
+    with pytest.raises(ModelAPIError):
+        normalize_mode("anthropic")
+
+
+def test_model_defaults_to_openai_chat_completions_endpoint() -> None:
+    from novel_rag.model_api import OpenAICompatibleModel, _endpoint
+
+    model = OpenAICompatibleModel(base_url="https://example.test/v1", model="writer")
+    assert model.mode == "chat"
+    assert _endpoint(model.base_url, model.mode) == "https://example.test/v1/chat/completions"
+
+
+def test_model_alias_mode_normalizes_at_runtime() -> None:
+    from novel_rag.model_api import OpenAICompatibleModel
+
+    model = OpenAICompatibleModel(
+        base_url="https://example.test/v1", model="writer", mode="openai-completions"
+    )
+    assert model.mode == "chat"
+
+
+@pytest.mark.parametrize("mode", ["chat", "responses"])
+def test_legacy_stage_cache_parameters_are_explicit_and_optional(mode: str) -> None:
+    """依赖：legacy原stage codec。输入：默认和显式缓存配置。输出：原请求形状或指定cache参数。实现：沿同client body委托核验，不升级v2创作链。"""
+    model = OpenAICompatibleModel("http://fixture.invalid/v1", "fixture", mode=mode)
+    original = model._body("render_prose", {"instruction": "写作"})
+    assert "prompt_cache_key" not in original and "prompt_cache_retention" not in original
+    explicit = OpenAICompatibleModel("http://fixture.invalid/v1", "fixture", mode=mode,
+                                     prompt_cache_key="fixed", prompt_cache_retention="24h")
+    actual = explicit._body("render_prose", {"instruction": "写作"})
+    assert actual == {**original, "prompt_cache_key": "fixed", "prompt_cache_retention": "24h"}

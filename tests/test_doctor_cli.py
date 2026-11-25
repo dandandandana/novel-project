@@ -39,11 +39,12 @@ OLD_COMMANDS = {
 
 
 def test_doctor_is_additive_to_the_existing_cli_commands() -> None:
+    """依赖：真实CLI parser。输入：既有命令集合。输出：兼容入口及v3增量断言。实现：保留全部旧命令，增加doctor/write/workspace/harness。"""
     parser = build_parser()
     commands = set(parser._subparsers._group_actions[0].choices)
 
     assert OLD_COMMANDS <= commands
-    assert commands == OLD_COMMANDS | {"doctor"}
+    assert commands == OLD_COMMANDS | {"doctor", "write", "workspace", "harness"}
     assert parser.parse_args(["doctor"]).func is command_doctor
 
 

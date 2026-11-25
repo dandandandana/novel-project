@@ -1,0 +1,44 @@
+# 结构化角色关系文档模板
+# 用途：把来源文档中明确陈述的角色关系转录为结构化条目，
+#       由 graph builder 从 metadata.relations 投影为带来源的图边
+#       （见 docs/HYBRID_GRAPHRAG_ARCHITECTURE.md §4.2）。
+# 约束：只允许转录来源 YAML 中双方被明确点名的关系，禁止推断或发明事实。
+
+metadata:
+  # 全库唯一 ID；命名约定 canon-relations-<角色对>-v<主>.<次>，
+  # 例如 canon-relations-gilgamesh-shenqi-hui-v1.0
+  document_id: ""
+  # 所属小说 ID，必须与物理目录 stories/<story_id> 一致
+  story_id: ""
+  # 所属时间线 ID（通常为 main）
+  timeline_id: main
+  # 固定为 canon：关系设定属于正典资料类目
+  document_type: canon
+  # 生命周期状态：新建或修订中的关系用 draft；核对定稿后改为 canon
+  status: draft
+  # 文档版本号；每次修订递增
+  version: "0.1"
+  # 人读标题，建议格式“角色A×角色B关系”
+  title: ""
+  # 关系两端的实体 ID 列表，与 characters/*.yaml 的 character_ids 一致
+  character_ids: []
+  # 若本文档取代某个旧版本，填旧 document_id；否则保持 null
+  supersedes: null
+  # 转录来源：本文件关系的出处 YAML 路径（相对库根）
+  source_file: ""
+  # 结构化关系列表：每项将被 builder 投影为一条图边并记录本文档为来源
+  relations:
+    # 关系的发出方实体 ID（如 gilgamesh），非空字符串
+    - subject_id: ""
+      # 关系类型，snake_case（如 master_servant / enemies / allies）
+      relation_type: ""
+      # 关系的接收方实体 ID（如 shenqi-hui），非空字符串
+      object_id: ""
+      # 可选：注明出处原文摘录或补充说明
+      note: ""
+
+# 正文 evidence 小节：逐条说明每条关系的来源文档与原文表述，便于人工核对。
+evidence:
+  - relation: ""
+    source_document: ""
+    quote: ""

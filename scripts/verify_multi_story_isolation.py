@@ -1,14 +1,10 @@
 from __future__ import annotations
 
-import sys
 import tempfile
 from pathlib import Path
 
 import yaml
 
-
-ROOT = Path(__file__).resolve().parents[1]
-sys.path.insert(0, str(ROOT))
 
 from novel_rag.composition import rebuild_graph_projections, search_graph
 from novel_rag.identity import GraphKey

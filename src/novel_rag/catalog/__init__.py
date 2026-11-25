@@ -1,0 +1,82 @@
+"""Validated source catalog primitives for the new GraphRAG boundary."""
+
+from .aliases import load_story_aliases
+from .corpus import (
+    CorpusIssue,
+    ValidatedCorpus,
+    adapt_rag_document,
+    compute_content_fingerprint,
+    content_fingerprint,
+    fingerprint_documents,
+    fingerprint_paths,
+    yaml_source_fingerprint,
+)
+from .errors import CatalogError, CatalogValidationError, CorpusValidationError, LayoutMappingError
+from .layout import (
+    LEGACY_COMMON_DIRS,
+    LEGACY_TIMELINE_DIRS,
+    LegacyLayoutMapper,
+    NormalizedPath,
+    normalize_document_path,
+    normalize_legacy_path,
+)
+from .paths import (
+    CatalogPaths,
+    StoryCatalogPaths,
+    module_map_paths,
+    registry_file_candidates,
+    resolve_module_map_path,
+    resolve_registry_file,
+    resolve_timeline_registry_path,
+    resolve_version_map_path,
+    story_catalog_paths,
+    story_registry_roots,
+    timeline_registry_path,
+    version_map_path,
+    version_map_paths,
+)
+from .timelines import (
+    TimelineEntry,
+    TimelineRegistry,
+    load_timeline_registry,
+    resolve_divergence_snapshot,
+)
+
+__all__ = [
+    "CatalogError",
+    "CatalogValidationError",
+    "CatalogPaths",
+    "CorpusIssue",
+    "CorpusValidationError",
+    "LEGACY_COMMON_DIRS",
+    "LEGACY_TIMELINE_DIRS",
+    "LayoutMappingError",
+    "LegacyLayoutMapper",
+    "NormalizedPath",
+    "TimelineEntry",
+    "TimelineRegistry",
+    "StoryCatalogPaths",
+    "ValidatedCorpus",
+    "adapt_rag_document",
+    "compute_content_fingerprint",
+    "content_fingerprint",
+    "fingerprint_documents",
+    "fingerprint_paths",
+    "load_story_aliases",
+    "yaml_source_fingerprint",
+    "load_timeline_registry",
+    "normalize_document_path",
+    "normalize_legacy_path",
+    "module_map_paths",
+    "registry_file_candidates",
+    "resolve_divergence_snapshot",
+    "resolve_module_map_path",
+    "resolve_registry_file",
+    "resolve_timeline_registry_path",
+    "resolve_version_map_path",
+    "story_catalog_paths",
+    "story_registry_roots",
+    "timeline_registry_path",
+    "version_map_path",
+    "version_map_paths",
+]

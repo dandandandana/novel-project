@@ -1,0 +1,251 @@
+<!doctype html>
+<html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="color-scheme" content="dark"><title>Mosaic · 小说创作空间</title><link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Cpath fill='%23c88739' d='M2 2h12v28H2zM18 2h12v12H18zM18 18h12v12H18z'/%3E%3C/svg%3E"><link rel="stylesheet" href="/static/workspace.css"><script src="/static/launcher.js" defer></script><script src="/static/workspace.js" defer></script></head>
+<body data-view="home">
+  <main id="launcherView" class="launcher-view" aria-label="Mosaic 功能启动页">
+    <div id="tileGrid" class="tile-grid" aria-label="功能磁贴"></div>
+    <div id="launcherFallback" class="launcher-fallback"><h1 tabindex="-1">Mosaic · 创作空间</h1><p id="launcherLoadState" role="status">正在展开你的创作空间…</p><button class="button button-primary" data-launch="workbench">进入工作台</button></div>
+  </main>
+  <div id="workspaceView" class="workspace-view" hidden>
+    <header class="surface-heading"><button id="homeButton" class="home-button" type="button" aria-label="返回磁贴首页">← 返回磁贴</button><div class="surface-heading-title"><p class="eyebrow">MOSAIC / CREATIVE SPACE</p><h1 id="surfaceTitle" tabindex="-1">创作工作台</h1></div><p id="runStatus" class="surface-status" role="status" aria-live="polite">正在连接本地工作区</p></header>
+    <div id="workspaceBody" class="workspace-body">
+      <section id="writeSurface" class="surface" data-surface="write"><div id="main" class="writing-grid"><section class="input-panel" aria-label="创作输入">
+        <div class="panel-heading">
+          <p class="eyebrow">本地创作</p>
+          <h1>写下这一段</h1>
+          <p class="muted">大纲是路线，场景与措辞由你和模型一起完成。</p>
+        </div>
+
+        <form id="runForm" novalidate>
+          <fieldset class="scope-quick">
+            <legend class="sr-only">作品与写作工具</legend>
+            <div>
+            <label class="field-label" for="storySelect">作品</label>
+            <div class="story-picker">
+            <select id="storySelect" name="story_id" required>
+              <option value="">正在读取作品…</option>
+            </select>
+            <button id="newStoryButton" type="button" class="button button-quiet" aria-label="新建作品" disabled>＋ 新建</button>
+            </div></div><div>
+            <label class="field-label" for="driverSelect">写作工具</label>
+            <select id="driverSelect" name="driver" required>
+              <option value="builtin">网页内置模型</option>
+              <option value="harness">我的写作工具</option>
+            </select>
+            </div>
+          </fieldset>
+          <div id="setupHint" class="setup-hint" hidden>
+            <p id="setupMessage" role="status"></p>
+            <button id="setupButton" type="button" class="button button-quiet">设置内置模型</button>
+            <button id="useHarnessButton" type="button" class="button button-secondary">使用我的写作工具</button>
+          </div>
+
+          <label class="field-label" for="outlineInput">原始大纲</label>
+          <textarea id="outlineInput" name="outline" rows="4" placeholder="粘贴原始大纲、必达节点或结局方向。"></textarea>
+
+          <label class="field-label" for="requestInput">本轮要求 / 修改反馈</label>
+          <textarea id="requestInput" name="request" rows="2" placeholder="写下这一轮希望发生什么，或告诉模型要怎样修改。"></textarea>
+
+          <div class="run-buttons">
+            <button id="startButton" class="button button-primary" type="submit" disabled>开始创作</button>
+            <button id="feedbackButton" class="button button-secondary" type="button" disabled>继续父稿 / 提交反馈</button>
+            <button id="cancelButton" class="button button-quiet" type="button" disabled>停止本轮</button>
+          </div>
+          <details id="writingOptions" class="writing-options">
+            <summary>时间线、模型与本轮方式</summary>
+            <fieldset class="scope-fields">
+              <legend class="sr-only">详细设置</legend>
+              <label class="field-label" for="timelineSelect">时间线</label>
+              <select id="timelineSelect" name="timeline_id" required disabled><option value="">先选择作品</option></select>
+              <label class="field-label" for="profileSelect">内置模型配置</label>
+              <select id="profileSelect" name="profile_name"><option value="">正在读取配置…</option></select>
+              <p id="profileHelp" class="muted field-help" aria-live="polite">内置模型会使用所选配置。</p>
+            </fieldset>
+
+          <fieldset class="task-kind-fields">
+            <legend>本轮方式</legend>
+            <div class="choice-row">
+              <label class="choice"><input type="radio" name="task_kind" value="write" checked><span>创作</span></label>
+              <label class="choice"><input type="radio" name="task_kind" value="revise"><span>修改</span></label>
+              <label class="choice"><input type="radio" name="task_kind" value="discuss"><span>讨论</span></label>
+            </div>
+          </fieldset>
+          </details>
+        </form>
+
+        <p id="localSaveStatus" class="side-note" role="status">临时输入仅保存在本机浏览器；正式草稿请点击保存。</p>
+        <details id="localArchivePanel" class="writing-options">
+          <summary>本机保存的输入副本</summary>
+          <label class="field-label" for="localCopySelect">本作品的副本</label>
+          <select id="localCopySelect"><option value="">暂无副本</option></select>
+          <textarea id="localCopyText" rows="6" readonly aria-label="保存的输入副本，可选中复制"></textarea>
+        </details>
+
+        
+      </section><section class="editor-panel" aria-labelledby="editorTitle">
+        <div class="editor-heading">
+          <div>
+            <p class="eyebrow">工作稿</p>
+            <h2 id="editorTitle">正文</h2>
+          </div>
+          <span id="draftRevision" class="revision-label">尚未载入草稿</span>
+        </div>
+
+        <div id="errorBanner" class="error-banner" role="alert" hidden></div>
+        <section id="localRecoveryPanel" class="local-recovery-panel" hidden aria-labelledby="localRecoveryTitle">
+          <h3 id="localRecoveryTitle">找到本机未保存的正文</h3>
+          <p id="localRecoveryMessage" class="muted">工作区已有另一个版本。核对后可取回本机修改。</p>
+          <textarea id="localRecoveryText" rows="5" readonly aria-label="本机正文副本"></textarea>
+          <button id="restoreLocalDraftButton" type="button" class="button button-secondary">以这份副本继续编辑</button>
+        </section>
+        <details id="harnessPanel" class="harness-panel" hidden>
+          <summary>外部写作工具交接</summary>
+          <div class="harness-panel-body">
+            <p id="harnessContextStatus" class="muted" role="status" aria-live="polite">可读取本轮交接上下文。</p>
+            <button id="harnessContextButton" class="button button-secondary" type="button">读取交接上下文</button>
+            <label class="field-label" for="harnessContextOutput">交接上下文 JSON（只读，可选中复制）</label>
+            <textarea id="harnessContextOutput" class="harness-context-output" rows="9" readonly spellcheck="false" aria-label="外部写作工具交接上下文 JSON"></textarea>
+            <p class="field-label">本轮接入命令</p>
+            <code id="harnessCommand" class="harness-command"></code>
+          </div>
+        </details>
+        <div class="editor-toolbar">
+          <p id="draftEditState" class="muted" aria-live="polite">草稿尚未载入</p>
+          <div class="editor-actions">
+            <button id="generatedDraftButton" class="button button-quiet" type="button" disabled hidden aria-expanded="false" aria-controls="generatedDraftPanel">查看保留的生成稿</button>
+            <button id="saveDraftButton" class="button button-secondary" type="button" disabled>保存草稿</button>
+            <button id="adoptButton" class="button button-primary" type="button" disabled>采用正文</button>
+          </div>
+        </div>
+        <label class="sr-only" for="draftEditor">可编辑正文</label>
+        <textarea id="draftEditor" class="draft-editor" rows="22" placeholder="正文会显示在这里，你可以直接编辑。" spellcheck="true"></textarea>
+
+        <section id="generatedDraftPanel" class="generated-draft-panel" aria-labelledby="generatedDraftTitle" hidden>
+          <div class="generated-draft-heading">
+            <h3 id="generatedDraftTitle">本轮保留的生成稿</h3>
+            <span id="generatedDraftMeta" class="muted"></span>
+          </div>
+          <p class="muted">这里仅供查看，不会替换你正在编辑的正文。</p>
+          <pre id="generatedDraftPreview" class="generated-draft-preview"></pre>
+        </section>
+
+        <section class="adoption-panel" aria-labelledby="adoptionTitle">
+          <div class="adoption-copy">
+            <h3 id="adoptionTitle">保存到正式作品</h3>
+            <p class="muted">填写章节坐标后采用当前草稿。</p>
+          </div>
+          <div class="coordinate-fields">
+            <label><span>卷</span><input id="volumeInput" type="number" inputmode="numeric" step="1" placeholder="数字"></label>
+            <label><span>章</span><input id="chapterInput" type="number" inputmode="numeric" step="1" placeholder="数字"></label>
+            <label><span>场</span><input id="sceneInput" type="number" inputmode="numeric" step="1" placeholder="数字"></label>
+          </div>
+        </section>
+
+        <section class="live-panel" aria-labelledby="liveTitle">
+        <div class="live-heading">
+          <h3 id="liveTitle">本轮实时文本</h3>
+          <span id="liveTurnLabel" class="muted">等待生成</span>
+        </div>
+        <pre id="livePreview" class="live-preview" aria-live="polite" aria-atomic="false">尚未收到文本。</pre>
+        <button id="saveReceivedButton" class="button button-secondary save-received-button" type="button" disabled hidden>保存已接收的部分文本</button>
+        <section id="savedPartialPanel" class="saved-partial-panel" aria-labelledby="savedPartialTitle" hidden>
+          <h3 id="savedPartialTitle">另存的部分草稿</h3>
+          <p>正文编辑区保留了你的修改；以下是单独保存的已接收文本。</p>
+          <pre id="savedPartialPreview" class="saved-partial-preview"></pre>
+        </section>
+      </section>
+
+        
+
+        
+      </section></div></section>
+      <section id="resourcesSurface" class="surface resources-surface" data-surface="resources" hidden><div class="surface-intro"><p>把这个世界放在手边。</p><span>设定、前文与写作偏好在同一份作品资料中。</span></div><details id="resourcesPanel" class="resources-panel" open>
+          <summary>偏好与资料</summary>
+          <div class="resources-panel-body">
+            <section class="resource-section" aria-labelledby="preferencesTitle">
+              <h2 id="preferencesTitle" tabindex="-1">作者偏好</h2>
+              <p class="muted resource-help">这里保存本作品的写作习惯，不会把资料自动加入正文事实。</p>
+              <label class="field-label" for="preferencesEditor">写作偏好</label>
+              <textarea id="preferencesEditor" rows="6" placeholder="例如：使用第三人称有限视角；对白简洁自然。" disabled></textarea>
+              <div class="resource-actions">
+                <span id="preferencesStatus" class="muted" role="status" aria-live="polite">选择作品和时间线后读取。</span>
+                <button id="savePreferencesButton" class="button button-secondary" type="button" disabled>保存偏好</button>
+              </div>
+            </section>
+
+            <section class="resource-section" aria-labelledby="documentsTitle">
+              <div class="resource-section-heading">
+                <h2 id="documentsTitle">作品资料</h2>
+                <button id="reloadDocumentsButton" class="button button-quiet" type="button" disabled>重新载入</button>
+              </div>
+              <label class="field-label" for="documentSelect">选择资料</label>
+              <select id="documentSelect" disabled>
+                <option value="">选择作品和时间线后读取</option>
+              </select>
+              <p id="documentStatus" class="muted resource-help" role="status" aria-live="polite">选择资料后可查看正文。</p>
+              <label id="documentEditorLabel" class="field-label" for="documentEditor" hidden>资料正文</label>
+              <textarea id="documentEditor" class="document-editor" rows="8" hidden disabled aria-label="可编辑的设定或总结笔记正文"></textarea>
+              <pre id="documentPreview" class="document-preview" hidden></pre>
+              <div class="resource-actions">
+                <button id="saveDocumentButton" class="button button-secondary" type="button" disabled hidden>保存资料修改</button>
+                <button id="reviseDocumentButton" class="button button-primary" type="button" disabled hidden>修改此章节</button>
+              </div>
+              <p id="reviseDocumentStatus" class="muted resource-help" role="status" aria-live="polite" hidden></p>
+            </section>
+          </div>
+        </details></section>
+      <section id="memorySurface" class="surface" data-surface="memory" hidden><div class="surface-intro"><p>记得发生了什么，留住还没完的事。</p><span>参考沿当前故事分支和来源读取；缺口不会阻止创作。</span></div>
+        <form id="memoryQueryForm" class="memory-controls">
+          <label for="memoryQueryInput">查找记忆（留空浏览本轮可见记录）</label>
+          <input id="memoryQueryInput" type="search" placeholder="输入词句，或留空浏览">
+          <button id="refreshMemoryButton" class="button button-secondary" type="submit" disabled>重新读取记忆</button>
+          <button id="moreMemoryButton" class="button button-primary" type="button" hidden disabled>继续查找下一批</button>
+        </form>
+        <p id="memoryStatus" class="muted" role="status" aria-live="polite">进入此页后读取记忆。</p>
+        <div id="memoryCards" class="memory-cards"><p class="muted">开始一轮创作后，这里会显示当前参考。</p></div><details class="inspection-panel" open>
+          <summary>来源、覆盖与缺口</summary>
+          <div class="inspection-grid">
+            <section aria-labelledby="sourcesTitle">
+              <h3 id="sourcesTitle">来源</h3>
+              <ul id="sourceList" class="data-list"><li class="muted">等待运行数据。</li></ul>
+            </section>
+            <section aria-labelledby="coverageTitle">
+              <h3 id="coverageTitle">覆盖</h3>
+              <ul id="coverageList" class="data-list"><li class="muted">等待运行数据。</li></ul>
+            </section>
+            <section aria-labelledby="gapsTitle">
+              <h3 id="gapsTitle">缺口</h3>
+              <ul id="gapList" class="data-list"><li class="muted">等待运行数据。</li></ul>
+            </section>
+          </div>
+        </details></section>
+      <section id="activitySurface" class="surface" data-surface="activity" hidden><div class="surface-intro"><p>故事继续，过程留在这里。</p><span>这里只展示实际工具活动与运行状态。</span></div><details class="inspection-panel log-panel" open>
+          <summary>工具日志</summary>
+          <ol id="toolLog" class="tool-log" aria-live="polite">
+            <li class="muted">本轮工具活动会显示在这里。</li>
+          </ol>
+        </details></section>
+      <section id="settingsSurface" class="surface settings-surface" data-surface="settings" hidden><div class="surface-intro"><p>让这个空间按你的习惯展开。</p></div><div class="settings-grid"><section class="setting-block"><h2>画面与动态</h2><label class="setting-toggle"><input id="motionPreference" type="checkbox" checked><span>允许图片缓慢切换</span></label><p class="muted">系统开启减少动态效果时，会使用静态画面。</p></section><section class="setting-block"><h2>创作方式</h2><p>在写作页选择内置模型，或使用你自己的 Codex、Claude Code、Pi。</p><button class="button button-secondary" data-launch="harness">打开外部写作工具</button><button class="button button-quiet" data-launch="workbench">选择内置模型</button></section><section class="setting-block"><h2>更换磁贴</h2><p>标题、图片、颜色、布局和入口来自独立配置，可以换成其他项目。</p><button class="button button-secondary" data-launch="about">查看界面与素材</button></section></div></section>
+      <section id="aboutSurface" class="surface about-surface" data-surface="about" hidden><div class="surface-intro"><p>Mosaic / 一张可以操作的画面。</p><span>图片和色块共同构成入口，故事始终由你和模型完成。</span></div><div class="about-grid"><section><h2>此刻的工作区</h2><p id="overviewStatus"></p><p id="overviewStory"></p><button class="button button-primary" data-launch="workbench">回到正文 →</button></section><section><h2>图片来源</h2><p class="muted">公开原帖的画师与来源保留在下方。</p><ul id="assetCredits" class="asset-credits"></ul></section></div></section>
+      <section id="placeholderSurface" class="surface placeholder-surface" data-surface="placeholder" hidden><div class="placeholder-content"><p class="eyebrow">MOSAIC / NEXT SPACE</p><h2 id="placeholderTitle">新的空间</h2><p id="placeholderDescription"></p><p class="muted">这个入口尚未接入功能；你可以返回磁贴，继续写作。</p><button class="button button-primary" data-launch="workbench">进入创作工作台 →</button></div></section>
+    </div>
+  </div>
+  <dialog id="setupDialog" class="workspace-dialog" aria-labelledby="setupTitle">
+    <h2 id="setupTitle">选择你的写作方式</h2>
+    <p>已有 Codex、Claude Code 或 Pi：选择“我的写作工具”，粘贴大纲后准备交接。</p>
+    <p>使用网页内置模型：先在本机的设置菜单填写服务地址、模型与密钥，再回来读取配置。</p>
+    <code>python -m novel_rag.cli tui --plain</code>
+    <p class="muted">打开“本地模型 API 配置”菜单。若启动工作区时指定了模型配置文件，在本机设置时使用同一个文件。网页只读取配置名称，不接收密钥；读取配置不会调用模型。</p>
+    <div class="dialog-actions"><button id="refreshProfilesButton" class="button button-primary" type="button">重新读取配置</button><button id="closeSetupButton" class="button button-quiet" type="button">返回写作</button></div>
+    <p id="setupStatus" role="status"></p>
+  </dialog>
+  <dialog id="newStoryDialog" class="workspace-dialog" aria-labelledby="newStoryTitle">
+    <h2 id="newStoryTitle">新建作品</h2>
+    <form id="createStoryForm">
+      <label class="field-label" for="newStoryTitleInput">作品标题</label>
+      <input id="newStoryTitleInput" type="text" maxlength="200" required placeholder="给这个故事起个名字" autocomplete="off">
+      <p class="muted">建立独立作品和主时间线。现有作品会继续保留。</p>
+      <div class="dialog-actions"><button id="createStoryButton" class="button button-primary" type="submit">创建并开始写作</button><button id="closeNewStoryButton" class="button button-quiet" type="button">返回</button></div>
+      <p id="newStoryStatus" role="status"></p>
+    </form>
+  </dialog>
+</body></html>

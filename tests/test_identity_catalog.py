@@ -10,6 +10,7 @@ from novel_rag.catalog import (
     TimelineRegistry,
     ValidatedCorpus,
     fingerprint_documents,
+    load_story_aliases,
     resolve_divergence_snapshot,
 )
 from novel_rag.documents import RagDocument
@@ -312,3 +313,107 @@ def test_validated_corpus_adapts_rag_documents_and_fingerprints_exact_sources(tm
 
     with pytest.raises(CatalogValidationError, match="document_id 重复"):
         ValidatedCorpus.from_documents([one, one], root=tmp_path)
+
+
+def test_load_story_aliases_reads_common_and_timeline_registries(tmp_path: Path):
+    common_registry = tmp_path / "stories" / "demo" / "common" / "registry"
+    timeline_registry = tmp_path / "stories" / "demo" / "timelines" / "main" / "registry"
+    branch_registry = tmp_path / "stories" / "demo" / "timelines" / "branch-a" / "registry"
+    for directory in (common_registry, timeline_registry, branch_registry):
+        directory.mkdir(parents=True)
+    (common_registry / "aliases.yaml").write_text(
+        "aliases:\n"
+        "- canonical_id: alpha\n"
+        "  names:\n"
+        "  - 阿尔法\n"
+        "  - Alpha\n",
+        encoding="utf-8",
+    )
+    (timeline_registry / "aliases.yaml").write_text(
+        "aliases:\n"
+        "- canonical_id: alpha\n"
+        "  timeline_id: main\n"
+        "  names:\n"
+        "  - 甲\n"
+        "- canonical_id: beta\n"
+        "  timeline_id: main\n"
+        "  names:\n"
+        "  - 贝塔\n",
+        encoding="utf-8",
+    )
+    (branch_registry / "aliases.yaml").write_text(
+        "aliases:\n"
+        "- canonical_id: beta\n"
+        "  timeline_id: branch-a\n"
+        "  names:\n"
+        "  - 分支贝塔\n",
+        encoding="utf-8",
+    )
+
+    rows = load_story_aliases(tmp_path, "demo")
+    assert rows == (
+        {"alias": "Alpha", "entity_id": "alpha", "timeline_id": ""},
+        {"alias": "分支贝塔", "entity_id": "beta", "timeline_id": "branch-a"},
+        {"alias": "甲", "entity_id": "alpha", "timeline_id": "main"},
+        {"alias": "贝塔", "entity_id": "beta", "timeline_id": "main"},
+        {"alias": "阿尔法", "entity_id": "alpha", "timeline_id": ""},
+    )
+
+
+def test_load_story_aliases_rejects_malformed_rows(tmp_path: Path):
+    registry = tmp_path / "stories" / "demo" / "timelines" / "main" / "registry"
+    registry.mkdir(parents=True)
+    path = registry / "aliases.yaml"
+    path.write_text("aliases:\n- names: [无名]\n", encoding="utf-8")
+
+    with pytest.raises(ValueError, match="canonical_id"):
+        load_story_aliases(tmp_path, "demo")
+
+    path.write_text("aliases: broken\n", encoding="utf-8")
+    with pytest.raises(ValueError, match="必须是列表"):
+        load_story_aliases(tmp_path, "demo")
+
+
+def test_builder_projects_registry_aliases_with_lineage_and_unknown_skip(tmp_path: Path):
+    from novel_rag.graph import GraphReader, build_graph
+
+    scene = RagDocument(
+        tmp_path / "scene.yaml",
+        {
+            "document_id": "state-current-alpha-v1.0",
+            "story_id": "story",
+            "timeline_id": "main",
+            "document_type": "character_state",
+            "status": "active",
+            "version": "1.0",
+            "title": "阿尔法当前状态",
+            "character_ids": ["alpha"],
+            "character_id": "alpha",
+            "variant_id": "alpha-main",
+        },
+        {"text": "正文"},
+    )
+    corpus = ValidatedCorpus.from_documents([scene], source_root=tmp_path)
+    result = build_graph(
+        GraphKey("story", "main"),
+        corpus,
+        tmp_path / "index",
+        registry_aliases=[
+            {"entity_id": "alpha", "alias": "甲", "timeline_id": "main"},
+            {"entity_id": "alpha", "alias": "全局名"},
+            # unknown entity must be skipped without inventing a placeholder
+            {"entity_id": "ghost", "alias": "幽灵", "timeline_id": "main"},
+            # sibling-timeline rows must not leak into the target graph
+            {"entity_id": "beta", "alias": "分支名", "timeline_id": "branch-a"},
+        ],
+    )
+
+    with GraphReader(
+        result.path,
+        expected_key=GraphKey("story", "main"),
+        expected_fingerprint=result.manifest.source_fingerprint,
+    ) as reader:
+        assert tuple(reader.resolve_aliases("甲").entity_ids) == ("alpha",)
+        assert tuple(reader.resolve_aliases("全局名").entity_ids) == ("alpha",)
+        assert tuple(reader.resolve_aliases("幽灵").entity_ids) == ()
+        assert tuple(reader.resolve_aliases("分支名").entity_ids) == ()

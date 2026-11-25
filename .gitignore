@@ -5,3 +5,4 @@ __pycache__/
 novel-rag/index/*.db*
 novel-rag/staging/
 
+src/*.egg-info/

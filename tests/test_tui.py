@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+import re
 from pathlib import Path
 from types import SimpleNamespace
 
@@ -15,7 +16,7 @@ def _single_story(monkeypatch) -> None:
 
 def test_tui_can_exit_without_side_effects(tmp_path: Path, monkeypatch) -> None:
     _single_story(monkeypatch)
-    answers = iter(["7"])
+    answers = iter(["q"])
     output: list[str] = []
 
     assert run_tui(tmp_path / "library", input_fn=lambda _prompt: next(answers), output=output.append) == 0
@@ -35,7 +36,7 @@ def test_tui_generate_maps_simple_form_to_existing_runtime(tmp_path: Path, monke
             extensions={"runtime_dir": str(tmp_path / "outputs" / ".workflow" / "demo" / "task-1")},
         )
 
-    answers = iter(["1", "写一章", "", "", "", "", "task-1", "7"])
+    answers = iter(["1", "写一章", "", "", "", "", "", "", "task-1", "q"])
     assert run_tui(
         tmp_path / "library", input_fn=lambda _prompt: next(answers), output=lambda _text: None,
         generate_fn=fake_generate,
@@ -56,7 +57,7 @@ def test_tui_confirm_requires_yes_and_forwards_coordinates(tmp_path: Path, monke
         captured.update(path=path, kwargs=kwargs)
         return SimpleNamespace(status="committed", history_path="history/scene-001.yaml")
 
-    answers = iter(["3", str(runtime), "", "2", "", "YES", "7"])
+    answers = iter(["4", str(runtime), "", "2", "", "YES", "q"])
     assert run_tui(
         tmp_path / "library", input_fn=lambda _prompt: next(answers), output=lambda _text: None,
         confirm_fn=fake_confirm,
@@ -84,7 +85,7 @@ def test_tui_uploads_outline_and_remembers_it(tmp_path: Path, monkeypatch) -> No
     monkeypatch.setattr("novel_rag.tui.menu.preview_outline", lambda *_args, **_kwargs: ImportPreview(
         "ready", imported, "outline-v1.0", "outline", "1.0", "outline-demo-main-v01-c002"
     ))
-    answers = iter(["4", str(source), "", "", "2", "", "IMPORT", "7"])
+    answers = iter(["6", str(source), "", "", "2", "", "IMPORT", "q"])
     assert run_tui(
         tmp_path / "library", input_fn=lambda _prompt: next(answers), output=lambda _text: None,
     ) == 0
@@ -106,7 +107,7 @@ def test_tui_task_conflict_requires_new_id(tmp_path: Path, monkeypatch) -> None:
         return SimpleNamespace(status="pass", warnings=[], text="正文",
                                extensions={"runtime_dir": str(existing.parent / "task-2")})
 
-    answers = iter(["1", "写一章", "", "", "", "", "task-1", "NEW", "task-2", "7"])
+    answers = iter(["1", "写一章", "", "", "", "", "", "", "task-1", "NEW", "task-2", "q"])
     assert run_tui(tmp_path / "library", input_fn=lambda _prompt: next(answers),
                    output=lambda _text: None, generate_fn=fake_generate) == 0
     assert captured["task_id"] == "task-2"
@@ -129,7 +130,7 @@ def test_confirm_review_shows_full_text_and_collects_metadata(tmp_path: Path, mo
         captured.update(kwargs)
         return SimpleNamespace(status="committed", history_path="history.yaml", cleaned_files=4)
 
-    answers = iter(["3", str(runtime), "", "2", "", "标题", "主角", "a,b", "home", "YES", "7"])
+    answers = iter(["4", str(runtime), "", "2", "", "标题", "主角", "a,b", "home", "YES", "q"])
     assert run_tui(tmp_path / "library", input_fn=lambda _prompt: next(answers), output=output.append,
                    confirm_fn=fake_confirm) == 0
     assert any("这是需要完整复核的正文" in item for item in output)
@@ -149,7 +150,7 @@ def test_tui_reviews_and_approves_state_proposal(tmp_path: Path, monkeypatch) ->
         captured.update(path=path, kwargs=kwargs)
         return SimpleNamespace(status="promoted")
 
-    answers = iter(["8", str(runtime), "APPROVE", "已核对", "7"])
+    answers = iter(["5", str(runtime), "APPROVE", "已核对", "", "q"])
     assert run_tui(tmp_path / "library", input_fn=lambda _prompt: next(answers),
                    output=lambda _text: None, state_inspect_fn=inspect,
                    state_approve_fn=approve) == 0
@@ -172,7 +173,7 @@ def test_tui_continues_guidance_as_child_runtime(tmp_path: Path, monkeypatch) ->
         return SimpleNamespace(status="pass", warnings=[], text="新稿",
                                extensions={"runtime_dir": str(runtime.parent / "task-guided")})
 
-    answers = iter(["9", str(runtime), "保留结局，补足动机", "task-guided", "", "7"])
+    answers = iter(["3", str(runtime), "保留结局，补足动机", "task-guided", "", "q"])
     assert run_tui(tmp_path / "library", input_fn=lambda _prompt: next(answers),
                    output=lambda _text: None, resume_fn=resume) == 0
     assert captured["guidance"] == "保留结局，补足动机"
@@ -190,7 +191,7 @@ def test_tui_previews_rag_before_import(tmp_path: Path, monkeypatch) -> None:
         lambda path, **kwargs: captured.update(path=path, kwargs=kwargs)
         or SimpleNamespace(status="imported", path=tmp_path / "target.yaml"),
     )
-    answers = iter(["5", str(source), "IMPORT", "7"])
+    answers = iter(["7", str(source), "IMPORT", "q"])
     assert run_tui(tmp_path / "library", input_fn=lambda _prompt: next(answers),
                    output=lambda _text: None) == 0
     assert captured["path"] == source
@@ -205,8 +206,8 @@ def test_tui_creates_feedback_from_simple_form(tmp_path: Path, monkeypatch) -> N
         return SimpleNamespace(path="feedback.yaml")
 
     monkeypatch.setattr("novel_rag.tui.menu.create_feedback", fake_create)
-    answers = iter(["11", "1", "对白太快", "需要留出反应", "后续章节", "补足动作反馈",
-                    "runtime", "task-1", "FEEDBACK", "7"])
+    answers = iter(["12", "1", "对白太快", "需要留出反应", "后续章节", "补足动作反馈",
+                    "", "runtime", "task-1", "FEEDBACK", "q"])
     assert run_tui(tmp_path / "library", input_fn=lambda _prompt: next(answers),
                    output=lambda _text: None) == 0
     assert captured["issue"] == "对白太快"
@@ -222,7 +223,7 @@ def test_tui_feedback_requires_explicit_confirmation(tmp_path: Path, monkeypatch
         called = True
 
     monkeypatch.setattr("novel_rag.tui.menu.create_feedback", fake_create)
-    answers = iter(["11", "1", "问题", "意见", "后续", "修正", "runtime", "task", "取消", "7"])
+    answers = iter(["12", "1", "问题", "意见", "后续", "修正", "", "runtime", "task", "取消", "q"])
     assert run_tui(tmp_path / "library", input_fn=lambda _prompt: next(answers),
                    output=lambda _text: None) == 0
     assert called is False
@@ -232,7 +233,7 @@ def test_empty_library_runs_story_and_preference_wizard(tmp_path: Path) -> None:
     library = tmp_path / "novel-rag"
     answers = iter([
         "demo", "示例小说", "", "", "", "CREATE",
-        "", "", "", "", "", "", "", "", "", "SAVE", "7",
+        "", "", "", "", "", "", "", "", "", "SAVE", "q",
     ])
     assert run_tui(library, input_fn=lambda _prompt: next(answers), output=lambda _text: None) == 0
     preferences = library / "stories" / "demo" / "author-preferences.txt"
@@ -256,7 +257,7 @@ def test_tui_uses_active_local_model_profile_without_environment(tmp_path: Path,
         return SimpleNamespace(status="pass", warnings=[], text="正文",
                                extensions={"runtime_dir": str(tmp_path / "outputs/.workflow/demo/task")})
 
-    answers = iter(["1", "写一章", "", "", "", "task", "7"])
+    answers = iter(["1", "写一章", "", "", "", "", "", "", "task", "q"])
     assert run_tui(tmp_path / "library", input_fn=lambda _prompt: next(answers),
                    output=lambda _text: None, generate_fn=fake_generate,
                    model_config_path=config) == 0
@@ -267,11 +268,152 @@ def test_tui_uses_active_local_model_profile_without_environment(tmp_path: Path,
 def test_tui_can_save_local_api_profile(tmp_path: Path, monkeypatch) -> None:
     _single_story(monkeypatch)
     config = tmp_path / "model-api.json"
-    answers = iter(["12", "1", "local", "http://localhost:8000/v1", "writer", "chat",
-                    "yes", "SAVE", "7"])
+    answers = iter(["11", "1", "local", "http://localhost:8000/v1", "writer", "chat",
+                    "yes", "", "", "", "SAVE", "q"])
     assert run_tui(tmp_path / "library", input_fn=lambda _prompt: next(answers),
                    output=lambda _text: None, model_config_path=config) == 0
     profile = ModelConfigStore(config).get()
     assert profile is not None
     assert profile.name == "local"
     assert profile.no_auth is True
+
+
+def test_tui_can_save_advanced_api_fields(tmp_path: Path, monkeypatch) -> None:
+    _single_story(monkeypatch)
+    config = tmp_path / "model-api.json"
+    answers = iter(["11", "1", "local", "http://localhost:8000/v1", "writer", "chat",
+                    "yes", "30", "2", "4096", "SAVE", "q"])
+    assert run_tui(tmp_path / "library", input_fn=lambda _prompt: next(answers),
+                   output=lambda _text: None, model_config_path=config) == 0
+    profile = ModelConfigStore(config).get()
+    assert profile is not None
+    assert profile.timeout == 30.0
+    assert profile.retries == 2
+    assert profile.max_output_tokens == 4096
+
+
+def test_tui_lowercase_confirmation_still_confirms(tmp_path: Path, monkeypatch) -> None:
+    _single_story(monkeypatch)
+    called = False
+
+    def fake_create(**kwargs):
+        nonlocal called
+        called = True
+        return SimpleNamespace(path="feedback.yaml")
+
+    monkeypatch.setattr("novel_rag.tui.menu.create_feedback", fake_create)
+    answers = iter(["12", "1", "对白太快", "需要留出反应", "后续章节", "补足动作反馈",
+                    "", "runtime", "task-1", "feedback", "q"])
+    assert run_tui(tmp_path / "library", input_fn=lambda _prompt: next(answers),
+                   output=lambda _text: None) == 0
+    assert called is True
+
+
+def test_tui_confirm_accepts_lowercase_yes(tmp_path: Path, monkeypatch) -> None:
+    _single_story(monkeypatch)
+    runtime = tmp_path / "outputs" / ".workflow" / "demo" / "task"
+    captured = {}
+
+    def fake_confirm(path, **kwargs):
+        captured.update(path=path, kwargs=kwargs)
+        return SimpleNamespace(status="committed", history_path="history/scene-001.yaml")
+
+    answers = iter(["4", str(runtime), "", "2", "", "yes", "q"])
+    assert run_tui(
+        tmp_path / "library", input_fn=lambda _prompt: next(answers), output=lambda _text: None,
+        confirm_fn=fake_confirm,
+    ) == 0
+
+    assert captured["path"] == runtime
+    assert captured["kwargs"]["confirmed"] is True
+    assert captured["kwargs"]["volume"] == 1
+    assert captured["kwargs"]["chapter"] == 2
+    assert captured["kwargs"]["scene"] == 1
+
+
+def test_tui_ctrl_c_during_action_returns_to_menu(tmp_path: Path, monkeypatch) -> None:
+    _single_story(monkeypatch)
+    monkeypatch.setenv("NOVEL_RAG_MODEL", "writer")
+    monkeypatch.setenv("OPENAI_API_KEY", "test-key")
+    captured: dict = {}
+    phase = {"generated": False, "interrupting": False}
+
+    def wrapped_generate(_request, _model, **kwargs):
+        captured.update(kwargs)
+        phase["generated"] = True
+        return SimpleNamespace(status="pass", warnings=[], text="t",
+                               extensions={"runtime_dir": str(tmp_path / "r")})
+
+    def scripted_input(prompt: str) -> str:
+        if prompt.startswith("选择"):
+            if not phase["generated"]:
+                return "1"
+            if not phase["interrupting"]:
+                phase["interrupting"] = True
+                return "1"
+            return "q"
+        if phase["interrupting"]:
+            raise KeyboardInterrupt
+        if prompt.startswith("大纲文本"):
+            return "写一章"
+        return ""
+
+    output: list[str] = []
+
+    assert run_tui(tmp_path / "library", input_fn=scripted_input,
+                   output=output.append, generate_fn=wrapped_generate) == 0
+    assert re.fullmatch(r"\d{8}", captured["task_id"])
+    assert any("已取消当前操作" in item for item in output)
+    assert any(item.strip() == "已退出。" for item in output)
+
+
+def test_tui_exit_tokens(tmp_path: Path, monkeypatch) -> None:
+    _single_story(monkeypatch)
+
+    for token in ("0", "QUIT"):
+        output: list[str] = []
+        assert run_tui(
+            tmp_path / "library",
+            input_fn=lambda _prompt, _token=token: _token,
+            output=output.append,
+        ) == 0
+        assert output[-1] == "已退出。"
+
+
+def test_tui_search_renders_rows(tmp_path: Path, monkeypatch) -> None:
+    _single_story(monkeypatch)
+    rows = [
+        SimpleNamespace(score=0.9, document_type="canon", status="active",
+                        document_id="d1", title="标题一"),
+        SimpleNamespace(score=0.5, document_type="history", status="active",
+                        document_id="d2", title="t2"),
+    ]
+    captured = {}
+    monkeypatch.setattr(
+        "novel_rag.tui.menu.search_graph",
+        lambda *_args, **kwargs: captured.update(kwargs) or rows,
+    )
+    output: list[str] = []
+    answers = iter(["9", "查询词", "", "", "", "q"])
+
+    assert run_tui(
+        tmp_path / "library", input_fn=lambda _prompt: next(answers),
+        output=output.append,
+    ) == 0
+    text = "\n".join(output)
+    assert "d1" in text
+    assert "canon" in text
+    assert '"score"' not in text
+
+
+def test_tui_banner_shows_current_context(tmp_path: Path, monkeypatch) -> None:
+    _single_story(monkeypatch)
+    output: list[str] = []
+
+    assert run_tui(tmp_path / "library", input_fn=lambda _prompt: "q", output=output.append) == 0
+    assert any(
+        "作品: demo" in item and "时间线: main" in item
+        for item in output
+    )
+    assert any("库:" in item for item in output)
+    assert any("最近任务:" in item for item in output)

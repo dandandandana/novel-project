@@ -1,0 +1,241 @@
+{
+  "tiles": [
+    {
+      "action": "overview",
+      "color": "#1f2c42",
+      "eyebrow": "MOSAIC / CREATIVE SPACE",
+      "grid": {
+        "column": 1,
+        "columnSpan": 4,
+        "row": 1,
+        "rowSpan": 6
+      },
+      "id": "today",
+      "imagePosition": "52% 28%",
+      "images": [
+        "eeju-muramasa-summer",
+        "haruhi-day",
+        "eeju-muramasa-newyear",
+        "eeju-muramasa-cape"
+      ],
+      "kind": "hero",
+      "mobileSpan": 6,
+      "subtitle": "故事从这里开始。",
+      "title": "今日概览"
+    },
+    {
+      "action": "outline",
+      "color": "#aa6724",
+      "eyebrow": "01 / ROUTE",
+      "grid": {
+        "column": 5,
+        "columnSpan": 3,
+        "row": 1,
+        "rowSpan": 1
+      },
+      "id": "outline",
+      "kind": "navigation",
+      "mobileSpan": 3,
+      "subtitle": "给故事一个方向",
+      "title": "原始大纲"
+    },
+    {
+      "action": "preferences",
+      "color": "#713849",
+      "eyebrow": "02 / VOICE",
+      "grid": {
+        "column": 8,
+        "columnSpan": 3,
+        "row": 1,
+        "rowSpan": 1
+      },
+      "id": "preferences",
+      "kind": "navigation",
+      "mobileSpan": 3,
+      "subtitle": "留下你的声音",
+      "title": "写作偏好"
+    },
+    {
+      "action": "settings",
+      "color": "#333647",
+      "eyebrow": "03 / SPACE",
+      "grid": {
+        "column": 11,
+        "columnSpan": 2,
+        "row": 1,
+        "rowSpan": 1
+      },
+      "id": "settings",
+      "kind": "navigation",
+      "mobileSpan": 3,
+      "subtitle": "按自己的习惯",
+      "title": "设置"
+    },
+    {
+      "action": "workbench",
+      "color": "#172c4b",
+      "eyebrow": "WORKBENCH / YOUR NEXT CHAPTER",
+      "grid": {
+        "column": 5,
+        "columnSpan": 6,
+        "row": 2,
+        "rowSpan": 3
+      },
+      "id": "workbench",
+      "imagePosition": "68% 63%",
+      "images": [
+        "eeju-muramasa-blade",
+        "shirou-sunset",
+        "fate-archer-bow",
+        "rider-ichigo-kick"
+      ],
+      "kind": "primary",
+      "mobileSpan": 6,
+      "subtitle": "放进大纲，让一位模型自由创作。",
+      "title": "把故事写下去。"
+    },
+    {
+      "action": "resources",
+      "color": "#25483e",
+      "eyebrow": "REFERENCE LIBRARY",
+      "grid": {
+        "column": 11,
+        "columnSpan": 2,
+        "row": 2,
+        "rowSpan": 2
+      },
+      "id": "resources",
+      "imagePosition": "52% 36%",
+      "images": [
+        "fate-saber-sky",
+        "summer-scene",
+        "rider-w-fangjoker",
+        "fate-gilgamesh-snow"
+      ],
+      "kind": "feature",
+      "mobileSpan": 3,
+      "subtitle": "设定、前文、共同细节",
+      "title": "世界与人物"
+    },
+    {
+      "action": "placeholder",
+      "color": "#63412d",
+      "eyebrow": "EXTENSIONS",
+      "grid": {
+        "column": 11,
+        "columnSpan": 2,
+        "row": 4,
+        "rowSpan": 1
+      },
+      "id": "plugins",
+      "kind": "compact",
+      "mobileSpan": 3,
+      "subtitle": "尚未接入 · 预留入口",
+      "title": "插件空间"
+    },
+    {
+      "action": "memory",
+      "color": "#224844",
+      "eyebrow": "MEMORY / THREADS",
+      "grid": {
+        "column": 5,
+        "columnSpan": 3,
+        "row": 5,
+        "rowSpan": 1
+      },
+      "id": "memory",
+      "images": [
+        "eeju-muramasa-shadow",
+        "fate-shiki-blade",
+        "rider-evol-blackhole",
+        "eeju-muramasa-summer"
+      ],
+      "kind": "feature",
+      "mobileSpan": 3,
+      "subtitle": "记得发生了什么",
+      "title": "旧事与伏笔"
+    },
+    {
+      "action": "harness",
+      "color": "#344165",
+      "eyebrow": "HARNESS / CONNECT",
+      "grid": {
+        "column": 8,
+        "columnSpan": 3,
+        "row": 5,
+        "rowSpan": 1
+      },
+      "id": "harness",
+      "kind": "feature",
+      "mobileSpan": 3,
+      "subtitle": "Codex / Claude Code / Pi",
+      "title": "自己的写作工具"
+    },
+    {
+      "action": "about",
+      "color": "#362d46",
+      "eyebrow": "NOW / LOCAL WORKSPACE",
+      "grid": {
+        "column": 11,
+        "columnSpan": 2,
+        "row": 5,
+        "rowSpan": 2
+      },
+      "id": "overview",
+      "kind": "feature",
+      "mobileSpan": 3,
+      "subtitle": "工作区状态与图片来源",
+      "title": "此刻的书页"
+    },
+    {
+      "action": "activity",
+      "color": "#2b4d3f",
+      "eyebrow": "LIVE",
+      "grid": {
+        "column": 5,
+        "columnSpan": 2,
+        "row": 6,
+        "rowSpan": 1
+      },
+      "id": "activity",
+      "kind": "compact",
+      "mobileSpan": 3,
+      "subtitle": "故事继续，过程留下",
+      "title": "本轮活动"
+    },
+    {
+      "action": "resources",
+      "color": "#533c64",
+      "eyebrow": "ARCHIVE",
+      "grid": {
+        "column": 7,
+        "columnSpan": 2,
+        "row": 6,
+        "rowSpan": 1
+      },
+      "id": "library",
+      "kind": "compact",
+      "mobileSpan": 3,
+      "subtitle": "随手翻看前文",
+      "title": "作品资料"
+    },
+    {
+      "action": "placeholder",
+      "color": "#21394f",
+      "eyebrow": "TERMINAL",
+      "grid": {
+        "column": 9,
+        "columnSpan": 2,
+        "row": 6,
+        "rowSpan": 1
+      },
+      "id": "terminal",
+      "kind": "compact",
+      "mobileSpan": 3,
+      "subtitle": "尚未接入 · 预留入口",
+      "title": "终端"
+    }
+  ],
+  "title": "Mosaic · 创作空间",
+  "version": 1
+}

@@ -1,0 +1,25 @@
+metadata:
+  document_id: ""
+  story_id: ""
+  timeline_id: ""
+  document_type: character_state
+  title: ""
+  character_id: ""
+  variant_id: ""
+  snapshot_type: current
+  effective_at: ""
+  last_updated: ""
+  version: "1.0"
+  status: active
+  supersedes: null
+character_state:
+  current_position: {location: "", companions: [], faction: ""}
+  physical: {health: "", injuries: [], fatigue: "", temporary_conditions: [], permanent_changes: []}
+  mental: {dominant_emotions: [], current_pressure: [], desires: [], fears: [], unresolved_conflicts: [], behavior_effects: []}
+  knowledge: {known: [], unknown: [], mistaken_beliefs: [], suspicions: [], secrets_held: []}
+  goals: {immediate: [], short_term: [], long_term: [], priorities: [], obstacles: []}
+  relationships: []
+  abilities: {available: [], unavailable: [], newly_acquired: [], consumed_resources: [], active_costs: []}
+  inventory: {carried: [], lost: [], damaged: []}
+  narrative: {current_arc: "", completed_changes: [], unresolved_flags: [], active_promises: [], future_pressure: []}
+

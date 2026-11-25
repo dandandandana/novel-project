@@ -183,6 +183,50 @@ def test_shared_system_document_can_be_inherited_by_story(tmp_path):
     assert [document.document_id for document in documents] == ["shared-rule-v1.0"]
 
 
+def test_valid_relations_pass_validation(tmp_path):
+    path = tmp_path / "rel.yaml"
+    write_yaml(path, {"metadata": {
+        "story_id": "s", "timeline_id": "main", "document_type": "canon",
+        "title": "关系", "status": "draft", "version": "1.0",
+        "relations": [{
+            "subject_id": "gilgamesh", "relation_type": "master_servant",
+            "object_id": "shenqi-hui",
+        }],
+    }, "content": "x"})
+    assert validate_document(load_document(path)) == []
+
+
+def test_relations_entry_missing_object_id_is_rejected(tmp_path):
+    path = tmp_path / "rel-bad.yaml"
+    write_yaml(path, {"metadata": {
+        "story_id": "s", "timeline_id": "main", "document_type": "canon",
+        "title": "关系", "status": "draft", "version": "1.0",
+        "relations": [{"subject_id": "gilgamesh", "relation_type": "master_servant"}],
+    }, "content": "x"})
+    errors = validate_document(load_document(path))
+    assert "metadata.relations[0].object_id 必须为非空字符串" in errors
+
+
+def test_relations_must_be_list(tmp_path):
+    path = tmp_path / "rel-not-list.yaml"
+    write_yaml(path, {"metadata": {
+        "story_id": "s", "timeline_id": "main", "document_type": "canon",
+        "title": "关系", "status": "draft", "version": "1.0",
+        "relations": {"subject_id": "gilgamesh"},
+    }, "content": "x"})
+    errors = validate_document(load_document(path))
+    assert any(error.startswith("无效 relations: 必须为列表") for error in errors)
+
+
+def test_document_without_relations_key_is_unaffected(tmp_path):
+    path = tmp_path / "plain.yaml"
+    write_yaml(path, {"metadata": {
+        "story_id": "s", "timeline_id": "main", "document_type": "canon",
+        "title": "普通文档", "status": "canon", "version": "1.0",
+    }, "content": "没有 relations 键"})
+    assert validate_document(load_document(path)) == []
+
+
 def test_shared_module_defaults_must_reference_shared_document(tmp_path):
     initialize_library(tmp_path)
     write_yaml(

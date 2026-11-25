@@ -1,0 +1,46 @@
+name: Project checks
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  checks:
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, windows-latest]
+    runs-on: ${{ matrix.os }}
+    timeout-minutes: 30
+    env:
+      PYTHONUTF8: "1"
+      CI: "true"
+    steps:
+      - uses: actions/checkout@v7.0.1
+      - uses: actions/setup-python@v7.0.0
+        with:
+          python-version: "3.10"
+      - name: Install project and test dependencies
+        run: python -m pip install -e ".[dev]"
+      - name: Install browser and platform dependencies
+        run: python -m playwright install --with-deps chromium
+      - name: Check SQLite capabilities
+        run: python -m novel_rag.cli doctor
+      - name: Run project test gate
+        run: python -m pytest -q -k "not test_file_lock_uses_windows_safe_exclusive_create_across_processes"
+      - name: Build canonical indexes from source documents
+        run: python -m novel_rag.cli --library novel-rag index
+      - name: Run retrieval gate
+        run: python scripts/run_retrieval_tests.py
+      - name: Run document validation gate
+        run: python -m novel_rag.cli --library novel-rag validate
+      - name: Build and install a non-editable wheel
+        run: python -m pip install --force-reinstall --no-deps .
+      - name: Check installed wheel resources and isolated CLI
+        env:
+          NOVEL_RAG_REQUIRE_WHEEL: "1"
+        run: python -m pytest -q tests/test_packaging_boundaries.py

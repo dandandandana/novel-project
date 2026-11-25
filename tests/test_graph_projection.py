@@ -23,7 +23,7 @@ from novel_rag.graph import (
     probe_trigram,
 )
 import novel_rag.graph.builder as graph_builder
-import novel_rag.graph.shared as shared_graph
+import novel_rag.graph.promotion as graph_promotion
 from novel_rag.catalog import TimelineRegistry
 
 
@@ -130,7 +130,7 @@ def test_promotion_failure_keeps_accepted_staged_file(tmp_path: Path, monkeypatc
         staged.append(Path(source))
         raise PermissionError("locked")
 
-    monkeypatch.setattr(graph_builder.os, "replace", fail_replace)
+    monkeypatch.setattr(graph_promotion.os, "replace", fail_replace)
     with pytest.raises(GraphBuildError, match="图构建失败"):
         build_graph(
             GraphKey("story", "main"),
@@ -158,7 +158,7 @@ def test_graph_promotion_failure_preserves_old_graph_on_windows_lock(
         staged.append(Path(source))
         raise PermissionError("locked")
 
-    monkeypatch.setattr(graph_builder.os, "replace", fail_replace)
+    monkeypatch.setattr(graph_promotion.os, "replace", fail_replace)
     with pytest.raises(GraphBuildError, match="图构建失败"):
         build_graph(
             GraphKey("story", "main"),
@@ -199,7 +199,7 @@ def test_shared_builder_writes_manifest_and_module_references(tmp_path: Path) ->
         assert reader.manifest().module_reference_count == 1
         refs = reader.module_references()
         assert refs[0].document_id == "rule-1"
-        assert refs[0].module_type == "ruler"
+        assert refs[0].module_type == "rule"
         assert reader.search("global system rule")[0].document_id == "rule-1"
 
 
@@ -416,7 +416,7 @@ def test_shared_reader_stale_and_shared_promotion_failure_keep_old_graph(
         staged.append(Path(source))
         raise PermissionError("locked")
 
-    monkeypatch.setattr(shared_graph.os, "replace", fail_replace)
+    monkeypatch.setattr(graph_promotion.os, "replace", fail_replace)
     newer = _document(
         tmp_path,
         "rule-new",
@@ -460,7 +460,7 @@ def test_module_graph_index_and_shared_reverse_dependency_api(tmp_path: Path) ->
         source_fingerprint="sha256:story",
         shared_manifest_fingerprint=shared_result.manifest.source_fingerprint,
         module_references=(
-            {"module_type": "ruler", "document_id": "rule-1", "version": "1"},
+            {"module_type": "rule", "document_id": "rule-1", "version": "1"},
         ),
         built_at="now",
         document_count=0,
@@ -468,7 +468,161 @@ def test_module_graph_index_and_shared_reverse_dependency_api(tmp_path: Path) ->
         relation_count=0,
     )
     index = ModuleGraphIndex.from_manifests([manifest])
-    assert index.graph_keys_for_module("ruler", "rule-1") == (GraphKey("story", "main"),)
-    assert index.as_dict()["ruler:rule-1"] == [{"story_id": "story", "timeline_id": "main"}]
+    assert index.graph_keys_for_module("rule", "rule-1") == (GraphKey("story", "main"),)
+    assert index.as_dict()["rule:rule-1"] == [{"story_id": "story", "timeline_id": "main"}]
     with SharedReader(shared_result.path) as reader:
         assert reader.dependent_graph_keys([manifest]) == (GraphKey("story", "main"),)
+
+
+def test_reader_freshness_hashes_source_once_per_lifetime(tmp_path: Path, monkeypatch) -> None:
+    document = _document(tmp_path, "d1", text="中文检索能力")
+    result = build_graph(
+        GraphKey("story", "main"),
+        ValidatedCorpus.from_documents([document], source_root=tmp_path),
+        tmp_path / "index",
+    )
+    import novel_rag.graph.reader as graph_reader
+
+    calls = []
+    original = graph_reader.database_fingerprint
+    monkeypatch.setattr(
+        graph_reader,
+        "database_fingerprint",
+        lambda *args, **kwargs: (calls.append(True), original(*args, **kwargs))[1],
+    )
+    with GraphReader(result.path) as reader:
+        for action in (
+            lambda: reader.manifest(), lambda: reader.search("中文"),
+            lambda: reader.resolve_aliases("甲"), lambda: reader.neighbors({"missing"}, set()),
+            lambda: reader.documents_for_entities({"missing"}),
+        ):
+            action()
+    assert len(calls) == 1
+
+
+def test_shared_builder_normalizes_module_map_types(tmp_path: Path) -> None:
+    documents = [_document(
+        tmp_path, document_id, story_id="__shared__", timeline_id="global",
+        document_type=document_type, module_type=module_type,
+    ) for document_id, document_type, module_type in (
+        ("rule-1", "rule", "ruler"),
+        ("judgment-1", "judgment_spec", "judgment"),
+        ("style-1", "style_audit", "style"),
+    )]
+    for document in documents[:2]:
+        document.metadata.update({"priority": 1, "enforcement": "must"})
+    result = build_shared(
+        ValidatedCorpus.from_documents(documents, source_root=tmp_path),
+        tmp_path / "index",
+    )
+    with SharedReader(result.path) as reader:
+        assert {(item.module_type, item.document_id) for item in reader.module_references()} == {
+            ("rule", "rule-1"),
+            ("judgment_spec", "judgment-1"),
+            ("style_audit", "style-1"),
+        }
+        manifest = GraphManifest(
+            schema_version="graph-v1",
+            story_id="story",
+            timeline_id="main",
+            source_fingerprint="sha256:story",
+            shared_manifest_fingerprint=result.manifest.source_fingerprint,
+            module_references=tuple({"module_type": module_type, "document_id": document_id}
+                                    for module_type, document_id in (("rule", "rule-1"), ("judgment_spec", "judgment-1"), ("style_audit", "style-1"))),
+            built_at="now",
+            document_count=0,
+            entity_count=0,
+            relation_count=0,
+        )
+        assert reader.dependent_graph_keys([manifest]) == (GraphKey("story", "main"),)
+
+
+def test_plural_entity_keys_and_body_aliases_are_projected(tmp_path: Path) -> None:
+    scene = RagDocument(
+        tmp_path / "scene.yaml",
+        {
+            "document_id": "history-s001-v1.0",
+            "story_id": "story",
+            "timeline_id": "main",
+            "document_type": "history",
+            "status": "canon",
+            "version": "1.0",
+            "title": "场景一",
+            "character_ids": ["alpha", "beta"],
+            "location_ids": ["home"],
+        },
+        {"text": "正文内容"},
+    )
+    canon = RagDocument(
+        tmp_path / "alpha.yaml",
+        {
+            "document_id": "canon-character-alpha-v1.0",
+            "story_id": "story",
+            "timeline_id": "main",
+            "document_type": "canon",
+            "status": "canon",
+            "version": "1.0",
+            "title": "角色甲",
+            "character_ids": ["alpha"],
+        },
+        {"character": {"name": "甲", "aliases": ["甲", "Alpha"]}},
+    )
+    corpus = ValidatedCorpus.from_documents([scene, canon], source_root=tmp_path)
+
+    result = build_graph(GraphKey("story", "main"), corpus, tmp_path / "index")
+    assert result.manifest.entity_count == 3
+
+    with GraphReader(
+        result.path,
+        expected_key=GraphKey("story", "main"),
+        expected_fingerprint=result.manifest.source_fingerprint,
+    ) as reader:
+        resolution = reader.resolve_aliases("甲")
+        assert tuple(resolution.entity_ids) == ("alpha",)
+        alpha_docs = {hit.document_id for hit in reader.documents_for_entities({"alpha"})}
+        assert alpha_docs == {"canon-character-alpha-v1.0", "history-s001-v1.0"}
+        scene_docs = {
+            hit.document_id for hit in reader.documents_for_entities({"beta", "home"})
+        }
+        assert scene_docs == {"history-s001-v1.0"}
+
+
+def test_body_aliases_require_single_unambiguous_owner(tmp_path: Path) -> None:
+    ambiguous = RagDocument(
+        tmp_path / "pair.yaml",
+        {
+            "document_id": "canon-pair-v1.0",
+            "story_id": "story",
+            "timeline_id": "main",
+            "document_type": "canon",
+            "status": "canon",
+            "version": "1.0",
+            "title": "双人设定",
+            "character_ids": ["alpha", "beta"],
+        },
+        {"character": {"aliases": ["共同名"]}},
+    )
+    corpus = ValidatedCorpus.from_documents([ambiguous], source_root=tmp_path)
+
+    result = build_graph(GraphKey("story", "main"), corpus, tmp_path / "index")
+    with GraphReader(
+        result.path,
+        expected_key=GraphKey("story", "main"),
+        expected_fingerprint=result.manifest.source_fingerprint,
+    ) as reader:
+        assert tuple(reader.resolve_aliases("共同名").entity_ids) == ()
+
+
+def test_reader_search_matches_short_cjk_terms_as_substrings(tmp_path: Path) -> None:
+    document = _document(tmp_path, "d1", text="她展示了岔命的力量")
+    other = _document(tmp_path, "d2", text="完全无关的正文内容")
+    corpus = ValidatedCorpus.from_documents([document, other], source_root=tmp_path)
+
+    result = build_graph(GraphKey("story", "main"), corpus, tmp_path / "index")
+    with GraphReader(
+        result.path,
+        expected_key=GraphKey("story", "main"),
+        expected_fingerprint=result.manifest.source_fingerprint,
+    ) as reader:
+        hits = {hit.document_id for hit in reader.search("岔命")}
+        assert hits == {"d1"}

@@ -137,7 +137,7 @@ def test_tui_summary_entry_uses_target_scaffold_and_expected_revision(tmp_path, 
     library, index, summary_path = _target_library(tmp_path)
     coordinator = RecordingCoordinator()
     monkeypatch.setattr(tui_menu, "build_mutation_coordinator", lambda *a, **k: coordinator)
-    answers = iter(["13", "3", "summary-1", "1", "用户编辑摘要", "7"])
+    answers = iter(["13", "3", "1", "用户编辑摘要", "0"])
 
     assert run_tui(
         library,
@@ -182,7 +182,7 @@ def test_tui_index_and_search_use_composition_entry_points(tmp_path, monkeypatch
         return []
 
     monkeypatch.setattr(tui_menu, "rebuild_graph_projections", fake_rebuild)
-    answers = iter(["6", "14", "query", "7"])
+    answers = iter(["8", "", "9", "query", "", "", "", "0"])
     assert run_tui(
         library,
         index,
